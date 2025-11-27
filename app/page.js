@@ -26,6 +26,7 @@ import FloatingWhatsApp from "./components/shared/FloatingWhatsApp";
 import TargetCursor from "./components/shared/TargetCursor";
 import LandingPage from "./components/shared/landingPage";
 import { useState, useEffect } from "react";
+import FeaturedCaseStudies from "./components/home/FeaturedCaseStudies";
 
 const services = [
   // App Development with multiple tech logos
@@ -190,6 +191,7 @@ export default function Home() {
           />
           <WhyChooseUs />
           <ServicesBentoSection />
+          <FeaturedCaseStudies />
           <InsightsSection />
 
           <CTASection />
