@@ -44,7 +44,7 @@ const Aroplane = ({ className }) => {
   return (
     <div
       ref={containerRef}
-      className={`w-[26vw] h-[26vh] opacity-55 flex flex-col items-center justify-evenly absolute top-8 -left-30 -rotate-[62deg] z-50 ${className}`}
+      className={`w-[26vw] h-[26vh] opacity-55 flex flex-col items-center justify-evenly absolute top-8 -left-30 -rotate-62deg z-50 ${className}`}
     >
       <svg
         id="svg-stage"

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import DarkVeil from "./components/home/DarkVeil";
 import Hero from "./components/home/Hero";
@@ -22,6 +24,9 @@ import InsightsSection from "./components/home/InsightsSection";
 import Footer from "./components/shared/Footer";
 import FloatingWhatsApp from "./components/shared/FloatingWhatsApp";
 import TargetCursor from "./components/shared/TargetCursor";
+import LandingPage from "./components/shared/landingPage";
+import { useState, useEffect } from "react";
+
 const services = [
   // App Development with multiple tech logos
   {
@@ -139,35 +144,59 @@ const services = [
 ];
 
 export default function Home() {
+  const [showHome, setShowHome] = useState(false);
+
+  useEffect(() => {
+    // Check if user has already visited
+    const hasVisited = sessionStorage.getItem("isLanding");
+    if (hasVisited) {
+      setShowHome(true);
+    }
+  }, []);
+
+  const handleLandingComplete = () => {
+    setShowHome(true);
+  };
+
   return (
     <div className="relative font-sans bg-black">
-      <div style={{ width: "100%", height: "100dvh", position: "relative" }}>
-        <DarkVeil speed={1} warpAmount={0.1} />
-        <Hero />
-      </div>
-      <TargetCursor
-        spinDuration={2}
-        hideDefaultCursor={true}
-        parallaxOn={true}
-      />
-      <LogoLoop
-        logos={services}
-        speed={60}
-        direction="left"
-        logoHeight={38}
-        gap={40}
-        hoverSpeed={0}
-        fadeOut
-        fadeOutColor="#000"
-        ariaLabel="Services"
-      />
-      <WhyChooseUs />
-      <ServicesBentoSection />
-      <InsightsSection />
+      <LandingPage onComplete={handleLandingComplete} />
 
-      <CTASection />
-      <Footer />
-      <FloatingWhatsApp />
+      {showHome && (
+        <>
+          <div style={{ width: "100%", height: "100dvh", position: "fixed" }}>
+            <DarkVeil speed={1} warpAmount={0.1} />
+          </div>
+          <div
+            style={{ width: "100%", height: "100dvh", position: "relative" }}
+          >
+            <Hero />
+          </div>
+          <TargetCursor
+            spinDuration={2}
+            hideDefaultCursor={true}
+            parallaxOn={true}
+          />
+          <LogoLoop
+            logos={services}
+            speed={60}
+            direction="left"
+            logoHeight={38}
+            gap={40}
+            hoverSpeed={0}
+            fadeOut
+            fadeOutColor="#000"
+            ariaLabel="Services"
+          />
+          <WhyChooseUs />
+          <ServicesBentoSection />
+          <InsightsSection />
+
+          <CTASection />
+          <Footer />
+          <FloatingWhatsApp />
+        </>
+      )}
     </div>
   );
 }
