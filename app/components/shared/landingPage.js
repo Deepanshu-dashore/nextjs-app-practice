@@ -61,7 +61,7 @@ export default function LandingPage({ onComplete }) {
                 initial={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-4xl md:text-5xl space-x-3 font-normal text-white flex items-center justify-center"
+                className="text-4xl md:text-4xl space-x-3 font-normal text-white flex items-center justify-center"
               >
                 <BlurText
                   animateBy="words"
