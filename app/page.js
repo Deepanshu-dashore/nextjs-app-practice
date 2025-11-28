@@ -173,11 +173,11 @@ export default function Home() {
           >
             <Hero />
           </div>
-          <TargetCursor
+          {/* <TargetCursor
             spinDuration={2}
             hideDefaultCursor={true}
             parallaxOn={true}
-          />
+          /> */}
           <LogoLoop
             logos={services}
             speed={60}
