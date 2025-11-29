@@ -10,135 +10,103 @@ export default function TechPartnerSection() {
   const router = useRouter();
 
   return (
-    <section className="relative w-full h-[500px] md:h-[550px] overflow-hidden flex items-center">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        // style={{
-        //   backgroundImage: "url('/images/tech-partner-abstract.png')",
-        // }}
-      >
-        {/* Dark Overlay - Subtle to let neon shine through */}
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="absolute z-10 inset-0 bg-linear-to-t from-gray-900/80 via-black/30 to-gray-900/30" />
-        <div
-          className="insert-0 z-0"
-          style={{ width: "100%", height: "600px", position: "absolute" }}
-        >
-          <FloatingLines
-            enabledWaves={["middle", "top", "bottom", "top"]}
-            // Array - specify line count per wave; Number - same count for all waves
-            lineCount={[10, 15, 20, 10]}
-            // Array - specify line distance per wave; Number - same distance for all waves
-            lineDistance={[0, 6, 4]}
-            bendRadius={50.0}
-            bendStrength={-0.12}
-            // interactive={true}
-            parallax={true}
-          />
+    <section className="relative w-full py-20 overflow-hidden bg-black">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]">
+          <div className="absolute -left-20 -top-20 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-indigo-600 opacity-20 blur-[100px]" />
+          <div className="absolute -right-20 -top-20 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-indigo-600 opacity-20 blur-[100px]" />
+          <div className="absolute -bottom-20 -left-20 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-purple-600 opacity-20 blur-[100px]" />
+          <div className="absolute -bottom-20 -right-20 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-purple-600 opacity-20 blur-[100px]" />
         </div>
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-center">
-        <div className="w-full max-w-4xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+      <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-16">
+        <div className="relative rounded-3xl overflow-hidden">
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 z-0 bg-cover bg-center"
+            style={{
+              backgroundImage: "url('/images/tech-partner-collab.png')",
+            }}
           >
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
-              <span className="text-sm font-medium text-indigo-300">
-                Strategic Partnership
-              </span>
-            </div>
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-linear-to-r from-gray-900/90 via-gray-900/70 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-linear-to-t from-(--color)/10 via-gray-900/70 to-transparent" />
+          </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight whitespace-nowrap">
-              Tech Partner{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400">
-                Program
-              </span>
-            </h2>
-
-            <h3 className="text-xl sm:text-2xl text-gray-200 font-medium mb-4 leading-snug max-w-2xl mx-auto">
-              Build and scale your products with a dedicated tech team.
-            </h3>
-
-            <p className="text-gray-200 text-lg mb-12 max-w-2xl mx-auto">
-              From prototypes to production systems, we partner with you for the
-              long term.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              {/* Primary CTA - Explore Program */}
-              <Link
-                href="/tech-partner"
-                className="group relative bg-linear-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full text-base font-semibold transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:-translate-y-1 flex items-center gap-2 overflow-hidden"
+          {/* Content */}
+          <div className="relative z-10 py-16 px-8 md:px-16 flex flex-col justify-between min-h-[500px]">
+            <div className="max-w-3xl">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
               >
-                <span className="relative z-10">Explore Program</span>
-                {/* Improved Compass/Explore SVG */}
-                <svg
-                  className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:rotate-45"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                  />
-                </svg>
-                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              </Link>
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-linear-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 border border-indigo-500/20 backdrop-blur-sm">
+                  <svg
+                    className="w-4 h-4 text-indigo-400"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M11.5 2C11.5 1.17157 12.1716 0.5 13 0.5C13.8284 0.5 14.5 1.17157 14.5 2V4.5C14.5 5.32843 13.8284 6 13 6C12.1716 6 11.5 5.32843 11.5 4.5V2Z" />
+                    <path d="M13 7C11.067 7 9.5 8.567 9.5 10.5V13H6.5C5.39543 13 4.5 13.8954 4.5 15V18C4.5 19.1046 5.39543 20 6.5 20H9.5V22C9.5 23.1046 10.3954 24 11.5 24H13.5C14.6046 24 15.5 23.1046 15.5 22V20H18.5C19.6046 20 20.5 19.1046 20.5 18V15C20.5 13.8954 19.6046 13 18.5 13H15.5V10.5C15.5 8.567 13.933 7 12 7H13Z" />
+                    <path d="M2 8C2 7.44772 2.44772 7 3 7H5C5.55228 7 6 7.44772 6 8V10C6 10.5523 5.55228 11 5 11H3C2.44772 11 2 10.5523 2 10V8Z" />
+                    <path d="M19 7C18.4477 7 18 7.44772 18 8V10C18 10.5523 18.4477 11 19 11H21C21.5523 11 22 10.5523 22 10V8C22 7.44772 21.5523 7 21 7H19Z" />
+                  </svg>
+                  <span className="text-sm font-medium bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    Tech Partner Program
+                  </span>
+                </div>
 
-              {/* Secondary CTA - Become Partner */}
-              <motion.button
-                whileHover={{ scale: 1.0 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative inline-flex overflow-hidden rounded-full p-px focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
-                onClick={() => router.push("/tech-partner#apply")}
-              >
-                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-                <span className="flex items-center gap-2 h-full w-full cursor-pointer rounded-full bg-[#0e0d0d] hover:bg-[#1a1a1a] px-8 py-4 text-base font-medium text-white backdrop-blur-3xl">
-                  <span>Become Partner</span>
-                  <FaArrowRight className="text-gray-300 group-hover:text-white transition-colors" />
-                </span>
-              </motion.button>
-            </div>
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                  Ready to build{" "}
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-purple-400">
+                    together?
+                  </span>
+                </h2>
 
-            {/* Stats Section */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                  24/7
+                <p className="text-lg sm:text-xl text-gray-200 mb-10 leading-relaxed">
+                  Let's discuss your product, roadmap, and how we can become
+                  your long-term tech partner.
+                </p>
+
+                {/* Buttons */}
+                <div className="flex flex-col sm:flex-row items-start gap-4">
+                  <Link
+                    href="/tech-partner"
+                    className="group relative bg-linear-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full text-base font-semibold transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:-translate-y-1 flex items-center gap-2 overflow-hidden"
+                  >
+                    <span className="relative z-10">Explore Program</span>
+                    <svg
+                      className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:rotate-45"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                      />
+                    </svg>
+                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                  </Link>
+
+                  <Link
+                    href="/tech-partner#apply"
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black hover:bg-gray-100 font-bold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+                  >
+                    Apply for Partnership
+                    <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
-                <div className="text-sm text-gray-400">Support</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                  98%
-                </div>
-                <div className="text-sm text-gray-400">Retention</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                  100%
-                </div>
-                <div className="text-sm text-gray-400">On-Time</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                  25+
-                </div>
-                <div className="text-sm text-gray-400">Technologies</div>
-              </div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
