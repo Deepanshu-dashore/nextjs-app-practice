@@ -13,18 +13,19 @@ import {
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Particles from "./Particles";
-
+import logo from "../../../public/images/indi-Logo-white.png";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
-    navigation: [
-      { title: "HOME", path: "/" },
-      { title: "ABOUT", path: "/about" },
-      { title: "SERVICES", path: "/service" },
-      { title: "PROJECTS", path: "/projects" },
-      { title: "RESUME", path: "/resume" },
-      { title: "CONTACT", path: "/contact" },
+navigation: [
+  { title: "HOME", path: "/" },
+  { title: "WHO WE ARE", path: "/about" },
+  { title: "WHAT WE DO", path: "/services" },
+  { title: "OUR PORTFOLIO", path: "/portfolio" },
+  { title: "BLOG", path: "/blog" },
+  { title: "CAREERS", path: "/careers" },
+  { title: "CONTACT", path: "/contact" },
     ],
     services: [
       { title: "Web Development", path: "/service" },
@@ -37,6 +38,7 @@ const Footer = () => {
       { title: "SKILLS", path: "/#skills" },
       { title: "PROJECTS", path: "/#projects" },
       { title: "SERVICES", path: "/#services" },
+         { title: "SUPPORT", path: "/#support" },
     ],
   };
 
@@ -114,7 +116,7 @@ const Footer = () => {
               <Link href="/">
                 <img
                   className="h-11 w-56 object-contain"
-                  src="https://indidevelopers.com/assets/blackLogo-CnkHWG4m.png"
+                  src={logo.src}
                   alt="Indidevelopers Logo"
                 />
               </Link>
@@ -210,11 +212,11 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-white/10 pt-8 pb-8 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-300 text-sm">
             © {currentYear} Indidevelopers. All rights reserved.
           </p>
           <div>
-            <p className="text-gray-500 text-sm flex items-center gap-2">
+            <p className="text-gray-200 text-sm flex items-center gap-2">
               Built with{" "}
               <span className="text-[#915eff] font-semibold">React</span> &{" "}
               <span className="text-[#915eff] font-semibold">Tailwind CSS</span>

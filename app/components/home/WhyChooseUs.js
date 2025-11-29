@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 
@@ -43,6 +44,33 @@ export default function WhyChooseUs() {
   const [activeTab, setActiveTab] = useState(tabs[0].id);
 
   const activeTabData = tabs.find((tab) => tab.id === activeTab);
+
+const [direction, setDirection] = useState(1);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setActiveTab((prev) => {
+      const currentIndex = tabs.findIndex((t) => t.id === prev);
+      let nextIndex = currentIndex + direction;
+
+      
+      if (nextIndex >= tabs.length) {
+        setDirection(-1);
+        nextIndex = currentIndex - 1;
+      }
+
+      if (nextIndex < 0) {
+        setDirection(1);
+        nextIndex = currentIndex + 1;
+      }
+
+      return tabs[nextIndex].id;
+    });
+  }, 3000); 
+
+  return () => clearInterval(interval);
+}, [direction]);
+
 
   return (
     <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black">

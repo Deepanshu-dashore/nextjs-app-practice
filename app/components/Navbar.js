@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-
+import logo from ".././../public/images/indi-Logo-white.png";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,7 +24,7 @@ function Navbar() {
             <Link href="/">
               <img
                 className="h-11 w-56 object-contain"
-                src="https://indidevelopers.com/assets/blackLogo-CnkHWG4m.png"
+                src={logo.src}
                 alt="Indidevelopers Logo"
               />
             </Link>

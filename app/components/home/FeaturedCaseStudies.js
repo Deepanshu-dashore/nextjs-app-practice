@@ -236,7 +236,7 @@ export default function FeaturedCaseStudies() {
         <div className="flex justify-between items-center mt-8 lg:mt-12 px-4 lg:px-8  hidden md:flex text-base sm:text-lg md:text-xl lg:text-2xl ">
           {/* Left: RotatingText Component */}
           <div className="flex-1 flex gap-2 items-center -ml-8 my-auto md:px-5 ">
-            <h2 className="text-lg md:text-lg font-bold text-white leading-tight text-base lg:text-lg  ">
+            <h2 className="text-lg md:text-sm font-bold text-white leading-tight text-base lg:text-lg  ">
               Real Problems, Real solutions
             </h2>
             <RotatingText
@@ -249,7 +249,7 @@ export default function FeaturedCaseStudies() {
               ]}
               rotationInterval={3000}
               transition={{ duration: 0.5 }}
-              mainClassName="text-lg md:text-lg font-semibold lg:text-lg   text-white bg-linear-to-r from-(--color)/20 via-indigo-400/20 to-purple-400/20 w-fit  py-0.5 sm:py-1 md:py-1.5 px-2 sm:px-2 md:px-3 rounded-sm"
+              mainClassName="text-lg md:text-sm font-semibold lg:text-lg   text-white bg-linear-to-r from-(--color)/20 via-indigo-400/20 to-purple-400/20 w-fit  py-0.5 sm:py-1 md:py-1.5 px-2 sm:px-2 md:px-3 rounded-sm"
               splitBy="words"
               splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
               staggerDuration={0.03}
@@ -260,32 +260,35 @@ export default function FeaturedCaseStudies() {
             />
           </div>
 
-          {/* Right: Counter and Arrows */}
-          <div className="flex items-center gap-4">
-            {/* Arrow Buttons */}
-            <button
-              onClick={() => {
-                setIsPlaying(false);
-                prevSlide();
-              }}
-              className="w-10 h-12 md:w-10 md:h-10  flex cursor-pointer items-center  justify-center bg-zinc-800 hover:bg-zinc-700 text-white transition-colors"
-            >
-              <FaArrowLeft />
-            </button>
-            {/* Counter */}
-            <span className="text-white font-mono text-base">
-              {currentIndex + 1}/{caseStudies.length}
-            </span>
-            <button
-              onClick={() => {
-                setIsPlaying(false);
-                nextSlide();
-              }}
-              className="w-12 h-12 md:w-10 md:h-10 flex cursor-pointer items-center justify-center bg-zinc-800 hover:bg-zinc-700 text-white transition-colors"
-            >
-              <FaArrowRight />
-            </button>
-          </div>
+      {/* Right: Counter and Arrows */}
+<div className="flex items-center gap-4">
+  {/* Arrow Buttons */}
+  <button
+    onClick={() => {
+      setIsPlaying(false);
+      prevSlide();
+    }}
+    className="w-12 h-12 flex cursor-pointer items-center justify-center bg-zinc-800 hover:bg-zinc-700 text-white transition-colors"
+  >
+    <FaArrowLeft size={16} /> 
+  </button>
+  
+  {/* Counter */}
+  <span className="text-white font-mono text-base">
+    {currentIndex + 1}/{caseStudies.length}
+  </span>
+  
+  <button
+    onClick={() => {
+      setIsPlaying(false);
+      nextSlide();
+    }}
+    className="w-12 h-12 flex cursor-pointer items-center justify-center bg-zinc-800 hover:bg-zinc-700 text-white transition-colors"
+  >
+    <FaArrowRight size={16} />
+  </button>
+</div>
+
         </div>
       </div>
 

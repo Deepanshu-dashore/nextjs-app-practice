@@ -5,8 +5,15 @@ import { useState, useCallback, useEffect } from "react";
 import { FaStar, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const reviews = [
+  {id: 1,
+    title: "Exceptional Development Experience",
+    text:"I can’t thank this company enough for their outstanding work in building my portal! Their professionalism, expertise, and attention to detail are unmatched. No other team could have executed this project with such precision and efficiency. They understood my vision perfectly and delivered a seamless, high-performing platform that exceeded my expectations. Highly recommended for anyone looking for top-notch service and innovation! Highly Recommended to all MSME’s. Also before handing this project to them, I had discarded two other projects that were made by other low end developers, coz they did not suit my taste. But these young fellas “Nailed” it, in one stroke.",
+    author: "Vikram Singh",
+    position: "CEO, TechSolutions Pvt Ltd",
+  }
+  ,
   {
-    id: 1,
+    id:2,
     title: "Outstanding Customer Service",
     text: "Indidevelopers delivered our platform on time with clean architecture and solid performance. The team understood our vision and turned it into a product our customers love.",
     author: "Rahul Sharma",
@@ -91,7 +98,7 @@ const ReviewCard = ({ review }) => {
         <div className="w-12 h-0.5 bg-linear-to-r from-indigo-500 to-purple-600 rounded-full" />
 
         {/* Review Text */}
-        <p className="text-gray-300 leading-relaxed text-sm">"{review.text}"</p>
+        <p className="text-gray-300 leading-relaxed text-sm line-clamp-3">"{review.text}"</p>
 
         {/* Divider Line */}
         <div className="border-t border-white/10 pt-4" />
