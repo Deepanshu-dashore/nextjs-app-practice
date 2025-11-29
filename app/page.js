@@ -24,10 +24,10 @@ import InsightsSection from "./components/home/InsightsSection";
 import ReviewsSection from "./components/home/ReviewsSection";
 import Footer from "./components/shared/Footer";
 import FloatingWhatsApp from "./components/shared/FloatingWhatsApp";
-import TargetCursor from "./components/shared/TargetCursor";
 import LandingPage from "./components/shared/landingPage";
 import { useState, useEffect } from "react";
 import FeaturedCaseStudies from "./components/home/FeaturedCaseStudies";
+import TechPartnerSection from "./components/home/TechPartnerSection";
 
 const services = [
   // App Development with multiple tech logos
@@ -193,6 +193,7 @@ export default function Home() {
           <WhyChooseUs />
           <ServicesBentoSection />
           <FeaturedCaseStudies />
+          <TechPartnerSection />
           <InsightsSection />
           <ReviewsSection />
           <CTASection />
