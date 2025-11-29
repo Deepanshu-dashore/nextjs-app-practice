@@ -86,17 +86,17 @@ const ServicesBentoSection = () => {
     },
 
     // Row 2
-    {
-      id: 8,
-      title: "Database Management",
-      description:
-        "Expert database design and optimization for optimal performance and scalability.",
-      icon: <FaDatabase className="text-2xl" />,
-      color: "#8B5CF6",
-      isSolid: true,
-      colSpan: "col-span-12 md:col-span-6 lg:col-span-4",
-      rowSpan: "row-span-1",
-    },
+    // {
+    //   id: 8,
+    //   title: "Database Management",
+    //   description:
+    //     "Expert database design and optimization for optimal performance and scalability.",
+    //   icon: <FaDatabase className="text-2xl" />,
+    //   color: "#8B5CF6",
+    //   isSolid: true,
+    //   colSpan: "col-span-12 md:col-span-6 lg:col-span-4",
+    //   rowSpan: "row-span-1",
+    // },
     {
       id: 3,
       title: "Web Development",
@@ -109,17 +109,17 @@ const ServicesBentoSection = () => {
       colSpan: "col-span-12 md:col-span-6 lg:col-span-4",
       rowSpan: "row-span-1",
     },
-    {
-      id: 9,
-      title: "Responsive Design",
-      description:
-        "Creating beautiful, responsive websites that work perfectly on all devices.",
-      icon: <FaDesktop className="text-2xl" />,
-      color: "#F59E0B",
-      isSolid: true,
-      colSpan: "col-span-12 md:col-span-6 lg:col-span-4",
-      rowSpan: "row-span-1",
-    },
+    // {
+    //   id: 9,
+    //   title: "Responsive Design",
+    //   description:
+    //     "Creating beautiful, responsive websites that work perfectly on all devices.",
+    //   icon: <FaDesktop className="text-2xl" />,
+    //   color: "#F59E0B",
+    //   isSolid: true,
+    //   colSpan: "col-span-12 md:col-span-6 lg:col-span-4",
+    //   rowSpan: "row-span-1",
+    // },
 
     // Row 3
     {
@@ -146,17 +146,17 @@ const ServicesBentoSection = () => {
       colSpan: "col-span-12 md:col-span-6 lg:col-span-4",
       rowSpan: "row-span-1",
     },
-    {
-      id: 10,
-      title: "Modern Architecture",
-      description:
-        "Building scalable and maintainable applications using modern architectural patterns.",
-      icon: <FaCode className="text-2xl" />,
-      color: "#EC4899",
-      isSolid: true,
-      colSpan: "col-span-12 md:col-span-6 lg:col-span-4",
-      rowSpan: "row-span-1",
-    },
+    // {
+    //   id: 10,
+    //   title: "Modern Architecture",
+    //   description:
+    //     "Building scalable and maintainable applications using modern architectural patterns.",
+    //   icon: <FaCode className="text-2xl" />,
+    //   color: "#EC4899",
+    //   isSolid: true,
+    //   colSpan: "col-span-12 md:col-span-6 lg:col-span-4",
+    //   rowSpan: "row-span-1",
+    // },
     // {
     //   id: 11,
     //   title: "Performance Optimization",
