@@ -1,225 +1,146 @@
 "use client";
 
 import { motion } from "motion/react";
-import { FaArrowRight, FaCheckCircle, FaHandshake } from "react-icons/fa";
-import { HiSparkles, HiLightningBolt, HiUserGroup } from "react-icons/hi";
-import { FaShieldAlt } from "react-icons/fa";
-
-const partnershipBenefits = [
-  {
-    icon: HiUserGroup,
-    title: "Enterprise-Grade Expertise",
-    description:
-      "Seasoned professionals with 5+ years delivering mission-critical solutions for startups and enterprises.",
-  },
-  {
-    icon: HiSparkles,
-    title: "Future-Proof Innovation",
-    description:
-      "Access to cutting-edge tech stacks (React, Next.js, AI/ML, Cloud) and emerging trends before they become mainstream.",
-  },
-  {
-    icon: HiLightningBolt,
-    title: "Zero-Downtime Quality",
-    description:
-      "100% uptime guarantee through rigorous CI/CD pipelines, automated testing, and proactive monitoring.",
-  },
-  {
-    icon: FaShieldAlt,
-    title: "Dedicated Partnership Manager",
-    description:
-      "Single point of contact ensuring seamless communication, priority support, and strategic alignment.",
-  },
-];
-
-const whatYouGet = [
-  {
-    title: "Monthly Strategy Reviews",
-    description: "Align tech with business goals",
-  },
-  {
-    title: "Priority Feature Development",
-    description: "Faster time-to-market",
-  },
-  {
-    title: "Performance Optimization",
-    description: "Continuous improvements",
-  },
-  {
-    title: "Security & Compliance Audits",
-    description: "Enterprise-grade protection",
-  },
-  {
-    title: "Scalable Infrastructure",
-    description: "Grow without limits",
-  },
-];
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { FaArrowRight } from "react-icons/fa";
+import FloatingLines from "../shared/FloatingLines";
 
 export default function TechPartnerSection() {
+  const router = useRouter();
+
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-20 bg-black overflow-hidden">
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+    <section className="relative w-full h-[500px] md:h-[550px] overflow-hidden flex items-center">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        // style={{
+        //   backgroundImage: "url('/images/tech-partner-abstract.png')",
+        // }}
+      >
+        {/* Dark Overlay - Subtle to let neon shine through */}
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute z-10 inset-0 bg-linear-to-t from-gray-900/80 via-black/30 to-gray-900/30" />
+        <div
+          className="insert-0 z-0"
+          style={{ width: "100%", height: "600px", position: "absolute" }}
         >
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-zinc-900/50 border border-indigo-500/30 backdrop-blur-sm">
-            <svg
-              className="w-4 h-4 text-indigo-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-            </svg>
-            <span className="text-sm font-medium bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Tech Partner Program
-            </span>
-            <div className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
-          </div>
+          <FloatingLines
+            enabledWaves={["middle", "top", "bottom", "top"]}
+            // Array - specify line count per wave; Number - same count for all waves
+            lineCount={[10, 15, 20, 10]}
+            // Array - specify line distance per wave; Number - same distance for all waves
+            lineDistance={[0, 6, 4]}
+            bendRadius={50.0}
+            bendStrength={-0.12}
+            // interactive={true}
+            parallax={true}
+          />
+        </div>
+      </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Strategic Technology{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-purple-400">
-              Partnership
-            </span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Scale your business with a dedicated tech ally who understands your
-            roadmap, shares your vision, and delivers continuous value.
-          </p>
-        </motion.div>
-
-        {/* Two Column Layout - Partnership Model & Benefits */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
-          {/* Left Side - Why Choose Our Partnership Model */}
+      {/* Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-center">
+        <div className="w-full max-w-4xl text-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
-            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-              Why Choose Our{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-purple-400">
-                Partnership Model?
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+              <span className="text-sm font-medium text-indigo-300">
+                Strategic Partnership
               </span>
-            </h3>
-            <p className="text-gray-400 mb-8 text-sm">
-              Enterprise-grade solutions backed by proven expertise
-            </p>
-            <div className="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-              {partnershipBenefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative bg-zinc-900/50 backdrop-blur-sm rounded-xl p-5 border border-indigo-500/10 hover:border-indigo-500/40 transition-all duration-300 group h-full"
-                >
-                  <div className="flex items-start gap-3">
-                    <benefit.icon className="text-2xl text-indigo-400 group-hover:text-purple-400 transition-colors duration-300 mt-0.5 shrink-0" />
-                    <div>
-                      <h4 className="text-base font-bold text-white mb-1">
-                        {benefit.title}
-                      </h4>
-                      <p className="text-gray-400 text-sm leading-relaxed">
-                        {benefit.description}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Right Side - What You Get */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-              What You Get With Our{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-purple-400">
-                Partnership
-              </span>
-            </h3>
-            <p className="text-gray-400 mb-8 text-sm">
-              Comprehensive support and proven results that drive your business
-              forward
-            </p>
-
-            {/* Benefits List */}
-            <div className="space-y-4 mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-              {whatYouGet.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-start gap-3 group"
-                >
-                  <FaCheckCircle className="text-indigo-400 text-lg mt-1 shrink-0 group-hover:text-purple-400 transition-colors duration-300" />
-                  <div>
-                    <h4 className="text-white font-semibold text-base mb-1">
-                      {item.title}
-                    </h4>
-                    <p className="text-gray-400 text-sm leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
             </div>
 
-            {/* Stats - Compact Version */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 bg-zinc-900/30 rounded-xl border border-indigo-500/10">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight whitespace-nowrap">
+              Tech Partner{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400">
+                Program
+              </span>
+            </h2>
+
+            <h3 className="text-xl sm:text-2xl text-gray-200 font-medium mb-4 leading-snug max-w-2xl mx-auto">
+              Build and scale your products with a dedicated tech team.
+            </h3>
+
+            <p className="text-gray-200 text-lg mb-12 max-w-2xl mx-auto">
+              From prototypes to production systems, we partner with you for the
+              long term.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              {/* Primary CTA - Explore Program */}
+              <Link
+                href="/tech-partner"
+                className="group relative bg-linear-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full text-base font-semibold transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:-translate-y-1 flex items-center gap-2 overflow-hidden"
+              >
+                <span className="relative z-10">Explore Program</span>
+                {/* Improved Compass/Explore SVG */}
+                <svg
+                  className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:rotate-45"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                  />
+                </svg>
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              </Link>
+
+              {/* Secondary CTA - Become Partner */}
+              <motion.button
+                whileHover={{ scale: 1.0 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative inline-flex overflow-hidden rounded-full p-px focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+                onClick={() => router.push("/tech-partner#apply")}
+              >
+                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                <span className="flex items-center gap-2 h-full w-full cursor-pointer rounded-full bg-[#0e0d0d] hover:bg-[#1a1a1a] px-8 py-4 text-base font-medium text-white backdrop-blur-3xl">
+                  <span>Become Partner</span>
+                  <FaArrowRight className="text-gray-300 group-hover:text-white transition-colors" />
+                </span>
+              </motion.button>
+            </div>
+
+            {/* Stats Section */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
               <div className="text-center">
-                <div className="text-2xl font-bold text-white mb-1">24/7</div>
-                <div className="text-xs text-gray-400">Support</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                  24/7
+                </div>
+                <div className="text-sm text-gray-400">Support</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white mb-1">98%</div>
-                <div className="text-xs text-gray-400">Retention</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                  98%
+                </div>
+                <div className="text-sm text-gray-400">Retention</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white mb-1">100%</div>
-                <div className="text-xs text-gray-400">On-Time</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                  100%
+                </div>
+                <div className="text-sm text-gray-400">On-Time</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white mb-1">25+</div>
-                <div className="text-xs text-gray-400">Technologies</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                  25+
+                </div>
+                <div className="text-sm text-gray-400">Technologies</div>
               </div>
             </div>
           </motion.div>
         </div>
-
-        {/* CTA Button - Centered Below */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center"
-        >
-          <button className="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] cursor-pointer">
-            <FaHandshake className="text-xl" />
-            BECOME OUR TECH PARTNER
-          </button>
-        </motion.div>
       </div>
-
-      {/* Background Decorative Elements - Subtle */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl -z-10" />
     </section>
   );
 }
