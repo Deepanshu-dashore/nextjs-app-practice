@@ -21,6 +21,7 @@ import WhyChooseUs from "./components/home/WhyChooseUs";
 import ServicesBentoSection from "./components/home/ServicesBentoSection";
 import CTASection from "./components/home/CTASection";
 import InsightsSection from "./components/home/InsightsSection";
+import ReviewsSection from "./components/home/ReviewsSection";
 import Footer from "./components/shared/Footer";
 import FloatingWhatsApp from "./components/shared/FloatingWhatsApp";
 import TargetCursor from "./components/shared/TargetCursor";
@@ -193,7 +194,7 @@ export default function Home() {
           <ServicesBentoSection />
           <FeaturedCaseStudies />
           <InsightsSection />
-
+          <ReviewsSection />
           <CTASection />
           <Footer />
           <FloatingWhatsApp />
