@@ -17,6 +17,7 @@ const servicesData = [
       "Consistent experience across mobile and web",
       "Architecture ready for future features",
     ],
+    imageSrc: "/images/services/app-dev.png",
   },
   {
     title: "Web Development",
@@ -27,6 +28,7 @@ const servicesData = [
       "Modern stacks aligned to your product needs",
       "Clean, reusable components for long‑term growth",
     ],
+    imageSrc: "/images/services/web-dev.png",
   },
   {
     title: "Software & ERP Development",
@@ -37,6 +39,7 @@ const servicesData = [
       "Reduced manual work and errors",
       "Scalable modules that grow with your business",
     ],
+    imageSrc: "/images/services/erp.png",
   },
   {
     title: "UI/UX Design",
@@ -47,6 +50,7 @@ const servicesData = [
       "Design systems that keep your brand consistent",
       "Hand‑off ready designs for efficient development",
     ],
+    imageSrc: "/images/services/ui-ux.png",
   },
   {
     title: "Digital Marketing & Growth",
@@ -57,6 +61,7 @@ const servicesData = [
       "Conversion‑focused pages and messaging",
       "Analytics to understand what actually works",
     ],
+    imageSrc: "/images/services/marketing.png",
   },
   {
     title: "Game Development",
@@ -67,6 +72,7 @@ const servicesData = [
       "Stable performance even on mid‑range devices",
       "Engaging mechanics that keep users coming back",
     ],
+    // imageSrc: "/images/services/game-dev.png" // Placeholder until generated
   },
   {
     title: "Engineering Practices & Support",
@@ -129,6 +135,7 @@ export default function ServicesPage() {
               title={service.title}
               description={service.description}
               outcomes={service.outcomes}
+              imageSrc={service.imageSrc}
             />
           ))}
         </div>

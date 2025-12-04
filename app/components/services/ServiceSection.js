@@ -7,6 +7,7 @@ export default function ServiceSection({
   description,
   outcomes,
   index,
+  imageSrc,
 }) {
   const isEven = index % 2 === 0;
 
@@ -74,18 +75,27 @@ export default function ServiceSection({
             >
               <div className="absolute inset-0 bg-linear-to-br from-purple-500/5 to-blue-500/5 group-hover:from-purple-500/10 group-hover:to-blue-500/10 transition-colors duration-500" />
 
-              {/* Abstract decorative elements based on index to give variety */}
-              <div className="relative z-10 w-full h-full flex items-center justify-center">
-                {/* This is a placeholder for where a specific service image or 3D element would go. 
-                     For now, using abstract CSS shapes/gradients to keep it "clean abstract tech". */}
-                <div
-                  className={`w-32 h-32 md:w-48 md:h-48 rounded-full bg-linear-to-tr from-blue-500/20 to-purple-500/20 blur-2xl animate-pulse`}
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-8xl md:text-9xl font-bold text-white/5 select-none">
-                    {index + 1}
-                  </span>
-                </div>
+              {/* Image Representation */}
+              <div className="relative z-10 w-full h-full flex items-center justify-center overflow-hidden">
+                {imageSrc ? (
+                  <img
+                    src={imageSrc}
+                    alt={title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                ) : (
+                  <div
+                    className={`w-32 h-32 md:w-48 md:h-48 rounded-full bg-linear-to-tr from-blue-500/20 to-purple-500/20 blur-2xl animate-pulse`}
+                  />
+                )}
+
+                {!imageSrc && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-8xl md:text-9xl font-bold text-white/5 select-none">
+                      {index + 1}
+                    </span>
+                  </div>
+                )}
               </div>
             </motion.div>
           </div>
