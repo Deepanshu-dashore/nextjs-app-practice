@@ -5,17 +5,13 @@ import { motion } from "motion/react";
 
 export default function AboutCTA() {
   return (
-    <section className="relative py-32 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black border-t border-white/10 overflow-hidden">
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "1s" }}
-        />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-3xl" />
+    <section className="relative py-22 bg-linear-to-b from-zinc-950 via-zinc-950 to-black overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]">
+          {/* <div className="absolute -left-50 -top-20 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-indigo-600 opacity-20 blur-[100px]" /> */}
+          {/* <div className="absolute -bottom-20 -right-20 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-purple-600 opacity-20 blur-[100px]" /> */}
+        </div>
       </div>
-
       {/* Grid Pattern Overlay */}
       <div className="absolute inset-0 opacity-[0.02]">
         <div
@@ -26,7 +22,6 @@ export default function AboutCTA() {
           }}
         />
       </div>
-
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,19 +30,19 @@ export default function AboutCTA() {
         >
           {/* Enhanced Decorative Line */}
           <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="h-px w-20 bg-gradient-to-r from-transparent via-blue-500 to-blue-500" />
+            <div className="h-px w-20 bg-linear-to-r from-transparent via-blue-500 to-blue-500" />
             <div className="relative">
-              <span className="text-sm font-bold text-blue-400 tracking-widest uppercase">
+              <span className="text-sm font-bold text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-indigo-400 to-purple-400 tracking-widest uppercase">
                 Together beyond borders
               </span>
-              <div className="absolute -bottom-1 left-0 right-0 h-px bg-gradient-to-r from-blue-500/0 via-blue-500/50 to-blue-500/0" />
+              <div className="absolute -bottom-1 left-0 right-0 h-px bg-linear-to-r from-blue-500/0 via-blue-500/50 to-blue-500/0" />
             </div>
-            <div className="h-px w-20 bg-gradient-to-l from-transparent via-blue-500 to-blue-500" />
+            <div className="h-px w-20 bg-linear-to-l from-transparent via-blue-500 to-blue-500" />
           </div>
 
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
             Let's build something{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-indigo-400 to-purple-400">
               meaningful together
             </span>
           </h2>
@@ -80,7 +75,7 @@ export default function AboutCTA() {
                   />
                 </svg>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-linear-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity" />
             </Link>
 
             <Link
