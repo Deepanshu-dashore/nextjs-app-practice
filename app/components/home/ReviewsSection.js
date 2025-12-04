@@ -126,6 +126,7 @@ const ReviewCard = ({ review }) => {
 
 export default function ReviewsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPause, setIsPause] = useState(false);
   const [direction, setDirection] = useState(1);
 
   const nextReview = useCallback(() => {
@@ -141,11 +142,13 @@ export default function ReviewsSection() {
   }, []);
 
   useEffect(() => {
-    let interval = setInterval(() => {
-      nextReview();
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+    if (!isPause) {
+      let interval = setInterval(() => {
+        nextReview();
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [isPause]);
 
   const currentPair = reviewPairs[currentIndex];
 
@@ -177,7 +180,11 @@ export default function ReviewsSection() {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+        <div
+          onMouseEnter={() => setIsPause(true)}
+          onMouseLeave={() => setIsPause(false)}
+          className="grid lg:grid-cols-12 gap-12 items-center"
+        >
           {/* Left Side - Heading & Navigation */}
           <div className="lg:col-span-5">
             <motion.div
