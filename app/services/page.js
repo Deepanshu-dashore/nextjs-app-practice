@@ -83,7 +83,7 @@ const servicesData = [
 export default function ServicesPage() {
   return (
     <main className="bg-black min-h-screen text-white font-sans selection:bg-blue-500/30">
-      <Navbar />
+      {/* <Navbar /> */}
 
       <ServicesHero />
 
