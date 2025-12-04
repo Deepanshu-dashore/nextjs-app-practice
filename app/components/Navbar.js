@@ -6,14 +6,30 @@ import logo from ".././../public/images/indi-Logo-white.png";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Who We Are", href: "/about" },
-    { name: "What We Do", href: "/services" },
-    { name: "Our Portfolio", href: "/portfolio" },
-    { name: "Blog", href: "/blog" },
-    { name: "Careers", href: "/careers" },
-  ];
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Who We Are", href: "/about" },
+
+  {
+    name: "What We Do",
+    href: "/services",
+submenu: [
+  { name: "App Development", href: "/services#app-development" },
+  { name: "Web Development", href: "/services#web-development" },
+  { name: "Software & ERP Development", href: "/services#software-erp" },
+  { name: "UI/UX Design", href: "/services#ui-ux" },
+  { name: "Digital Marketing", href: "/services#digital-marketing" },
+  { name: "Game Development", href: "/services#game-development" },
+  { name: "Engineering Practices & Support", href: "/services#engineering-practices" },
+],
+
+  },
+
+  { name: "Our Portfolio", href: "/portfolio" },
+  { name: "Blog", href: "/blog" },
+  { name: "Careers", href: "/careers" },
+];
+
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xs bg-black/10 border-b border-white/5 shadow-sm transition-all duration-300">
@@ -33,13 +49,31 @@ function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden lg:flex space-x-8 items-center">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-white hover:text-gray-300 hover:bg-white/10 px-3 py-2 rounded-md text-sm transition-colors duration-200"
-              >
-                {link.name}
-              </Link>
+             <div key={link.name} className="relative group">
+  {/* Main link */}
+  <Link
+    href={link.href}
+    className="text-white hover:text-gray-300  hover:bg-white/10 px-3 py-2 rounded-md text-sm transition-colors duration-200"
+  >
+    {link.name}
+  </Link>
+
+  {/* Submenu (only if exists) */}
+  {link.submenu && (
+    <div className="absolute left-0 mt-2  hidden group-hover:block bg-black/80 backdrop-blur-lg border border-white/10 rounded-lg py-2 min-w-60 z-50">
+      {link.submenu.map((sub, i) => (
+        <Link
+          key={i}
+          href={sub.href}
+          className="block px-3 py-2 text-white hover:bg-white/10 text-sm"
+        >
+          {sub.name}
+        </Link>
+      ))}
+    </div>
+  )}
+</div>
+
             ))}
 
             <Link
@@ -76,14 +110,47 @@ function Navbar() {
   <div className="lg:hidden absolute top-20 left-0 w-full bg-black/70 backdrop-blur-lg border-t border-white/10 px-4 py-4 space-y-3">
 
           {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="block text-white hover:text-gray-300 hover:bg-white/10 px-3 py-2 rounded-md text-sm transition"
-              onClick={() => setIsOpen(false)}
-            >
-              {link.name}
-            </Link>
+         <div key={link.name}>
+  {/* Main Mobile Link */}
+  <div
+    onClick={() =>
+      link.submenu ? setIsOpen((prev) => ({ ...prev, [link.name]: !prev[link.name] })) : setIsOpen(false)
+    }
+    className="flex justify-between items-center cursor-pointer text-white hover:text-gray-300 hover:bg-white/10 px-3 py-2 rounded-md text-sm"
+  >
+    <span>{link.name}</span>
+
+    {link.submenu && (
+      <svg
+        className={`h-4 w-4 transform transition-transform ${
+          isOpen[link.name] ? "rotate-180" : ""
+        }`}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+    )}
+  </div>
+
+  {/* Submenu Mobile */}
+  {link.submenu && isOpen[link.name] && (
+    <div className="ml-4 space-y-2 mt-1">
+      {link.submenu.map((sub, i) => (
+        <Link
+          key={i}
+          href={sub.href}
+          className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 rounded-md text-sm"
+          onClick={() => setIsOpen(false)}
+        >
+          {sub.name}
+        </Link>
+      ))}
+    </div>
+  )}
+</div>
+
           ))}
 
           <Link

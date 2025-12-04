@@ -3,16 +3,24 @@ import React from "react";
 import { motion } from "motion/react";
 
 export default function ServiceSection({
+  id,
   title,
   description,
   outcomes,
   index,
   imageSrc,
+
 }) {
   const isEven = index % 2 === 0;
+const scrollToSection = (id) => {
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
 
   return (
-    <section className="py-20 md:py-32 border-t border-white/5 relative overflow-hidden">
+    <section className="py-20 md:py-32 border-t border-white/5 relative overflow-hidden" id={id}>
       {/* Background Gradients */}
       <div
         className={`absolute top-1/2 ${
