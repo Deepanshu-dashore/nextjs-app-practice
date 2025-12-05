@@ -16,6 +16,7 @@ export default function ServiceSection({
   index,
   imageSrc,
   slug,
+  id,
 }) {
   const isEven = index % 2 === 0;
   const [activeTab, setActiveTab] = useState("problem");
@@ -30,7 +31,7 @@ export default function ServiceSection({
   ];
 
   return (
-    <section className="py-20 md:py-32 border-t border-white/5 relative overflow-hidden">
+    <section className="py-20 md:py-32 border-t border-white/5 relative overflow-hidden" id={id}>
       {/* Background Gradients */}
       <div
         className={`absolute top-1/2 ${
@@ -45,7 +46,7 @@ export default function ServiceSection({
           }`}
         >
           {/* Text Content */}
-          <div className="flex-1 w-full">
+          <div className="flex-1 w-full " >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
