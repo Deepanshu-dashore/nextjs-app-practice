@@ -13,11 +13,19 @@ export const servicesData = [
     approach:
       "We start with your goals: lead generation, sales, internal tools, or brand presence. Then we choose the right stack, design a clear information architecture, and build modular components so your site stays fast and easy to extend.",
     technologies: [
-      "React, Next.js, Node.js, Express",
-      "TypeScript, Tailwind CSS",
-      "REST/GraphQL APIs",
-      "MongoDB/PostgreSQL",
-      "Vercel/Render/AWS",
+      "React",
+      "Next.js",
+      "Node.js",
+      "Express",
+      "TypeScript",
+      "Tailwind CSS",
+      "REST APIs",
+      "GraphQL APIs",
+      "MongoDB",
+      "PostgreSQL",
+      "Vercel",
+      "Render",
+      "AWS",
     ],
     keyFeatures: [
       "Responsive UI for all devices",
@@ -96,9 +104,14 @@ export const servicesData = [
     approach:
       "We design once around your core flows, then implement cross‑platform apps using React Native / Flutter and a shared backend, focusing on performance, security, and offline‑ready experiences where needed.",
     technologies: [
-      "React Native, Flutter, Expo",
-      "Node.js/Express, Firebase",
-      "REST/GraphQL APIs",
+      "React Native",
+      "Flutter",
+      "Expo",
+      "Node.js",
+      "Express",
+      "Firebase",
+      "REST APIs",
+      "GraphQL APIs",
       "CI/CD pipelines",
     ],
     keyFeatures: [
@@ -172,10 +185,16 @@ export const servicesData = [
     approach:
       "We map your real workflows (sales, inventory, billing, HR, etc.), design modules around them, and build an ERP or internal system that connects data and automates repetitive tasks.",
     technologies: [
-      "Node.js, NestJS, React/Angular",
-      "PostgreSQL/MongoDB",
-      "Microservices, Message queues",
-      "Role‑based access, Reporting tools",
+      "Node.js",
+      "NestJS",
+      "React",
+      "Angular",
+      "PostgreSQL",
+      "MongoDB",
+      "Microservices",
+      "Message queues",
+      "Role‑based access",
+      "Reporting tools",
     ],
     keyFeatures: [
       "Central dashboards and role‑based panels",
@@ -249,7 +268,8 @@ export const servicesData = [
     approach:
       "We combine user research with aesthetic excellence. We build design systems that ensure consistency and scalability while crafting intuitive user journeys.",
     technologies: [
-      "Figma, Adobe XD",
+      "Figma",
+      "Adobe XD",
       "Prototyping tools",
       "Usability testing platforms",
       "Design Systems",
@@ -323,9 +343,12 @@ export const servicesData = [
     approach:
       "We take a data-first approach. We optimize your technical foundation for SEO, create high-converting landing pages, and set up analytics to track real ROI.",
     technologies: [
-      "Google Analytics 4, GTM",
-      "SEO Tools (Ahrefs, SEMrush)",
-      "Ad Platforms (Google, Meta)",
+      "Google Analytics 4",
+      "GTM",
+      "Ahrefs",
+      "SEMrush",
+      "Google Ads",
+      "Meta Ads",
       "Marketing Automation",
     ],
     keyFeatures: [
@@ -398,9 +421,14 @@ export const servicesData = [
     approach:
       "We focus on 'fun-first' development backed by solid engineering. We optimize for the target platform to ensure smooth frame rates and responsive controls.",
     technologies: [
-      "Unity, Unreal Engine",
-      "WebGL, Three.js, Phaser",
-      "C#, C++, JavaScript",
+      "Unity",
+      "Unreal Engine",
+      "WebGL",
+      "Three.js",
+      "Phaser",
+      "C#",
+      "C++",
+      "JavaScript",
       "Multiplayer networking",
     ],
     keyFeatures: [
@@ -467,10 +495,16 @@ export const servicesData = [
     approach:
       "We treat infrastructure as code. We set up automated pipelines and monitoring from day one, ensuring that every deployment is safe and reversible.",
     technologies: [
-      "Git, GitHub/GitLab",
-      "Jenkins, GitHub Actions",
-      "Docker, Kubernetes",
-      "Datadog, Sentry, AWS CloudWatch",
+      "Git",
+      "GitHub",
+      "GitLab",
+      "Jenkins",
+      "GitHub Actions",
+      "Docker",
+      "Kubernetes",
+      "Datadog",
+      "Sentry",
+      "AWS CloudWatch",
     ],
     keyFeatures: [
       "CI/CD Pipeline Setup",
