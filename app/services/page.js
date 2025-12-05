@@ -159,6 +159,7 @@ export default function ServicesPage() {
               index={index}
               {...service}
               scrollToSection={scrollToSection}
+              id={service.id}
             />
           ))}
         </div>
