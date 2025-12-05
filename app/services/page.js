@@ -101,16 +101,14 @@ const scrollToSection = (id) => {
   }
 };
 
-
 export default function ServicesPage() {
-    const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("");
 
   useSectionObserver(setActiveSection);
   return (
     <main className="bg-black min-h-screen text-white font-sans selection:bg-blue-500/30">
-
       {/* <Navbar /> */}
-    <div
+      <div
         className="fixed top-0 inset-0  bg-cover bg-top -rotate-5 bg-no-repeat"
         style={{
           backgroundImage: "url('/images/services-hero-wave.png')",
