@@ -157,11 +157,7 @@ export default function ServicesPage() {
             <ServiceSection
               key={index}
               index={index}
-              title={service.title}
-              description={service.description}
-              outcomes={service.outcomes}
-              imageSrc={service.imageSrc}
-              id={service.id}
+              {...service}
               scrollToSection={scrollToSection}
             />
           ))}
