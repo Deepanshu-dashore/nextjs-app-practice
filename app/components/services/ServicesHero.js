@@ -19,16 +19,9 @@ export default function ServicesHero() {
       ref={ref}
       className="relative h-dvh overflow-hidden flex items-center justify-center"
     >
-      {/* FIXED BACKGROUND */}
-      <div
-        className="absolute inset-0 bg-cover bg-top -rotate-5 bg-no-repeat"
-        style={{
-          backgroundImage: "url('/images/services-hero-wave.png')",
-          backgroundAttachment: "fixed", // IMPORTANT
-        }}
-      />
 
-      {/* OVERLAYS (scroll slightly, but bg stays fixed) */}
+  
+
       <motion.div
         style={{ opacity: overlayOpacity }}
         className="absolute inset-0 pointer-events-none"
@@ -45,14 +38,19 @@ export default function ServicesHero() {
       >
         <div className="max-w-7xl mx-auto  space-y-10">
 
-          {/* LABEL */}
-          <div className="w-full ">
-            <span className="text-sm  md:text-base font-semibold uppercase tracking-widest text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-purple-400 to-pink-400">
-              WHAT WE DO
-            </span>
-         
-          </div>
-   <div className=" w-full my-5  h-px bg-gray-700"></div>
+                 {/* WHO WE ARE Label with Line */}
+                 <motion.div
+                   initial={{ opacity: 0, y: 20 }}
+                   animate={{ opacity: 1, y: 0 }}
+                   transition={{ duration: 0.6 }}
+                   className="flex items-center gap-4 mb-6"
+                 >
+                   <span className="text-sm font-bold text-white tracking-[0.3em] uppercase">
+                     WHO WE DO
+                   </span>
+                 
+                 </motion.div>
+         <div className="h-px flex-1 max-w-xl bg-gradient-to-r from-white/60 to-transparent" />
           {/* HEADING */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}

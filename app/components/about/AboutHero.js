@@ -19,12 +19,7 @@ export default function AboutHero() {
     >
       {/* Parallax Background */}
       <motion.div style={{ y }} className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/images/tech-partner-collab.png')",
-          }}
-        />
+     
         {/* Dark Overlays */}
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/20 to-black/60" />
@@ -39,20 +34,20 @@ export default function AboutHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center gap-4 mb-8"
+            className="flex items-center gap-4 mb-6"
           >
             <span className="text-sm font-bold text-white tracking-[0.3em] uppercase">
               WHO WE ARE
             </span>
-            <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-white/60 to-transparent" />
+          
           </motion.div>
-
+  <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-white/60 to-transparent" />
           {/* Main Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight tracking-tight"
+            className="text-6xl md:text-7xl lg:text-7xl font-bold text-white mb-5 mt-2 leading-tight tracking-tight"
           >
             About Us
           </motion.h1>
@@ -62,7 +57,7 @@ export default function AboutHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl mb-6 max-w-3xl font-light leading-relaxed"
+            className="text-xl md:text-2xl mb-6 max-w-4xl font-light leading-relaxed"
           >
             <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-purple-400 to-pink-400">
               Innovation meets technology,

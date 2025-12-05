@@ -1,11 +1,12 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/shared/Footer";
 import ServicesHero from "../components/services/ServicesHero";
 import ServiceSection from "../components/services/ServiceSection";
 import ServicesCTA from "../components/services/ServicesCTA";
 import { motion } from "motion/react";
+import useSectionObserver from "../components/shared/UseObserver";
 const servicesData = [
   {
     title: "App Development",
@@ -101,10 +102,20 @@ const scrollToSection = (id) => {
 
 
 export default function ServicesPage() {
+    const [activeSection, setActiveSection] = useState("");
+
+  useSectionObserver(setActiveSection);
   return (
     <main className="bg-black min-h-screen text-white font-sans selection:bg-blue-500/30">
-      {/* <Navbar /> */}
 
+      {/* <Navbar /> */}
+    <div
+        className="fixed top-0 inset-0  bg-cover bg-top -rotate-5 bg-no-repeat"
+        style={{
+          backgroundImage: "url('/images/services-hero-wave.png')",
+          backgroundAttachment: "fixed",
+        }}
+      />
       <ServicesHero />
 
       <div id="services-content" className="relative z-10 bg-black">
