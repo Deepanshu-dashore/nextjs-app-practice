@@ -59,7 +59,7 @@ export default function TechPartnerPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-4 mb-8 ">
               <span className="text-sm font-bold text-white tracking-[0.3em] uppercase">
                 TECH PARTNER PROGRAM
               </span>
