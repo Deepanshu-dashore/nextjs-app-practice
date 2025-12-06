@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
 import {
   FaCheckCircle,
@@ -35,40 +35,68 @@ export default function TechPartnerPage() {
     });
   };
 
-  return (
-    <main className="bg-black min-h-screen pt-24 pb-20">
-      {/* Hero Section */}
-      <section className="relative px-4 sm:px-6 lg:px-20 mb-32">
-        <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
-              Partner with a team{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400">
-                that ships
-              </span>
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
-              Indidevelopers acts as your extended tech team, helping you
-              design, build, and scale reliable digital products.
-            </p>
-            <Link
-              href="#apply"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:-translate-y-1"
-            >
-              Start a Partnership
-              <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
-        </div>
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], ["0%", "50%"]);
 
-        {/* Background Elements */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none -z-10">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[100px]" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
+  return (
+    <main className="bg-black min-h-screen pt-24 pb-20 overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative h-dvh min-h-[600px] flex items-center justify-center overflow-hidden mb-32 -mt-24">
+        {/* Parallax Background */}
+        <motion.div style={{ y }} className="absolute inset-0 z-0">
+          <div
+            className="absolute inset-0 bg-cover -rotate-180 bg-center bg-100"
+            style={{ backgroundImage: "url('/images/PartnerProgramBg.jpg')" }}
+          />
+          <div className="absolute inset-0 bg-black/40 z-10 rotate-180" />
+          <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-black/40 z-10" />
+          <div className="absolute inset-0 bg-linear-to-r from-black via-transparent to-transparent z-10" />
+        </motion.div>
+
+        <div className="relative z-20 w-full mx-auto px-4 sm:px-6 lg:px-28 text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <span className="text-sm font-bold text-white tracking-[0.3em] uppercase">
+                TECH PARTNER PROGRAM
+              </span>
+              <div className="h-px flex-1 max-w-xs bg-linear-to-r from-white/60 to-transparent" />
+            </div>
+
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-tight max-w-5xl">
+              Tech Partner Program
+            </h1>
+
+            <h2 className="text-2xl sm:text-3xl text-gray-200 font-medium mb-6 max-w-4xl leading-snug">
+              Build and scale your products with a dedicated tech team that
+              thinks like a co‑founder, not a vendor.
+            </h2>
+
+            <p className="text-lg text-gray-400 max-w-3xl leading-relaxed mb-10">
+              From MVPs to long‑term product roadmaps, Indidevelopers becomes
+              your external engineering arm—aligning with your goals, stack, and
+              timelines.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <Link
+                href="#apply"
+                className="w-full sm:w-auto px-8 py-4 bg-white text-black font-bold rounded-full transition-all duration-300 hover:bg-gray-200 hover:scale-105 flex items-center justify-center gap-2"
+              >
+                Become a Tech Partner
+                <FaArrowRight />
+              </Link>
+              <Link
+                href="#contact"
+                className="w-full sm:w-auto px-8 py-4 bg-white/10 text-white font-bold rounded-full backdrop-blur-sm border border-white/10 transition-all duration-300 hover:bg-white/20 flex items-center justify-center gap-2"
+              >
+                Talk to the Team
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 
