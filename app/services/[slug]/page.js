@@ -3,7 +3,14 @@ import React from "react";
 import { useParams, notFound } from "next/navigation";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { ArrowLeft, Check, ChevronDown, ChevronUp } from "lucide-react";
+import {
+  ArrowLeft,
+  Check,
+  ChevronDown,
+  ChevronUp,
+  Github,
+  ExternalLink,
+} from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/shared/Footer";
 import { servicesData } from "../../data/services";
@@ -94,8 +101,20 @@ export default function ServiceDetailPage() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[70vh] flex flex-col justify-center">
         {/* Dynamic Background */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-purple-900/40 via-black to-black pointer-events-none" />
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-purple-900/40 via-black to-black pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 pointer-events-none z-0" />
+
+        {/* Hero Background Image */}
+        {service.imageSrc && (
+          <div className="absolute inset-0 opacity-25">
+            <img
+              src={service.imageSrc}
+              alt=""
+              className="w-full h-full object-cover object-right"
+            />
+            <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent" />
+          </div>
+        )}
 
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <Link
@@ -239,13 +258,23 @@ export default function ServiceDetailPage() {
       </section>
 
       {/* Deep Dive Accordion */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <h3 className="text-3xl font-bold text-white mb-12 text-center">
-          Deep Dive
-        </h3>
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+            <span className="text-sm font-medium text-purple-300">
+              Technical Details
+            </span>
+          </div>
+          <h3 className="text-3xl font-bold text-white mb-3">Deep Dive</h3>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Explore the technical approach, technologies, and outcomes of this
+            service.
+          </p>
+        </div>
         <div className="space-y-4">
           <AccordionItem
-            title="Problem Statement"
+            title="Business Challenge"
             content={service.problemStatement}
             icon={<div className="w-2 h-2 rounded-full bg-red-500" />}
           />
@@ -284,48 +313,128 @@ export default function ServiceDetailPage() {
 
       {/* Case Study */}
       {service.caseStudy && (
-        <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <div className="bg-linear-to-r from-white/5 to-white/2 rounded-3xl p-8 md:p-16 border border-white/10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+          {/* Background Elements */}
+          <div className="absolute inset-0 bg-linear-to-b from-black via-purple-900/5 to-black" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/5 rounded-full blur-3xl" />
 
-            <div className="relative z-10">
-              <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-                <div>
-                  <h3 className="text-3xl font-bold text-white mb-2">
-                    Success Story
-                  </h3>
-                  <p className="text-gray-400">
-                    Real results from real projects.
-                  </p>
-                </div>
-                <div className="h-px bg-white/10 flex-1 mx-8 hidden md:block" />
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-linear-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                <span className="text-sm font-medium text-purple-300">
+                  Case Study
+                </span>
               </div>
+              <h3 className="text-3xl md:text-5xl font-bold mb-4">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-purple-200 to-white">
+                  Success Story
+                </span>
+              </h3>
+              <p className="text-gray-400 text-lg">
+                Real results from real projects
+              </p>
+            </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div className="space-y-4">
-                  <h4 className="text-purple-400 font-bold uppercase tracking-wider text-sm flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />{" "}
-                    Challenge
-                  </h4>
+            {/* Single Row Card */}
+            <div className="relative bg-linear-to-br from-white/[0.03] to-white/[0.01] rounded-3xl p-8 md:p-12 border border-white/10 backdrop-blur-sm overflow-hidden">
+              {/* Decorative Elements */}
+              <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+
+              <div className="relative grid grid-cols-1 md:grid-cols-3 gap-12">
+                {/* Challenge */}
+                <div className="group">
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="shrink-0 w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
+                      <svg
+                        className="w-6 h-6 text-purple-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                        />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-purple-400 font-bold text-sm uppercase tracking-wider mb-2">
+                        Challenge
+                      </h4>
+                      <div className="w-12 h-0.5 bg-linear-to-r from-purple-500/50 to-transparent mb-4" />
+                    </div>
+                  </div>
                   <p className="text-gray-300 leading-relaxed">
                     {service.caseStudy.challenge}
                   </p>
                 </div>
-                <div className="space-y-4">
-                  <h4 className="text-blue-400 font-bold uppercase tracking-wider text-sm flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />{" "}
-                    Solution
-                  </h4>
+
+                {/* Divider */}
+                <div className="hidden md:block absolute top-1/2 left-1/3 -translate-y-1/2 w-px h-32 bg-linear-to-b from-transparent via-white/10 to-transparent" />
+
+                {/* Solution */}
+                <div className="group">
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="shrink-0 w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+                      <svg
+                        className="w-6 h-6 text-blue-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                        />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-blue-400 font-bold text-sm uppercase tracking-wider mb-2">
+                        Solution
+                      </h4>
+                      <div className="w-12 h-0.5 bg-linear-to-r from-blue-500/50 to-transparent mb-4" />
+                    </div>
+                  </div>
                   <p className="text-gray-300 leading-relaxed">
                     {service.caseStudy.solution}
                   </p>
                 </div>
-                <div className="space-y-4">
-                  <h4 className="text-green-400 font-bold uppercase tracking-wider text-sm flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-400" />{" "}
-                    Result
-                  </h4>
-                  <p className="text-white text-lg font-medium leading-relaxed">
+
+                {/* Divider */}
+                <div className="hidden md:block absolute top-1/2 right-1/3 -translate-y-1/2 w-px h-32 bg-linear-to-b from-transparent via-white/10 to-transparent" />
+
+                {/* Result */}
+                <div className="group">
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="shrink-0 w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center group-hover:bg-green-500/20 transition-colors">
+                      <svg
+                        className="w-6 h-6 text-green-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                        />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-green-400 font-bold text-sm uppercase tracking-wider mb-2">
+                        Result
+                      </h4>
+                      <div className="w-12 h-0.5 bg-linear-to-r from-green-500/50 to-transparent mb-4" />
+                    </div>
+                  </div>
+                  <p className="text-white text-lg font-semibold leading-relaxed">
                     {service.caseStudy.result}
                   </p>
                 </div>
@@ -336,26 +445,126 @@ export default function ServiceDetailPage() {
       )}
 
       {/* FAQ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
-        <h3 className="text-3xl font-bold text-white mb-12 text-center">
-          Common Questions
-        </h3>
-        <div className="space-y-6">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+            <span className="text-sm font-medium text-green-300">Support</span>
+          </div>
+          <h3 className="text-3xl font-bold text-white mb-3">
+            Common Questions
+          </h3>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Find answers to frequently asked questions about this service.
+          </p>
+        </div>
+        <div className="space-y-4">
           {service.faq?.map((item, i) => (
-            <div
+            <AccordionItem
               key={i}
-              className="bg-white/5 rounded-2xl p-8 border border-white/5 hover:bg-white/[0.07] transition-colors"
-            >
-              <h4 className="text-lg font-bold text-white mb-3">{item.q}</h4>
-              <p className="text-gray-400 leading-relaxed">{item.a}</p>
-            </div>
+              title={item.q}
+              content={item.a}
+              icon={<div className="w-2 h-2 rounded-full bg-green-500" />}
+            />
           ))}
         </div>
       </section>
 
+      {/* Related Projects */}
+      {service.relatedProjects && service.relatedProjects.length > 0 && (
+        <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+              <span className="text-sm font-medium text-blue-300">
+                Portfolio
+              </span>
+            </div>
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Related Projects
+            </h3>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              See how we've delivered similar solutions for our clients.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {service.relatedProjects.map((project, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="rounded-2xl overflow-hidden transition-all duration-300 group"
+              >
+                {/* Project Image */}
+                <div className="relative h-48 bg-linear-to-br from-purple-900/10 to-black overflow-hidden">
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-5xl text-white/5">
+                      <span className="font-bold">
+                        {project.title.charAt(0)}
+                      </span>
+                    </div>
+                  )}
+
+                  <div className="absolute top-4 right-4 flex gap-2">
+                    <a
+                      href={project.githubUrl}
+                      className="p-2 bg-black/40 backdrop-blur-sm rounded-lg hover:bg-purple-500/20 transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Github className="w-4 h-4 text-white" />
+                    </a>
+                    <a
+                      href={project.liveUrl}
+                      className="p-2 bg-black/40 backdrop-blur-sm rounded-lg hover:bg-blue-500/20 transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink className="w-4 h-4 text-white" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Project Content */}
+                <div className="p-6">
+                  <h4 className="text-lg font-semibold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                    {project.title}
+                  </h4>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {project.techStack.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="px-2.5 py-1 text-xs rounded-md bg-white/5 text-gray-300 border border-white/10"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Final CTA */}
       <section className="py-32 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-b from-black via-purple-900/10 to-purple-900/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-b from-black via-purple-900/10 to-(--color)/10 pointer-events-none" />
         <div className="relative z-10 max-w-5xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight">
             Ready to build something{" "}

@@ -75,6 +75,35 @@ export const servicesData = [
         "Built a headless commerce solution using Next.js and Shopify API with edge caching.",
       result: "50% faster load times, 30% increase in mobile conversions.",
     },
+    relatedProjects: [
+      {
+        title: "E-Commerce Platform",
+        description:
+          "A real-time coaching app for students learning to paint. This app is my baby, designed and built on my own.",
+        image: "/images/project_placeholder_1764932244105.png",
+        techStack: ["React", "Next.js", "Node.js", "MongoDB"],
+        githubUrl: "#",
+        liveUrl: "#",
+      },
+      {
+        title: "SaaS Dashboard",
+        description:
+          "Modern analytics dashboard with real-time data visualization and team collaboration features.",
+        image: "/images/project_placeholder_1764932244105.png",
+        techStack: ["React", "TypeScript", "GraphQL", "PostgreSQL"],
+        githubUrl: "#",
+        liveUrl: "#",
+      },
+      {
+        title: "Marketing Website",
+        description:
+          "High-performance marketing site with SEO optimization and conversion-focused design.",
+        image: "/images/project_placeholder_1764932244105.png",
+        techStack: ["Next.js", "Tailwind CSS", "Vercel"],
+        githubUrl: "#",
+        liveUrl: "#",
+      },
+    ],
     faq: [
       {
         q: "How long does a typical project take?",
