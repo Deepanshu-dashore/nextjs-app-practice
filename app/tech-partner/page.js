@@ -63,11 +63,11 @@ export default function TechPartnerPage() {
               <span className="text-sm font-bold text-white tracking-[0.3em] uppercase">
                 TECH PARTNER PROGRAM
               </span>
-              <div className="h-px flex-1 max-w-xs bg-linear-to-r from-white/60 to-transparent" />
+           
             </div>
-
+           <div className="h-px flex-1 max-w-sm bg-linear-to-r from-white/60 to-transparent" />
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-tight max-w-5xl">
-              Tech Partner Program
+              Tech Partner      <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-purple-400 to-pink-400"> Program</span>
             </h1>
 
             <h2 className="text-2xl sm:text-3xl text-gray-200 font-medium mb-6 max-w-4xl leading-snug">
@@ -82,15 +82,29 @@ export default function TechPartnerPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4">
-              <Link
-                href="#apply"
-                className="w-full sm:w-auto px-8 py-4 bg-white text-black font-bold rounded-full transition-all duration-300 hover:bg-gray-200 hover:scale-105 flex items-center justify-center gap-2"
+                                   <Link
+            href="#apply"
+            className="group relative bg-(--color) text-white px-8 py-4 rounded-full text-base font-semibold transition-all duration-300 shadow-[0_0_20px_rgba(var(--color),0.3)] hover:shadow-[0_0_30px_rgba(var(--color),0.5)] hover:-translate-y-1 flex items-center gap-2 overflow-hidden"
+          > <span className="relative z-10"> Become a Tech Partner</span>
+              <svg
+                 className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                Become a Tech Partner
-                <FaArrowRight />
-              </Link>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+      
+        
+            </Link>
               <Link
-                href="#contact"
+                href="/contact"
                 className="w-full sm:w-auto px-8 py-4 bg-white/10 text-white font-bold rounded-full backdrop-blur-sm border border-white/10 transition-all duration-300 hover:bg-white/20 flex items-center justify-center gap-2"
               >
                 Talk to the Team

@@ -11,80 +11,9 @@ import {
   Github,
   ExternalLink,
 } from "lucide-react";
-import Navbar from "../../components/Navbar";
 import Footer from "../../components/shared/Footer";
-import { servicesData } from "../../data/services";
-import {
-  SiReact,
-  SiNextdotjs,
-  SiAngular,
-  SiVuedotjs,
-  SiFlutter,
-  SiNodedotjs,
-  SiAppveyor,
-  SiAdobe,
-  SiGoogleads,
-  SiUnity,
-  SiExpress,
-  SiTypescript,
-  SiTailwindcss,
-  SiMongodb,
-  SiPostgresql,
-  SiVercel,
-  SiRender,
-  SiAmazonwebservices,
-  SiGraphql,
-  SiPostman,
-} from "react-icons/si";
+import { servicesData} from "../../data/services";
 
-// Icon Mapping Helper
-const getTechIcon = (techName) => {
-  const lower = techName.toLowerCase();
-  if (lower.includes("react") && !lower.includes("native"))
-    return <SiReact className="text-[#61DAFB]" />;
-  if (lower.includes("react native"))
-    return <SiReact className="text-[#61DAFB]" />;
-  if (lower.includes("next")) return <SiNextdotjs className="text-white" />;
-  if (lower.includes("angular"))
-    return <SiAngular className="text-[#DD0031]" />;
-  if (lower.includes("vue")) return <SiVuedotjs className="text-[#4FC08D]" />;
-  if (lower.includes("flutter"))
-    return <SiFlutter className="text-[#02569B]" />;
-  if (lower.includes("node")) return <SiNodedotjs className="text-[#339933]" />;
-  if (lower.includes("express")) return <SiExpress className="text-white" />;
-  if (lower.includes("typescript") || lower.includes("ts"))
-    return <SiTypescript className="text-[#3178C6]" />;
-  if (lower.includes("tailwind"))
-    return <SiTailwindcss className="text-[#06B6D4]" />;
-  if (lower.includes("mongo")) return <SiMongodb className="text-[#47A248]" />;
-  if (lower.includes("postgres") || lower.includes("sql"))
-    return <SiPostgresql className="text-[#4169E1]" />;
-  if (lower.includes("vercel")) return <SiVercel className="text-white" />;
-  if (lower.includes("render")) return <SiRender className="text-[#46E3B7]" />;
-  if (lower.includes("aws") || lower.includes("amazon"))
-    return <SiAmazonwebservices className="text-[#FF9900]" />;
-  if (lower.includes("graphql"))
-    return <SiGraphql className="text-[#E10098]" />;
-  if (lower.includes("rest") || lower.includes("api"))
-    return <SiPostman className="text-[#FF6C37]" />; // Using Postman for APIs
-  if (lower.includes("ci/cd") || lower.includes("jenkins"))
-    return <SiAppveyor className="text-[#00B3E0]" />;
-  if (
-    lower.includes("adobe") ||
-    lower.includes("figma") ||
-    lower.includes("xd")
-  )
-    return <SiAdobe className="text-[#FF0000]" />;
-  if (
-    lower.includes("google") ||
-    lower.includes("ads") ||
-    lower.includes("seo")
-  )
-    return <SiGoogleads className="text-[#4285F4]" />;
-  if (lower.includes("unity") || lower.includes("unreal"))
-    return <SiUnity className="text-white" />;
-  return null;
-};
 
 export default function ServiceDetailPage() {
   const { slug } = useParams();
@@ -623,10 +552,10 @@ function AccordionItem({ title, content, isList, isTech, icon }) {
                   key={i}
                   className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300 hover:bg-white/10 transition-colors"
                 >
-                  {isTech && getTechIcon(item) && (
-                    <span className="text-lg">{getTechIcon(item)}</span>
+                  {isTech && item.icon && (
+                    <span className="text-lg">{item.icon}</span>
                   )}
-                  <span>{item}</span>
+                  <span>{item.name}</span>
                 </div>
               ))}
             </div>

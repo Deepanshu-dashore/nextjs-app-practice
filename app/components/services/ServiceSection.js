@@ -29,7 +29,7 @@ import {
 
 // ✅ SAME ICON MAPPING USED IN SERVICE DETAIL PAGE
 const getTechIcon = (techName) => {
-  const lower = techName.toLowerCase();
+  const lower = String(techName).toLowerCase();
 
   if (lower.includes("react") && !lower.includes("native"))
     return <SiReact className="text-[#61DAFB]" />;
@@ -194,9 +194,9 @@ export default function ServiceSection({
                                     }}
                                     className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-xl border border-white/10 hover:bg-white/10 transition-all cursor-default"
                                   >
-                                    {getTechIcon(tech)}
+                                    {tech?.icon}
                                     <span className="text-gray-300 text-sm">
-                                      {tech}
+                                      {tech?.name}
                                     </span>
                                   </motion.div>
                                 ))}

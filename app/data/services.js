@@ -1,4 +1,92 @@
+import {
+  // --- Development ---
+  SiReact,
+  SiNextdotjs,
+  SiAngular,
+  SiNodedotjs,
+  SiExpress,
+  SiTypescript,
+  SiTailwindcss,
+  SiMongodb,
+  SiPostgresql,
+  SiGraphql,
+  SiFirebase,
+  SiFlutter,
+  SiExpo,
+  SiFastapi,
+  SiPostman,
+  SiVercel,
+  SiRender,
+  SiAmazon,       // ✅ Corrected
+  SiAppveyor,
+
+  // --- Design Tools ---
+  SiFigma,
+  SiAdobe,
+  SiAffinitydesigner,
+  SiAntdesign,
+
+  // --- Marketing / Analytics ---
+  SiGoogleanalytics,
+  SiGoogletagmanager,
+  SiSemrush,
+  SiGoogleads,
+  SiMeta,
+  SiHubspot,
+  SiFraunhofergesellschaft,
+
+  // --- Version Control & DevOps ---
+  SiGit,
+  SiGithub,
+  SiGitlab,
+  SiJenkins,
+  SiGithubactions,
+  SiDocker,
+  SiKubernetes,
+  SiDatadog,
+  SiSentry,
+  SiGamejolt,
+  SiAmazonwebservices,
+  SiAmazonapigateway,
+  SiAdobeaudition,
+  SiAdobepremierepro,
+  SiAdobeaftereffects,
+  SiCanva,
+  SiBlender,
+  SiSalesforce,
+  SiZendesk,
+  SiNotion,
+  SiTrello,
+  SiAsana,
+  SiGooglecloud,
+  SiCloudflare,
+  SiCloudflarepages,
+  SiWordpress,
+  SiShopify,
+  SiWii,
+  SiSquarespace,
+  SiYoast,
+  SiGrab,
+  SiOpenai,
+  SiZapier,
+  SiAirtable,
+  SiSlack,
+} from "react-icons/si";
+
+import {
+  SiUnity,
+  SiUnrealengine,
+  SiWebgl,
+  SiThreedotjs,
+  SiPhaser,
+  SiFsharp,       // corrected
+  SiCplusplus,
+  SiJavascript,
+  SiSocketdotio
+} from "react-icons/si";
+
 export const servicesData = [
+  
   {
     id: "web-development",
     slug: "web-development",
@@ -12,21 +100,61 @@ export const servicesData = [
       "Many businesses struggle with slow, outdated websites that don’t convert visitors, fail on mobile, and are hard to maintain. Teams often spend more time fixing bugs than shipping new features.",
     approach:
       "We start with your goals: lead generation, sales, internal tools, or brand presence. Then we choose the right stack, design a clear information architecture, and build modular components so your site stays fast and easy to extend.",
-    technologies: [
-      "React",
-      "Next.js",
-      "Node.js",
-      "Express",
-      "TypeScript",
-      "Tailwind CSS",
-      "REST APIs",
-      "GraphQL APIs",
-      "MongoDB",
-      "PostgreSQL",
-      "Vercel",
-      "Render",
-      "AWS",
-    ],
+  technologies:  [
+  {
+    name: "React",
+    icon: <SiReact className="text-[#61DAFB] text-[18px]" />,
+  },
+  {
+    name: "Next.js",
+    icon: <SiNextdotjs className="text-white text-[18px]" />,
+  },
+  {
+    name: "Node.js",
+    icon: <SiNodedotjs className="text-[#3C873A] text-[18px]" />,
+  },
+  {
+    name: "Express",
+    icon: <SiExpress className="text-white text-[18px]" />,
+  },
+  {
+    name: "TypeScript",
+    icon: <SiTypescript className="text-[#3178C6] text-[18px]" />,
+  },
+  {
+    name: "Tailwind CSS",
+    icon: <SiTailwindcss className="text-[#38BDF8] text-[18px]" />,
+  },
+  {
+    name: "REST API",
+    icon: <SiPostman className="text-[#FF6C37] text-[18px]" />,
+  },
+  {
+    name: "GraphQL",
+    icon: <SiGraphql className="text-[#E10098] text-[18px]" />,
+  },
+  {
+    name: "MongoDB",
+    icon: <SiMongodb className="text-[#47A248] text-[18px]" />,
+  },
+  {
+    name: "PostgreSQL",
+    icon: <SiPostgresql className="text-[#336791] text-[18px]" />,
+  },
+  {
+    name: "Vercel",
+    icon: <SiVercel className="text-white text-[18px]" />,
+  },
+  {
+    name: "Render",
+    icon: <SiRender className="text-[#46E3B7] text-[18px]" />,
+  },
+  {
+    name: "AWS",
+    icon: <SiAmazonwebservices className="text-[#FF9900] text-[18px]" />,
+  },
+],
+
     keyFeatures: [
       "Responsive UI for all devices",
       "SEO‑ready structure and clean URLs",
@@ -75,35 +203,6 @@ export const servicesData = [
         "Built a headless commerce solution using Next.js and Shopify API with edge caching.",
       result: "50% faster load times, 30% increase in mobile conversions.",
     },
-    relatedProjects: [
-      {
-        title: "E-Commerce Platform",
-        description:
-          "A real-time coaching app for students learning to paint. This app is my baby, designed and built on my own.",
-        image: "/images/project_placeholder_1764932244105.png",
-        techStack: ["React", "Next.js", "Node.js", "MongoDB"],
-        githubUrl: "#",
-        liveUrl: "#",
-      },
-      {
-        title: "SaaS Dashboard",
-        description:
-          "Modern analytics dashboard with real-time data visualization and team collaboration features.",
-        image: "/images/project_placeholder_1764932244105.png",
-        techStack: ["React", "TypeScript", "GraphQL", "PostgreSQL"],
-        githubUrl: "#",
-        liveUrl: "#",
-      },
-      {
-        title: "Marketing Website",
-        description:
-          "High-performance marketing site with SEO optimization and conversion-focused design.",
-        image: "/images/project_placeholder_1764932244105.png",
-        techStack: ["Next.js", "Tailwind CSS", "Vercel"],
-        githubUrl: "#",
-        liveUrl: "#",
-      },
-    ],
     faq: [
       {
         q: "How long does a typical project take?",
@@ -132,17 +231,49 @@ export const servicesData = [
       "Users expect app‑level experiences everywhere, but building for multiple platforms can be expensive and slow without the right architecture.",
     approach:
       "We design once around your core flows, then implement cross‑platform apps using React Native / Flutter and a shared backend, focusing on performance, security, and offline‑ready experiences where needed.",
-    technologies: [
-      "React Native",
-      "Flutter",
-      "Expo",
-      "Node.js",
-      "Express",
-      "Firebase",
-      "REST APIs",
-      "GraphQL APIs",
-      "CI/CD pipelines",
-    ],
+
+
+ technologies : [
+  {
+    name: "React Native",
+    icon: <SiReact className="text-[#61DAFB] text-[18px]" />,
+  },
+  {
+    name: "Flutter",
+    icon: <SiFlutter className="text-[#02569B] text-[18px]" />,
+  },
+  {
+    name: "Expo",
+    icon: <SiExpo className="text-white text-[18px]" />,
+  },
+  {
+    name: "Node.js",
+    icon: <SiNodedotjs className="text-[#3C873A] text-[18px]" />,
+  },
+  {
+    name: "Express",
+    icon: <SiExpress className="text-white text-[18px]" />,
+  },
+  {
+    name: "Firebase",
+    icon: <SiFirebase className="text-[#FFCA28] text-[18px]" />,
+  },
+  {
+    name: "REST API",
+    icon: <SiPostman className="text-[#FF6C37] text-[18px]" />,
+  },
+  {
+    name: "GraphQL",
+    icon: <SiGraphql className="text-[#E10098] text-[18px]" />,
+  },
+  {
+    name: "CI/CD",
+    icon: <SiGithubactions className="text-[#2088FF] text-[18px]" />,
+  },
+],
+
+
+
     keyFeatures: [
       "Cross‑platform Android/iOS builds",
       "Push notifications and real‑time updates",
@@ -213,18 +344,47 @@ export const servicesData = [
       "Spreadsheets, disconnected tools, and manual workflows cause delays, errors, and lack of visibility across departments.",
     approach:
       "We map your real workflows (sales, inventory, billing, HR, etc.), design modules around them, and build an ERP or internal system that connects data and automates repetitive tasks.",
-    technologies: [
-      "Node.js",
-      "NestJS",
-      "React",
-      "Angular",
-      "PostgreSQL",
-      "MongoDB",
-      "Microservices",
-      "Message queues",
-      "Role‑based access",
-      "Reporting tools",
-    ],
+       technologies : [
+  {
+    name: "Node.js",
+    icon: <SiNodedotjs className="text-[#3C873A] text-[18px]" />,
+  },
+  {
+    name: "NextJS",
+    icon: <SiNextdotjs className="text-white text-[18px]" />,
+  },
+  {
+    name: "React",
+    icon: <SiReact className="text-[#61DAFB] text-[18px]" />,
+  },
+  {
+    name: "Angular",
+    icon: <SiAngular className="text-[#DD0031] text-[18px]" />,
+  },
+  {
+    name: "PostgreSQL",
+    icon: <SiPostgresql className="text-[#336791] text-[18px]" />,
+  },
+  {
+    name: "MongoDB",
+    icon: <SiMongodb className="text-[#47A248] text-[18px]" />,
+  },
+
+  // No official icons → using best alternatives
+  {
+    name: "Microservices",
+    icon: <SiNodedotjs className="text-[#3C873A] text-[18px]" />, // Node used as backend services icon
+  },
+  {
+    name: "Message Queues",
+    icon: <SiAppveyor className="text-[#2684FF] text-[18px]" />, // Blue service icon
+  },
+  {
+    name: "Role-Based Access",
+    icon: <SiPostman className="text-[#FF6C37] text-[18px]" />, // Orange security-style icon
+  },
+],
+
     keyFeatures: [
       "Central dashboards and role‑based panels",
       "Inventory, billing, invoicing, and approvals",
@@ -296,13 +456,30 @@ export const servicesData = [
       "Poor user experience leads to low engagement, high bounce rates, and lost revenue. Inconsistent design across products confuses users.",
     approach:
       "We combine user research with aesthetic excellence. We build design systems that ensure consistency and scalability while crafting intuitive user journeys.",
-    technologies: [
-      "Figma",
-      "Adobe XD",
-      "Prototyping tools",
-      "Usability testing platforms",
-      "Design Systems",
-    ],
+
+ technologies : [
+  {
+    name: "Figma",
+    icon: <SiFigma className="text-[#F24E1E] text-[18px]" />, // Figma Orange/Red
+  },
+  {
+    name: "Adobe XD",
+    icon: <SiAdobe className="text-[#FF0000] text-[18px]" />, // Adobe Red (XD not available)
+  },
+  {
+    name: "Prototyping",
+    icon: <SiAffinitydesigner className="text-[#1B72E8] text-[18px]" />, // Design tool icon
+  },
+  {
+    name: "Usability Testing",
+    icon: <SiAntdesign className="text-[#0170FE] text-[18px]" />, // Clean UI/UX blue icon
+  },
+  {
+    name: "Design Systems",
+    icon: <SiAntdesign className="text-[#2684FF] text-[18px]" />, // System & UI library icon
+  },
+],
+
     keyFeatures: [
       "User research and persona mapping",
       "Wireframing and interactive prototypes",
@@ -371,15 +548,41 @@ export const servicesData = [
       "Great products fail when they can't be found. Poor SEO, ineffective landing pages, and lack of data-driven insights mean wasted marketing budgets.",
     approach:
       "We take a data-first approach. We optimize your technical foundation for SEO, create high-converting landing pages, and set up analytics to track real ROI.",
-    technologies: [
-      "Google Analytics 4",
-      "GTM",
-      "Ahrefs",
-      "SEMrush",
-      "Google Ads",
-      "Meta Ads",
-      "Marketing Automation",
-    ],
+
+technologies: [
+  {
+    name: "Google Analytics 4",
+    icon: <SiGoogleanalytics className="text-[#E37400] text-[18px]" />, // GA4 Orange
+  },
+  {
+    name: "Google Tag Manager",
+    icon: <SiGoogletagmanager className="text-[#246FDB] text-[18px]" />, // GTM Blue
+  },
+  {
+      name: "Ahrefs",
+    icon: <SiFraunhofergesellschaft className="text-[#FF6F00] text-[18px]" />
+
+  },
+  {
+    name: "SEMrush",
+    icon: <SiSemrush className="text-[#FF642D] text-[18px]" />, // SEMrush Orange
+  },
+  {
+    name: "Google Ads",
+    icon: <SiGoogleads className="text-[#4285F4] text-[18px]" />, // Google Ads Blue
+  },
+  {
+    name: "Meta Ads",
+    icon: <SiMeta className="text-[#0081FB] text-[18px]" />, // Meta Blue
+  },
+  {
+    name: "Marketing Automation",
+    icon: <SiHubspot className="text-[#FF7A59] text-[18px]" />, // HubSpot Orange
+  }
+],
+
+
+
     keyFeatures: [
       "Technical SEO audits and fixes",
       "Conversion Rate Optimization (CRO)",
@@ -449,17 +652,45 @@ export const servicesData = [
       "Creating engaging interactive experiences requires specialized skills. Poor performance, clunky gameplay, and lack of cross-platform support limit reach.",
     approach:
       "We focus on 'fun-first' development backed by solid engineering. We optimize for the target platform to ensure smooth frame rates and responsive controls.",
-    technologies: [
-      "Unity",
-      "Unreal Engine",
-      "WebGL",
-      "Three.js",
-      "Phaser",
-      "C#",
-      "C++",
-      "JavaScript",
-      "Multiplayer networking",
-    ],
+ technologies: [
+  {
+    name: "Unity",
+    icon: <SiUnity className="text-white text-[18px]" />,
+  },
+  {
+    name: "Unreal Engine",
+    icon: <SiUnrealengine className="text-[white] text-[18px]" />,
+  },
+  {
+    name: "WebGL",
+    icon: <SiWebgl className="text-[#008CFF] text-[18px]" />,
+  },
+  {
+    name: "Three.js",
+    icon:<SiJavascript className="text-[#F7DF1E] text-[18px]" />,
+  },
+  {
+    name: "Phaser",
+     icon: <SiGamejolt className="text-[#FF00FF] text-[18px]" />,
+  },
+  {
+    name: "C#",
+    icon: <SiFsharp className="text-[#239120] text-[18px]" />,
+  },
+  {
+    name: "C++",
+    icon: <SiCplusplus className="text-[#00599C] text-[18px]" />,
+  },
+  {
+    name: "JavaScript",
+    icon: <SiJavascript className="text-[#F7DF1E] text-[18px]" />,
+  },
+  {
+    name: "Multiplayer Networking",
+    icon: <SiSocketdotio className="text-[white] text-[18px]" />, // placeholder networking icon
+  },
+],
+
     keyFeatures: [
       "2D/3D Game Design & Development",
       "Gamification of apps/websites",
@@ -523,18 +754,26 @@ export const servicesData = [
       "Technical debt accumulates when teams skip best practices. Without proper version control and testing, products become unstable and bugs multiply.",
     approach:
       "We treat infrastructure as code. We set up automated pipelines and monitoring from day one, ensuring that every deployment is safe and reversible.",
-    technologies: [
-      "Git",
-      "GitHub",
-      "GitLab",
-      "Jenkins",
-      "GitHub Actions",
-      "Docker",
-      "Kubernetes",
-      "Datadog",
-      "Sentry",
-      "AWS CloudWatch",
-    ],
+
+technologies :[
+  {
+    name: "Git, GitHub/GitLab",
+    icon: <SiGit className="text-[#F05032] text-[18px]" />,
+  },
+  {
+    name: "Jenkins, GitHub Actions",
+    icon: <SiGithubactions className="text-[#2088FF] text-[18px]" />,
+  },
+  {
+    name: "Docker, Kubernetes",
+    icon: <SiDocker className="text-[#2496ED] text-[18px]" />,
+  },
+  {
+    name: "Datadog, Sentry, AWS CloudWatch",
+    icon: <SiAmazonapigateway className="text-[#FF9900] text-[18px]" />,
+  },
+],
+
     keyFeatures: [
       "CI/CD Pipeline Setup",
       "Automated Testing Frameworks",
@@ -586,3 +825,61 @@ export const servicesData = [
     ],
   },
 ];
+
+
+export const nonCodeTech = {
+  audioVideo: [
+    { name: "Adobe Audition", icon: <SiAdobeaudition className="text-[#00E4BB] text-[18px]" /> },
+    { name: "Adobe Premiere Pro", icon: <SiAdobepremierepro className="text-[#9999FF] text-[18px]" /> },
+    { name: "After Effects", icon: <SiAdobeaftereffects className="text-[#7E5EFF] text-[18px]" /> },
+    { name: "Canva", icon: <SiCanva className="text-[#00C4CC] text-[18px]" /> },
+  ],
+
+  threeD_AR_VR: [
+    { name: "Blender", icon: <SiBlender className="text-[#F5792A] text-[18px]" /> },
+    { name: "Unity", icon: <SiUnity className="text-white text-[18px]" /> },
+    { name: "Unreal Engine", icon: <SiUnrealengine className="text-white text-[18px]" /> },
+    { name: "WebGL", icon: <SiWebgl className="text-[#990000] text-[18px]" /> },
+    { name: "Three.js", icon: <SiThreedotjs className="text-black text-[18px]" /> },
+  ],
+
+  marketingTools: [
+    { name: "Google Analytics", icon: <SiGoogleanalytics className="text-[#E37400] text-[18px]" /> },
+    { name: "Tag Manager", icon: <SiGoogletagmanager className="text-[#1A73E8] text-[18px]" /> },
+    { name: "Google Ads", icon: <SiGoogleads className="text-[#4285F4] text-[18px]" /> },
+    { name: "Meta Ads", icon: <SiMeta className="text-[#0467DF] text-[18px]" /> },
+    { name: "HubSpot", icon: <SiHubspot className="text-[#FF7A00] text-[18px]" /> },
+    { name: "SEMrush", icon: <SiSemrush className="text-[#FF642D] text-[18px]" /> },
+  ],
+
+  crmBusiness: [
+    { name: "Salesforce", icon: <SiSalesforce className="text-[#00A1E0] text-[18px]" /> },
+    { name: "Zendesk", icon: <SiZendesk className="text-[#03363D] text-[18px]" /> },
+    { name: "Notion", icon: <SiNotion className="text-black text-[18px]" /> },
+    { name: "Trello", icon: <SiTrello className="text-[#026AA7] text-[18px]" /> },
+    { name: "Asana", icon: <SiAsana className="text-[#F06A6A] text-[18px]" /> },
+  ],
+
+  cloudStorage: [
+    { name: "AWS", icon: <SiAmazonwebservices className="text-[#FF9900] text-[18px]" /> },
+    { name: "Google Cloud", icon: <SiGooglecloud className="text-[#4285F4] text-[18px]" /> },
+  { name: "Azure", icon: <SiCloudflare className="text-[#0078D4] text-[18px]" /> },
+    { name: "Cloudflare", icon: <SiCloudflarepages className="text-[#F38020] text-[18px]" /> },
+  ],
+
+  contentBranding: [
+    { name: "WordPress", icon: <SiWordpress className="text-[#21759B] text-[18px]" /> },
+    { name: "Shopify", icon: <SiShopify className="text-[#96BF48] text-[18px]" /> },
+    { name: "Wix", icon: <SiWii className="text-black text-[18px]" /> },
+    { name: "Squarespace", icon: <SiSquarespace className="text-white text-[18px]" /> },
+    { name: "SEO (Yoast)", icon: <SiYoast className="text-[#A4373A] text-[18px]" /> },
+    { name: "Brand Guidelines", icon: <SiGrab className="text-[#00AEEF] text-[18px]" /> },
+  ],
+
+  aiAutomation: [
+    { name: "OpenAI", icon: <SiOpenai className="text-white text-[18px]" /> },
+    { name: "Zapier", icon: <SiZapier className="text-[#FF4A00] text-[18px]" /> },
+    { name: "Airtable", icon: <SiAirtable className="text-[#18BFFF] text-[18px]" /> },
+    { name: "Slack Workflows", icon: <SiSlack className="text-[#4A154B] text-[18px]" /> },
+  ],
+};
