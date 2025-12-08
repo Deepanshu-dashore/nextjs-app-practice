@@ -78,10 +78,18 @@ const getTechIcon = (techName) => {
   if (lower.includes("ci/cd") || lower.includes("jenkins"))
     return <SiAppveyor className="text-[#00B3E0]" />;
 
-  if (lower.includes("adobe") || lower.includes("figma") || lower.includes("xd"))
+  if (
+    lower.includes("adobe") ||
+    lower.includes("figma") ||
+    lower.includes("xd")
+  )
     return <SiAdobe className="text-[#FF0000]" />;
 
-  if (lower.includes("google") || lower.includes("ads") || lower.includes("seo"))
+  if (
+    lower.includes("google") ||
+    lower.includes("ads") ||
+    lower.includes("seo")
+  )
     return <SiGoogleads className="text-[#4285F4]" />;
 
   if (lower.includes("unity") || lower.includes("unreal"))
