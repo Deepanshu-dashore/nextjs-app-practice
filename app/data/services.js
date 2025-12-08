@@ -1,3 +1,4 @@
+import { ShieldUser, UserSearch } from "lucide-react";
 import {
   // --- Development ---
   SiReact,
@@ -71,6 +72,17 @@ import {
   SiZapier,
   SiAirtable,
   SiSlack,
+  SiLighthouse,
+  SiW3Schools,
+  SiTestcafe,
+  SiMiro,
+  SiJirasoftware,
+  SiConfluence,
+  SiGoogle,
+  SiMailchimp,
+  SiJira,
+  SiScrumalliance,
+  SiTestinglibrary,
 } from "react-icons/si";
 
 import {
@@ -154,6 +166,15 @@ export const servicesData = [
     icon: <SiAmazonwebservices className="text-[#FF9900] text-[18px]" />,
   },
 ],
+nonTech: [
+  { name: "SEO Optimization", icon: <SiYoast className="text-[#A4373A] text-[18px]" /> },
+  { name: "Google Analytics", icon: <SiGoogleanalytics className="text-[#F9AB00] text-[18px]" /> },
+  { name: "Content Strategy", icon: <SiNotion className="text-white text-[18px]" /> },
+  { name: "Site Performance Testing", icon: <SiLighthouse className="text-[#0CB6F5] text-[18px]" /> },
+  { name: "Website Accessibility", icon: <SiW3Schools className="text-[#005A9C] text-[18px]" /> },
+  { name: "CMS Management", icon: <SiWordpress className="text-[#21759B] text-[18px]" /> },
+],
+
 
     keyFeatures: [
       "Responsive UI for all devices",
@@ -272,6 +293,14 @@ export const servicesData = [
   },
 ],
 
+nonTech: [
+  { name: "App Store Optimization (ASO)", icon: <SiGoogleads className="text-[#4285F4] text-[18px]" /> },
+  { name: "User Activity Tracking", icon: <SiGoogleanalytics className="text-[#F9AB00] text-[18px]" /> },
+  { name: "Crash Reporting", icon: <SiSentry className="text-[#4285F4] text-[18px]" /> },
+  { name: "Push Notification Delivery", icon: <SiFirebase className="text-[#FFCA28] text-[18px]" /> },
+  { name: "App Testing Tools", icon: <SiTestcafe className="text-[#4285F4] text-[18px]" /> },
+  { name: "UI/UX Flow Mapping", icon: <SiMiro className="text-[#FFD02F] text-[18px]" /> },
+],
 
 
     keyFeatures: [
@@ -384,6 +413,14 @@ export const servicesData = [
     icon: <SiPostman className="text-[#FF6C37] text-[18px]" />, // Orange security-style icon
   },
 ],
+nonTech: [
+  { name: "Business Process Mapping", icon: <SiNotion className="text-black text-[18px]" /> },
+  { name: "Project Management", icon: <SiJirasoftware className="text-[#0052CC] text-[18px]" /> },
+  { name: "Workflow Automation", icon: <SiZapier className="text-[#FF4A00] text-[18px]" /> },
+  { name: "Cloud Operations", icon: <SiGooglecloud className="text-[#4285F4] text-[18px]" /> },
+  { name: "Team Collaboration", icon: <SiSlack className="text-[#4A154B] text-[18px]" /> },
+  { name: "Documentation Systems", icon: <SiConfluence className="text-[#172B4D] text-[18px]" /> },
+],
 
     keyFeatures: [
       "Central dashboards and role‑based panels",
@@ -478,6 +515,18 @@ export const servicesData = [
     name: "Design Systems",
     icon: <SiAntdesign className="text-[#2684FF] text-[18px]" />, // System & UI library icon
   },
+],
+nonTech: [
+  { name: "User Research", icon: <SiGoogleanalytics className="text-[#F9AB00] text-[18px]" /> },
+  { name: "Wireframing", icon: <SiFigma className="text-[#F24E1E] text-[18px]" /> },
+  { name: "User Journey Mapping", icon: <SiMiro className="text-[#FFD02F] text-[18px]" /> },
+  {
+  name: "Usability Testing",
+  icon: <UserSearch className="text-[#0066FF] text-[18px]" />
+},
+
+  { name: "Accessibility Standards", icon: <SiW3Schools className="text-[#005A9C] text-[18px]" /> },
+  { name: "Design Systems", icon: <SiNotion className="text-black text-[18px]" /> },
 ],
 
     keyFeatures: [
@@ -579,6 +628,14 @@ technologies: [
     name: "Marketing Automation",
     icon: <SiHubspot className="text-[#FF7A59] text-[18px]" />, // HubSpot Orange
   }
+],
+nonTech: [
+  { name: "SEO & SEM", icon: <SiGoogle className="text-[#4285F4] text-[18px]" /> },
+  { name: "Social Media Marketing", icon: <SiMeta className="text-[#0467DF] text-[18px]" /> },
+  { name: "Email Marketing Automation", icon: <SiMailchimp className="text-[#FFE01B] text-[18px]" /> },
+  { name: "Google Ads Campaigns", icon: <SiGoogleads className="text-[#4285F4] text-[18px]" /> },
+  { name: "Analytics & Tracking", icon: <SiGoogleanalytics className="text-[#F9AB00] text-[18px]" /> },
+  { name: "Content Planning", icon: <SiNotion className="text-black text-[18px]" /> },
 ],
 
 
@@ -690,6 +747,16 @@ technologies: [
     icon: <SiSocketdotio className="text-[white] text-[18px]" />, // placeholder networking icon
   },
 ],
+nonTech: [
+  { name: "Game Storyboarding", icon: <SiMiro className="text-[#FFD02F] text-[18px]" /> },
+  { name: "Level Design Planning", icon: <SiBlender className="text-[#F5792A] text-[18px]" /> },
+  { name: "Game Analytics", icon: <SiGoogleanalytics className="text-[#F9AB00] text-[18px]" /> },
+  { name: "Sound & SFX Editing", icon: <SiAdobeaudition className="text-[#00C8FF] text-[18px]" /> },
+  { name: "Animation Workflow", icon: <SiAdobeaftereffects className="text-[#9999FF] text-[18px]" /> },
+{ name: "Playtesting & Feedback", icon: <ShieldUser className="text-[#0066FF] text-[18px]" /> },
+
+
+],
 
     keyFeatures: [
       "2D/3D Game Design & Development",
@@ -773,6 +840,41 @@ technologies :[
     icon: <SiAmazonapigateway className="text-[#FF9900] text-[18px]" />,
   },
 ],
+nonTech: [
+  {
+    name: "Project Management",
+    icon: <SiJira className="text-[#2684FF] text-[18px]" />,
+  },
+  {
+    name: "Agile & Scrum Workflows",
+    icon: <SiScrumalliance className="text-[#009FDA] text-[18px]" />,
+  },
+  {
+    name: "UI/UX Documentation",
+    icon: <SiNotion className="text-black text-[18px]" />,
+  },
+  {
+    name: "Team Collaboration",
+    icon: <SiSlack className="text-[#4A154B] text-[18px]" />,
+  },
+  {
+    name: "Version Control Management",
+    icon: <SiGit className="text-[#F05032] text-[18px]" />,
+  },
+  {
+    name: "Product Roadmapping",
+    icon: <SiMiro className="text-[#FFD02F] text-[18px]" />,
+  },
+  {
+    name: "Quality Assurance & Testing",
+    icon: <SiTestinglibrary className="text-[#E33332] text-[18px]" />,
+  },
+  {
+    name: "System Documentation",
+    icon: <SiConfluence className="text-[#172B4D] text-[18px]" />,
+  },
+],
+
 
     keyFeatures: [
       "CI/CD Pipeline Setup",
@@ -827,59 +929,3 @@ technologies :[
 ];
 
 
-export const nonCodeTech = {
-  audioVideo: [
-    { name: "Adobe Audition", icon: <SiAdobeaudition className="text-[#00E4BB] text-[18px]" /> },
-    { name: "Adobe Premiere Pro", icon: <SiAdobepremierepro className="text-[#9999FF] text-[18px]" /> },
-    { name: "After Effects", icon: <SiAdobeaftereffects className="text-[#7E5EFF] text-[18px]" /> },
-    { name: "Canva", icon: <SiCanva className="text-[#00C4CC] text-[18px]" /> },
-  ],
-
-  threeD_AR_VR: [
-    { name: "Blender", icon: <SiBlender className="text-[#F5792A] text-[18px]" /> },
-    { name: "Unity", icon: <SiUnity className="text-white text-[18px]" /> },
-    { name: "Unreal Engine", icon: <SiUnrealengine className="text-white text-[18px]" /> },
-    { name: "WebGL", icon: <SiWebgl className="text-[#990000] text-[18px]" /> },
-    { name: "Three.js", icon: <SiThreedotjs className="text-black text-[18px]" /> },
-  ],
-
-  marketingTools: [
-    { name: "Google Analytics", icon: <SiGoogleanalytics className="text-[#E37400] text-[18px]" /> },
-    { name: "Tag Manager", icon: <SiGoogletagmanager className="text-[#1A73E8] text-[18px]" /> },
-    { name: "Google Ads", icon: <SiGoogleads className="text-[#4285F4] text-[18px]" /> },
-    { name: "Meta Ads", icon: <SiMeta className="text-[#0467DF] text-[18px]" /> },
-    { name: "HubSpot", icon: <SiHubspot className="text-[#FF7A00] text-[18px]" /> },
-    { name: "SEMrush", icon: <SiSemrush className="text-[#FF642D] text-[18px]" /> },
-  ],
-
-  crmBusiness: [
-    { name: "Salesforce", icon: <SiSalesforce className="text-[#00A1E0] text-[18px]" /> },
-    { name: "Zendesk", icon: <SiZendesk className="text-[#03363D] text-[18px]" /> },
-    { name: "Notion", icon: <SiNotion className="text-black text-[18px]" /> },
-    { name: "Trello", icon: <SiTrello className="text-[#026AA7] text-[18px]" /> },
-    { name: "Asana", icon: <SiAsana className="text-[#F06A6A] text-[18px]" /> },
-  ],
-
-  cloudStorage: [
-    { name: "AWS", icon: <SiAmazonwebservices className="text-[#FF9900] text-[18px]" /> },
-    { name: "Google Cloud", icon: <SiGooglecloud className="text-[#4285F4] text-[18px]" /> },
-  { name: "Azure", icon: <SiCloudflare className="text-[#0078D4] text-[18px]" /> },
-    { name: "Cloudflare", icon: <SiCloudflarepages className="text-[#F38020] text-[18px]" /> },
-  ],
-
-  contentBranding: [
-    { name: "WordPress", icon: <SiWordpress className="text-[#21759B] text-[18px]" /> },
-    { name: "Shopify", icon: <SiShopify className="text-[#96BF48] text-[18px]" /> },
-    { name: "Wix", icon: <SiWii className="text-black text-[18px]" /> },
-    { name: "Squarespace", icon: <SiSquarespace className="text-white text-[18px]" /> },
-    { name: "SEO (Yoast)", icon: <SiYoast className="text-[#A4373A] text-[18px]" /> },
-    { name: "Brand Guidelines", icon: <SiGrab className="text-[#00AEEF] text-[18px]" /> },
-  ],
-
-  aiAutomation: [
-    { name: "OpenAI", icon: <SiOpenai className="text-white text-[18px]" /> },
-    { name: "Zapier", icon: <SiZapier className="text-[#FF4A00] text-[18px]" /> },
-    { name: "Airtable", icon: <SiAirtable className="text-[#18BFFF] text-[18px]" /> },
-    { name: "Slack Workflows", icon: <SiSlack className="text-[#4A154B] text-[18px]" /> },
-  ],
-};

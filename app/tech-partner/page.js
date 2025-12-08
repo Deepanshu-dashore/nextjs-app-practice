@@ -113,77 +113,210 @@ export default function TechPartnerPage() {
           </motion.div>
         </div>
       </section>
+{/* Featured Tech Partners */}
+<section className="relative z-20 -mt-12 mb-32 px-4 sm:px-6 lg:px-20 overflow-hiddenm ">
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+    className="max-w-7xl mx-auto"
+  >
+    <div className="bg-white/5 h-80 overflow-hidden backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl p-10 flex items-center gap-10">
 
-      {/* How Our Partnership Works */}
-      <section className="px-4 sm:px-6 lg:px-20 mb-32 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              How we work{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-purple-400">
-                with you
-              </span>
-            </h2>
-          </motion.div>
+  {/* LEFT CONTENT */}
+<motion.div
+  initial={{ opacity: 0, x: -40 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+  className="w-[40%]"
+>
+  <h2 className="text-4xl font-extrabold text-white leading-snug mb-6">
+    Featured{" "}
+    <span className="bg-gradient-to-r from-indigo-400 to-purple-500 text-transparent bg-clip-text">
+      Tech Partners
+    </span>
+  </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                icon: FaCode,
-                title: "Discovery & Strategy",
-                description:
-                  "Understand your product, users, and goals before writing any code.",
-              },
-              {
-                icon: FaUsers,
-                title: "Dedicated Team",
-                description:
-                  "A focused squad for your project – developers, designer, and project lead.",
-              },
-              {
-                icon: FaChartLine,
-                title: "Iterative Delivery",
-                description:
-                  "Ship in sprints, gather feedback, and improve continuously.",
-              },
-              {
-                icon: FaHeadset,
-                title: "Long-Term Support",
-                description:
-                  "Ongoing maintenance, optimization, and new feature development.",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-zinc-900/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-indigo-500/30 transition-colors group"
-              >
-                <div className="flex items-start gap-6">
-                  <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300">
-                    <item.icon className="text-3xl" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-400 leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+  {/* Decorative Line */}
+  <div className="w-20 h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 mb-6 shadow-lg shadow-indigo-500/30"></div>
+
+  <p className="text-gray-300 text-lg leading-relaxed max-w-lg">
+    We collaborate with top-tier companies and tools to craft powerful, scalable, and future-ready digital products that redefine quality.
+  </p>
+</motion.div>
+
+
+      {/* RIGHT FLOATING NUMBERS */}
+      <>
+        <style>{`
+          @keyframes continuousUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+          }
+          @keyframes continuousDown {
+            0% { transform: translateY(-10%); }
+            100% { transform: translateY(50%); }
+          }
+          .move-up { animation: continuousUp 12s linear infinite; }
+          .move-down { animation: continuousDown 12s linear infinite; }
+        `}</style>
+
+{/* RIGHT FLOATING LOGOS */}
+<div className="flex gap-14 rotate-[30deg] w-[60%] select-none justify-end h-96 overflow-hidden">
+  {/* COLUMN 1 → UP */}
+  <div className="h-full overflow-hidden">
+    <div className="move-up flex flex-col gap-8">
+      {[
+        "/logos/logo1.png",
+        "/logos/logo2.png",
+        "/logos/logo3.png",
+        "/logos/logo1.png",
+        "/logos/logo2.png",
+        "/logos/logo3.png",
+        "/logos/logo1.png",
+        "/logos/logo2.png",
+        "/logos/logo3.png",
+      ].map((logo, i) => (
+        <div
+          key={i}
+          className="w-24 h-24 flex items-center justify-center rounded-full bg-white/10 border border-white/20 backdrop-blur-xl shadow-[0_0_25px_rgba(255,255,255,0.15)]"
+        >
+          <img src={logo} alt={`logo-${i}`} className="w-16 h-16 object-contain" />
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+
+  {/* COLUMN 2 → DOWN */}
+  <div className="h-full overflow-hidden">
+    <div className="move-down flex flex-col gap-8">
+      {[
+        "/logos/logo4.png",
+        "/logos/logo5.png",
+        "/logos/logo6.png",
+        "/logos/logo4.png",
+        "/logos/logo5.png",
+        "/logos/logo6.png",
+        "/logos/logo4.png",
+        "/logos/logo5.png",
+        "/logos/logo6.png",
+      ].map((logo, i) => (
+        <div
+          key={i}
+          className="w-24 h-24 flex items-center justify-center rounded-full bg-white/10 border border-white/20 backdrop-blur-xl shadow-[0_0_25px_rgba(255,255,255,0.15)]"
+        >
+          <img src={logo} alt={`logo-${i}`} className="w-16 h-16 object-contain" />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* COLUMN 3 → UP */}
+  <div className="h-full overflow-hidden">
+    <div className="move-up flex flex-col gap-8">
+      {[
+        "/logos/logo7.png",
+        "/logos/logo8.png",
+        "/logos/logo9.png",
+        "/logos/logo7.png",
+        "/logos/logo8.png",
+        "/logos/logo9.png",
+        "/logos/logo7.png",
+        "/logos/logo8.png",
+        "/logos/logo9.png",
+      ].map((logo, i) => (
+        <div
+          key={i}
+          className="w-24 h-24 flex items-center justify-center rounded-full bg-white/10 border border-white/20 backdrop-blur-xl shadow-[0_0_25px_rgba(255,255,255,0.15)]"
+        >
+          <img src={logo} alt={`logo-${i}`} className="w-16 h-16 object-contain" />
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+
+      </>
+    </div>
+  </motion.div>
+</section>
+
+
+
+{/* How Our Partnership Works */}
+<section className="px-4 sm:px-6 lg:px-20 mb-32 relative z-10">
+  <div className="max-w-7xl mx-auto">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+        How we work{" "}
+        <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-purple-400">
+          with you
+        </span>
+      </h2>
+    </motion.div>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {[
+        {
+          icon: FaCode,
+          title: "Discovery & Strategy",
+          description:
+            "Understand your product, users, and goals before writing any code.",
+        },
+        {
+          icon: FaUsers,
+          title: "Dedicated Team",
+          description:
+            "A focused squad for your project – developers, designer, and project lead.",
+        },
+        {
+          icon: FaChartLine,
+          title: "Iterative Delivery",
+          description:
+            "Ship in sprints, gather feedback, and improve continuously.",
+        },
+        {
+          icon: FaHeadset,
+          title: "Long-Term Support",
+          description:
+            "Ongoing maintenance, optimization, and new feature development.",
+        },
+      ].map((item, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.1 }}
+          className="bg-zinc-900/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-indigo-500/30 transition-colors group"
+        >
+          <div className="flex flex-col items-center gap-6">
+            <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300">
+              <item.icon className="text-3xl" />
+            </div>
+            <div className="flex flex-col ">
+              <h3 className="text-xl font-bold text-white mb-3">
+                {item.title}
+              </h3>
+              <p className="text-gray-400 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* What You Get */}
       <section className="px-4 sm:px-6 lg:px-20 mb-32 relative z-10 bg-zinc-900/30 py-24">
@@ -350,7 +483,7 @@ export default function TechPartnerPage() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="flex flex-col  gap-8 ">
             {[
               { value: "24/7", label: "Support Availability" },
               { value: "98%", label: "Client Satisfaction" },
@@ -363,64 +496,20 @@ export default function TechPartnerPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="text-center p-8 rounded-xl bg-zinc-900/50 border border-white/10"
+                className="text-center p-8 rounded-xl bg-zinc-900/50 border border-white/10 flex  justify-between h-[40dvh]"
               >
+                     <div className="text-gray-400">{stat.label}</div>
                 <div className="text-5xl font-bold text-white mb-3">
                   {stat.value}
                 </div>
-                <div className="text-gray-400">{stat.label}</div>
+           
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA with Background */}
-      <section className="relative px-4 sm:px-6 lg:px-20 mb-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto relative">
-          <div className="relative rounded-3xl overflow-hidden">
-            {/* Background Image */}
-            <div
-              className="absolute inset-0 z-0 bg-cover bg-center"
-              style={{
-                backgroundImage: "url('/images/tech-partner-collab.png')",
-              }}
-            >
-              {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-linear-to-r from-gray-900/90 via-gray-900/70 to-transparent" />
-            </div>
-
-            {/* Content */}
-            <div className="relative z-10 py-20 px-8 md:px-16">
-              <div className="max-w-2xl">
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                >
-                  <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                    Ready to build{" "}
-                    <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-purple-400">
-                      together?
-                    </span>
-                  </h2>
-                  <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-                    Let's discuss your product, roadmap, and how we can become
-                    your long-term tech partner.
-                  </p>
-                  <Link
-                    href="#apply"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black hover:bg-gray-100 font-bold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
-                  >
-                    Apply for Partnership
-                    <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </motion.div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  
 
       {/* Application Form Section - Split Layout */}
       <section id="apply" className="px-4 sm:px-6 lg:px-20 mb-20 relative z-10">

@@ -16,8 +16,8 @@ function Navbar() {
       name: "What We Do",
       href: "/services",
       submenu: [
+         { name: "Web Development", href: "/services#web-development" },
         { name: "App Development", href: "/services#app-development" },
-        { name: "Web Development", href: "/services#web-development" },
         { name: "Software & ERP Development", href: "/services#software-erp" },
         { name: "UI/UX Design", href: "/services#ui-ux" },
         { name: "Digital Marketing", href: "/services#digital-marketing" },

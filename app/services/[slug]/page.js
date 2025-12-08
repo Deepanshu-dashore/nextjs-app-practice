@@ -13,22 +13,26 @@ import {
 } from "lucide-react";
 import Footer from "../../components/shared/Footer";
 import { servicesData} from "../../data/services";
+import { FaWhatsapp } from "react-icons/fa";
 
 
 export default function ServiceDetailPage() {
+  
   const { slug } = useParams();
   const service = servicesData.find((s) => s.slug === slug);
 
   if (!service) {
     return notFound();
   }
+  
 
   return (
+    
     <main className="bg-black min-h-screen text-white font-sans selection:bg-purple-500/30">
       {/* <Navbar /> */}
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[70vh] flex flex-col justify-center">
+      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-dvh flex flex-col justify-center">
         {/* Dynamic Background */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-purple-900/40 via-black to-black pointer-events-none z-0" />
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 pointer-events-none z-0" />
@@ -46,6 +50,7 @@ export default function ServiceDetailPage() {
         )}
 
         <div className="max-w-7xl mx-auto relative z-10 w-full">
+          <div className="flex justify-end">
           <Link
             href="/services"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-white mb-8 transition-colors group"
@@ -53,7 +58,7 @@ export default function ServiceDetailPage() {
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Services
           </Link>
-
+</div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -71,15 +76,46 @@ export default function ServiceDetailPage() {
             <p className="text-lg text-gray-400 mb-10 max-w-3xl leading-relaxed border-l-2 border-purple-500/50 pl-6">
               {service.description}
             </p>
+<div className="flex flex-wrap gap-4 items-center">
 
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-all hover:scale-105 active:scale-95"
-              >
-                Book a Project Call
-              </Link>
-            </div>
+  {/* Book Call Button */}
+  <Link
+    href="/contact"
+    className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-all hover:scale-105 active:scale-95"
+  >
+    Book a Project Call
+  </Link>
+
+{/* WhatsApp FULL Button (Dynamic Message) */}
+<motion.a
+  href={`https://api.whatsapp.com/send/?phone=918435840622&text=${encodeURIComponent(
+    `Hello, I am interested in your ${service.title} service. Please share more details.`
+  )}&type=phone_number&app_absent=0`}
+  target="_blank"
+  rel="noopener noreferrer"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="flex items-center gap-3 px-5 py-2 rounded-full bg-[#1E0C35] shadow-md shadow-[#915eff]/40 cursor-pointer"
+>
+  {/* Icon Glow Wrapper */}
+  <div className="relative w-[40px] h-[40px] rounded-full flex items-center justify-center">
+    <div className="absolute inset-0 rounded-full bg-[#915eff]/30 blur-lg" />
+    <div className="absolute inset-0 rounded-full" />
+    <div className="relative w-[35px] h-[35px] rounded-full bg-[#1E0C35] flex items-center justify-center">
+      <FaWhatsapp className="text-white text-xl" />
+    </div>
+  </div>
+
+  {/* Text */}
+  <span className="text-white font-semibold text-lg">
+    Direct Message
+  </span>
+</motion.a>
+
+
+</div>
+
+
           </motion.div>
         </div>
       </section>
@@ -185,6 +221,101 @@ export default function ServiceDetailPage() {
           </div>
         </div>
       </section>
+     
+
+{/* Technology Section */}
+<section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  <div className="text-center mb-12">
+    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4">
+      <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
+      <span className="text-sm font-medium text-purple-300">Technology</span>
+    </div>
+
+    <h3 className="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
+       Tools & Frameworks We Use
+    </h3>
+    <p className="text-gray-400 max-w-2xl mx-auto">
+      A complete blend of coding and non-coding technologies used in this service.
+    </p>
+  </div>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    {/* LEFT → TECH TECHNOLOGIES */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/20 
+                 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg 
+                 hover:shadow-purple-500/20"
+    >
+      <div className="flex items-center gap-4 mb-8">
+        <div className="w-14 h-14 rounded-full bg-purple-500/20 flex items-center justify-center 
+                        transition-transform duration-300 hover:scale-110">
+          <div className="w-3 h-3 rounded-full bg-purple-500 animate-pulse" />
+        </div>
+        <h3 className="text-2xl font-extrabold text-white bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+          Tech Technologies
+        </h3>
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {service.technologies?.map((tech, i) => (
+          <div
+            key={i}
+            className="flex items-center gap-2 text-gray-300 p-3 rounded-xl 
+                       hover:bg-purple-500/10 transition-all hover:scale-105 cursor-pointer"
+          >
+            <span className="text-2xl p-2 rounded-full bg-purple-500/20 hover:bg-purple-500/30 transition-colors">
+              {tech.icon}
+            </span>
+            <span className="text-sm font-semibold text-white">{tech.name}</span>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+
+    {/* RIGHT → NON-TECH TECHNOLOGIES */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/20 
+                 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg 
+                 hover:shadow-blue-500/20"
+    >
+      <div className="flex items-center gap-4 mb-8">
+        <div className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center 
+                        transition-transform duration-300 hover:scale-110">
+          <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse" />
+        </div>
+        <h3 className="text-2xl font-extrabold text-white bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+          Non-Tech Technologies
+        </h3>
+      </div>
+
+      <div className="grid grid-cols-2  gap-4">
+        {service.nonTech?.map((item, i) => (
+          <div
+            key={i}
+            className="flex items-center gap-2 text-gray-300 p-3 rounded-xl 
+                       hover:bg-blue-500/10 transition-all hover:scale-105 cursor-pointer"
+          >
+            <span className="text-2xl p-2 rounded-full bg-blue-500/20 hover:bg-blue-500/30 transition-colors">
+              {item.icon}
+            </span>
+            <span className="text-sm font-semibold text-white">{item.name}</span>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+
+  </div>
+</section>
+
+
+
 
       {/* Deep Dive Accordion */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
@@ -212,13 +343,13 @@ export default function ServiceDetailPage() {
             content={service.approach}
             icon={<div className="w-2 h-2 rounded-full bg-green-500" />}
           />
-          <AccordionItem
+          {/* <AccordionItem
             title="Technologies"
             content={service.technologies}
             isList
             isTech
             icon={<div className="w-2 h-2 rounded-full bg-blue-500" />}
-          />
+          /> */}
           <AccordionItem
             title="Key Features"
             content={service.keyFeatures}
@@ -255,7 +386,7 @@ export default function ServiceDetailPage() {
                   Case Study
                 </span>
               </div>
-              <h3 className="text-3xl md:text-5xl font-bold mb-4">
+              <h3 className="text-3xl  font-bold mb-4">
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-purple-200 to-white">
                   Success Story
                 </span>
@@ -372,34 +503,7 @@ export default function ServiceDetailPage() {
           </div>
         </section>
       )}
-
-      {/* FAQ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-            <span className="text-sm font-medium text-green-300">Support</span>
-          </div>
-          <h3 className="text-3xl font-bold text-white mb-3">
-            Common Questions
-          </h3>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Find answers to frequently asked questions about this service.
-          </p>
-        </div>
-        <div className="space-y-4">
-          {service.faq?.map((item, i) => (
-            <AccordionItem
-              key={i}
-              title={item.q}
-              content={item.a}
-              icon={<div className="w-2 h-2 rounded-full bg-green-500" />}
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* Related Projects */}
+  {/* Related Projects */}
       {service.relatedProjects && service.relatedProjects.length > 0 && (
         <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -490,7 +594,31 @@ export default function ServiceDetailPage() {
           </div>
         </section>
       )}
-
+      {/* FAQ */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+            <span className="text-sm font-medium text-green-300">Support</span>
+          </div>
+          <h3 className="text-3xl font-bold text-white mb-3">
+            Common Questions
+          </h3>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Find answers to frequently asked questions about this service.
+          </p>
+        </div>
+        <div className="space-y-4">
+          {service.faq?.map((item, i) => (
+            <AccordionItem
+              key={i}
+              title={item.q}
+              content={item.a}
+              icon={<div className="w-2 h-2 rounded-full bg-green-500" />}
+            />
+          ))}
+        </div>
+      </section>
       {/* Final CTA */}
       <section className="py-32 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-linear-to-b from-black via-purple-900/10 to-(--color)/10 pointer-events-none" />
