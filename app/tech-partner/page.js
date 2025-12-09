@@ -11,7 +11,10 @@ import {
   FaHeadset,
 } from "react-icons/fa";
 import { useState } from "react";
-
+import LogoLoop from "../components/LogoLoop";
+import Image from "next/image";
+import logo from "../../public/images/bttraders.png"
+import logo2 from "../../public/images/logo.jpg"
 export default function TechPartnerPage() {
   const [formState, setFormState] = useState({
     name: "",
@@ -34,6 +37,36 @@ export default function TechPartnerPage() {
       [e.target.name]: e.target.value,
     });
   };
+    const logosRow1 = [
+    logo,
+   logo2,
+      logo,
+          logo,
+              logo,
+  ];
+
+  const logosRow2 = [
+ logo,
+     logo,
+         logo,
+             logo,
+                 logo,
+  ];
+
+  const logosRow3 = [
+  logo,
+     logo,
+         logo,
+             logo, 
+                 logo,
+  ];
+
+  // Convert logos into LogoLoop format
+  const mapLogos = (arr) =>
+    arr.map((src) => ({
+      node: <Image src={src} alt="logo" width={65} height={65} />,
+      title: "logo",
+    }));
 
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], ["0%", "50%"]);
@@ -114,136 +147,76 @@ export default function TechPartnerPage() {
         </div>
       </section>
 {/* Featured Tech Partners */}
-<section className="relative z-20 -mt-12 mb-32 px-4 sm:px-6 lg:px-20 overflow-hiddenm ">
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6 }}
-    className="max-w-7xl mx-auto"
-  >
-    <div className="bg-white/5 h-80 overflow-hidden backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl p-10 flex items-center gap-10">
+<section className="relative z-20 -mt-12 mb-32 px-6 sm:px-6 lg:px-20 overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="max-w-7xl mx-auto"
+      >
+        <div className="bg-white/5 flex  overflow-hidden backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl p-10">
 
-  {/* LEFT CONTENT */}
-<motion.div
-  initial={{ opacity: 0, x: -40 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6 }}
-  className="w-[40%]"
->
-  <h2 className="text-4xl font-extrabold text-white leading-snug mb-6">
-    Featured{" "}
-    <span className="bg-gradient-to-r from-indigo-400 to-purple-500 text-transparent bg-clip-text">
-      Tech Partners
-    </span>
-  </h2>
+          {/* TEXT CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="w-full mb-14"
+          >
+            <h2 className="text-4xl font-bold text-white leading-snug mb-6">
+              Featured Tech Partners
+            </h2>
 
-  {/* Decorative Line */}
-  <div className="w-20 h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 mb-6 shadow-lg shadow-indigo-500/30"></div>
+            <div className="w-20 h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 mb-6 shadow-lg shadow-indigo-500/30"></div>
 
-  <p className="text-gray-300 text-lg leading-relaxed max-w-lg">
-    We collaborate with top-tier companies and tools to craft powerful, scalable, and future-ready digital products that redefine quality.
-  </p>
-</motion.div>
+            <p className="text-gray-300 text-lg leading-relaxed max-w-2xl">
+              We collaborate with top-tier companies and tools to craft powerful,
+              scalable, and future-ready digital products that redefine quality.
+            </p>
+          </motion.div>
+
+          {/* 3 ROW LOGO LOOP */}
+          <div className="space-y-10  w-96 -rotate-[55deg]">
+            {/* Row 1 */}
+      
+  <LogoLoop
+    logos={mapLogos(logosRow1)}
+    speed={60}
+    direction="left"
+    logoHeight={70}
+    gap={50}
+    fadeOut
+    fadeOutColor="#000"
+    
+  />
+
+  <LogoLoop
+    logos={mapLogos(logosRow2)}
+    speed={50}
+    direction="right"
+    logoHeight={70}
+    gap={50}
+    fadeOut
+    fadeOutColor="#000"
+  />
+
+  <LogoLoop
+    logos={mapLogos(logosRow3)}
+    speed={55}
+    direction="left"
+    logoHeight={70}
+    gap={50}
+    fadeOut
+    fadeOutColor="#000"
+  />
 
 
-      {/* RIGHT FLOATING NUMBERS */}
-      <>
-        <style>{`
-          @keyframes continuousUp {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-50%); }
-          }
-          @keyframes continuousDown {
-            0% { transform: translateY(-10%); }
-            100% { transform: translateY(50%); }
-          }
-          .move-up { animation: continuousUp 12s linear infinite; }
-          .move-down { animation: continuousDown 12s linear infinite; }
-        `}</style>
-
-{/* RIGHT FLOATING LOGOS */}
-<div className="flex gap-14 rotate-[30deg] w-[60%] select-none justify-end h-96 overflow-hidden">
-  {/* COLUMN 1 → UP */}
-  <div className="h-full overflow-hidden">
-    <div className="move-up flex flex-col gap-8">
-      {[
-        "/logos/logo1.png",
-        "/logos/logo2.png",
-        "/logos/logo3.png",
-        "/logos/logo1.png",
-        "/logos/logo2.png",
-        "/logos/logo3.png",
-        "/logos/logo1.png",
-        "/logos/logo2.png",
-        "/logos/logo3.png",
-      ].map((logo, i) => (
-        <div
-          key={i}
-          className="w-24 h-24 flex items-center justify-center rounded-full bg-white/10 border border-white/20 backdrop-blur-xl shadow-[0_0_25px_rgba(255,255,255,0.15)]"
-        >
-          <img src={logo} alt={`logo-${i}`} className="w-16 h-16 object-contain" />
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-
-  {/* COLUMN 2 → DOWN */}
-  <div className="h-full overflow-hidden">
-    <div className="move-down flex flex-col gap-8">
-      {[
-        "/logos/logo4.png",
-        "/logos/logo5.png",
-        "/logos/logo6.png",
-        "/logos/logo4.png",
-        "/logos/logo5.png",
-        "/logos/logo6.png",
-        "/logos/logo4.png",
-        "/logos/logo5.png",
-        "/logos/logo6.png",
-      ].map((logo, i) => (
-        <div
-          key={i}
-          className="w-24 h-24 flex items-center justify-center rounded-full bg-white/10 border border-white/20 backdrop-blur-xl shadow-[0_0_25px_rgba(255,255,255,0.15)]"
-        >
-          <img src={logo} alt={`logo-${i}`} className="w-16 h-16 object-contain" />
-        </div>
-      ))}
-    </div>
-  </div>
-
-  {/* COLUMN 3 → UP */}
-  <div className="h-full overflow-hidden">
-    <div className="move-up flex flex-col gap-8">
-      {[
-        "/logos/logo7.png",
-        "/logos/logo8.png",
-        "/logos/logo9.png",
-        "/logos/logo7.png",
-        "/logos/logo8.png",
-        "/logos/logo9.png",
-        "/logos/logo7.png",
-        "/logos/logo8.png",
-        "/logos/logo9.png",
-      ].map((logo, i) => (
-        <div
-          key={i}
-          className="w-24 h-24 flex items-center justify-center rounded-full bg-white/10 border border-white/20 backdrop-blur-xl shadow-[0_0_25px_rgba(255,255,255,0.15)]"
-        >
-          <img src={logo} alt={`logo-${i}`} className="w-16 h-16 object-contain" />
-        </div>
-      ))}
-    </div>
-  </div>
-</div>
-
-
-      </>
-    </div>
-  </motion.div>
-</section>
-
+      </motion.div>
+    </section>
 
 
 {/* How Our Partnership Works */}
@@ -296,10 +269,10 @@ export default function TechPartnerPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: index * 0.1 }}
-          className="bg-zinc-900/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-indigo-500/30 transition-colors group"
+          className="bg-zinc-900/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-indigo-500/30 transition-colors group "
         >
-          <div className="flex flex-col items-center gap-6">
-            <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300">
+          <div className="flex flex-col items-left gap-6">
+            <div className=" w-14 p-3 rounded-xl bg-indigo-500/10 text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300">
               <item.icon className="text-3xl" />
             </div>
             <div className="flex flex-col ">

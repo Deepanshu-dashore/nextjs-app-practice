@@ -14,6 +14,7 @@ import {
 import Footer from "../../components/shared/Footer";
 import { servicesData} from "../../data/services";
 import { FaWhatsapp } from "react-icons/fa";
+import LogoLoop from "@/app/components/LogoLoop";
 
 
 export default function ServiceDetailPage() {
@@ -49,8 +50,8 @@ export default function ServiceDetailPage() {
           </div>
         )}
 
-        <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <div className="flex justify-end">
+        <div className="max-w-7xl mx-auto relative z-10 w-full mb-10">
+          {/* <div className="flex justify-end">
           <Link
             href="/services"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-white mb-8 transition-colors group"
@@ -58,14 +59,14 @@ export default function ServiceDetailPage() {
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Services
           </Link>
-</div>
+</div> */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-7xl"
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-3 tracking-tight leading-tight">
               {service.title}
               <span className="text-purple-500">.</span>
             </h1>
@@ -78,13 +79,31 @@ export default function ServiceDetailPage() {
             </p>
 <div className="flex flex-wrap gap-4 items-center">
 
-  {/* Book Call Button */}
-  <Link
-    href="/contact"
-    className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-all hover:scale-105 active:scale-95"
+{/* Book Call Button */}
+<Link
+  href="/contact"
+  className="flex items-center gap-3 px-8 py-4 bg-white text-black font-semibold 
+             rounded-full hover:bg-gray-200 transition-all hover:scale-105 active:scale-95"
+>
+  {/* Call Icon */}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth="1.8"
+    stroke="currentColor"
+    className="w-5 h-5"
   >
-    Book a Project Call
-  </Link>
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M2.25 4.5c0 8.284 6.716 15 15 15h1.125a2.25 2.25 0 0 0 2.121-1.591l.75-2.25a2.25 2.25 0 0 0-1.32-2.832l-3.063-1.021a2.25 2.25 0 0 0-2.342.563l-.97.97a11.25 11.25 0 0 1-4.95-4.95l.97-.97a2.25 2.25 0 0 0 .563-2.342L8.173 3.204A2.25 2.25 0 0 0 5.34 1.883l-2.25.75A2.25 2.25 0 0 0 1.5 4.754V4.5h.75Z"
+    />
+  </svg>
+
+  Book a Project Call
+</Link>
+
 
 {/* WhatsApp FULL Button (Dynamic Message) */}
 <motion.a
@@ -224,94 +243,125 @@ export default function ServiceDetailPage() {
      
 
 {/* Technology Section */}
-<section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-  <div className="text-center mb-12">
-    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4">
-      <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
+<section className="relative py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+
+  {/* Background Parallax Orbs */}
+  <motion.div 
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 0.6 }}
+    transition={{ duration: 1.2 }}
+    className="absolute inset-0 pointer-events-none"
+  >
+    <motion.div 
+      animate={{ y: [0, -40, 0], x: [0, 30, 0] }}
+      transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute top-10 left-10 w-60 h-60 bg-purple-500/20 blur-3xl rounded-full"
+    />
+    <motion.div 
+      animate={{ y: [0, 50, 0], x: [0, -40, 0] }}
+      transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute bottom-20 right-10 w-72 h-72 bg-blue-500/20 blur-3xl rounded-full"
+    />
+  </motion.div>
+
+  <div className="text-center relative z-10 ">
+    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full 
+                    bg-purple-500/10 border border-purple-500/20 mb-4 backdrop-blur-xl">
+      <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
       <span className="text-sm font-medium text-purple-300">Technology</span>
     </div>
 
-    <h3 className="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
-       Tools & Frameworks We Use
-    </h3>
+    <motion.h3
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-4xl font-extrabold text-white 
+      bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text"
+    >
+      Tools & Frameworks We Use
+    </motion.h3>
+
     <p className="text-gray-400 max-w-2xl mx-auto">
       A complete blend of coding and non-coding technologies used in this service.
     </p>
   </div>
+{/* Parallax Grid Wrapper */}
+<motion.div
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ duration: 0.8 }}
+  className="gap-10 relative z-10 space-y-10"
+>
 
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+  {/* TECH SECTION */}
+  <div className="space-y-4">
+    <h2 className="text-xl font-semibold text-white tracking-wide">
+      Tech Technologies
+    </h2>
+    <div className="w-16 h-1 bg-purple-500 rounded-full mb-2"></div>
 
-    {/* LEFT → TECH TECHNOLOGIES */}
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/20 
-                 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg 
-                 hover:shadow-purple-500/20"
-    >
-      <div className="flex items-center gap-4 mb-8">
-        <div className="w-14 h-14 rounded-full bg-purple-500/20 flex items-center justify-center 
-                        transition-transform duration-300 hover:scale-110">
-          <div className="w-3 h-3 rounded-full bg-purple-500 animate-pulse" />
-        </div>
-        <h3 className="text-2xl font-extrabold text-white bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-          Tech Technologies
-        </h3>
-      </div>
-
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {service.technologies?.map((tech, i) => (
-          <div
-            key={i}
-            className="flex items-center gap-2 text-gray-300 p-3 rounded-xl 
-                       hover:bg-purple-500/10 transition-all hover:scale-105 cursor-pointer"
-          >
-            <span className="text-2xl p-2 rounded-full bg-purple-500/20 hover:bg-purple-500/30 transition-colors">
-              {tech.icon}
-            </span>
-            <span className="text-sm font-semibold text-white">{tech.name}</span>
-          </div>
-        ))}
-      </div>
-    </motion.div>
-
-    {/* RIGHT → NON-TECH TECHNOLOGIES */}
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/20 
-                 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg 
-                 hover:shadow-blue-500/20"
-    >
-      <div className="flex items-center gap-4 mb-8">
-        <div className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center 
-                        transition-transform duration-300 hover:scale-110">
-          <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse" />
-        </div>
-        <h3 className="text-2xl font-extrabold text-white bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
-          Non-Tech Technologies
-        </h3>
-      </div>
-
-      <div className="grid grid-cols-2  gap-4">
-        {service.nonTech?.map((item, i) => (
-          <div
-            key={i}
-            className="flex items-center gap-2 text-gray-300 p-3 rounded-xl 
-                       hover:bg-blue-500/10 transition-all hover:scale-105 cursor-pointer"
-          >
-            <span className="text-2xl p-2 rounded-full bg-blue-500/20 hover:bg-blue-500/30 transition-colors">
+    {/* <div className="h-[28dvh] flex items-center 
+      bg-gradient-to-r from-[#0f0f0f] via-[#111827] to-[#0f0f0f]
+      rounded-2xl shadow-xl backdrop-blur-xl border border-white/10 p-4"
+    > */}
+      <LogoLoop
+        logos={service.technologies?.map((item) => ({
+          node: (
+            <div className="flex items-center gap-2 p-8 bg-black/20 rounded-lg">
               {item.icon}
-            </span>
-            <span className="text-sm font-semibold text-white">{item.name}</span>
-          </div>
-        ))}
-      </div>
-    </motion.div>
+              <span className="text-white/90 text-sm font-medium">
+                {item.name}
+              </span>
+            </div>
+          ),
+          title: item.name,
+        }))}
+        speed={40}
+        direction="left"
+        gap={50}
+        logoHeight={50}
+        fadeOut
+        fadeOutColor="#0f0f0f"
+      />
+    </div>
+  {/* </div> */}
 
+  {/* NON-TECH SECTION */}
+  <div className="space-y-4">
+    <h2 className="text-xl font-semibold text-white tracking-wide">
+      Non-Tech Technologies
+    </h2>
+    <div className="w-20 h-1 bg-pink-500 rounded-full mb-2"></div>
+
+    {/* <div className="h-[28dvh] flex items-center 
+      bg-gradient-to-r from-[#0f0f0f] via-[#111827] to-[#0f0f0f]
+      rounded-2xl shadow-xl backdrop-blur-xl border border-white/10 p-4"
+    > */}
+      <LogoLoop
+        logos={service.nonTech?.map((item) => ({
+          node: (
+            <div className="flex items-center gap-2 p-8 bg-black/20 rounded-lg">
+              {item.icon}
+              <span className="text-white/90 text-sm font-medium">
+                {item.name}
+              </span>
+            </div>
+          ),
+          title: item.name,
+        }))}
+        speed={40}
+        direction="right"
+        gap={50}
+        logoHeight={50}
+        fadeOut
+        fadeOutColor="#0f0f0f"
+      />
+    {/* </div> */}
   </div>
+
+</motion.div>
+
+
 </section>
 
 

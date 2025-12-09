@@ -414,12 +414,12 @@ nonTech: [
   },
 ],
 nonTech: [
-  { name: "Business Process Mapping", icon: <SiNotion className="text-black text-[18px]" /> },
+  { name: "Business Process Mapping", icon: <SiNotion className="text-white text-[18px]" /> },
   { name: "Project Management", icon: <SiJirasoftware className="text-[#0052CC] text-[18px]" /> },
   { name: "Workflow Automation", icon: <SiZapier className="text-[#FF4A00] text-[18px]" /> },
   { name: "Cloud Operations", icon: <SiGooglecloud className="text-[#4285F4] text-[18px]" /> },
-  { name: "Team Collaboration", icon: <SiSlack className="text-[#4A154B] text-[18px]" /> },
-  { name: "Documentation Systems", icon: <SiConfluence className="text-[#172B4D] text-[18px]" /> },
+  { name: "Team Collaboration", icon: <SiSlack className="text-[#d433d6] text-[18px]" /> },
+  { name: "Documentation Systems", icon: <SiConfluence className="text-[#2b69d3] text-[18px]" /> },
 ],
 
     keyFeatures: [
