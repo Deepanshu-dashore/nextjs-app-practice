@@ -10,7 +10,7 @@ import {
   FaChartLine,
   FaHeadset,
 } from "react-icons/fa";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import LogoLoop from "../components/LogoLoop";
 import Image from "next/image";
 import logo from "../../public/images/bttraders.png"
@@ -19,6 +19,12 @@ import logo3 from "../../public/images/tranee.jpg"
 import logo4 from "../../public/images/dhani.jpg"
 import logo5 from "../../public/images/nexa.jpg"
 import logo6 from "../../public/images/disport.jpg"
+import img from "@/public/images/avaliblility.jpg";
+import img2 from "@/public/images/clientsatification.jpeg";
+import img3 from "@/public/images/technology.jpg";
+import img4 from "@/public/images/yearofbuildinf.jpg";
+import img5 from "@/public/images/Qualityproduct.jpg";
+
 export default function TechPartnerPage() {
   const [formState, setFormState] = useState({
     name: "",
@@ -41,7 +47,6 @@ export default function TechPartnerPage() {
       [e.target.name]: e.target.value,
     });
   };
- 
 
 const logos = [
   {
@@ -174,7 +179,7 @@ const logos = [
         </div>
       </section>
 {/* Featured Tech Partners */}
-<section className="relative z-20 -mt-12 mb-32 px-6 sm:px-6 lg:px-20 overflow-hidden">
+<section className="relative z-20  bottom-60 px-6 sm:px-6 lg:px-20 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -205,7 +210,7 @@ const logos = [
           </motion.div>
 
           {/* 3 ROW LOGO LOOP */}
-          <div className="space-y-10  w-full absolute -rotate-55  -right-1/3">
+          <div className="space-y-10  w-full absolute -rotate-55  -right-1/4">
             {/* Row 1 */}
       
   <LogoLoop
@@ -467,62 +472,127 @@ const logos = [
         </div>
       </section>
 
-      {/* Partnership Highlights / Stats */}
-      <section className="px-4 sm:px-6 lg:px-20 mb-32 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Why companies choose{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-purple-400">
-                Indidevelopers
-              </span>
-            </h2>
-          </motion.div>
+{/* Partnership Highlights / Stats */}
+<section className="relative py-32 px-4 sm:px-6 lg:px-20">
+  <div className="max-w-7xl mx-auto">
 
-     <div className="flex flex-col gap-8">
-  {[
-    { value: "24/7", label: "Support Availability", img: "" },
-    { value: "98%", label: "Client Satisfaction", img: "" },
-    { value: "25+", label: "Technologies", img: "" },
-    { value: "4+", label: "Years Building Products", img: "" },
-  ].map((stat, index) => (
+    {/* Heading */}
     <motion.div
-      key={index}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      className="text-center p-8 rounded-xl bg-zinc-900/50 border border-white/10 flex justify-between h-[40dvh]"
+      className="text-center mb-20"
     >
-      <div>
-      <h1 className="text-white">{stat.label}</h1>
-      <h5 className="text-gray-400">{stat.value}</h5>
-
-      </div>
-<div className="w-96 h-68 overflow-hidden bg-white/10 rounded-lg flex items-center justify-center">
-  {stat.img ? (
-    <img src={stat.img} alt={stat.label} width={80} height={80} />
-  ) : (
-    <span className="text-gray-500 text-sm">No Image</span>
-  )}
-</div>
-
-
+      <h2 className="text-4xl sm:text-6xl font-extrabold text-white leading-tight">
+        Why companies choose{" "}
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">
+          Indidevelopers
+        </span>
+      </h2>
     </motion.div>
-  ))}
-</div>
 
-        </div>
-      </section>
+    {/* Animated Glow Background */}
+    <div className="absolute inset-0 -z-10">
+      <div className="w-[400px] h-[400px] bg-indigo-500/20 blur-[200px] rounded-full absolute top-10 left-10 animate-pulse" />
+      <div className="w-[300px] h-[300px] bg-purple-500/20 blur-[180px] rounded-full absolute bottom-20 right-10 animate-pulse" />
+    </div>
 
-  
+    {/* Cards Grid */}
+    <div className="grid grid-cols-1 gap-12">
 
-      {/* Application Form Section - Split Layout */}
+      {[
+
+  {
+    value: "24/7",
+    label: "Support Availability",
+    description: "Our team is always available around the clock to assist you anytime.",
+    img:img,
+  },
+  {
+    value: "98%",
+    label: "Client Satisfaction",
+    description: "We consistently maintain one of the highest satisfaction ratings in the industry.",
+    img:img2,
+  },
+  {
+    value: "25+",
+    label: "Technologies",
+    description: "Expertise across 25+ modern and emerging technologies for all project needs.",
+    img:img3,
+  },
+  {
+    value: "4+",
+    label: "Years Building Products",
+    description: "Proven experience delivering reliable digital products for over 4 years.",
+    img:img4,
+  },
+  {
+    value: "Top",
+    label: "Quality Product Delivery",
+      description: "We ensure premium-quality product delivery with zero compromise on standards.",
+      img: img5,
+  },
+
+
+      ].map((stat, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.15, type: "spring", stiffness: 120 }}
+          className="group relative p-10 rounded-3xl
+                     bg-white/5 backdrop-blur-xl
+                     border border-white/10 
+                     hover:border-indigo-500/50
+                     transition-all duration-500
+                     shadow-2xl shadow-black/40
+                     hover:shadow-indigo-500/20 
+                     hover:-translate-y-3
+                     flex justify-between items-center gap-8 h-96"
+        >
+
+          {/* Floating Neon Orb */}
+          <div className="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-500 
+                          rounded-full opacity-20 blur-xl group-hover:opacity-40 transition-all duration-500" />
+
+
+          {/* Text */}
+          <div className="flex  flex-col h-full justify-between ">
+         <div>
+            <p className="text-gray-300 text-xl  ">
+              {stat.label}
+            </p>
+               <h1 className="text-5xl font-extrabold text-white drop-shadow-lg mt-2">
+              {stat.value}
+            </h1>
+            </div>
+               <p className=" text-white drop-shadow-lg mt-2">
+              {stat.description}
+            </p>
+          </div>
+          
+          {/* Icon Container */}
+          <div className="w-[30%] h-full rounded-2xl bg-gradient-to-br  
+                          from-white/10 to-white/5 shadow-inner
+                          border border-white/10 flex items-center justify-center
+                          group-hover:scale-110 transition-all duration-300">
+       
+  <Image
+    src={stat.img}
+    alt={stat.label}
+    className="w-full h-full object-cover overflow-hidden drop-shadow-xl rounded-2xl"
+    width={400}
+    height={400}
+  />
+
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+ {/* Application Form Section - Split Layout */}
       <section id="apply" className="px-4 sm:px-6 lg:px-20 mb-20 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">

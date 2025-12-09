@@ -294,11 +294,11 @@ export default function ServiceDetailPage() {
 >
 
   {/* TECH SECTION */}
-  <div className="space-y-4">
-    <h2 className="text-xl font-semibold text-white tracking-wide">
+  <div className="space-y-2">
+    <h2 className="text-sm  text-white tracking-wide">
       Tech Technologies
     </h2>
-    <div className="w-16 h-1 bg-purple-500 rounded-full mb-2"></div>
+    <div className="w-20 h-0.5 bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full  mb-5"></div>
 
     {/* <div className="h-[28dvh] flex items-center 
       bg-gradient-to-r from-[#0f0f0f] via-[#111827] to-[#0f0f0f]
@@ -307,7 +307,7 @@ export default function ServiceDetailPage() {
       <LogoLoop
         logos={service.technologies?.map((item) => ({
           node: (
-            <div className="flex items-center gap-2 p-8 bg-black/20 rounded-lg">
+            <div className="flex items-center gap-2 p-8 bg-white/5 rounded-lg min-w-48 justify-center">
               {item.icon}
               <span className="text-white/90 text-sm font-medium">
                 {item.name}
@@ -321,17 +321,18 @@ export default function ServiceDetailPage() {
         gap={50}
         logoHeight={50}
         fadeOut
-        fadeOutColor="#0f0f0f"
+        fadeOutColor="#000"
       />
     </div>
   {/* </div> */}
 
   {/* NON-TECH SECTION */}
-  <div className="space-y-4">
-    <h2 className="text-xl font-semibold text-white tracking-wide">
-      Non-Tech Technologies
+  <div className="space-y-2">
+
+  <h2 className="text-sm  text-white tracking-wide">
+   Non-Code Technologies
     </h2>
-    <div className="w-20 h-1 bg-pink-500 rounded-full mb-2"></div>
+    <div className="w-20 h-0.5 bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full  mb-5"></div>
 
     {/* <div className="h-[28dvh] flex items-center 
       bg-gradient-to-r from-[#0f0f0f] via-[#111827] to-[#0f0f0f]
@@ -340,7 +341,7 @@ export default function ServiceDetailPage() {
       <LogoLoop
         logos={service.nonTech?.map((item) => ({
           node: (
-            <div className="flex items-center gap-2 p-8 bg-black/20 rounded-lg">
+            <div className="flex items-center gap-2 p-8 bg-white/5 rounded-lg min-w-48 justify-center">
               {item.icon}
               <span className="text-white/90 text-sm font-medium">
                 {item.name}
@@ -352,9 +353,10 @@ export default function ServiceDetailPage() {
         speed={40}
         direction="right"
         gap={50}
+
         logoHeight={50}
         fadeOut
-        fadeOutColor="#0f0f0f"
+        fadeOutColor="#000"
       />
     {/* </div> */}
   </div>
@@ -391,11 +393,11 @@ export default function ServiceDetailPage() {
             icon={<div className="w-2 h-2 rounded-full bg-blue-500" />}
           />
                <AccordionItem
-            title=" Non-Tech Technologies"
+            title=" Non-Code Technologies"
             content={service.nonTech}
             isList
             isTech
-            icon={<div className="w-2 h-2 rounded-full bg-blue-500" />}
+            icon={<div className="w-2 h-2 rounded-full bg-orange-500" />}
           />
           <AccordionItem
             title="Key Features"
