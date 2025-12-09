@@ -367,24 +367,14 @@ export default function ServiceDetailPage() {
 
 
 
-      {/* Deep Dive Accordion */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
-            <span className="text-sm font-medium text-purple-300">
-              Technical Details
-            </span>
-          </div>
-          <h3 className="text-3xl font-bold text-white mb-3">Deep Dive</h3>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Explore the technical approach, technologies, and outcomes of this
-            service.
-          </p>
-        </div>
+    {/* Deep Dive Accordion */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <h3 className="text-3xl font-bold text-white mb-12 text-center">
+          Deep Dive
+        </h3>
         <div className="space-y-4">
           <AccordionItem
-            title="Business Challenge"
+            title="Problem Statement"
             content={service.problemStatement}
             icon={<div className="w-2 h-2 rounded-full bg-red-500" />}
           />
@@ -393,13 +383,20 @@ export default function ServiceDetailPage() {
             content={service.approach}
             icon={<div className="w-2 h-2 rounded-full bg-green-500" />}
           />
-          {/* <AccordionItem
+          <AccordionItem
             title="Technologies"
             content={service.technologies}
             isList
             isTech
             icon={<div className="w-2 h-2 rounded-full bg-blue-500" />}
-          /> */}
+          />
+               <AccordionItem
+            title=" Non-Tech Technologies"
+            content={service.nonTech}
+            isList
+            isTech
+            icon={<div className="w-2 h-2 rounded-full bg-blue-500" />}
+          />
           <AccordionItem
             title="Key Features"
             content={service.keyFeatures}

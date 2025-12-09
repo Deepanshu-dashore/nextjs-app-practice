@@ -15,6 +15,10 @@ import LogoLoop from "../components/LogoLoop";
 import Image from "next/image";
 import logo from "../../public/images/bttraders.png"
 import logo2 from "../../public/images/logo.jpg"
+import logo3 from "../../public/images/tranee.jpg"
+import logo4 from "../../public/images/dhani.jpg"
+import logo5 from "../../public/images/nexa.jpg"
+import logo6 from "../../public/images/disport.jpg"
 export default function TechPartnerPage() {
   const [formState, setFormState] = useState({
     name: "",
@@ -37,36 +41,59 @@ export default function TechPartnerPage() {
       [e.target.name]: e.target.value,
     });
   };
-    const logosRow1 = [
-    logo,
-   logo2,
-      logo,
-          logo,
-              logo,
-  ];
+ 
 
-  const logosRow2 = [
- logo,
-     logo,
-         logo,
-             logo,
-                 logo,
-  ];
+const logos = [
+  {
+    node: (
+      <div className="bg-white/80 rotate-55 rounded-full h-20 w-20 flex justify-center items-center overflow-hidden">
+        <Image src={logo} alt="logo" width={65} height={65} className="object-contain p-0" />
+      </div>
+    ),
+    title: "logo",
+  },
+  {
+    node: (
+      <div className="bg-white rotate-55 rounded-full h-20 w-20 flex justify-center items-center overflow-hidden">
+        <Image src={logo2} alt="logo" width={65} height={65} className="object-contain p-0" />
+      </div>
+    ),
+    title: "logo",
+  },
+  {
+    node: (
+      <div className="bg-white rotate-55 rounded-full h-20 w-20 flex justify-center items-center overflow-hidden">
+        <Image src={logo3} alt="logo" width={65} height={65} className="object-contain p-0" />
+      </div>
+    ),
+    title: "logo",
+  },
+  {
+    node: (
+      <div className="bg-[#ad5127] rotate-55 rounded-full h-20 w-20 flex justify-center items-center overflow-hidden">
+        <Image src={logo4} alt="logo" width={65} height={65} className="object-contain p-0" />
+      </div>
+    ),
+    title: "logo",
+  },
+  {
+    node: (
+      <div className="bg-white rotate-55 rounded-full h-20 w-20 flex justify-center items-center overflow-hidden">
+        <Image src={logo5} alt="logo" width={65} height={65} className="object-contain p-0" />
+      </div>
+    ),
+    title: "logo",
+  },
+  {
+    node: (
+      <div className="bg-white rotate-55 rounded-full h-20 w-20 flex justify-center items-center overflow-hidden">
+        <Image src={logo6} alt="logo" width={65} height={65} className=" object-contain p-0" />
+      </div>
+    ),
+    title: "logo",
+  }
+];
 
-  const logosRow3 = [
-  logo,
-     logo,
-         logo,
-             logo, 
-                 logo,
-  ];
-
-  // Convert logos into LogoLoop format
-  const mapLogos = (arr) =>
-    arr.map((src) => ({
-      node: <Image src={src} alt="logo" width={65} height={65} />,
-      title: "logo",
-    }));
 
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], ["0%", "50%"]);
@@ -178,14 +205,14 @@ export default function TechPartnerPage() {
           </motion.div>
 
           {/* 3 ROW LOGO LOOP */}
-          <div className="space-y-10  w-96 -rotate-[55deg]">
+          <div className="space-y-10  w-full absolute -rotate-55  -right-1/3">
             {/* Row 1 */}
       
   <LogoLoop
-    logos={mapLogos(logosRow1)}
+    logos={logos}
     speed={60}
     direction="left"
-    logoHeight={70}
+    logoHeight={80}
     gap={50}
     fadeOut
     fadeOutColor="#000"
@@ -193,20 +220,21 @@ export default function TechPartnerPage() {
   />
 
   <LogoLoop
-    logos={mapLogos(logosRow2)}
+    logos={logos.reverse()}
     speed={50}
     direction="right"
-    logoHeight={70}
+
+    logoHeight={80}
     gap={50}
     fadeOut
     fadeOutColor="#000"
   />
 
   <LogoLoop
-    logos={mapLogos(logosRow3)}
+    logos={logos}
     speed={55}
     direction="left"
-    logoHeight={70}
+    logoHeight={80}
     gap={50}
     fadeOut
     fadeOutColor="#000"
@@ -456,29 +484,39 @@ export default function TechPartnerPage() {
             </h2>
           </motion.div>
 
-          <div className="flex flex-col  gap-8 ">
-            {[
-              { value: "24/7", label: "Support Availability" },
-              { value: "98%", label: "Client Satisfaction" },
-              { value: "25+", label: "Technologies" },
-              { value: "4+", label: "Years Building Products" },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center p-8 rounded-xl bg-zinc-900/50 border border-white/10 flex  justify-between h-[40dvh]"
-              >
-                     <div className="text-gray-400">{stat.label}</div>
-                <div className="text-5xl font-bold text-white mb-3">
-                  {stat.value}
-                </div>
-           
-              </motion.div>
-            ))}
-          </div>
+     <div className="flex flex-col gap-8">
+  {[
+    { value: "24/7", label: "Support Availability", img: "" },
+    { value: "98%", label: "Client Satisfaction", img: "" },
+    { value: "25+", label: "Technologies", img: "" },
+    { value: "4+", label: "Years Building Products", img: "" },
+  ].map((stat, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      className="text-center p-8 rounded-xl bg-zinc-900/50 border border-white/10 flex justify-between h-[40dvh]"
+    >
+      <div>
+      <h1 className="text-white">{stat.label}</h1>
+      <h5 className="text-gray-400">{stat.value}</h5>
+
+      </div>
+<div className="w-96 h-68 overflow-hidden bg-white/10 rounded-lg flex items-center justify-center">
+  {stat.img ? (
+    <img src={stat.img} alt={stat.label} width={80} height={80} />
+  ) : (
+    <span className="text-gray-500 text-sm">No Image</span>
+  )}
+</div>
+
+
+    </motion.div>
+  ))}
+</div>
+
         </div>
       </section>
 

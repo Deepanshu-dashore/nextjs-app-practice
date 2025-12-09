@@ -177,22 +177,22 @@ nonTech: [
 
 
     keyFeatures: [
-      "Responsive UI for all devices",
-      "SEO‑ready structure and clean URLs",
-      "Role‑based access and secure authentication",
-      "Integration with CRMs, payment gateways, and analytics",
-      "Reusable component library / design system",
+     { name: "Responsive UI for all devices" },
+      { name: "SEO‑ready structure and clean URLs" },
+      { name: "Role‑based access and secure authentication" },
+      { name: "Integration with CRMs, payment gateways, and analytics" },
+      { name: "Reusable component library / design system" },
     ],
     outcomes: [
-      "Faster page loads and better Core Web Vitals",
-      "Higher conversion and lower bounce on mobile",
-      "Easier content and feature updates for your team",
-      "Codebase ready for future products (dashboards, portals, apps)",
+     { name: "Faster page loads and better Core Web Vitals" },
+      { name: "Higher conversion and lower bounce on mobile" },
+      { name: "Easier content and feature updates for your team" },
+      { name: "Codebase ready for future products (dashboards, portals, apps)" },
     ],
     engagementModel: [
-      "Discovery workshop and scope definition",
-      "Fixed‑scope MVP or ongoing sprint‑based development",
-      "Optional maintenance and performance optimization plan",
+      { name: "Discovery workshop and scope definition" },
+      { name: "Fixed‑scope MVP or ongoing sprint‑based development" },
+      { name: "Optional maintenance and performance optimization plan" },
     ],
 
     // Detail Page Specific
@@ -304,21 +304,21 @@ nonTech: [
 
 
     keyFeatures: [
-      "Cross‑platform Android/iOS builds",
-      "Push notifications and real‑time updates",
-      "Secure login and user profiles",
-      "In‑app forms, payments, and media handling",
-      "Analytics and crash monitoring",
+     {name: "Cross‑platform Android/iOS builds"},
+     {name: "Push notifications and real‑time updates"},
+      {name: "Secure login and user profiles"},
+      {name: "In‑app forms, payments, and media handling"},
+      {name: "Analytics and crash monitoring"},
     ],
     outcomes: [
-      "Single codebase, reduced development and maintenance cost",
-      "Faster release cycles for new features",
-      "Higher user engagement and retention through better UX",
+      {name: "Single codebase, reduced development and maintenance cost"},
+      {name: "Faster release cycles for new features"},
+      {name: "Higher user engagement and retention through better UX"},
     ],
     engagementModel: [
-      "UX prototype → tech architecture → phased delivery",
-      "Regular builds for testing on real devices",
-      "Post‑launch support & store updates",
+      {name: "UX prototype → tech architecture → phased delivery"},
+      {name: "Regular builds for testing on real devices"},
+      {name: "Post‑launch support & store updates"},
     ],
 
     // Detail Page Specific
@@ -423,21 +423,21 @@ nonTech: [
 ],
 
     keyFeatures: [
-      "Central dashboards and role‑based panels",
-      "Inventory, billing, invoicing, and approvals",
-      "GST/invoice logic (for Indian businesses)",
-      "Audit logs and access control",
-      "Custom reports and exports",
+      {name:"Central dashboards and role‑based panels"},
+      {name:"Inventory, billing, invoicing, and approvals"},
+      {name:"GST/invoice logic (for Indian businesses)"},
+      {name:"Audit logs and access control"},
+      {name:"Custom reports and exports"},
     ],
     outcomes: [
-      "Reduced manual work and error rates",
-      "Real‑time visibility into operations",
-      "Faster reporting and decision‑making",
+      {name:"Reduced manual work and error rates"},
+      {name:"Real‑time visibility into operations"},
+      {name:"Faster reporting and decision‑making"},
     ],
     engagementModel: [
-      "Start with 1–2 critical modules, then expand",
-      "Data migration from legacy tools",
-      "Training and documentation for teams",
+      {name:"Start with 1–2 critical modules, then expand"},
+      {name:"Data migration from legacy tools"},
+      {name:"Training and documentation for teams"},
     ],
 
     // Detail Page Specific
@@ -530,21 +530,21 @@ nonTech: [
 ],
 
     keyFeatures: [
-      "User research and persona mapping",
-      "Wireframing and interactive prototypes",
-      "High-fidelity UI design",
-      "Design system creation",
-      "Accessibility compliance (WCAG)",
+     {name: "User research and persona mapping"},
+      {name: "Wireframing and interactive prototypes"},
+      {name: "High-fidelity UI design"},
+      {name: "Design system creation"},
+      {name: "Accessibility compliance (WCAG)"},
     ],
     outcomes: [
-      "Clear user journeys and improved engagement",
-      "Design systems that keep your brand consistent",
-      "Hand‑off ready designs for efficient development",
+      {name: "Clear user journeys and improved engagement"},
+      {name: "Design systems that keep your brand consistent"},
+      {name: "Hand‑off ready designs for efficient development"},
     ],
     engagementModel: [
-      "Design sprint workshops",
-      "Iterative design process",
-      "Developer hand-off support",
+    {name:  "Design sprint workshops"},
+      {name: "Iterative design process"},
+      {name: "Developer hand-off support"},
     ],
 
     // Detail Page Specific
@@ -641,21 +641,21 @@ nonTech: [
 
 
     keyFeatures: [
-      "Technical SEO audits and fixes",
-      "Conversion Rate Optimization (CRO)",
-      "PPC campaign management",
-      "Content strategy and creation",
-      "Performance analytics dashboards",
+     {name: "Technical SEO audits and fixes"},
+      {name: "Conversion Rate Optimization (CRO)"},
+      {name: "PPC campaign management"},
+      {name: "Content strategy and creation"},
+      {name: "Performance analytics dashboards"},
     ],
     outcomes: [
-      "Better visibility and higher‑intent traffic",
-      "Conversion‑focused pages and messaging",
-      "Analytics to understand what actually works",
+     {name: "Better visibility and higher‑intent traffic"},
+      {name: "Conversion‑focused pages and messaging"},
+      {name: "Analytics to understand what actually works"},
     ],
     engagementModel: [
-      "Monthly retainer for growth",
-      "Project-based campaign setup",
-      "Performance-based models",
+     {name: "Monthly retainer for growth"},
+      {name: "Project-based campaign setup"},
+      {name: "Performance-based models"},
     ],
 
     // Detail Page Specific
@@ -759,21 +759,21 @@ nonTech: [
 ],
 
     keyFeatures: [
-      "2D/3D Game Design & Development",
-      "Gamification of apps/websites",
-      "AR/VR experiences",
-      "Multiplayer infrastructure",
-      "Asset optimization",
+     {name: "2D/3D Game Design & Development"},
+      {name: "Gamification of apps/websites"},
+      {name: "AR/VR experiences"},
+      {name: "Multiplayer infrastructure"},
+      {name: "Asset optimization"},
     ],
     outcomes: [
-      "Cross‑platform playable experiences",
-      "Stable performance even on mid‑range devices",
-      "Engaging mechanics that keep users coming back",
+      {name: "Cross‑platform playable experiences"},
+      {name: "Stable performance even on mid‑range devices"},
+      {name: "Engaging mechanics that keep users coming back"},
     ],
     engagementModel: [
-      "Prototype to Production",
-      "Asset creation and integration",
-      "Live ops and updates",
+      {name: "Prototype to Production"},
+      {name: "Asset creation and integration"},
+      {name: "Live ops and updates"},
     ],
 
     // Detail Page Specific
@@ -877,21 +877,21 @@ nonTech: [
 
 
     keyFeatures: [
-      "CI/CD Pipeline Setup",
-      "Automated Testing Frameworks",
-      "Infrastructure as Code (IaC)",
-      "Security Audits & Hardening",
-      "Performance Monitoring",
+   {name: "CI/CD Pipeline Setup"},
+      {name: "Automated Testing Frameworks"},
+      {name: "Infrastructure as Code (IaC)"},
+      {name: "Security Audits & Hardening"},
+      {name: "Performance Monitoring"},
     ],
     outcomes: [
-      "24/7 support options",
-      "Performance optimization and refactoring",
-      "Security reviews and best practices baked in",
+    {name: "24/7 support options"},
+      {name: "Performance optimization and refactoring"},
+      {name: "Security reviews and best practices baked in"},
     ],
     engagementModel: [
-      "Audit and Consulting",
-      "DevOps Implementation",
-      "Ongoing Support Retainer",
+    {name:  "Audit and Consulting"},
+      {name: "DevOps Implementation"},
+      {name: "Ongoing Support Retainer"},
     ],
 
     // Detail Page Specific
