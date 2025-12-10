@@ -24,7 +24,7 @@ import img2 from "@/public/images/clientsatification.jpeg";
 import img3 from "@/public/images/technology.jpg";
 import img4 from "@/public/images/yearofbuildinf.jpg";
 import img5 from "@/public/images/Qualityproduct.jpg";
-
+import techbg from "../../public/images/techbg.jpg"
 export default function TechPartnerPage() {
   const [formState, setFormState] = useState({
     name: "",
@@ -111,9 +111,9 @@ const logos = [
         <motion.div style={{ y }} className="absolute inset-0 z-0">
           <div
             className="absolute inset-0 bg-cover -rotate-180 bg-center bg-100"
-            style={{ backgroundImage: "url('/images/PartnerProgramBg.jpg')" }}
+            style={{ backgroundImage: `url(${techbg.src})` }}
           />
-          <div className="absolute inset-0 bg-black/40 z-10 rotate-180" />
+          <div className="absolute inset-0 bg-black/50 z-10 rotate-180" />
           <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-black/40 z-10" />
           <div className="absolute inset-0 bg-linear-to-r from-black via-transparent to-transparent z-10" />
         </motion.div>
@@ -471,127 +471,124 @@ const logos = [
           </div>
         </div>
       </section>
-
 {/* Partnership Highlights / Stats */}
-<section className="relative py-32 px-4 sm:px-6 lg:px-20">
+<section className="relative py-32 px-4 sm:px-6 lg:px-20 overflow-hidden">
   <div className="max-w-7xl mx-auto">
+
+    {/* Background Gradient Lights */}
+    <div className="absolute inset-0 -z-10">
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-indigo-500/30 to-purple-500/30 blur-[160px]" />
+      <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-gradient-to-tr from-purple-600/30 to-pink-500/30 blur-[150px]" />
+    </div>
 
     {/* Heading */}
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
       className="text-center mb-20"
     >
-      <h2 className="text-4xl sm:text-6xl font-extrabold text-white leading-tight">
+      <h2 className="text-5xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
         Why companies choose{" "}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300">
           Indidevelopers
         </span>
       </h2>
+      <p className="text-lg text-white/70 mt-4 max-w-2xl mx-auto">
+        Premium-quality digital solutions backed by expert teams and top-tier client satisfaction.
+      </p>
     </motion.div>
 
-    {/* Animated Glow Background */}
-    <div className="absolute inset-0 -z-10">
-      <div className="w-[400px] h-[400px] bg-indigo-500/20 blur-[200px] rounded-full absolute top-10 left-10 animate-pulse" />
-      <div className="w-[300px] h-[300px] bg-purple-500/20 blur-[180px] rounded-full absolute bottom-20 right-10 animate-pulse" />
-    </div>
-
     {/* Cards Grid */}
-    <div className="grid grid-cols-1 gap-12">
+    <div className="grid md:grid-cols-2 gap-14">
 
       {[
-
-  {
-    value: "24/7",
-    label: "Support Availability",
-    description: "Our team is always available around the clock to assist you anytime.",
-    img:img,
-  },
-  {
-    value: "98%",
-    label: "Client Satisfaction",
-    description: "We consistently maintain one of the highest satisfaction ratings in the industry.",
-    img:img2,
-  },
-  {
-    value: "25+",
-    label: "Technologies",
-    description: "Expertise across 25+ modern and emerging technologies for all project needs.",
-    img:img3,
-  },
-  {
-    value: "4+",
-    label: "Years Building Products",
-    description: "Proven experience delivering reliable digital products for over 4 years.",
-    img:img4,
-  },
-  {
-    value: "Top",
-    label: "Quality Product Delivery",
-      description: "We ensure premium-quality product delivery with zero compromise on standards.",
-      img: img5,
-  },
-
-
+        {
+          value: "24/7",
+          label: "Support Availability",
+          description: "Dedicated support team available anytime you need assistance.",
+          img: img,
+        },
+        {
+          value: "98%",
+          label: "Client Satisfaction",
+          description: "We maintain an industry-leading satisfaction rate.",
+          img: img2,
+        },
+        {
+          value: "25+",
+          label: "Technologies",
+          description: "Expertise across all modern and emerging technologies.",
+          img: img3,
+        },
+        {
+          value: "4+",
+          label: "Years Experience",
+          description: "Delivering successful digital products for over 4 years.",
+          img: img4,
+        },
+        {
+          value: "Top",
+          label: "Quality Delivery",
+          description: "Zero-compromise delivery with premium development standards.",
+          img: img5,
+        },
       ].map((stat, index) => (
         <motion.div
           key={index}
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: index * 0.15, type: "spring", stiffness: 120 }}
-          className="group relative p-10 rounded-3xl
-                     bg-white/5 backdrop-blur-xl
-                     border border-white/10 
-                     hover:border-indigo-500/50
+          transition={{ delay: index * 0.12, type: "spring", stiffness: 120 }}
+          className="group relative p-10 rounded-3xl 
+                     bg-white/10 backdrop-blur-2xl 
+                     border border-white/20 
+                     hover:border-indigo-400/40 
+                     hover:shadow-[0_0_50px_-10px_rgba(145,95,255,0.4)]
                      transition-all duration-500
-                     shadow-2xl shadow-black/40
-                     hover:shadow-indigo-500/20 
-                     hover:-translate-y-3
-                     flex justify-between items-center gap-8 h-96"
+                     flex justify-between items-center gap-10 h-64"
         >
 
-          {/* Floating Neon Orb */}
-          <div className="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-500 
-                          rounded-full opacity-20 blur-xl group-hover:opacity-40 transition-all duration-500" />
+          {/* Soft Gradient Orb */}
+          <div className="absolute -top-8 -right-8 w-28 h-28 bg-gradient-to-br 
+                          from-indigo-400/50 to-purple-400/50 
+                          rounded-full blur-2xl opacity-30 
+                          group-hover:opacity-60 transition-all duration-500" />
 
-
-          {/* Text */}
-          <div className="flex  flex-col h-full justify-between ">
-         <div>
-            <p className="text-gray-300 text-xl  ">
-              {stat.label}
-            </p>
-               <h1 className="text-5xl font-extrabold text-white drop-shadow-lg mt-2">
-              {stat.value}
-            </h1>
+          {/* Text Section */}
+          <div className="flex flex-col h-full justify-between">
+            <div>
+              <p className="text-white/80 text-lg">{stat.label}</p>
+              <h1 className="text-5xl font-extrabold text-white mt-2 drop-shadow-md">
+                {stat.value}
+              </h1>
             </div>
-               <p className=" text-white drop-shadow-lg mt-2">
+            <p className="text-white/70 text-sm leading-relaxed">
               {stat.description}
             </p>
           </div>
-          
-          {/* Icon Container */}
-          <div className="w-[30%] h-full rounded-2xl bg-gradient-to-br  
-                          from-white/10 to-white/5 shadow-inner
-                          border border-white/10 flex items-center justify-center
-                          group-hover:scale-110 transition-all duration-300">
-       
-  <Image
-    src={stat.img}
-    alt={stat.label}
-    className="w-full h-full object-cover overflow-hidden drop-shadow-xl rounded-2xl"
-    width={400}
-    height={400}
-  />
 
+          {/* Image Card */}
+          <div className="w-[32%] h-full rounded-2xl bg-white/10 border border-white/20 
+                          group-hover:scale-110 transition-transform duration-500
+                          overflow-hidden flex items-center justify-center">
+            <Image
+              src={stat.img}
+              alt={stat.label}
+              className="w-full h-full object-cover rounded-2xl"
+              width={400}
+              height={400}
+            />
           </div>
+
         </motion.div>
       ))}
     </div>
+
   </div>
 </section>
+
  {/* Application Form Section - Split Layout */}
       <section id="apply" className="px-4 sm:px-6 lg:px-20 mb-20 relative z-10">
         <div className="max-w-7xl mx-auto">
