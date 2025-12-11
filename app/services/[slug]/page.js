@@ -294,7 +294,7 @@ export default function ServiceDetailPage() {
 >
 
   {/* TECH SECTION */}
-  <div className="space-y-2">
+  <div className="space-y-2 flex justify-center items-center flex-col mt-5">
     <h2 className="text-sm  text-white tracking-wide">
       Tech Technologies
     </h2>
@@ -327,7 +327,7 @@ export default function ServiceDetailPage() {
   {/* </div> */}
 
   {/* NON-TECH SECTION */}
-  <div className="space-y-2">
+  <div className="space-y-2 flex justify-center items-center flex-col mt-5">
 
   <h2 className="text-sm  text-white tracking-wide">
    Non-Code Technologies

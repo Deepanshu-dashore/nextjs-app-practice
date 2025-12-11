@@ -28,6 +28,7 @@ import LandingPage from "./components/shared/landingPage";
 import { useState, useEffect } from "react";
 import FeaturedCaseStudies from "./components/home/FeaturedCaseStudies";
 import TechPartnerSection from "./components/home/TechPartnerSection";
+import TechnologySection from "./components/home/Technologysection";
 
 const services = [
   // App Development with multiple tech logos
@@ -192,6 +193,7 @@ export default function Home() {
           />
           <WhyChooseUs />
           <ServicesBentoSection />
+            <TechnologySection/>
           <FeaturedCaseStudies />
           <TechPartnerSection />
           <InsightsSection />
