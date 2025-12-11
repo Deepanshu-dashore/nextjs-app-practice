@@ -24,7 +24,9 @@ import img2 from "@/public/images/clientsatification.jpeg";
 import img3 from "@/public/images/technology.jpg";
 import img4 from "@/public/images/yearofbuildinf.jpg";
 import img5 from "@/public/images/Qualityproduct.jpg";
-import techbg from "../../public/images/techbg.jpg"
+// import techbg from "../../public/images/bgvideo.mp4"
+import techbg from "../../public/images/services-hero-wave.png"
+
 export default function TechPartnerPage() {
   const [formState, setFormState] = useState({
     name: "",
@@ -117,6 +119,7 @@ const logos = [
           <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-black/40 z-10" />
           <div className="absolute inset-0 bg-linear-to-r from-black via-transparent to-transparent z-10" />
         </motion.div>
+     
 
         <div className="relative z-20 w-full mx-auto px-4 sm:px-6 lg:px-28 text-left">
           <motion.div
@@ -471,123 +474,101 @@ const logos = [
           </div>
         </div>
       </section>
-{/* Partnership Highlights / Stats */}
+{/* Partnership Highlights / Stats - Updated Layout Like Reference */}
+
 <section className="relative py-32 px-4 sm:px-6 lg:px-20 overflow-hidden">
-  <div className="max-w-7xl mx-auto">
+  <div className="max-w-90dvh mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
 
-    {/* Background Gradient Lights */}
-    <div className="absolute inset-0 -z-10">
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-indigo-500/30 to-purple-500/30 blur-[160px]" />
-      <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-gradient-to-tr from-purple-600/30 to-pink-500/30 blur-[150px]" />
+    {/* LEFT SIDE */}
+    <div className="flex flex-col justify-start w-[30dvw ]">
+       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full w-32 h-10
+                    bg-purple-500/10 border border-purple-500/20 mb-4 backdrop-blur-xl">
+      <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+      <span className="text-sm font-medium text-purple-300">Technology</span>
     </div>
-
-    {/* Heading */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="text-center mb-20"
-    >
-      <h2 className="text-5xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
+      <h2 className="text-5xl  font-bold text-white leading-tight">
         Why companies choose{" "}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
           Indidevelopers
         </span>
       </h2>
-      <p className="text-lg text-white/70 mt-4 max-w-2xl mx-auto">
+
+      <p className="text-lg text-white/70 mt-6 max-w-md">
         Premium-quality digital solutions backed by expert teams and top-tier client satisfaction.
       </p>
-    </motion.div>
-
-    {/* Cards Grid */}
-    <div className="grid md:grid-cols-2 gap-14">
-
-      {[
-        {
-          value: "24/7",
-          label: "Support Availability",
-          description: "Dedicated support team available anytime you need assistance.",
-          img: img,
-        },
-        {
-          value: "98%",
-          label: "Client Satisfaction",
-          description: "We maintain an industry-leading satisfaction rate.",
-          img: img2,
-        },
-        {
-          value: "25+",
-          label: "Technologies",
-          description: "Expertise across all modern and emerging technologies.",
-          img: img3,
-        },
-        {
-          value: "4+",
-          label: "Years Experience",
-          description: "Delivering successful digital products for over 4 years.",
-          img: img4,
-        },
-        {
-          value: "Top",
-          label: "Quality Delivery",
-          description: "Zero-compromise delivery with premium development standards.",
-          img: img5,
-        },
-      ].map((stat, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: index * 0.12, type: "spring", stiffness: 120 }}
-          className="group relative p-10 rounded-3xl 
-                     bg-white/10 backdrop-blur-2xl 
-                     border border-white/20 
-                     hover:border-indigo-400/40 
-                     hover:shadow-[0_0_50px_-10px_rgba(145,95,255,0.4)]
-                     transition-all duration-500
-                     flex justify-between items-center gap-10 h-64"
-        >
-
-          {/* Soft Gradient Orb */}
-          <div className="absolute -top-8 -right-8 w-28 h-28 bg-gradient-to-br 
-                          from-indigo-400/50 to-purple-400/50 
-                          rounded-full blur-2xl opacity-30 
-                          group-hover:opacity-60 transition-all duration-500" />
-
-          {/* Text Section */}
-          <div className="flex flex-col h-full justify-between">
-            <div>
-              <p className="text-white/80 text-lg">{stat.label}</p>
-              <h1 className="text-5xl font-extrabold text-white mt-2 drop-shadow-md">
-                {stat.value}
-              </h1>
-            </div>
-            <p className="text-white/70 text-sm leading-relaxed">
-              {stat.description}
-            </p>
-          </div>
-
-          {/* Image Card */}
-          <div className="w-[32%] h-full rounded-2xl bg-white/10 border border-white/20 
-                          group-hover:scale-110 transition-transform duration-500
-                          overflow-hidden flex items-center justify-center">
-            <Image
-              src={stat.img}
-              alt={stat.label}
-              className="w-full h-full object-cover rounded-2xl"
-              width={400}
-              height={400}
-            />
-          </div>
-
-        </motion.div>
-      ))}
     </div>
+
+{/* RIGHT SIDE */} 
+<div className="grid grid-cols-2 gap-10  w-[50vw]">
+
+  {[
+    {
+      value: "24/7",
+      label: "Support Availability",
+      description:
+        "Dedicated support team available anytime you need assistance.",
+      img: img,
+    },
+    {
+      value: "98%",
+      label: "Client Satisfaction",
+      description: "We maintain an industry-leading satisfaction rate.",
+      img: img2,
+    },
+    {
+      value: "25+",
+      label: "Technologies",
+      description:
+        "Expertise across all modern and emerging technologies.",
+      img: img3,
+    },
+    {
+      value: "4+",
+      label: "Years Experience",
+      description:
+        "Delivering successful digital products for over 4 years.",
+      img: img4,
+    },
+  ].map((stat, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      className="
+        flex flex-col gap-3 
+        p-6 
+        w-80
+        bg-white/5 
+        border border-white/10 
+        backdrop-blur-sm
+        rounded-2xl
+        hover:bg-white/10
+        hover:border-white/20
+        transition-all
+      "
+    >
+
+      {/* VALUE */}
+      <h1 className="text-4xl font-extrabold text-white">{stat.value}</h1>
+
+      {/* LABEL */}
+      <p className="text-white/90 text-lg font-semibold">
+        {stat.label}
+      </p>
+
+      {/* DESCRIPTION */}
+      <p className="text-white/60 text-sm leading-relaxed">
+        {stat.description}
+      </p>
+    </motion.div>
+  ))}
+</div>
 
   </div>
 </section>
+
 
  {/* Application Form Section - Split Layout */}
       <section id="apply" className="px-4 sm:px-6 lg:px-20 mb-20 relative z-10">

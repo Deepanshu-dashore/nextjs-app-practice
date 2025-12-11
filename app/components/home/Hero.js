@@ -33,9 +33,10 @@ function Hero() {
         </h1>
 
         {/* Subheadline/Description */}
-        <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light tracking-wide">
-          Driven By Trust, Defined By Quality
-        </p>
+   <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light tracking-wide italic">
+  Driven By Trust, Defined By Quality
+</p>
+
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">

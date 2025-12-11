@@ -194,10 +194,11 @@ export default function Home() {
           <WhyChooseUs />
           <ServicesBentoSection />
             <TechnologySection/>
-          <FeaturedCaseStudies />
+          {/* <FeaturedCaseStudies /> */}
           <TechPartnerSection />
+            <ReviewsSection />
           <InsightsSection />
-          <ReviewsSection />
+        
           <CTASection />
           <Footer />
           <FloatingWhatsApp />

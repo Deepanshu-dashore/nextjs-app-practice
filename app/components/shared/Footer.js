@@ -225,7 +225,7 @@ navigation: [
         </div>
 
         {/* Marquee Animation - Half Cut at Bottom */}
-        <div className="mt-12 overflow-hidden h-[100px] md:h-[130px] lg:h-[160px] flex items-start justify-center select-none">
+        {/* <div className="mt-12 overflow-hidden h-[100px] md:h-[130px] lg:h-[160px] flex items-start justify-center select-none">
           <motion.div
             animate={{ x: [0, -2000] }}
             transition={{
@@ -246,7 +246,7 @@ navigation: [
               </div>
             ))}
           </motion.div>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
