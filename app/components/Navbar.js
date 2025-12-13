@@ -29,7 +29,7 @@ function Navbar() {
       ],
     },
 
-    { name: "Our Portfolio", href: "/portfolio" },
+    { name: "Our Project", href: "/projects" },
     { name: "Blog", href: "/blog" },
     { name: "Careers", href: "/careers" },
   ];

@@ -126,7 +126,7 @@ export default function TechnologySection() {
               logos={(servicesData[0]?.technologies ?? []).map(item => ({
                 node: (
               <div className="flex flex-col items-center gap-4 p-8 bg-white/5 backdrop-blur-md border border-white/20 rounded-xl w-56 h-36 justify-center hover:bg-purple-500/20 transition-all duration-300">
- <div><h1 className="text-[50px]  p-5 rounded-full  bg-white/5">{item.icon}</h1></div>
+ <div><h1 className="text-8xl  p-5 rounded-full  bg-white/5">{item.icon}</h1></div>
                     <span className="text-white/90 text-sm font-medium text-center">{item.name}</span>
                   </div>
                 ),
@@ -148,7 +148,7 @@ export default function TechnologySection() {
                 node: (
                  <div className="flex flex-col items-center gap-4 p-8 bg-white/5 backdrop-blur-md border border-white/20 rounded-xl w-56 h-36 justify-center hover:bg-purple-500/20 transition-all duration-300">
    <div>
-    <h1 className="text-[6rem] p-5 rounded-full  bg-white/5">{item.icon}</h1></div>
+    <h1 className="text-8xl p-5 rounded-full  bg-white/5">{item.icon}</h1></div>
                     <span className="text-white/90 text-sm font-medium text-center">{item.name}</span>
                   </div>
                 ),
