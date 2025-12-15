@@ -221,10 +221,11 @@
 //     </section>
 //   );
 // }
+
 "use client";
 import { motion } from "motion/react";
 import { FaLightbulb, FaArrowRight } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const blogPosts = [
@@ -285,6 +286,16 @@ export default function InsightsSection() {
       prev === blogPosts.length - 1 ? 0 : prev + 1
     );
   };
+  const AUTO_SCROLL_DELAY = 4000; // 4 seconds
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    nextSlide();
+  }, AUTO_SCROLL_DELAY);
+
+  return () => clearInterval(interval);
+}, []);
+
 
   return (
     <section className="relative py-20 bg-black overflow-hidden">
