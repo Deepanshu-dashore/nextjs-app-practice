@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { collection, getDocs, query, where, limit } from "firebase/firestore";
 import { db } from "@/app/firebase";
 import Link from "next/link";
+import Footer from "@/app/components/shared/Footer";
 
 export default function BlogDetailPage() {
   const { slug } = useParams();
@@ -99,6 +100,7 @@ export default function BlogDetailPage() {
   </section>
 
 </div>
+<Footer/>
     </>
   );
 }

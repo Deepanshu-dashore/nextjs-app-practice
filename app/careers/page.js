@@ -176,7 +176,7 @@ const handleSubmit = async (e, opportunityTitle) => {
   
       <section
   ref={heroRef}
-  className="relative h-[100dvh] overflow-hidden"
+  className="relative h-[96dvh] overflow-hidden"
 >
   {/* FIXED-LIKE BACKGROUND */}
   <motion.div
@@ -187,8 +187,9 @@ const handleSubmit = async (e, opportunityTitle) => {
       className="absolute inset-0 bg-cover bg-center scale-110"
       style={{
         backgroundImage:
-          "url('https://t4.ftcdn.net/jpg/07/54/80/09/360_F_754800974_CXB9YRXM2ItqqUoEYouZnzctO9BTQhSv.jpg')",
+          "url('https://img.freepik.com/free-photo/flat-lay-desktop-with-agenda-succulent-plant_23-2148430892.jpg?semt=ais_hybrid)",
       }}
+      //https://t4.ftcdn.net/jpg/07/54/80/09/360_F_754800974_CXB9YRXM2ItqqUoEYouZnzctO9BTQhSv.jpg
     />
     <div className="absolute inset-0 bg-black/40" />
   </motion.div>
