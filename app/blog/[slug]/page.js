@@ -32,8 +32,10 @@ export default function BlogDetailPage() {
   const description = blog.content.replace(/<[^>]+>/g, "").substring(0, 160);
 
   return (
+    
     <>
-      <head>
+   
+   <head>
         <title>{title} | Indidevelopers</title>
         <meta name="description" content={description} />
         <meta property="og:title" content={title} />
@@ -41,7 +43,6 @@ export default function BlogDetailPage() {
         <meta property="og:image" content={blog.coverImageUrl || "/no-image.png"} />
         <meta name="twitter:card" content="summary_large_image" />
       </head>
-
     <div className="bg-black text-white min-h-screen">
 
    {/* ================= HERO SECTION ================= */}

@@ -186,7 +186,9 @@ const handleSubmit = async (e, opportunityTitle) => {
     <div
       className="absolute inset-0 bg-cover bg-center scale-110"
       style={{
+        backgroundAttachment:"fixed",
         backgroundImage:
+
           "url('https://img.freepik.com/free-photo/flat-lay-desktop-with-agenda-succulent-plant_23-2148430892.jpg?semt=ais_hybrid)",
       }}
       //https://t4.ftcdn.net/jpg/07/54/80/09/360_F_754800974_CXB9YRXM2ItqqUoEYouZnzctO9BTQhSv.jpg
