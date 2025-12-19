@@ -98,7 +98,7 @@ export default function OurProjects() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-4xl font-extrabold text-white 
+        className="text-5xl font-extrabold text-white 
         bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text"
       >
   
@@ -250,7 +250,7 @@ export default function OurProjects() {
       </h2>
 
       {/* Description */}
-      <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-10">
+      <p className="text-gray-300 text-lg md:text-xl max-w-5xl mx-auto leading-relaxed mb-10">
         Let’s turn your ideas into powerful, scalable solutions. Our team is here to guide your project from concept to launch, delivering impactful digital solutions tailored to your needs.
       </p>
 
