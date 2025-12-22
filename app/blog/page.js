@@ -24,7 +24,8 @@ export default function BlogPage() {
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
+const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "0%"]);
   useEffect(() => {
     fetchBlogs();
   }, []);
@@ -83,29 +84,26 @@ export default function BlogPage() {
         ref={heroRef}
         className="relative h-dvh overflow-hidden"
       >
-        {/* Background Image */}
-        <motion.div
-          // style={{ y }}
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundAttachment:"fixed",
-            backgroundImage:
-              "url('/images/blogherobg.jpg')",
-          }}
-        />
 
-        {/* Overlays */}
-        <motion.div
-          style={{ opacity }}
-          className="absolute inset-0"
-        >
-          {/* <div className="absolute inset-0 bg-black/50" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" /> */}
-            <div className="absolute inset-0 bg-black/50 z-10 rotate-180" />
-          <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-black/40 z-10" />
-          <div className="absolute inset-0 bg-linear-to-r from-black via-transparent to-transparent z-10" />
-        </motion.div>
+          {/* FIXED-LIKE BACKGROUND */}
+  <motion.div
+    className="absolute inset-0 will-change-transform"
+    style={{ y: bgY }}
+  >
+    <div
+      className="absolute inset-0 bg-cover bg-center"
+      style={{
+        backgroundAttachment:"fixed",
+        backgroundImage:
+
+          "url('/images/blogherobg.jpg')",
+      }}
+      //https://t4.ftcdn.net/jpg/07/54/80/09/360_F_754800974_CXB9YRXM2ItqqUoEYouZnzctO9BTQhSv.jpg
+    />
+    <div className="absolute inset-0 bg-black/50" />
+    
+  </motion.div>
+
 
         {/* Content */}
         <div className="relative z-10 flex h-full items-center">
@@ -138,7 +136,7 @@ export default function BlogPage() {
 
    {/* ================= BLOG GRID ================= */}
 <section className="relative bg-black">
-  <div className=" mx-auto py-20 w-[90dvw] h-[100dvh] ">
+  <div className=" mx-auto py-20 w-[90dvw] h-full ">
     {blogs.length === 0 ? (
       <p className="text-gray-400">No published blogs found.</p>
     ) : (
@@ -148,10 +146,11 @@ export default function BlogPage() {
           <Link
             key={blog.id}
             href={`/blog/${blog.titleSlug}`}
-            className="group relative rounded-3xl p-4 border border-white/20 hover:border-yellow-500/40 transition"
+            className="group relative rounded-3xl p-4 border border-white/20 hover:border-blue-500/40 transition"
           >
             {/* Card */}
-            <div className="h-full rounded-3xl bg-[#0b0b0b] overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.05)] group-hover:shadow-[0_0_60px_rgba(255,193,7,0.25)] transition-all duration-300">
+            <div className="h-full rounded-3xl bg-[#0b0b0b] overflow-hidden    shadow-[0_0_40px_rgba(255,255,255,0.05)] 
+    group-hover:shadow-[0_0_60px_rgba(59,130,246,0.35)]  transition-all duration-300">
 
               {/* Image */}
               <div className="relative h-60 overflow-hidden">
@@ -172,7 +171,7 @@ export default function BlogPage() {
                 <div className="h-px w-full bg-white/20 mb-5" />
 
                 {/* Read More */}
-                <div className="flex items-center gap-2 text-gray-300 text-sm group-hover:text-yellow-400 transition">
+                <div className="flex items-center gap-2 text-gray-300 text-sm group-hover:text-blue-400 transition">
               
                   <span>Read More...</span>
                 </div>
