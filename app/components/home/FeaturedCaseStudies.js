@@ -301,7 +301,7 @@ export default function FeaturedCaseStudies() {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/50 " />
         </div>
       </div>
     </section>

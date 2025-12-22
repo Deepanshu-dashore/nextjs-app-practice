@@ -135,7 +135,8 @@ const logos = [
             </div>
            <div className="h-px flex-1 max-w-sm bg-linear-to-r from-white/60 to-transparent" />
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-tight max-w-5xl">
-              Tech Partner      <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-purple-400 to-pink-400"> Program</span>
+              Tech Partner     
+               <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-purple-400 to-pink-400"> Program</span>
             </h1>
 
             <h2 className="text-2xl sm:text-3xl text-gray-200 font-medium mb-6 max-w-4xl leading-snug">

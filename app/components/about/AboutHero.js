@@ -41,7 +41,6 @@ export default function AboutHero() {
             </span>
           
           </motion.div>
-  <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-white/60 to-transparent" />
           {/* Main Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
