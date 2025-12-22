@@ -213,10 +213,9 @@ export default function OurProjects() {
 
 
 {/* -------------- CTA PARALLAX SECTION -------------- */}
-{/* -------------- CTA PARALLAX SECTION -------------- */}
 <div
   className="relative bg-fixed bg-cover bg-center py-32 px-6"
-  style={{ backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoDLInyNK7tXN4rlBRbtXQvmiXg-0YWuwXIg&s')" }}
+  style={{ backgroundImage: "url('/images/ctabg.jpeg')" }}
 >
   {/* Dark overlay + gradient for contrast */}
   <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90 backdrop-blur-sm shadow-inner"></div>
