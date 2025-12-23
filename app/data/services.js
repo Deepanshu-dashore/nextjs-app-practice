@@ -112,67 +112,81 @@ export const servicesData = [
       "Many businesses struggle with slow, outdated websites that don’t convert visitors, fail on mobile, and are hard to maintain. Teams often spend more time fixing bugs than shipping new features.",
     approach:
       "We start with your goals: lead generation, sales, internal tools, or brand presence. Then we choose the right stack, design a clear information architecture, and build modular components so your site stays fast and easy to extend.",
-  technologies:  [
+technologies: [
   {
     name: "React",
-    icon: <SiReact className="text-[#61DAFB] text-[18px]" />,
+    icon: <SiReact className="text-[#61DAFB]" />,
+    glowColor: "#61DAFB",
   },
   {
     name: "Next.js",
-    icon: <SiNextdotjs className="text-white text-[18px]" />,
+    icon: <SiNextdotjs className="text-white" />,
+    glowColor: "#ffffff",
   },
   {
     name: "Node.js",
-    icon: <SiNodedotjs className="text-[#3C873A] text-[18px]" />,
+    icon: <SiNodedotjs className="text-[#3C873A]" />,
+    glowColor: "#3C873A",
   },
   {
     name: "Express",
-    icon: <SiExpress className="text-white text-[18px]" />,
+    icon: <SiExpress className="text-white" />,
+    glowColor: "#9CA3AF", // soft gray glow
   },
   {
     name: "TypeScript",
-    icon: <SiTypescript className="text-[#3178C6] text-[18px]" />,
+    icon: <SiTypescript className="text-[#3178C6]" />,
+    glowColor: "#3178C6",
   },
   {
     name: "Tailwind CSS",
-    icon: <SiTailwindcss className="text-[#38BDF8] text-[18px]" />,
+    icon: <SiTailwindcss className="text-[#38BDF8]" />,
+    glowColor: "#38BDF8",
   },
   {
     name: "REST API",
-    icon: <SiPostman className="text-[#FF6C37] text-[18px]" />,
+    icon: <SiPostman className="text-[#FF6C37]" />,
+    glowColor: "#FF6C37",
   },
   {
     name: "GraphQL",
-    icon: <SiGraphql className="text-[#E10098] text-[18px]" />,
+    icon: <SiGraphql className="text-[#E10098]" />,
+    glowColor: "#E10098",
   },
   {
     name: "MongoDB",
-    icon: <SiMongodb className="text-[#47A248] text-[18px]" />,
+    icon: <SiMongodb className="text-[#47A248]" />,
+    glowColor: "#47A248",
   },
   {
     name: "PostgreSQL",
-    icon: <SiPostgresql className="text-[#336791] text-[18px]" />,
+    icon: <SiPostgresql className="text-[#336791]" />,
+    glowColor: "#336791",
   },
   {
     name: "Vercel",
-    icon: <SiVercel className="text-white text-[18px]" />,
+    icon: <SiVercel className="text-white" />,
+    glowColor: "#ffffff",
   },
   {
     name: "Render",
-    icon: <SiRender className="text-[#46E3B7] text-[18px]" />,
+    icon: <SiRender className="text-[#46E3B7]" />,
+    glowColor: "#46E3B7",
   },
   {
     name: "AWS",
-    icon: <SiAmazonwebservices className="text-[#FF9900] text-[18px]" />,
+    icon: <SiAmazonwebservices className="text-[#FF9900]" />,
+    glowColor: "#FF9900",
   },
 ],
+
 nonTech: [
-  { name: "SEO Optimization", icon: <SiYoast className="text-[#A4373A] text-[18px]" /> },
-  { name: "Google Analytics", icon: <SiGoogleanalytics className="text-[#F9AB00] text-[18px]" /> },
-  { name: "Content Strategy", icon: <SiNotion className="text-white text-[18px]" /> },
-  { name: "Site Performance Testing", icon: <SiLighthouse className="text-[#0CB6F5] text-[18px]" /> },
-  { name: "Website Accessibility", icon: <SiW3Schools className="text-[#005A9C] text-[18px]" /> },
-  { name: "CMS Management", icon: <SiWordpress className="text-[#21759B] text-[18px]" /> },
+  { name: "SEO Optimization", icon: <SiYoast className="text-[#A4373A] " /> },
+  { name: "Google Analytics", icon: <SiGoogleanalytics className="text-[#F9AB00] " /> },
+  { name: "Content Strategy", icon: <SiNotion className="text-white " /> },
+  { name: "Site Performance Testing", icon: <SiLighthouse className="text-[#0CB6F5] " /> },
+  { name: "Website Accessibility", icon: <SiW3Schools className="text-[#005A9C] " /> },
+  { name: "CMS Management", icon: <SiWordpress className="text-[#21759B] " /> },
 ],
 
 
@@ -254,52 +268,62 @@ nonTech: [
       "We design once around your core flows, then implement cross‑platform apps using React Native / Flutter and a shared backend, focusing on performance, security, and offline‑ready experiences where needed.",
 
 
- technologies : [
+technologies: [
   {
     name: "React Native",
-    icon: <SiReact className="text-[#61DAFB] text-[18px]" />,
+    icon: <SiReact className="text-[#61DAFB]" />,
+    glowColor: "#61DAFB",
   },
   {
     name: "Flutter",
-    icon: <SiFlutter className="text-[#02569B] text-[18px]" />,
+    icon: <SiFlutter className="text-[#02569B]" />,
+    glowColor: "#4DD0E1", // soft cyan-blue glow
   },
   {
     name: "Expo",
-    icon: <SiExpo className="text-white text-[18px]" />,
+    icon: <SiExpo className="text-white" />,
+    glowColor: "#ffffff",
   },
   {
     name: "Node.js",
-    icon: <SiNodedotjs className="text-[#3C873A] text-[18px]" />,
+    icon: <SiNodedotjs className="text-[#3C873A]" />,
+    glowColor: "#3C873A",
   },
   {
     name: "Express",
-    icon: <SiExpress className="text-white text-[18px]" />,
+    icon: <SiExpress className="text-white" />,
+    glowColor: "#9CA3AF", // neutral gray glow
   },
   {
     name: "Firebase",
-    icon: <SiFirebase className="text-[#FFCA28] text-[18px]" />,
+    icon: <SiFirebase className="text-[#FFCA28]" />,
+    glowColor: "#FFCA28",
   },
   {
     name: "REST API",
-    icon: <SiPostman className="text-[#FF6C37] text-[18px]" />,
+    icon: <SiPostman className="text-[#FF6C37]" />,
+    glowColor: "#FF6C37",
   },
   {
     name: "GraphQL",
-    icon: <SiGraphql className="text-[#E10098] text-[18px]" />,
+    icon: <SiGraphql className="text-[#E10098]" />,
+    glowColor: "#E10098",
   },
   {
-    name: "CI/CD",
-    icon: <SiGithubactions className="text-[#2088FF] text-[18px]" />,
+    name: "CI / CD",
+    icon: <SiGithubactions className="text-[#2088FF]" />,
+    glowColor: "#2088FF",
   },
 ],
 
+
 nonTech: [
-  { name: "App Store Optimization (ASO)", icon: <SiGoogleads className="text-[#4285F4] text-[18px]" /> },
-  { name: "User Activity Tracking", icon: <SiGoogleanalytics className="text-[#F9AB00] text-[18px]" /> },
-  { name: "Crash Reporting", icon: <SiSentry className="text-[#4285F4] text-[18px]" /> },
-  { name: "Push Notification Delivery", icon: <SiFirebase className="text-[#FFCA28] text-[18px]" /> },
-  { name: "App Testing Tools", icon: <SiTestcafe className="text-[#4285F4] text-[18px]" /> },
-  { name: "UI/UX Flow Mapping", icon: <SiMiro className="text-[#FFD02F] text-[18px]" /> },
+  { name: "App Store Optimization (ASO)", icon: <SiGoogleads className="text-[#4285F4] " /> },
+  { name: "User Activity Tracking", icon: <SiGoogleanalytics className="text-[#F9AB00] " /> },
+  { name: "Crash Reporting", icon: <SiSentry className="text-[#4285F4] " /> },
+  { name: "Push Notification Delivery", icon: <SiFirebase className="text-[#FFCA28] " /> },
+  { name: "App Testing Tools", icon: <SiTestcafe className="text-[#4285F4] " /> },
+  { name: "UI/UX Flow Mapping", icon: <SiMiro className="text-[#FFD02F] " /> },
 ],
 
 
@@ -373,53 +397,63 @@ nonTech: [
       "Spreadsheets, disconnected tools, and manual workflows cause delays, errors, and lack of visibility across departments.",
     approach:
       "We map your real workflows (sales, inventory, billing, HR, etc.), design modules around them, and build an ERP or internal system that connects data and automates repetitive tasks.",
-       technologies : [
+    technologies: [
   {
     name: "Node.js",
-    icon: <SiNodedotjs className="text-[#3C873A] text-[18px]" />,
+    icon: <SiNodedotjs className="text-[#3C873A]" />,
+    glowColor: "#3C873A",
   },
   {
     name: "NextJS",
-    icon: <SiNextdotjs className="text-white text-[18px]" />,
+    icon: <SiNextdotjs className="text-white" />,
+    glowColor: "#ffffff",
   },
   {
     name: "React",
-    icon: <SiReact className="text-[#61DAFB] text-[18px]" />,
+    icon: <SiReact className="text-[#61DAFB]" />,
+    glowColor: "#61DAFB",
   },
   {
     name: "Angular",
-    icon: <SiAngular className="text-[#DD0031] text-[18px]" />,
+    icon: <SiAngular className="text-[#DD0031]" />,
+    glowColor: "#DD0031",
   },
   {
     name: "PostgreSQL",
-    icon: <SiPostgresql className="text-[#336791] text-[18px]" />,
+    icon: <SiPostgresql className="text-[#336791]" />,
+    glowColor: "#336791",
   },
   {
     name: "MongoDB",
-    icon: <SiMongodb className="text-[#47A248] text-[18px]" />,
+    icon: <SiMongodb className="text-[#47A248]" />,
+    glowColor: "#47A248",
   },
 
   // No official icons → using best alternatives
   {
     name: "Microservices",
-    icon: <SiNodedotjs className="text-[#3C873A] text-[18px]" />, // Node used as backend services icon
+    icon: <SiNodedotjs className="text-[#3C873A]" />, // backend services
+    glowColor: "#4CAF50", // slightly lighter green for distinction
   },
   {
     name: "Message Queues",
-    icon: <SiAppveyor className="text-[#2684FF] text-[18px]" />, // Blue service icon
+    icon: <SiAppveyor className="text-[#2684FF]" />, // service / pipeline style icon
+    glowColor: "#2684FF",
   },
   {
     name: "Role-Based Access",
-    icon: <SiPostman className="text-[#FF6C37] text-[18px]" />, // Orange security-style icon
+    icon: <SiPostman className="text-[#FF6C37]" />, // security / access
+    glowColor: "#FF6C37",
   },
 ],
+
 nonTech: [
-  { name: "Business Process Mapping", icon: <SiNotion className="text-white text-[18px]" /> },
-  { name: "Project Management", icon: <SiJirasoftware className="text-[#0052CC] text-[18px]" /> },
-  { name: "Workflow Automation", icon: <SiZapier className="text-[#FF4A00] text-[18px]" /> },
-  { name: "Cloud Operations", icon: <SiGooglecloud className="text-[#4285F4] text-[18px]" /> },
-  { name: "Team Collaboration", icon: <SiSlack className="text-[#d433d6] text-[18px]" /> },
-  { name: "Documentation Systems", icon: <SiConfluence className="text-[#2b69d3] text-[18px]" /> },
+  { name: "Business Process Mapping", icon: <SiNotion className="text-white " /> },
+  { name: "Project Management", icon: <SiJirasoftware className="text-[#0052CC] " /> },
+  { name: "Workflow Automation", icon: <SiZapier className="text-[#FF4A00] " /> },
+  { name: "Cloud Operations", icon: <SiGooglecloud className="text-[#4285F4] " /> },
+  { name: "Team Collaboration", icon: <SiSlack className="text-[#d433d6] " /> },
+  { name: "Documentation Systems", icon: <SiConfluence className="text-[#2b69d3] " /> },
 ],
 
     keyFeatures: [
@@ -493,40 +527,45 @@ nonTech: [
       "Poor user experience leads to low engagement, high bounce rates, and lost revenue. Inconsistent design across products confuses users.",
     approach:
       "We combine user research with aesthetic excellence. We build design systems that ensure consistency and scalability while crafting intuitive user journeys.",
-
- technologies : [
+technologies: [
   {
     name: "Figma",
-    icon: <SiFigma className="text-[#F24E1E] text-[18px]" />, // Figma Orange/Red
+    icon: <SiFigma className="text-[#F24E1E]" />,
+    glowColor: "#F24E1E", // Figma brand orange/red
   },
   {
     name: "Adobe XD",
-    icon: <SiAdobe className="text-[#FF0000] text-[18px]" />, // Adobe Red (XD not available)
+    icon: <SiAdobe className="text-[#FF0000]" />,
+    glowColor: "#FF4D4D", // softer red glow (less harsh)
   },
   {
     name: "Prototyping",
-    icon: <SiAffinitydesigner className="text-[#1B72E8] text-[18px]" />, // Design tool icon
+    icon: <SiAffinitydesigner className="text-[#1B72E8]" />,
+    glowColor: "#1B72E8", // clean design blue
   },
   {
     name: "Usability Testing",
-    icon: <SiAntdesign className="text-[#0170FE] text-[18px]" />, // Clean UI/UX blue icon
+    icon: <SiAntdesign className="text-[#0170FE]" />,
+    glowColor: "#0170FE", // UX-friendly blue
   },
   {
     name: "Design Systems",
-    icon: <SiAntdesign className="text-[#2684FF] text-[18px]" />, // System & UI library icon
+    icon: <SiAntdesign className="text-[#2684FF]" />,
+    glowColor: "#2684FF", // system / component library blue
   },
 ],
+
 nonTech: [
-  { name: "User Research", icon: <SiGoogleanalytics className="text-[#F9AB00] text-[18px]" /> },
-  { name: "Wireframing", icon: <SiFigma className="text-[#F24E1E] text-[18px]" /> },
-  { name: "User Journey Mapping", icon: <SiMiro className="text-[#FFD02F] text-[18px]" /> },
+  { name: "User Research", icon: <SiGoogleanalytics className="text-[#F9AB00] " /> },
+  { name: "Wireframing", icon: <SiFigma className="text-[#F24E1E] " /> },
+  { name: "User Journey Mapping", icon: <SiMiro className="text-[#FFD02F] " /> },
   {
   name: "Usability Testing",
-  icon: <UserSearch className="text-[#0066FF] text-[18px]" />
+  icon: <UserSearch className="text-[#0066FF] " />
 },
 
-  { name: "Accessibility Standards", icon: <SiW3Schools className="text-[#005A9C] text-[18px]" /> },
-  { name: "Design Systems", icon: <SiNotion className="text-black text-[18px]" /> },
+  { name: "Accessibility Standards", icon: <SiW3Schools className="text-[#005A9C] " /> },
+  { name: "Design Systems", icon: <SiNotion className="text-black " /> },
 ],
 
     keyFeatures: [
@@ -601,41 +640,48 @@ nonTech: [
 technologies: [
   {
     name: "Google Analytics 4",
-    icon: <SiGoogleanalytics className="text-[#E37400] text-[18px]" />, // GA4 Orange
+    icon: <SiGoogleanalytics className="text-[#E37400]" />,
+    glowColor: "#E37400", // GA4 orange
   },
   {
     name: "Google Tag Manager",
-    icon: <SiGoogletagmanager className="text-[#246FDB] text-[18px]" />, // GTM Blue
+    icon: <SiGoogletagmanager className="text-[#246FDB]" />,
+    glowColor: "#246FDB", // GTM blue
   },
   {
-      name: "Ahrefs",
-    icon: <SiFraunhofergesellschaft className="text-[#FF6F00] text-[18px]" />
-
+    name: "Ahrefs",
+    icon: <SiFraunhofergesellschaft className="text-[#FF6F00]" />,
+    glowColor: "#FF6F00", // SEO orange
   },
   {
     name: "SEMrush",
-    icon: <SiSemrush className="text-[#FF642D] text-[18px]" />, // SEMrush Orange
+    icon: <SiSemrush className="text-[#FF642D]" />,
+    glowColor: "#FF642D", // SEMrush orange
   },
   {
     name: "Google Ads",
-    icon: <SiGoogleads className="text-[#4285F4] text-[18px]" />, // Google Ads Blue
+    icon: <SiGoogleads className="text-[#4285F4]" />,
+    glowColor: "#4285F4", // Ads blue
   },
   {
     name: "Meta Ads",
-    icon: <SiMeta className="text-[#0081FB] text-[18px]" />, // Meta Blue
+    icon: <SiMeta className="text-[#0081FB]" />,
+    glowColor: "#0081FB", // Meta blue
   },
   {
     name: "Marketing Automation",
-    icon: <SiHubspot className="text-[#FF7A59] text-[18px]" />, // HubSpot Orange
-  }
+    icon: <SiHubspot className="text-[#FF7A59]" />,
+    glowColor: "#FF7A59", // HubSpot orange
+  },
 ],
+
 nonTech: [
-  { name: "SEO & SEM", icon: <SiGoogle className="text-[#4285F4] text-[18px]" /> },
-  { name: "Social Media Marketing", icon: <SiMeta className="text-[#0467DF] text-[18px]" /> },
-  { name: "Email Marketing Automation", icon: <SiMailchimp className="text-[#FFE01B] text-[18px]" /> },
-  { name: "Google Ads Campaigns", icon: <SiGoogleads className="text-[#4285F4] text-[18px]" /> },
-  { name: "Analytics & Tracking", icon: <SiGoogleanalytics className="text-[#F9AB00] text-[18px]" /> },
-  { name: "Content Planning", icon: <SiNotion className="text-black text-[18px]" /> },
+  { name: "SEO & SEM", icon: <SiGoogle className="text-[#4285F4] " /> },
+  { name: "Social Media Marketing", icon: <SiMeta className="text-[#0467DF] " /> },
+  { name: "Email Marketing Automation", icon: <SiMailchimp className="text-[#FFE01B] " /> },
+  { name: "Google Ads Campaigns", icon: <SiGoogleads className="text-[#4285F4] " /> },
+  { name: "Analytics & Tracking", icon: <SiGoogleanalytics className="text-[#F9AB00] " /> },
+  { name: "Content Planning", icon: <SiNotion className="text-black " /> },
 ],
 
 
@@ -709,51 +755,61 @@ nonTech: [
       "Creating engaging interactive experiences requires specialized skills. Poor performance, clunky gameplay, and lack of cross-platform support limit reach.",
     approach:
       "We focus on 'fun-first' development backed by solid engineering. We optimize for the target platform to ensure smooth frame rates and responsive controls.",
- technologies: [
+technologies: [
   {
     name: "Unity",
-    icon: <SiUnity className="text-white text-[18px]" />,
+    icon: <SiUnity className="text-white" />,
+    glowColor: "#ffffff", // clean neutral glow
   },
   {
     name: "Unreal Engine",
-    icon: <SiUnrealengine className="text-[white] text-[18px]" />,
+    icon: <SiUnrealengine className="text-white" />,
+    glowColor: "#cfcfcf", // soft silver glow
   },
   {
     name: "WebGL",
-    icon: <SiWebgl className="text-[#008CFF] text-[18px]" />,
+    icon: <SiWebgl className="text-[#008CFF]" />,
+    glowColor: "#008CFF", // GPU blue
   },
   {
     name: "Three.js",
-    icon:<SiJavascript className="text-[#F7DF1E] text-[18px]" />,
+    icon: <SiJavascript className="text-[#F7DF1E]" />,
+    glowColor: "#F7DF1E", // JS yellow
   },
   {
     name: "Phaser",
-     icon: <SiGamejolt className="text-[#FF00FF] text-[18px]" />,
+    icon: <SiGamejolt className="text-[#FF00FF]" />,
+    glowColor: "#FF00FF", // magenta game glow
   },
   {
     name: "C#",
-    icon: <SiFsharp className="text-[#239120] text-[18px]" />,
+    icon: <SiFsharp className="text-[#239120]" />,
+    glowColor: "#239120", // .NET green
   },
   {
     name: "C++",
-    icon: <SiCplusplus className="text-[#00599C] text-[18px]" />,
+    icon: <SiCplusplus className="text-[#00599C]" />,
+    glowColor: "#00599C", // C++ blue
   },
   {
     name: "JavaScript",
-    icon: <SiJavascript className="text-[#F7DF1E] text-[18px]" />,
+    icon: <SiJavascript className="text-[#F7DF1E]" />,
+    glowColor: "#F7DF1E",
   },
   {
     name: "Multiplayer Networking",
-    icon: <SiSocketdotio className="text-[white] text-[18px]" />, // placeholder networking icon
+    icon: <SiSocketdotio className="text-white" />,
+    glowColor: "#ffffff", // network neutral glow
   },
 ],
+
 nonTech: [
-  { name: "Game Storyboarding", icon: <SiMiro className="text-[#FFD02F] text-[18px]" /> },
-  { name: "Level Design Planning", icon: <SiBlender className="text-[#F5792A] text-[18px]" /> },
-  { name: "Game Analytics", icon: <SiGoogleanalytics className="text-[#F9AB00] text-[18px]" /> },
-  { name: "Sound & SFX Editing", icon: <SiAdobeaudition className="text-[#00C8FF] text-[18px]" /> },
-  { name: "Animation Workflow", icon: <SiAdobeaftereffects className="text-[#9999FF] text-[18px]" /> },
-{ name: "Playtesting & Feedback", icon: <ShieldUser className="text-[#0066FF] text-[18px]" /> },
+  { name: "Game Storyboarding", icon: <SiMiro className="text-[#FFD02F] " /> },
+  { name: "Level Design Planning", icon: <SiBlender className="text-[#F5792A] " /> },
+  { name: "Game Analytics", icon: <SiGoogleanalytics className="text-[#F9AB00] " /> },
+  { name: "Sound & SFX Editing", icon: <SiAdobeaudition className="text-[#00C8FF] " /> },
+  { name: "Animation Workflow", icon: <SiAdobeaftereffects className="text-[#9999FF] " /> },
+{ name: "Playtesting & Feedback", icon: <ShieldUser className="text-[#0066FF] " /> },
 
 
 ],
@@ -821,57 +877,61 @@ nonTech: [
       "Technical debt accumulates when teams skip best practices. Without proper version control and testing, products become unstable and bugs multiply.",
     approach:
       "We treat infrastructure as code. We set up automated pipelines and monitoring from day one, ensuring that every deployment is safe and reversible.",
-
-technologies :[
+technologies: [
   {
-    name: "Git, GitHub/GitLab",
-    icon: <SiGit className="text-[#F05032] text-[18px]" />,
+    name: "Git, GitHub / GitLab",
+    icon: <SiGit className="text-[#F05032]" />,
+    glowColor: "#F05032", // Git orange
   },
   {
     name: "Jenkins, GitHub Actions",
-    icon: <SiGithubactions className="text-[#2088FF] text-[18px]" />,
+    icon: <SiGithubactions className="text-[#2088FF]" />,
+    glowColor: "#2088FF", // CI/CD blue
   },
   {
     name: "Docker, Kubernetes",
-    icon: <SiDocker className="text-[#2496ED] text-[18px]" />,
+    icon: <SiDocker className="text-[#2496ED]" />,
+    glowColor: "#2496ED", // container blue
   },
   {
     name: "Datadog, Sentry, AWS CloudWatch",
-    icon: <SiAmazonapigateway className="text-[#FF9900] text-[18px]" />,
+    icon: <SiAmazonapigateway className="text-[#FF9900]" />,
+    glowColor: "#FF9900", // monitoring / AWS orange
   },
 ],
+
 nonTech: [
   {
     name: "Project Management",
-    icon: <SiJira className="text-[#2684FF] text-[18px]" />,
+    icon: <SiJira className="text-[#2684FF] " />,
   },
   {
     name: "Agile & Scrum Workflows",
-    icon: <SiScrumalliance className="text-[#009FDA] text-[18px]" />,
+    icon: <SiScrumalliance className="text-[#009FDA] " />,
   },
   {
     name: "UI/UX Documentation",
-    icon: <SiNotion className="text-black text-[18px]" />,
+    icon: <SiNotion className="text-black " />,
   },
   {
     name: "Team Collaboration",
-    icon: <SiSlack className="text-[#4A154B] text-[18px]" />,
+    icon: <SiSlack className="text-[#4A154B] " />,
   },
   {
     name: "Version Control Management",
-    icon: <SiGit className="text-[#F05032] text-[18px]" />,
+    icon: <SiGit className="text-[#F05032] " />,
   },
   {
     name: "Product Roadmapping",
-    icon: <SiMiro className="text-[#FFD02F] text-[18px]" />,
+    icon: <SiMiro className="text-[#FFD02F] " />,
   },
   {
     name: "Quality Assurance & Testing",
-    icon: <SiTestinglibrary className="text-[#E33332] text-[18px]" />,
+    icon: <SiTestinglibrary className="text-[#E33332] " />,
   },
   {
     name: "System Documentation",
-    icon: <SiConfluence className="text-[#172B4D] text-[18px]" />,
+    icon: <SiConfluence className="text-[#172B4D] " />,
   },
 ],
 

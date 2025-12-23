@@ -293,79 +293,171 @@ export default function ServiceDetailPage() {
   className="gap-10 relative z-10 space-y-10"
 >
 
-  {/* TECH SECTION */}
-  <div className="space-y-2 flex justify-center items-center flex-col mt-5">
-    <h2 className="text-sm  text-white tracking-wide">
-      Tech Technologies
-    </h2>
-    <div className="w-20 h-0.5 bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full  mb-5"></div>
 
-    {/* <div className="h-[28dvh] flex items-center 
-      bg-gradient-to-r from-[#0f0f0f] via-[#111827] to-[#0f0f0f]
-      rounded-2xl shadow-xl backdrop-blur-xl border border-white/10 p-4"
-    > */}
-      <LogoLoop
-        logos={service.technologies?.map((item) => ({
-          node: (
-            <div className="flex items-center gap-2 p-8 bg-white/5 rounded-lg min-w-48 justify-center">
-              {item.icon}
-              <span className="text-white/90 text-sm font-medium">
-                {item.name}
-              </span>
-            </div>
-          ),
-          title: item.name,
-        }))}
-        speed={40}
-        direction="left"
-        gap={50}
-        logoHeight={50}
-        fadeOut
-        fadeOutColor="#000"
-      />
-    </div>
-  {/* </div> */}
-
-  {/* NON-TECH SECTION */}
-  <div className="space-y-2 flex justify-center items-center flex-col mt-5">
-
-  <h2 className="text-sm  text-white tracking-wide">
-   Non-Code Technologies
-    </h2>
-    <div className="w-20 h-0.5 bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full  mb-5"></div>
-
-    {/* <div className="h-[28dvh] flex items-center 
-      bg-gradient-to-r from-[#0f0f0f] via-[#111827] to-[#0f0f0f]
-      rounded-2xl shadow-xl backdrop-blur-xl border border-white/10 p-4"
-    > */}
-      <LogoLoop
-        logos={service.nonTech?.map((item) => ({
-          node: (
-            <div className="flex items-center gap-2 p-8 bg-white/5 rounded-lg min-w-48 justify-center">
-              {item.icon}
-              <span className="text-white/90 text-sm font-medium">
-                {item.name}
-              </span>
-            </div>
-          ),
-          title: item.name,
-        }))}
-        speed={40}
-        direction="right"
-        gap={50}
-
-        logoHeight={50}
-        fadeOut
-        fadeOutColor="#000"
-      />
-    {/* </div> */}
-  </div>
 
 </motion.div>
 
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-20 relative z-10">
+{/* ================= CARD 1 ================= */}
+<div
+  className="relative rounded-[24px] bg-[#0b0d10] border border-white/10
+  shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_60px_120px_-30px_rgba(0,0,0,0.9)]
+  px-12 pt-12 pb-0 overflow-hidden"
+>
+  <h3 className="text-white text-[32px] leading-[40px] font-semibold">
+    Technical Tools
+  </h3>
 
+
+<p className="mt-4 max-w-[420px] text-[16px] leading-[28px] text-white/60">
+  Our technology stack is carefully chosen to ensure performance, reliability, and future-ready solutions.
+</p>
+  <button
+    className="mt-8 inline-flex items-center gap-3
+    h-[44px] px-6 rounded-full bg-white text-black text-[14px] font-medium"
+  >
+    Explore our tech stack
+    <span className="text-lg">→</span>
+  </button>
+
+
+
+{/* LOGO GRID — 3 ROWS */}
+<div className="relative mt-14 h-[320px] overflow-hidden space-y-3">
+
+  {[0, 1, 2].map((row) => (
+    <div key={row} className="h-[90px] overflow-hidden flex items-center">
+
+      <LogoLoop
+        logos={service.technologies?.map(item => ({
+          node: (
+            <div className="relative w-[80px] h-[80px] flex items-center justify-center">
+
+              {/* OUTER HALO — REDUCED */}
+              <div
+                className="
+                  absolute
+                  bottom-[-4px]
+                  w-[58px] h-[58px]
+                  rounded-[18px]
+                  blur-[12px]
+                  opacity-35
+                  bg-current
+                "
+                style={{ color: item.glowColor || "#7c7cff" }}
+              />
+
+              {/* TILE */}
+              <div
+                className="
+                  relative z-10
+                  w-[77px] h-[77px]
+                  rounded-[18px]
+                  bg-[#111318]
+                  border border-white/10
+                  flex items-center justify-center
+                "
+              >
+                {/* INNER RIM — SOFTER */}
+                <div
+                  className="
+                    absolute inset-0 rounded-[18px]
+                    shadow-[inset_0_0.5px_0.5px_rgba(255,255,255,0.05)]
+                    pointer-events-none
+                  "
+                />
+
+                {item.icon}
+              </div>
+            </div>
+          ),
+          title: item.name,
+        }))}
+
+        speed={22}
+        direction={row % 2 === 0 ? "left" : "right"}
+        gap={16}
+        logoHeight={44}
+        fadeOut
+        fadeOutColor="#0b0d10"
+      />
+
+    </div>
+  ))}
+
+  {/* Bottom Fade */}
+  <div
+    className="
+      absolute bottom-0 left-0 right-0 h-24
+      bg-gradient-to-t from-[#0b0d10] to-transparent
+      pointer-events-none
+    "
+  />
+</div>
+
+
+    </div>
+
+    {/* ================= CARD 2 ================= */}
+   <div className="relative rounded-[24px] bg-[#0b0d10] border border-white/10
+  shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_60px_120px_-30px_rgba(0,0,0,0.9)]
+  px-12 pt-12 pb-0 overflow-hidden">
+
+  <h3 className="text-white text-[32px] leading-[40px] font-semibold">
+    Non-Technical Tools
+  </h3>
+
+<p className="mt-4 max-w-[540px] text-[16px] leading-[28px] text-white/60">
+  We use industry-leading non-technical tools across design,  and automation to streamline workflows and ensure reliable results.
+</p>
+
+  <button
+    className="mt-8 inline-flex items-center gap-3
+    h-[44px] px-6 rounded-full bg-white text-black text-[14px] font-medium">
+    Explore tools & platforms
+    <span className="text-lg">→</span>
+  </button>
+
+
+{/* LOGO GRID — 3 ROWS */}
+<div className="relative mt-14 h-[280px] overflow-hidden space-y-3">
+
+  {[0, 1, 2,3,4,5].map((row) => (
+    <div key={row} className="h-[50px] overflow-hidden">
+      <LogoLoop
+        logos={service.nonTech?.map(item => ({
+          node: (
+            <div
+              className="h-[36px] px-3 rounded-[10px]
+              bg-[#111318] border border-white/10
+              flex items-center gap-2 text-[13px] text-white/80
+              shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
+            >
+              {item.icon}
+              {item.name}
+            </div>
+          ),
+          title: item.name,
+        }))}
+        speed={24}
+        direction={row % 2 === 0 ? "right" : "left"}
+        gap={12}
+        logoHeight={28}
+        fadeOut
+        fadeOutColor="#0b0d10"
+      />
+    </div>
+  ))}
+
+  {/* Bottom Fade */}
+  <div className="absolute bottom-0 left-0 right-0 h-24
+    bg-gradient-to-t from-[#0b0d10] to-transparent pointer-events-none" />
+</div>
+
+    </div>
+
+  </div>
 </section>
-
 
 
 

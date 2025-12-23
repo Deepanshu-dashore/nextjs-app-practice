@@ -284,7 +284,7 @@ export const LogoLoop = memo(
           "relative group",
           isVertical
             ? "overflow-hidden h-full inline-block"
-            : "overflow-x-hidden",
+            : "overflow",
           "[--logoloop-gap:32px]",
           "[--logoloop-logoHeight:28px]",
           "[--logoloop-fadeColorAuto:#ffffff]",
