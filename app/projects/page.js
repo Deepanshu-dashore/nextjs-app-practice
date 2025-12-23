@@ -10,6 +10,7 @@ import { db } from "../firebase";
 export default function OurProjects() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+ const [active, setActive] = useState(2);
 
   // 🔥 Fetch projects from Firestore
   const fetchProjects = async () => {
@@ -33,10 +34,41 @@ export default function OurProjects() {
   useEffect(() => {
     fetchProjects();
   }, []);
+const featuredProducts = [
+  {
+    title: "Enterprise Web Platform",
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    title: "AI-Powered Analytics Dashboard",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    title: "Scalable SaaS Application",
+    image: "https://images.unsplash.com/photo-1556155092-8707de31f9c4?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    title: "Mobile-First E-Commerce Solution",
+    image: "https://images.unsplash.com/photo-1519337265831-281ec6cc8514?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    title: "Cloud-Integrated Backend System",
+    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=80",
+  },
+];
 
+
+  // 🔁 Auto scroll
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActive((prev) => (prev + 1) % featuredProducts.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [featuredProducts.length]);
   return (
     <div className="bg-[#030303] text-white overflow-hidden relative">
-      <section className="relative h-[96dvh] overflow-hidden">
+      <section className="relative h-[100dvh] overflow-hidden">
         {/* FIXED BACKGROUND */}
         <motion.div className="absolute inset-0 will-change-transform">
           <div
@@ -78,136 +110,169 @@ export default function OurProjects() {
         </motion.div>
       </section>
 
-      {/* ---------------- PROJECT SECTION ---------------- */}
-      <section className="max-w-7xl mx-auto py-24 px-6 relative">
-        {/* HEADER */}
-        <div className="text-center relative z-10 mb-20">
+<section className="max-w-7xl mx-auto py-32 px-6">
+
+  {/* Heading */}
+  <div className="text-center max-w-5xl mx-auto mb-20">
+    <h2 className="text-5xl font-extrabold text-white mb-6">
+      Featured Projects
+    </h2>
+
+    <p className="text-gray-300 text-lg leading-relaxed">
+      A selection of our most impactful digital projects — crafted with
+      performance, scalability, and user experience at the core. Each
+      project reflects our ability to turn complex ideas into elegant,
+      real-world solutions.
+    </p>
+  </div>
+
+  {/* Cards */}
+  <div className="relative">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 items-center">
+      {featuredProducts.map((item, index) => {
+        const isCenter = index === 2;
+
+        return (
           <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full 
-                    bg-purple-500/10 border border-purple-500/20 mb-4 backdrop-blur-xl"
+            key={index}
+            className={`relative rounded-2xl overflow-hidden group transition-all duration-700
+              ${isCenter
+                ? "h-[290px] scale-[1.05] z-10 shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
+                : "h-[270px] opacity-90 hover:opacity-100"
+              }`}
           >
-            <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
-            <span className="text-sm font-medium text-purple-300">
-              {" "}
-              Portfolio
-            </span>
-          </div>
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-5xl font-extrabold text-white 
-        bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text"
-          >
-            What We’ve Built
-          </motion.h3>
+            {/* Image */}
+            <img
+              src={item.image}
+              alt={item.title}
+              className="absolute inset-0 w-full h-full object-cover
+              transition-transform duration-700 group-hover:scale-110"
+            />
 
-          <p className="text-gray-400 max-w-2xl mx-auto mt-3">
-            From intelligent platforms to high-performance web applications,
-            these projects reflect our commitment to quality and innovation.
-          </p>
-        </div>
+         {/* Bottom → Top Gradient */}
+<div
+  className={`absolute inset-0 bg-gradient-to-t
+    ${isCenter
+      ? "from-black/80 via-black/30 to-transparent"
+      : "from-black/70 via-black/20 to-transparent"
+    }`}
+ />
 
-        {/* Loading */}
-        {loading && (
-          <p className="text-center text-gray-400">Loading projects...</p>
-        )}
 
-        {/* PROJECTS GRID */}
-        <div className="max-w-7xl mx-auto px-6 space-y-32">
-          {projects.map((p, index) => (
-            <div
-              key={p.id}
-              className="grid lg:grid-cols-2 gap-20 items-cente justify-between"
-            >
-              {/* LEFT CONTENT */}
-              <div
-                className={`${
-                  index % 2 === 1 ? "lg:order-2" : "lg:order-1"
-                } space-y-6`}
+            {/* Text */}
+            <div className="absolute bottom-6 left-6 right-6">
+              <h4
+                className={`font-semibold leading-snug
+                  ${isCenter ? "text-xl text-white" : "text-lg text-white/90"}`}
               >
-                {/* Project Title */}
-                <motion.h2
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="text-4xl capitalize font-extrabold text-white"
-                >
-                  {p.projectTitle}
-                </motion.h2>
+                {item.title}
+              </h4>
+            </div>
 
-                {/* Description Box */}
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-8 max-w-xl backdrop-blur-xl shadow-lg">
-                  <p className="text-gray-300 leading-relaxed text-lg">
-                    {p.description}
-                  </p>
-                </div>
+            {/* Subtle glow for center */}
+            {isCenter && (
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-white/20 pointer-events-none" />
+            )}
+          </div>
+        );
+      })}
+    </div>
 
-                {/* Call to Action */}
-                {p.link && (
+    {/* Pagination dots */}
+    <div className="flex justify-center gap-2 mt-10">
+      {[...Array(5)].map((_, i) => (
+        <span
+          key={i}
+          className={`h-2 rounded-full transition-all duration-300
+            ${i === 2 ? "bg-white w-6" : "bg-white/40 w-2"}`}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<section className="max-w-7xl mx-auto py-28 px-6 ">
+
+  <div className="text-center mb-28">
+    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full 
+      bg-purple-500/10 border border-purple-500/20 mb-4 backdrop-blur-xl">
+      <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+      <span className="text-sm font-medium text-purple-300">Portfolio</span>
+    </div>
+
+    <h3 className="text-5xl font-extrabold text-white 
+      bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 
+      text-transparent bg-clip-text">
+      What We’ve Built
+    </h3>
+
+    <p className="text-gray-400 max-w-2xl mx-auto mt-4">
+      From intelligent platforms to high-performance web applications,
+      these projects reflect our commitment to quality and innovation.
+    </p>
+  </div>
+
+  {/* EXACT FEATURE GRID */}
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
+    {projects.map((p, index) => (
+      <div key={p.id} className="text-center">
+        
+        {/* BIG SOFT CONTAINER (outer) */}
+        <div className="w-full h-[280px] rounded-[28px] 
+          bg-white/10
+          flex items-center justify-center mb-10">
+          
+          {/* FLOATING UI MOCKUP (inner) */}
+      
+            {p.imgUrl ? (
+              <img
+                src={p.imgUrl}
+                alt={p.projectTitle}
+                className="w-[85%] h-[85%] object-cover rounded-2xl "
+              />
+            ) : (
+              <span className="text-6xl font-bold text-white/10">
+                {index + 1}
+              </span>
+            )}
+   
+        </div>
+<div className="flex  justify-between  mb-4 items-center w-[90%] mx-auto">
+        {/* TEXT IS OUTSIDE — EXACT LIKE REFERENCE */}
+        <h4 className="text-xl font-semibold text-white ">
+          {p.projectTitle}
+        </h4>
+        {p.link && (
                   <a
                     href={p.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-gray-600/20 hover:bg-gray-500/30 text-blue-600   hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-md"
+                    className="flex justify-between gap-2 items-center text-gray-300 font-semibold  rounded-xl transition-all duration-300 shadow-md"
                   >
-                    View Project <ArrowRight className="w-5 h-5" />
+                    View  <ArrowRight className="w-5 h-5" />
                   </a>
-                )}
-              </div>
+)}
+</div>
 
-              {/* IMAGE */}
-              <div
-                className={`w-full max-w-md sticky top-24 ${
-                  index % 2 === 1 ? "lg:order-1" : "lg:order-2"
-                }`}
-              >
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                  className="relative aspect-video rounded-xl overflow-hidden 
-                             bg-white/5 border border-white/10 backdrop-blur-sm p-8 h-[420px] w-[550px]
-                             flex items-center justify-center group hover:border-white/20 transition"
-                >
-                  {/* IMAGE TITLE */}
-                  {/* <div className="absolute top-4 left-4 z-20 
-                                  bg-blue-600/20 backdrop-blur-md 
+  <p className="text-gray-400  text-sm leading-relaxed 
+  max-w-sm mx-auto line-clamp-3 text-justify">
+  {p.description}
+</p>
 
-                                  px-4 py-2 rounded-lg border border-blue-500">
-                    <h3 className="text-sm font-semibold text-white">
-                      {p.projectTitle}
-                    </h3>
-                  </div> */}
+{/* <a
+  href="#"
+  className="inline-flex items-center gap-1 mt-3 
+  text-sm font-medium text-purple-400 hover:underline"
+>
+  Read more <span className="text-base">&gt;</span>
+</a> */}
 
-                  <div className="relative z-10 w-full h-full overflow-hidden rounded-lg">
-                    {p.imgUrl ? (
-                      <img
-                        src={p.imgUrl}
-                        alt={p.projectTitle}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                    ) : (
-                      <span className="text-7xl font-bold text-white/10">
-                        {index + 1}
-                      </span>
-                    )}
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          ))}
-        </div>
 
-        {!loading && projects.length === 0 && (
-          <p className="text-center text-gray-500 mt-20">
-            No projects available
-          </p>
-        )}
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
 
-      {/* -------------- CTA PARALLAX SECTION -------------- */}
       {/* -------------- CTA PARALLAX SECTION -------------- */}
       <div
         className="relative bg-fixed bg-cover bg-center py-32 px-6"

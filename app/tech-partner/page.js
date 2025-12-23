@@ -9,6 +9,11 @@ import {
   FaCode,
   FaChartLine,
   FaHeadset,
+  FaHandshake,
+  FaComments,
+  FaLayerGroup,
+  FaShieldAlt,
+  FaInfinity,
 } from "react-icons/fa";
 import { useRef, useState } from "react";
 import LogoLoop from "../components/LogoLoop";
@@ -255,10 +260,10 @@ const logos = [
       </motion.div>
     </section>
 
-
 {/* How Our Partnership Works */}
 <section className="px-4 sm:px-6 lg:px-20 mb-32 relative z-10">
   <div className="max-w-7xl mx-auto">
+    {/* Heading */}
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -273,7 +278,8 @@ const logos = [
       </h2>
     </motion.div>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    {/* GRID */}
+    <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
       {[
         {
           icon: FaCode,
@@ -299,26 +305,147 @@ const logos = [
           description:
             "Ongoing maintenance, optimization, and new feature development.",
         },
-      ].map((item, index) => (
+        {
+      
+    icon: FaHandshake,
+    title: "Scalable Partnership",
+    description:
+      "We grow with your product and adapt as your business evolves.",
+  },
+      ].map((item, index) => {
+        const Icon = item.icon;
+
+        return (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className={`
+              bg-zinc-900/50 backdrop-blur-sm
+              border border-white/10 rounded-2xl p-8
+              hover:border-indigo-500/30 transition-colors group
+
+              ${
+                index < 3
+                  ? "md:col-span-2" // Row 1 → 3 equal cards
+                  : "md:col-span-3" // Row 2 → 50 / 50
+              }
+            `}
+          >
+            <div className="flex flex-col gap-6">
+              <div
+                className="w-14 p-3 rounded-xl bg-indigo-500/10 text-indigo-400
+                group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300"
+              >
+                <Icon className="text-3xl" />
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+
+{/* What You Get */}
+<section className="px-4 sm:px-6 lg:px-20 mb-32 relative z-10 bg-zinc-900/30 py-24">
+  <div className="max-w-7xl mx-auto">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+        What you get as a{" "}
+        <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-purple-400">
+          tech partner
+        </span>
+      </h2>
+    </motion.div>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {
+        [
+  {
+    title: "Product Ownership",
+    description:
+      "You own the code, IP, and roadmap. We own the execution.",
+    icon: FaHandshake,
+  },
+  {
+    title: "Transparent Communication",
+    description:
+      "Weekly check-ins, clear updates, and shared dashboards.",
+    icon: FaComments,
+  },
+  {
+    title: "Scalable Architecture",
+    description:
+      "Modern stacks that can grow with your users and business.",
+    icon: FaLayerGroup,
+  },
+  {
+    title: "Measurable Outcomes",
+    description:
+      "Focus on performance, reliability, and business impact.",
+    icon: FaChartLine,
+  },
+  {
+    title: "Security & Compliance",
+    description:
+      "Best practices for data protection, compliance, and secure systems.",
+    icon: FaShieldAlt,
+  },
+  {
+    title: "Long-Term Partnership",
+    description:
+      "We grow with you—continuous support, improvements, and innovation.",
+    icon: FaInfinity,
+  },
+].map((item, index) => (
         <motion.div
           key={index}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: index * 0.1 }}
-          className="bg-zinc-900/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-indigo-500/30 transition-colors group "
+          transition={{ delay: index * 0.08 }}
+          className="relative overflow-hidden rounded-2xl 
+                     border border-white/10 
+                     bg-black/30 p-6
+                     hover:border-indigo-500/30 transition"
         >
-          <div className="flex flex-col items-left gap-6">
-            <div className=" w-14 p-3 rounded-xl bg-indigo-500/10 text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300">
-              <item.icon className="text-3xl" />
-            </div>
-            <div className="flex flex-col ">
-              <h3 className="text-xl font-bold text-white mb-3">
-                {item.title}
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                {item.description}
-              </p>
+          {/* CONTENT */}
+          <div className="max-w-[85%]">
+            <h4 className="text-white font-semibold text-lg mb-2">
+              {item.title}
+            </h4>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              {item.description}
+            </p>
+          </div>
+
+          {/* ICON CONTAINER — EXACT REFERENCE POSITION */}
+          <div className="absolute -right-6 -bottom-6">
+            <div
+              className="w-24 h-24 rounded-full 
+                         bg-indigo-500/10 
+                         flex items-center justify-center"
+            >
+             <item.icon className="text-indigo-400 text-2xl" />
+
             </div>
           </div>
         </motion.div>
@@ -326,68 +453,6 @@ const logos = [
     </div>
   </div>
 </section>
-
-
-      {/* What You Get */}
-      <section className="px-4 sm:px-6 lg:px-20 mb-32 relative z-10 bg-zinc-900/30 py-24">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              What you get as a{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-purple-400">
-                tech partner
-              </span>
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {
-                title: "Product Ownership",
-                description:
-                  "You own the code, IP, and roadmap. We own the execution.",
-              },
-              {
-                title: "Transparent Communication",
-                description:
-                  "Weekly check-ins, clear updates, and shared dashboards.",
-              },
-              {
-                title: "Scalable Architecture",
-                description:
-                  "Modern stacks that can grow with your users and business.",
-              },
-              {
-                title: "Measurable Outcomes",
-                description:
-                  "Focus on performance, reliability, and business impact.",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-4 p-6 rounded-xl bg-black/30 border border-white/10 hover:border-indigo-500/30 transition-colors"
-              >
-                <FaCheckCircle className="text-indigo-400 text-xl shrink-0 mt-1" />
-                <div>
-                  <h4 className="text-white font-semibold text-lg mb-2">
-                    {item.title}
-                  </h4>
-                  <p className="text-gray-400">{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Ideal Partners - Accordion */}
       <section className="px-4 sm:px-6 lg:px-20 mb-32 relative z-10">
