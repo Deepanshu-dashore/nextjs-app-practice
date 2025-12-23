@@ -32,6 +32,7 @@ function Navbar() {
     { name: "Our Project", href: "/projects" },
     { name: "Blog", href: "/blog" },
     { name: "Careers", href: "/careers" },
+      { name: "Talent Program", href: "/talent" },
   ];
 
   return (
