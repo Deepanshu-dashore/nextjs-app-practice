@@ -188,77 +188,72 @@ const logos = [
         </div>
       </section>
 {/* Featured Tech Partners */}
-<section className="relative z-20  bottom-60 px-6 sm:px-6 lg:px-20 overflow-hidden">
+<section className="relative z-20 bottom-40 px-4 sm:px-6 lg:px-20 overflow-hidden">
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+    className="max-w-7xl mx-auto"
+  >
+    <div className="bg-white/5 flex flex-col md:flex-row overflow-hidden backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl p-6 sm:p-10 relative">
+
+      {/* TEXT CONTENT */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, x: -40 }}
+        whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="max-w-7xl mx-auto"
+        className="w-full md:w-1/2 mb-10 md:mb-0"
       >
-        <div className="bg-white/5 flex  overflow-hidden backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl p-10">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white leading-snug mb-4 sm:mb-6">
+          Featured Tech Partners
+        </h2>
 
-          {/* TEXT CONTENT */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="w-full mb-14"
-          >
-            <h2 className="text-4xl font-bold text-white leading-snug mb-6">
-              Featured Tech Partners
-            </h2>
+        <div className="w-16 sm:w-20 h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 mb-4 sm:mb-6 shadow-lg shadow-indigo-500/30"></div>
 
-            <div className="w-20 h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 mb-6 shadow-lg shadow-indigo-500/30"></div>
-
-            <p className="text-gray-300 text-lg leading-relaxed max-w-2xl">
-              We collaborate with top-tier companies and tools to craft powerful,
-              scalable, and future-ready digital products that redefine quality.
-            </p>
-          </motion.div>
-
-          {/* 3 ROW LOGO LOOP */}
-          <div className="space-y-10  w-full absolute -rotate-55  -right-1/4">
-            {/* Row 1 */}
-      
-  <LogoLoop
-    logos={logos}
-    speed={60}
-    direction="left"
-    logoHeight={80}
-    gap={50}
-    fadeOut
-    fadeOutColor="#000"
-    
-  />
-
-  <LogoLoop
-    logos={logos.reverse()}
-    speed={50}
-    direction="right"
-
-    logoHeight={80}
-    gap={50}
-    fadeOut
-    fadeOutColor="#000"
-  />
-
-  <LogoLoop
-    logos={logos}
-    speed={55}
-    direction="left"
-    logoHeight={80}
-    gap={50}
-    fadeOut
-    fadeOutColor="#000"
-  />
-
-
-          </div>
-        </div>
+        <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-full sm:max-w-2xl">
+          We collaborate with top-tier companies and tools to craft powerful,
+          scalable, and future-ready digital products that redefine quality.
+        </p>
       </motion.div>
-    </section>
+
+      {/* 3 ROW LOGO LOOP */}
+      <div className="space-y-6 sm:space-y-10 w-full absolute justify-between md:-rotate-55 -rotate-55 md:translate-x-0 -right-1/4  md:top-0">
+        {/* Row 1 */}
+        <LogoLoop
+          logos={logos}
+          speed={60}
+          direction="left"
+          logoHeight={60} // smaller on mobile
+          gap={40}
+          fadeOut
+          fadeOutColor="#000"
+        />
+
+        <LogoLoop
+          logos={[...logos].reverse()}
+          speed={50}
+          direction="right"
+          logoHeight={60}
+          gap={40}
+          fadeOut
+          fadeOutColor="#000"
+        />
+
+        <LogoLoop
+          logos={logos}
+          speed={55}
+          direction="left"
+          logoHeight={60}
+          gap={40}
+          fadeOut
+          fadeOutColor="#000"
+        />
+      </div>
+    </div>
+  </motion.div>
+</section>
 
 {/* How Our Partnership Works */}
 <section className="px-4 sm:px-6 lg:px-20 mb-32 relative z-10">
@@ -542,98 +537,98 @@ const logos = [
       </section>
 {/* Partnership Highlights / Stats - Updated Layout Like Reference */}
 
-<section className="relative py-32 px-4 sm:px-6 lg:px-20 overflow-hidden">
-  <div className="max-w-90dvh mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+<section className="relative py-24 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-20 overflow-hidden">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
 
     {/* LEFT SIDE */}
-    <div className="flex flex-col justify-start w-[30dvw ]">
-       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full w-32 h-10
-                    bg-purple-500/10 border border-purple-500/20 mb-4 backdrop-blur-xl">
-      <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
-      <span className="text-sm font-medium text-purple-300">Technology</span>
-    </div>
-      <h2 className="text-5xl  font-bold text-white leading-tight">
+    <div className="flex flex-col justify-start w-full lg:max-w-md">
+      <div
+        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full w-32 h-10
+        bg-purple-500/10 border border-purple-500/20 mb-4 backdrop-blur-xl"
+      >
+        <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+        <span className="text-sm font-medium text-purple-300">
+          Technology
+        </span>
+      </div>
+
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
         Why companies choose{" "}
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
           Indidevelopers
         </span>
       </h2>
 
-      <p className="text-lg text-white/70 mt-6 max-w-md">
+      <p className="text-base sm:text-lg text-white/70 mt-6 max-w-md">
         Premium-quality digital solutions backed by expert teams and top-tier client satisfaction.
       </p>
     </div>
 
-{/* RIGHT SIDE */} 
-<div className="grid grid-cols-2 gap-10  w-[50vw]">
+    {/* RIGHT SIDE */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-10 w-full">
+      {[
+        {
+          value: "24/7",
+          label: "Support Availability",
+          description: "Dedicated support team available anytime you need assistance.",
+          img: img,
+        },
+        {
+          value: "98%",
+          label: "Client Satisfaction",
+          description: "We maintain an industry-leading satisfaction rate.",
+          img: img2,
+        },
+        {
+          value: "25+",
+          label: "Technologies",
+          description: "Expertise across all modern and emerging technologies.",
+          img: img3,
+        },
+        {
+          value: "4+",
+          label: "Years Experience",
+          description: "Delivering successful digital products for over 4 years.",
+          img: img4,
+        },
+      ].map((stat, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.1 }}
+          className="
+            flex flex-col gap-3
+            p-6
+            w-full lg:w-80
+            bg-white/5
+            border border-white/10
+            backdrop-blur-sm
+            rounded-2xl
+            hover:bg-white/10
+            hover:border-white/20
+            transition-all
+          "
+        >
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white">
+            {stat.value}
+          </h1>
 
-  {[
-    {
-      value: "24/7",
-      label: "Support Availability",
-      description:
-        "Dedicated support team available anytime you need assistance.",
-      img: img,
-    },
-    {
-      value: "98%",
-      label: "Client Satisfaction",
-      description: "We maintain an industry-leading satisfaction rate.",
-      img: img2,
-    },
-    {
-      value: "25+",
-      label: "Technologies",
-      description:
-        "Expertise across all modern and emerging technologies.",
-      img: img3,
-    },
-    {
-      value: "4+",
-      label: "Years Experience",
-      description:
-        "Delivering successful digital products for over 4 years.",
-      img: img4,
-    },
-  ].map((stat, index) => (
-    <motion.div
-      key={index}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      className="
-        flex flex-col gap-3 
-        p-6 
-        w-80
-        bg-white/5 
-        border border-white/10 
-        backdrop-blur-sm
-        rounded-2xl
-        hover:bg-white/10
-        hover:border-white/20
-        transition-all
-      "
-    >
+          <p className="text-white/90 text-base sm:text-lg font-semibold">
+            {stat.label}
+          </p>
 
-      {/* VALUE */}
-      <h1 className="text-4xl font-extrabold text-white">{stat.value}</h1>
-
-      {/* LABEL */}
-      <p className="text-white/90 text-lg font-semibold">
-        {stat.label}
-      </p>
-
-      {/* DESCRIPTION */}
-      <p className="text-white/60 text-sm leading-relaxed">
-        {stat.description}
-      </p>
-    </motion.div>
-  ))}
-</div>
+          <p className="text-white/60 text-sm leading-relaxed">
+            {stat.description}
+          </p>
+        </motion.div>
+      ))}
+    </div>
 
   </div>
 </section>
+
 
 
  {/* Application Form Section - Split Layout */}

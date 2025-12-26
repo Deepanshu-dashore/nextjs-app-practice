@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import {
   collection,
@@ -57,6 +57,37 @@ useEffect(() => {
 
   useEffect(() => {
     fetchPrograms();
+  }, []);
+   const videoRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const section = sectionRef.current;
+
+    if (!video || !section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // When section is visible → unmute
+          video.muted = false;
+          video.play().catch(() => {});
+        } else {
+          // When section is not visible → mute
+          video.muted = true;
+        }
+      },
+      {
+        threshold: 0.5, // 50% visible
+      }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   const featuredPrograms = [
@@ -228,36 +259,43 @@ useEffect(() => {
 
   </div>
 </section>
-<section className="py-10 bg-white">
-  <div className="max-w-7xl mx-auto px-6 text-center">
-    {/* Heading */}
-    <h2 className="text-4xl font-bold text-gray-900 mb-4">
-      Join the Dream Team
-    </h2>
-    <p className="text-gray-700 mb-12 max-w-2xl mx-auto">
-      Our secret to success? Global, dynamic teams of go-getters and barrier breakers.
-    </p>
 
-    {/* Video Section using video tag for full cover */}
-    <div className="relative w-full overflow-hidden rounded-xl shadow-lg aspect-video">
-      <video
-        src="/images/jointheteam.mp4" // Replace with your video URL
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="w-full h-full object-cover rounded-xl"
-      ></video>
-    </div>
-  </div>
-</section>
+    <section
+      ref={sectionRef}
+      className="py-10 bg-black"
+    >
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        {/* Heading */}
+        <h2 className="text-4xl font-bold text-white mb-4">
+          Join the Dream Team
+        </h2>
+        <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
+          Our secret to success? Global, dynamic teams of go-getters and barrier breakers.
+        </p>
 
- <section className="bg-white py-28">
+        {/* Video Section */}
+        <div className="relative w-full overflow-hidden rounded-xl shadow-lg aspect-video">
+          <video
+            ref={videoRef}
+            src="/images/jointheteam.mp4"
+            autoPlay
+            controls
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover rounded-xl"
+          />
+        </div>
+      </div>
+    </section>
+
+
+ <section className="bg-black py-28">
         <div className="max-w-[1200px] mx-auto px-6">
 
           {/* Heading */}
           <div className="text-center mb-20">
-            <h2 className="text-[44px] font-semibold tracking-tight text-black mb-6">
+            <h2 className="text-[44px] font-semibold tracking-tight text-white mb-6">
               Discover more
             </h2>
 
@@ -309,7 +347,7 @@ useEffect(() => {
     text-[17px]
     font-medium
     leading-[1.35]
-    text-black
+    text-white
     max-w-[92%]
     capitalize
   "

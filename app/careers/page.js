@@ -324,181 +324,153 @@ export default function CareersPage() {
           ))}
         </div>
       </section>
-      <section ref={formRef} className="py-20 bg-[#0d0d0d]">
-        <div className="text-center mb-16">
-          {/* Badge */}
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 mb-4
-                  rounded-full
-                  bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10
-                  border border-indigo-500/20
-                  backdrop-blur-sm"
-          >
-            <svg
-              className="w-4 h-4 text-indigo-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
+  <section ref={formRef} className="py-16 sm:py-20 bg-[#0d0d0d]">
+  {/* HEADER */}
+  <div className="text-center mb-12 sm:mb-16 px-4">
+    {/* Badge */}
+    <div
+      className="inline-flex items-center gap-2 px-4 py-2 mb-4
+      rounded-full
+      bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10
+      border border-indigo-500/20
+      backdrop-blur-sm"
+    >
+      <svg
+        className="w-4 h-4 text-indigo-400"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+      </svg>
 
-            <span
-              className="text-sm font-medium bg-clip-text text-transparent
-                     bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400"
-            >
-              Apply Opportunity
-            </span>
+      <span className="text-sm font-medium bg-clip-text text-transparent
+        bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+        Apply Opportunity
+      </span>
 
-            <div className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
-          </div>
+      <div className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
+    </div>
 
-          {/* Heading */}
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Apply for The Opportunity
-          </h2>
+    {/* Heading */}
+    <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-4">
+      Apply for The Opportunity
+    </h2>
 
-          {/* Description */}
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Submit your application and take the next step in your career
-            journey with us
+    {/* Description */}
+    <p className="text-base sm:text-lg text-gray-400 max-w-3xl mx-auto">
+      Submit your application and take the next step in your career journey with us
+    </p>
+  </div>
+
+  {/* CONTENT */}
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-10 lg:gap-12">
+    
+    {/* LEFT */}
+    <div className="lg:w-1/2 space-y-8 sm:space-y-10">
+      {[...simpleDataList].reverse().map((item, i) => (
+        <div
+          key={i}
+          className="group relative overflow-hidden rounded-2xl
+          bg-gradient-to-br from-[#14151c] to-[#0b0c10]
+          border border-indigo-500/40
+          p-6 sm:p-8
+          transition-all duration-300
+          hover:-translate-y-1
+          hover:shadow-[0_0_40px_-10px_rgba(99,102,241,0.4)]"
+        >
+          <span className="absolute top-0 left-0 h-[1px] w-full
+            bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
+
+          <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3">
+            {item.title}
+          </h3>
+
+          <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
+            {item.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    {/* FORM */}
+    <div className="lg:w-1/2">
+      <form
+        onSubmit={(e) => handleSubmit(e, selectedOpp?.title)}
+        className="group relative overflow-hidden rounded-2xl
+        bg-gradient-to-br from-[#14151c] to-[#0b0c10]
+        border border-indigo-500/40
+        p-6 sm:p-8 space-y-5 sm:space-y-6
+        transition-all duration-300
+        hover:shadow-[0_0_40px_-10px_rgba(99,102,241,0.4)]"
+      >
+        <span className="absolute top-0 left-0 h-[1px] w-full
+          bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
+
+        {["name", "contact", "email", "subject"].map((f) => (
+          <input
+            key={f}
+            name={f}
+            value={formData[f]}
+            onChange={handleChange}
+            placeholder={f.toUpperCase()}
+            required
+            className="w-full px-4 py-3 sm:py-4 rounded-xl
+            bg-black/40 text-white
+            border border-white/10
+            placeholder-gray-500
+            focus:outline-none
+            focus:ring-2 focus:ring-indigo-500/50
+            focus:border-indigo-500/50
+            transition"
+          />
+        ))}
+
+        <div>
+          <input
+            type="file"
+            name="resume"
+            ref={fileInputRef}
+            accept=".pdf,.doc,.docx,.xls,.xlsx"
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-xl
+            bg-black/40 text-gray-400
+            border border-dashed border-white/20
+            file:hidden focus:outline-none"
+          />
+          <p className="mt-1 text-xs text-gray-500">
+            Upload Resume (PDF, DOC, DOCX, XLS, XLSX)
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12">
-          {/* LEFT */}
-          <div className="lg:w-1/2 space-y-10">
-            {/* {simpleDataList.map((item, i) => ( //right serial of data  */}
-            {[...simpleDataList].reverse().map(
-              (
-                item,
-                i //reverse of the data
-              ) => (
-                <div
-                  key={i}
-                  className="group relative overflow-hidden rounded-2xl
-                 bg-gradient-to-br from-[#14151c] to-[#0b0c10]
-                 border 
-                 p-8
-                 transition-all duration-300
-                 hover:-translate-y-1
-              border-indigo-500/40
-                 hover:shadow-[0_0_40px_-10px_rgba(99,102,241,0.4)]"
-                >
-                  {/* Gradient Accent Line */}
-                  <span
-                    className="absolute top-0 left-0 h-[1px] w-full
-                       bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-                  />
+        <textarea
+          name="message"
+          rows={5}
+          placeholder="Cover Letter"
+          value={formData.message}
+          onChange={handleChange}
+          className="w-full px-4 py-3 sm:py-4 rounded-xl
+          bg-black/40 text-white
+          border border-white/10
+          placeholder-gray-500
+          focus:outline-none
+          focus:ring-2 focus:ring-indigo-500/50
+          focus:border-indigo-500/50
+          transition resize-none"
+        />
 
-                  <h3 className="text-2xl font-semibold text-white mb-3">
-                    {item.title}
-                  </h3>
+        <button
+          disabled={isSubmitting}
+          className="w-full py-3 sm:py-4 rounded-xl font-semibold text-white
+          bg-indigo-500 hover:opacity-90
+          disabled:opacity-50 transition"
+        >
+          {isSubmitting ? "Submitting..." : "Submit Application"}
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
 
-                  <p className="text-gray-400 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              )
-            )}
-          </div>
-
-          {/* FORM */}
-          <div className="lg:w-1/2">
-            <form
-              onSubmit={(e) => handleSubmit(e, selectedOpp?.title)}
-              className="group relative overflow-hidden rounded-2xl
-               bg-gradient-to-br from-[#14151c] to-[#0b0c10]
-               border
-               p-8 space-y-6
-               transition-all duration-300
-            border-indigo-500/40
-               hover:shadow-[0_0_40px_-10px_rgba(99,102,241,0.4)]"
-            >
-              {/* Gradient Accent Line */}
-              <span
-                className="absolute top-0 left-0 h-[1px] w-full
-                     bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-              />
-              {/* 
-     <h3 className="text-2xl font-semibold text-white mb-2">
-      Apply for this Role
-    </h3>
-    <p className="text-gray-400 mb-6">
-      Fill in your details and upload your resume
-    </p> */}
-
-              {/* INPUTS */}
-              {["name", "contact", "email", "subject"].map((f) => (
-                <input
-                  key={f}
-                  name={f}
-                  value={formData[f]}
-                  onChange={handleChange}
-                  placeholder={f.toUpperCase()}
-                  required
-                  className="w-full px-4 py-4 rounded-xl
-                   bg-black/40 text-white
-                   border border-white/10
-                   placeholder-gray-500
-                   focus:outline-none
-                   focus:ring-2 focus:ring-indigo-500/50
-                   focus:border-indigo-500/50
-                   transition"
-                />
-              ))}
-
-              {/* FILE UPLOAD */}
-              <div className="relative">
-                <input
-                  type="file"
-                  name="resume"
-                  ref={fileInputRef}
-                  accept=".pdf,.doc,.docx,.xls,.xlsx"
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl
-                   bg-black/40 text-gray-400
-                   border border-dashed border-white/20
-                   file:hidden
-                   focus:outline-none"
-                />
-                <p className="mt-1 text-xs text-gray-500">
-                  Upload Resume (PDF, DOC, DOCX, XLS, XLSX)
-                </p>
-              </div>
-
-              {/* MESSAGE */}
-              <textarea
-                name="message"
-                rows={5}
-                placeholder="Cover Letter"
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full px-4 py-4 rounded-xl
-                 bg-black/40 text-white
-                 border border-white/10
-                 placeholder-gray-500
-                 focus:outline-none
-                 focus:ring-2 focus:ring-indigo-500/50
-                 focus:border-indigo-500/50
-                 transition resize-none"
-              />
-
-              {/* SUBMIT */}
-              <button
-                disabled={isSubmitting}
-                className="w-full py-4 rounded-xl font-semibold text-white
-                 bg-indigo-500
-                 hover:opacity-90
-                 disabled:opacity-50
-                 cursor-pointer
-                 transition"
-              >
-                {isSubmitting ? "Submitting..." : "Submit Application"}
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
       <Footer />
     </main>
   );
