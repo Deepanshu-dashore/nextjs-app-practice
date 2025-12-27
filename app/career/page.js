@@ -19,7 +19,9 @@ export default function Talent() {
   const [programs, setPrograms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [active, setActive] = useState(2);
-
+  
+  const [opportunities, setOpportunities] = useState([]);
+  const [sectionsByOpp, setSectionsByOpp] = useState({});
   // 🔥 Fetch Talent Programs from Firestore
   const fetchPrograms = async () => {
     try {
@@ -54,7 +56,41 @@ useEffect(() => {
   fetchSuggestedBlogs();
 }, []);
 
+  /* ---------------- FETCH OPPORTUNITIES & SECTIONS ---------------- */
+  useEffect(() => {
+    const fetchAll = async () => {
+      try {
+        // Fetch ALL opportunities
+        const oppSnap = await getDocs(
+          query(collection(db, "opportunities"), orderBy("createdAt", "desc"))
+        );
 
+        const opps = oppSnap.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        setOpportunities(opps);
+
+        // Fetch ALL career sections
+        const secSnap = await getDocs(collection(db, "careerSections"));
+        const map = {};
+        secSnap.docs.forEach((doc) => {
+          const d = doc.data();
+          if (!map[d.opportunityId]) map[d.opportunityId] = [];
+          map[d.opportunityId].push(d);
+        });
+
+        setSectionsByOpp(map);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAll();
+  }, []);
   useEffect(() => {
     fetchPrograms();
   }, []);
@@ -144,9 +180,9 @@ useEffect(() => {
     <span className="text-sm tracking-[0.3em] uppercase text-white">
       Career Programs
     </span>
-
-    {/* Line matches text width */}
-    <div className="h-px w-full max-w-[200px] bg-gradient-to-r from-white/60 to-transparent mt-3" />
+{/* Line matches text width – same start & end */}
+<div className="h-px w-full max-w-[230px] mt-3 
+  bg-gradient-to-r from-transparent via-white/60 to-transparent" />
 
     <h1 className="text-5xl md:text-5xl font-bold mt-3 text-white">
       Empower Your Career 
@@ -168,12 +204,46 @@ useEffect(() => {
 
 <section className="py-32 bg-[#0A0A0A]">
   <div className="max-w-7xl mx-auto px-6">
-    <h2 className="text-4xl font-bold text-white text-center mb-16">
-      Our Pathways
-    </h2>
+ {/* HEADING */}
+<div className="text-center mb-16">
+
+  {/* Badge */}
+  <div
+    className="inline-flex items-center gap-2 px-4 py-2 mb-4
+    rounded-full
+    bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10
+    border border-indigo-500/20
+    backdrop-blur-sm"
+  >
+    <svg
+      className="w-4 h-4 text-indigo-400"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+    >
+      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+    </svg>
+
+    <span className="text-sm font-medium bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+      Career Growth
+    </span>
+
+    <div className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
+  </div>
+
+  {/* Title */}
+  <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
+    Our Pathways
+  </h2>
+
+  {/* Subtitle */}
+  <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+    Clear routes designed to help you grow, learn, and succeed
+  </p>
+</div>
+
 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
   {/* Card 1 */}
-  <div className="bg-[#1A1A1A] rounded-xl overflow-hidden shadow-lg flex flex-col">
+  <div className="bg-[#131313] rounded-xl overflow-hidden shadow-lg flex flex-col">
     <img
       src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
       alt="Internships"
@@ -193,7 +263,7 @@ useEffect(() => {
       </p>
       <a
         href="#"
-        className="text-blue-400 font-medium mt-auto inline-flex items-center hover:underline"
+        className="text-purple-500 font-medium mt-auto inline-flex items-center hover:underline"
       >
         Learn more <span className="ml-2">→</span>
       </a>
@@ -201,7 +271,7 @@ useEffect(() => {
   </div>
 
   {/* Card 2 */}
-  <div className="bg-[#1A1A1A] rounded-xl overflow-hidden shadow-lg flex flex-col">
+  <div className="bg-[#131313] rounded-xl overflow-hidden shadow-lg flex flex-col">
     <img
       src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
       alt="Graduates"
@@ -221,7 +291,7 @@ useEffect(() => {
       </p>
       <a
         href="#"
-        className="text-blue-400 font-medium mt-auto inline-flex items-center hover:underline"
+        className="text-purple-500 font-medium mt-auto inline-flex items-center hover:underline"
       >
         Learn more <span className="ml-2">→</span>
       </a>
@@ -229,7 +299,7 @@ useEffect(() => {
   </div>
 
   {/* Card 3 */}
-  <div className="bg-[#1A1A1A] rounded-xl overflow-hidden shadow-lg flex flex-col">
+  <div className="bg-[#131313] rounded-xl overflow-hidden shadow-lg flex flex-col">
     <img
       src="https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
       alt="STEM Champions"
@@ -249,7 +319,7 @@ useEffect(() => {
       </p>
       <a
         href="#"
-        className="text-blue-400 font-medium mt-auto inline-flex items-center hover:underline"
+        className="text-purple-500 font-medium mt-auto inline-flex items-center hover:underline"
       >
         Learn more <span className="ml-2">→</span>
       </a>
@@ -259,19 +329,158 @@ useEffect(() => {
 
   </div>
 </section>
+{/* ================= OPPORTUNITIES (REFERENCE STYLE – DARK) ================= */}
+<section className="py-32 bg-[#0b0b0f]">
+  <div className="max-w-6xl mx-auto px-6">
+
+{/* HEADING */}
+<div className="text-center mb-20">
+
+  {/* Badge */}
+  <div
+    className="inline-flex items-center gap-2 px-4 py-2 mb-4
+    rounded-full
+    bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10
+    border border-indigo-500/20
+    backdrop-blur-sm"
+  >
+    <svg
+      className="w-4 h-4 text-indigo-400"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+    >
+      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+    </svg>
+
+    <span className="text-sm font-medium bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+      Careers at Our Company
+    </span>
+
+    <div className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
+  </div>
+
+  {/* Main Heading */}
+  <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-4">
+    Join the Team
+  </h2>
+
+  {/* Subtitle */}
+  <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+    Explore open roles and build the future with us
+  </p>
+</div>
+
+
+    {/* Table Header */}
+    <div className="hidden md:grid grid-cols-12 text-sm text-gray-500 pb-4 border-b border-white/10">
+      <div className="col-span-6">Role</div>
+      <div className="col-span-3 text-center">Location</div>
+      <div className="col-span-2 text-center">Type</div>
+      <div className="col-span-1 text-right"></div>
+    </div>
+
+    {/* Opportunities List */}
+    <div className="divide-y divide-white/10">
+      {opportunities.map((opp) => (
+        <motion.div
+          key={opp.id}
+          whileHover={{ backgroundColor: "rgba(255,255,255,0.03)" }}
+          transition={{ duration: 0.2 }}
+          className="
+            grid grid-cols-1 md:grid-cols-12
+            items-center
+            py-6
+            px-4
+            rounded-xl
+          "
+        >
+          {/* Role */}
+          <div className="md:col-span-6">
+            <h3 className="text-lg font-medium text-white">
+              {opp.title || "Opportunity Title"}
+            </h3>
+          </div>
+
+          {/* Location */}
+          <div className="md:col-span-3 md:text-center mt-2 md:mt-0">
+            <span className="text-gray-400">
+              {opp.location || "Remote"}
+            </span>
+          </div>
+
+          {/* Type */}
+          <div className="md:col-span-2 md:text-center mt-2 md:mt-0">
+            <span className="text-gray-400">
+              {opp.type || "Full Time"}
+            </span>
+          </div>
+
+          {/* Apply */}
+          <div className="md:col-span-1 mt-4 md:mt-0 text-right">
+            <button
+              onClick={() =>
+                formRef.current?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="
+                inline-flex items-center justify-center
+                px-5 py-2
+                rounded-full
+                text-sm font-medium
+                bg-white text-black
+                hover:bg-gray-200
+                transition
+              "
+            >
+              Apply
+            </button>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
     <section
       ref={sectionRef}
       className="py-10 bg-black"
     >
       <div className="max-w-7xl mx-auto px-6 text-center">
-        {/* Heading */}
-        <h2 className="text-4xl font-bold text-white mb-4">
-          Join the Dream Team
-        </h2>
-        <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
-          Our secret to success? Global, dynamic teams of go-getters and barrier breakers.
-        </p>
+   {/* HEADING */}
+<div className="text-center mb-16">
+
+  {/* Badge */}
+  <div
+    className="inline-flex items-center gap-2 px-4 py-2 mb-4
+    rounded-full
+    bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10
+    border border-indigo-500/20
+    backdrop-blur-sm"
+  >
+    <svg
+      className="w-4 h-4 text-indigo-400"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+    >
+      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+    </svg>
+
+    <span className="text-sm font-medium bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+      Our Culture
+    </span>
+
+    <div className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
+  </div>
+
+  {/* Title */}
+  <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-4">
+    Join the Dream Team
+  </h2>
+
+  {/* Description */}
+  <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+    Our secret to success? Global, dynamic teams of go-getters and barrier breakers.
+  </p>
+</div>
 
         {/* Video Section */}
         <div className="relative w-full overflow-hidden rounded-xl shadow-lg aspect-video">
@@ -293,27 +502,54 @@ useEffect(() => {
  <section className="bg-black py-28">
         <div className="max-w-[1200px] mx-auto px-6">
 
-          {/* Heading */}
-          <div className="text-center mb-20">
-            <h2 className="text-[44px] font-semibold tracking-tight text-white mb-6">
-              Discover more
-            </h2>
+        {/* HEADING */}
+<div className="text-center mb-20">
 
-            <Link
-              href="/blogs"
-              className="
-                inline-flex items-center justify-center
-                px-6 py-2.5
-                rounded-full
-                bg-black text-white
-                text-sm font-medium
-                hover:opacity-90
-                transition
-              "
-            >
-              Read People blog
-            </Link>
-          </div>
+  {/* Badge */}
+  <div
+    className="inline-flex items-center gap-2 px-4 py-2 mb-4
+    rounded-full
+    bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10
+    border border-indigo-500/20
+    backdrop-blur-sm"
+  >
+    <svg
+      className="w-4 h-4 text-indigo-400"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+    >
+      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+    </svg>
+
+    <span className="text-sm font-medium bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+      Insights & Stories
+    </span>
+
+    <div className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
+  </div>
+
+  {/* Title */}
+  <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-6">
+    Discover More
+  </h2>
+
+  {/* CTA */}
+  <Link
+    href="/blog"
+    className="
+      inline-flex items-center justify-center
+      px-6 py-3
+      rounded-full
+      bg-black text-white
+      text-sm font-medium
+      hover:opacity-90
+      transition
+    "
+  >
+    Read People Blog
+  </Link>
+</div>
+
 
           {/* Blog Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">

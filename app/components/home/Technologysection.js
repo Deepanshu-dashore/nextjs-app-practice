@@ -50,13 +50,26 @@ export default function TechnologySection() {
 
         {/* Section Heading */}
         <div className="text-center relative z-20 px-2">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4 backdrop-blur-xl">
+          {/* <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4 backdrop-blur-xl">
             <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
             <span className="text-xs sm:text-sm font-medium text-purple-300">
               Technology
             </span>
-          </div>
+          </div> */}
+   <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 border border-indigo-500/20 backdrop-blur-sm">
+          <svg
+  className="w-4 h-4 text-indigo-400"
+  fill="currentColor"
+  viewBox="0 0 24 24"
+>
+  <path d="M9 2h6v2h-2v2.1c1.8.3 3.2 1.7 3.5 3.5H19v2h-2.5c-.3 1.8-1.7 3.2-3.5 3.5V20h2v2H9v-2h2v-2.1c-1.8-.3-3.2-1.7-3.5-3.5H5v-2h2.5c.3-1.8 1.7-3.2 3.5-3.5V4H9V2zm3 6a3 3 0 100 6 3 3 0 000-6z"/>
+</svg>
 
+            <span className="text-sm font-medium bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Technology  
+            </span>
+            <div className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
+          </div>
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +104,7 @@ export default function TechnologySection() {
                       flex flex-col items-center justify-center gap-3
                       p-4 sm:p-6 lg:p-8
                       bg-white/5 backdrop-blur-md
-                      border border-white/20
+                      border border-white/10
                       rounded-xl
                       w-40 h-28
                       sm:w-48 sm:h-32
@@ -140,7 +153,7 @@ export default function TechnologySection() {
                       flex flex-col items-center justify-center gap-3
                       p-4 sm:p-6 lg:p-8
                       bg-white/5 backdrop-blur-md
-                      border border-white/20
+                      border border-white/10
                       rounded-xl
                       w-40 h-28
                       sm:w-48 sm:h-32
