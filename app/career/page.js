@@ -14,14 +14,41 @@ import {
 import Footer from "../components/shared/Footer";
 import Link from "next/link";
 import { db } from "../firebase";
+import { useRouter } from "next/navigation";
+
 
 export default function Talent() {
+  const router = useRouter()
   const [programs, setPrograms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [active, setActive] = useState(2);
   
   const [opportunities, setOpportunities] = useState([]);
   const [sectionsByOpp, setSectionsByOpp] = useState({});
+  // 🔎 Filter state
+const [department, setDepartment] = useState("");
+const [location, setLocation] = useState("");
+const [type, setType] = useState("");
+// 🎯 Filter values from Firestore data
+const departments = Array.from(
+  new Set(opportunities.map(o => o.department).filter(Boolean))
+);
+
+const locations = Array.from(
+  new Set(opportunities.map(o => o.location).filter(Boolean))
+);
+
+const types = Array.from(
+  new Set(opportunities.map(o => o.type).filter(Boolean))
+);
+const filteredOpportunities = opportunities.filter((opp) => {
+  return (
+    (!department || opp.department === department) &&
+    (!location || opp.location === location) &&
+    (!type || opp.type === type)
+  );
+});
+
   // 🔥 Fetch Talent Programs from Firestore
   const fetchPrograms = async () => {
     try {
@@ -97,34 +124,34 @@ useEffect(() => {
    const videoRef = useRef(null);
   const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    const section = sectionRef.current;
+  // useEffect(() => {
+  //   const video = videoRef.current;
+  //   const section = sectionRef.current;
 
-    if (!video || !section) return;
+  //   if (!video || !section) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // When section is visible → unmute
-          video.muted = false;
-          video.play().catch(() => {});
-        } else {
-          // When section is not visible → mute
-          video.muted = true;
-        }
-      },
-      {
-        threshold: 0.5, // 50% visible
-      }
-    );
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+  //       if (entry.isIntersecting) {
+  //         // When section is visible → unmute
+  //         video.muted = false;
+  //         video.play().catch(() => {});
+  //       } else {
+  //         // When section is not visible → mute
+  //         video.muted = true;
+  //       }
+  //     },
+  //     {
+  //       threshold: 0.5, // 50% visible
+  //     }
+  //   );
 
-    observer.observe(section);
+  //   observer.observe(section);
 
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  //   return () => {
+  //     observer.disconnect();
+  //   };
+  // }, []);
 
   const featuredPrograms = [
     {
@@ -158,6 +185,7 @@ useEffect(() => {
   }, [featuredPrograms.length]);
 
   return (
+    
     <div className="bg-[#030303] text-white overflow-hidden relative">
       {/* HERO SECTION */}
       <section className="relative h-[100dvh] overflow-hidden">
@@ -329,14 +357,18 @@ useEffect(() => {
 
   </div>
 </section>
-{/* ================= OPPORTUNITIES (REFERENCE STYLE – DARK) ================= */}
-<section className="py-32 bg-[#0b0b0f]">
-  <div className="max-w-6xl mx-auto px-6">
+       
 
-{/* HEADING */}
-<div className="text-center mb-20">
 
-  {/* Badge */}
+
+
+  
+    <section className="py-32 bg-[#0b0b0f]">
+      <div className="max-w-6xl mx-auto px-6">
+
+        {/* ================= HEADING ================= */}
+        <div className="text-center mb-16">
+      
   <div
     className="inline-flex items-center gap-2 px-4 py-2 mb-4
     rounded-full
@@ -344,159 +376,146 @@ useEffect(() => {
     border border-indigo-500/20
     backdrop-blur-sm"
   >
-    <svg
-      className="w-4 h-4 text-indigo-400"
-      fill="currentColor"
-      viewBox="0 0 20 20"
-    >
-      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-    </svg>
+ <svg
+  className="w-4 h-4 text-indigo-400"
+  fill="currentColor"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 2h4a2 2 0 012 2v2h4a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h4V4a2 2 0 012-2zm4 4V4h-4v2h4z" />
+</svg>
+
 
     <span className="text-sm font-medium bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-      Careers at Our Company
+    Jobs & Internships
     </span>
 
     <div className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
   </div>
 
-  {/* Main Heading */}
-  <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-4">
-    Join the Team
-  </h2>
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            Career Opportunities
+          </h2>
 
-  {/* Subtitle */}
-  <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-    Explore open roles and build the future with us
-  </p>
-</div>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            Discover full-time roles and internship opportunities to grow your career with us
+          </p>
+        </div>
 
+        {/* ================= FILTERS (REFERENCE STYLE – DARK) ================= */}
+        <div className="mb-16">
+          <p className="text-sm text-gray-400 mb-4">Filters:</p>
 
-    {/* Table Header */}
-    <div className="hidden md:grid grid-cols-12 text-sm text-gray-500 pb-4 border-b border-white/10">
-      <div className="col-span-6">Role</div>
-      <div className="col-span-3 text-center">Location</div>
-      <div className="col-span-2 text-center">Type</div>
-      <div className="col-span-1 text-right"></div>
-    </div>
-
-    {/* Opportunities List */}
-    <div className="divide-y divide-white/10">
-      {opportunities.map((opp) => (
-        <motion.div
-          key={opp.id}
-          whileHover={{ backgroundColor: "rgba(255,255,255,0.03)" }}
-          transition={{ duration: 0.2 }}
-          className="
-            grid grid-cols-1 md:grid-cols-12
-            items-center
-            py-6
-            px-4
-            rounded-xl
-          "
-        >
-          {/* Role */}
-          <div className="md:col-span-6">
-            <h3 className="text-lg font-medium text-white">
-              {opp.title || "Opportunity Title"}
-            </h3>
-          </div>
-
-          {/* Location */}
-          <div className="md:col-span-3 md:text-center mt-2 md:mt-0">
-            <span className="text-gray-400">
-              {opp.location || "Remote"}
-            </span>
-          </div>
-
-          {/* Type */}
-          <div className="md:col-span-2 md:text-center mt-2 md:mt-0">
-            <span className="text-gray-400">
-              {opp.type || "Full Time"}
-            </span>
-          </div>
-
-          {/* Apply */}
-          <div className="md:col-span-1 mt-4 md:mt-0 text-right">
-            <button
-              onClick={() =>
-                formRef.current?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="
-                inline-flex items-center justify-center
-                px-5 py-2
-                rounded-full
-                text-sm font-medium
-                bg-white text-black
-                hover:bg-gray-200
-                transition
-              "
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Department */}
+            <select
+              value={department}
+              onChange={(e) => setDepartment(e.target.value)}
+              className="w-full px-5 py-3 rounded-xl
+                bg-[#121218]
+                border border-white/10
+                text-gray-300
+                focus:outline-none focus:border-gray-500
+                transition"
             >
-              Apply
-            </button>
+              <option value="">Department</option>
+              {departments.map(dep => (
+                <option key={dep} value={dep}>{dep}</option>
+              ))}
+            </select>
+
+            {/* Location */}
+            <select
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="w-full px-5 py-3 rounded-xl
+                bg-[#121218]
+                border border-white/10
+                text-gray-300
+                focus:outline-none focus:border-gray-500
+                transition"
+            >
+              <option value="">Location</option>
+              {locations.map(loc => (
+                <option key={loc} value={loc}>{loc}</option>
+              ))}
+            </select>
+
+            {/* Employment Type */}
+            <select
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              className="w-full px-5 py-3 rounded-xl
+                bg-[#121218]
+                border border-white/10
+                text-gray-300
+                focus:outline-none focus:border-gray-500
+                transition"
+            >
+              <option value="">Employment Type</option>
+              {types.map(t => (
+                <option key={t} value={t}>{t}</option>
+              ))}
+            </select>
           </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+        </div>
 
-    <section
-      ref={sectionRef}
-      className="py-10 bg-black"
-    >
-      <div className="max-w-7xl mx-auto px-6 text-center">
-   {/* HEADING */}
-<div className="text-center mb-16">
+        {/* ================= TABLE HEADER ================= */}
+        <div className="hidden md:grid grid-cols-12 text-sm text-gray-500 pb-4 border-b border-white/10">
+          <div className="col-span-6">Role</div>
+          <div className="col-span-3 text-center">Location</div>
+          <div className="col-span-2 text-center">Type</div>
+          <div className="col-span-1 text-right"></div>
+        </div>
 
-  {/* Badge */}
-  <div
-    className="inline-flex items-center gap-2 px-4 py-2 mb-4
-    rounded-full
-    bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10
-    border border-indigo-500/20
-    backdrop-blur-sm"
-  >
-    <svg
-      className="w-4 h-4 text-indigo-400"
-      fill="currentColor"
-      viewBox="0 0 20 20"
-    >
-      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-    </svg>
+        {/* ================= OPPORTUNITIES LIST ================= */}
+        <div className="divide-y divide-white/10">
+          {filteredOpportunities.map((opp) => (
+            <motion.div
+              key={opp.id}
+              whileHover={{ backgroundColor: "rgba(255,255,255,0.03)" }}
+              transition={{ duration: 0.2 }}
+              className="grid grid-cols-1 md:grid-cols-12 items-center py-6 px-4 rounded-xl"
+            >
+              {/* Role */}
+              <div className="md:col-span-6">
+                <h3 className="text-lg font-medium text-white">
+                  {opp.title}
+                </h3>
+              </div>
 
-    <span className="text-sm font-medium bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-      Our Culture
-    </span>
+              {/* Location */}
+              <div className="md:col-span-3 md:text-center mt-2 md:mt-0">
+                <span className="text-gray-400">{opp.location}</span>
+              </div>
 
-    <div className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
-  </div>
+              {/* Type */}
+              <div className="md:col-span-2 md:text-center mt-2 md:mt-0">
+                <span className="text-gray-400">{opp.type}</span>
+              </div>
 
-  {/* Title */}
-  <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-4">
-    Join the Dream Team
-  </h2>
+              {/* Apply */}
+              <div className="md:col-span-1 mt-4 md:mt-0 text-right">
+                <button
+                onClick={() => router.push(`/career/${opp.id}`)}
+                  className="px-5 py-2 rounded-full text-sm font-medium
+                    bg-white text-black hover:bg-gray-200 transition cursor-pointer"
+                >
+                  Apply
+                </button>
+              </div>
+            </motion.div>
+          ))}
 
-  {/* Description */}
-  <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-    Our secret to success? Global, dynamic teams of go-getters and barrier breakers.
-  </p>
-</div>
-
-        {/* Video Section */}
-        <div className="relative w-full overflow-hidden rounded-xl shadow-lg aspect-video">
-          <video
-            ref={videoRef}
-            src="/images/jointheteam.mp4"
-            autoPlay
-            controls
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover rounded-xl"
-          />
+          {/* No Results */}
+          {filteredOpportunities.length === 0 && (
+            <p className="text-center text-gray-500 py-12">
+              No opportunities match your filters.
+            </p>
+          )}
         </div>
       </div>
     </section>
+
 
 
  <section className="bg-black py-28">
