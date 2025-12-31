@@ -27,28 +27,34 @@ function Navbar() {
 
   /* -------------------- DATA -------------------- */
 
-  const serviceImages = {
-    "Web Development":
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200",
-    "App Development":
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200",
-    "Software & ERP Development":
-      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=1200",
-    "UI/UX Design":
-      "https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1200",
-    "Digital Marketing":
-      "https://images.unsplash.com/photo-1557838923-2985c318be48?q=80&w=1200",
-    "Game Development":
-      "https://images.unsplash.com/photo-1605902711622-cfb43c44367f?q=80&w=1200",
-    "Engineering Practices & Support":
-      "https://images.unsplash.com/photo-1581091870627-3f9cbb7c0b89?q=80&w=1200",
-  };
+const serviceImages = {
+  "Web Development":
+    "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200",
+
+  "App Development":
+    "https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=1200",
+
+  "Software & ERP Development":
+    "https://images.unsplash.com/photo-1581090700227-1e37b190418e?q=80&w=1200",
+
+
+  "UI/UX Design":
+    "https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=1200",
+
+  "Digital Marketing":
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200",
+
+  "Game Development":
+    "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200",
+  "Engineering Practices & Support": "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?q=80&w=1200"
+};
+
 
   const serviceSlugs = {
     "Web Development": "web-development",
     "App Development": "app-development",
-    "Software & ERP Development": "software-erp-development",
-    "UI/UX Design": "ui-ux-design",
+    "Software & ERP Development": "software-erp",
+    "UI/UX Design": "ui-ux",
     "Digital Marketing": "digital-marketing",
     "Game Development": "game-development",
     "Engineering Practices & Support": "engineering-support",
