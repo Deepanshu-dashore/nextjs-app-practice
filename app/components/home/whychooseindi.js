@@ -1,4 +1,5 @@
 
+
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Link from "next/link";
 import { FaCheckCircle, FaArrowRight, FaLightbulb } from "react-icons/fa";
@@ -42,26 +43,7 @@ export default function TechPartnerSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        {/* <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-purple-500/10 border border-purple-500/20">
-            <FaLightbulb className="text-purple-400" />
-            <span className="text-sm font-medium text-purple-300">
-              The Next-Gen Tech Partnership
-            </span>
-          </div>
-
-          <h2 className="text-5xl font-black leading-tight">
-            Build Better,{" "}
-            <span className="bg-gradient-to-b from-purple-300 via-purple-500 to-purple-800 bg-clip-text text-transparent">
-              Grow Faster.
-            </span>
-          </h2>
-
-          <p className="text-gray-300 max-w-4xl mx-auto mt-4 text-lg">
-            We provide the infrastructure and expertise to turn your ideas into
-            industry-leading digital products.
-          </p>
-        </div> */}
+      
              <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -121,7 +103,7 @@ export default function TechPartnerSection() {
       <motion.div
         key={i}
         whileHover={{ y: -4 }}
-        className="flex items-start gap-4 p-4 rounded-2xl 
+        className="flex items-start gap-4 p-6 rounded-2xl 
                    bg-white/5 border border-white/10 
                    hover:border-purple-500/30 transition"
       >
@@ -136,26 +118,35 @@ export default function TechPartnerSection() {
 
   {/* BUTTONS */}
   <div className="grid grid-cols-2 gap-6 mt-4 sm:grid-flow-col sm:auto-cols-fr">
-       <Link
-                    href="/tech-partner"
-                    className="group relative bg-linear-to-r from-indigo-500 to-purple-500 text-white px-8 py-4 rounded-full text-base font-semibold transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:-translate-y-1 flex items-center gap-2 overflow-hidden"
-                  >
-                    <span className="relative z-10">Explore Program</span>
-                    <svg
-                      className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:rotate-45"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                      />
-                    </svg>
-                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                  </Link>
+ <Link
+  href="/tech-partner"
+  className="group relative bg-transparent border border-indigo-500/60 text-white px-8 py-4 rounded-full text-base font-semibold
+  transition-all duration-300
+  shadow-[0_0_15px_rgba(99,102,241,0.25)]
+  hover:shadow-[0_0_30px_rgba(99,102,241,0.45)]
+  hover:-translate-y-1
+  flex items-center gap-2 overflow-hidden"
+>
+  <span className="relative z-10">Explore Program</span>
+
+  <svg
+    className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:rotate-45"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+    />
+  </svg>
+
+  {/* Hover glass fill */}
+  <div className="absolute inset-0 bg-indigo-500/15 backdrop-blur-md translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+</Link>
+
 
 
   <Link
@@ -170,26 +161,32 @@ export default function TechPartnerSection() {
 </div>
 
           {/* RIGHT SECTION*/}
-          <div className="lg:col-span-6 grid grid-cols-2 gap-6 justify-center">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ y: -6 }}
-                className="relative p-8 pr-0 w-68 flex flex-col justify-center items-start rounded-3xl bg-gradient-to-br from-gray-900/60 to-black/50 border border-white/15 backdrop-blur-xl"
-              >
-                <span className="text-4xl font-black">
-                  {stat.value}
-                </span>
-                <div className="h-0.5 w-10 bg-gradient-to-r from-purple-500 to-transparent my-3" />
-                <p className="text-[11px] uppercase tracking-widest text-gray-400 font-bold">
-                  {stat.label}
-                </p>
+    <div className="lg:col-span-6 grid grid-cols-2 justify-center gap-4">
+  {stats.map((stat, i) => (
+    <motion.div
+      key={i}
+      // whileHover={{ y: }}
+      className={`
+        relative p-6  flex flex-col justify-center items-start 
+        bg-gradient-to-br from-gray-900/40 to-black/50
+        backdrop-blur-xl
 
-                {/* glow */}
-                {/* <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-600/20 blur-[80px]" /> */}
-              </motion.div>
-            ))}
-          </div>
+        border border-white/10 rounded-2xl
+      `}
+    >
+      <span className="text-4xl font-black">
+        {stat.value}
+      </span>
+
+      <div className="h-0.5 w-10 bg-gradient-to-r from-purple-500 to-transparent my-3" />
+
+      <p className="text-[11px] uppercase tracking-widest text-gray-400 font-bold">
+        {stat.label}
+      </p>
+    </motion.div>
+  ))}
+</div>
+
         </div>
       </div>
     </section>

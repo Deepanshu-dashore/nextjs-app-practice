@@ -198,7 +198,7 @@ export default function Home() {
                   <WhyChooseUs />
             <TechnologySection/>
           {/* <FeaturedCaseStudies /> */}
-          <TechPartnerSection />
+          {/* <TechPartnerSection /> */}
             <ReviewsSection />
           <InsightsSection />
         

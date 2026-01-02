@@ -26,7 +26,7 @@ export const allTechnologies = {
 };
 export default function TechnologySection() {
   return (
-    <section className="w-full bg-black relative overflow-hidden">
+    <section className="w-full bg-[#131314] relative overflow-hidden">
       <div className="relative py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 overflow-hidden">
 
         {/* Background Orbs */}
@@ -104,7 +104,7 @@ export default function TechnologySection() {
                       flex flex-col items-center justify-center gap-3
                       p-4 sm:p-6 lg:p-8
                       bg-white/5 backdrop-blur-md
-                      border border-white/10
+                     
                       rounded-xl
                       w-40 h-28
                       sm:w-48 sm:h-32
@@ -127,7 +127,7 @@ export default function TechnologySection() {
                     >
                       {item.icon}
                     </h1>
-                    <span className="text-white/90 text-xs sm:text-sm font-medium text-center">
+                    <span className="text-white/90 text-xs sm:text-sm font-medium text-center text-nowrap">
                       {item.name}
                     </span>
                   </div>
@@ -139,7 +139,7 @@ export default function TechnologySection() {
               gap={30}
               logoHeight={50}
               fadeOut
-              fadeOutColor="#000"
+              fadeOutColor="#131314"
             />
           </div>
 
@@ -175,7 +175,7 @@ export default function TechnologySection() {
                     >
                       {item.icon}
                     </h1>
-                    <span className="text-white/90 text-xs sm:text-sm font-medium text-center">
+                    <span className="text-white/90 text-xs sm:text-sm font-medium text-center text-nowrap">
                       {item.name}
                     </span>
                   </div>
@@ -187,7 +187,7 @@ export default function TechnologySection() {
               gap={30}
               logoHeight={50}
               fadeOut
-              fadeOutColor="#000"
+              fadeOutColor="#131314"
             />
           </div>
 
