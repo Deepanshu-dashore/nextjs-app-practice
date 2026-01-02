@@ -128,7 +128,7 @@ const serviceImages = {
 
           {/* LOGO */}
           <Link href="/">
-            <Image src={logo} alt="logo" className="h-11 w-auto" />
+            <Image src={logo} alt="logo" className="h-7 w-48" />
           </Link>
 
           {/* DESKTOP MENU */}
@@ -220,7 +220,7 @@ const serviceImages = {
       className={`h-5 w-5 transition 
         ${
           isActiveSubLink(slug)
-            ? "text-purple-500 "
+            ? " "
             : "text-white"
         }
       `}
@@ -229,7 +229,7 @@ const serviceImages = {
       className={`text-sm font-semibold transition
         ${
           isActiveSubLink(slug)
-            ? "text-purple-500"
+            ? ""
             : "text-white"
         }
       `}
@@ -256,7 +256,7 @@ const serviceImages = {
 
             <Link
               href="/contact"
-              className="ml-4 px-5 py-2.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-sm text-white font-medium transition"
+              className="ml-4 px-5 py-2.5 rounded-lg bg-(--color) hover:bg-(--color-indigo-800) text-sm text-white font-medium transition"
             >
               Contact us
             </Link>

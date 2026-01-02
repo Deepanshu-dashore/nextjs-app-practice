@@ -29,6 +29,8 @@ import { useState, useEffect } from "react";
 import FeaturedCaseStudies from "./components/home/FeaturedCaseStudies";
 import TechPartnerSection from "./components/home/TechPartnerSection";
 import TechnologySection from "./components/home/Technologysection";
+import TechPartnerSectionn from "././components/home/whychooseindi";
+import { X } from "lucide-react";
 
 const services = [
   // App Development with multiple tech logos
@@ -162,7 +164,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative font-sans bg-black">
+    <div className="relative font-sans bg-black overflow-x-hidden">
       <LandingPage onComplete={handleLandingComplete} />
 
       {showHome && (
@@ -191,8 +193,9 @@ export default function Home() {
             fadeOutColor="#000"
             ariaLabel="Services"
           />
-          <WhyChooseUs />
+  <TechPartnerSectionn/>
           <ServicesBentoSection />
+                  <WhyChooseUs />
             <TechnologySection/>
           {/* <FeaturedCaseStudies /> */}
           <TechPartnerSection />
