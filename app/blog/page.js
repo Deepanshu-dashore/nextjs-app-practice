@@ -8,17 +8,31 @@ import { motion, useScroll, useTransform } from "motion/react";
 import Footer from "../components/shared/Footer";
 import Head from "next/head";
 
+/* ================= DATE FORMATTER ================= */
+const formatDate = (timestamp) => {
+  if (!timestamp) return "";
+
+  const date =
+    typeof timestamp.toDate === "function"
+      ? timestamp.toDate()
+      : new Date(timestamp);
+
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+};
+
 export default function BlogPage() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const heroRef = useRef(null);
-  // ✅ Safe in Next.js App Router
-  const { scrollYProgress } = useScroll();
+  const [activeCategory, setActiveCategory] = useState("all");
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll();
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "0%"]);
+
   useEffect(() => {
     fetchBlogs();
   }, []);
@@ -37,6 +51,7 @@ export default function BlogPage() {
         return {
           id: docSnap.id,
           titleSlug: data.titleSlug,
+          summary: data.summary || "", // ✅ FETCH SUMMARY
           authorName: data.authorName,
           coverImageUrl: data.coverImageUrl,
           category: data.category,
@@ -52,9 +67,13 @@ export default function BlogPage() {
     }
   };
 
-  if (loading) {
-    return <p className="text-center py-10">Loading blogs...</p>;
-  }
+  const filteredBlogs =
+    activeCategory === "all"
+      ? blogs
+      : blogs.filter((b) => b.category === activeCategory);
+
+  const categories = [...new Set(blogs.map((b) => b.category))];
+
   if (loading) {
     return <p className="text-center py-10">Loading blogs...</p>;
   }
@@ -63,114 +82,162 @@ export default function BlogPage() {
     <>
       {/* ================= SEO ================= */}
       <Head>
-        <title>
-          Indidevelopers Blog | Insights on Modern Software Development
-        </title>
+        <title>Indidevelopers Blog | Insights on Modern Software Development</title>
         <meta
           name="description"
-          content="Clear, practical writing on building scalable and reliable web applications. Articles focused on real development challenges and best practices."
+          content="Clear, practical writing on scalable and reliable web applications."
         />
-        <meta property="og:title" content="Indidevelopers Blog" />
-        <meta
-          property="og:description"
-          content="Clear, practical writing on building scalable and reliable web applications."
-        />
-        <meta property="og:image" content="/images/blogherobg.jpg" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      {/* ================= HERO SECTION ================= */}
+      {/* ================= HERO ================= */}
       <section ref={heroRef} className="relative h-dvh overflow-hidden">
-        {/* FIXED-LIKE BACKGROUND */}
-        <motion.div
-          className="absolute inset-0 will-change-transform"
-          style={{ y: bgY }}
-        >
+        <motion.div className="absolute inset-0" style={{ y: bgY }}>
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundAttachment: "fixed",
-              backgroundImage: "url('/images/blogherobg.jpg')",
-            }}
-            //https://t4.ftcdn.net/jpg/07/54/80/09/360_F_754800974_CXB9YRXM2ItqqUoEYouZnzctO9BTQhSv.jpg
+            style={{ backgroundImage: "url('/images/blogherobg.jpg')" }}
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/60" />
         </motion.div>
 
-        {/* Content */}
         <div className="relative z-10 flex h-full items-center">
-          <div className="max-w-7xl mx-auto px-4 w-full">
-            <div className="max-w-4xl">
-              <span className="text-sm font-semibold text-gray-300 tracking-[0.3em] uppercase">
-                Blog
-              </span>
-
-              <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-white/60 to-transparent mt-3" />
-              <h1 className="text-5xl md:text-6xl font-semibold text-white mt-3 mb-3 leading-tight">
-                Insights on Modern
-                <br className="hidden sm:block" />
-                Software Development
-              </h1>
-
-              <p className="text-xl md:text-2xl mb-6 text-gray-300 max-w-3xl">
-                Clear, practical writing on building scalable and reliable web
-                applications.
-              </p>
-
-              <p className="text-base md:text-lg text-gray-400 max-w-2xl">
-                Articles focused on real development challenges, thoughtful
-                solutions, and best practices from modern frameworks and tools.
-              </p>
-            </div>
+          <div className="max-w-7xl mx-auto px-4">
+            <h1 className="text-6xl font-semibold text-white">
+              Insights on Modern Software Development
+            </h1>
+            <p className="text-xl text-gray-300 mt-6 max-w-3xl">
+              Practical writing on scalable, real-world web applications.
+            </p>
           </div>
         </div>
       </section>
 
       {/* ================= BLOG GRID ================= */}
       <section className="relative bg-black">
-        <div className=" mx-auto py-20 w-[90dvw] h-full ">
-          {blogs.length === 0 ? (
-            <p className="text-gray-400">No published blogs found.</p>
+        <div className="mx-auto py-20 w-[90dvw]">
+          {filteredBlogs.length === 0 ? (
+            <p className="text-gray-400">No blogs found.</p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-              {blogs.map((blog) => (
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+              {/* ========== LEFT 2/3 ========== */}
+              <div className="lg:col-span-8 space-y-6">
+                {/* FEATURED BLOG */}
+                <div className="flex flex-col gap-3 ml-2">
+                  <h5 className="text-gray-400 text-xs uppercase ">
+                    {formatDate(filteredBlogs[0].createdAt)}
+                  </h5>
+
+                  {/* ✅ SUMMARY INSTEAD OF TITLE */}
+                  <h2 className="text-2xl font-semibold text-white capitalize">
+                    {filteredBlogs[0].summary ||
+                      filteredBlogs[0].titleSlug.replace(/-/g, " ")}
+                  </h2>
+                </div>
+
                 <Link
-                  key={blog.id}
-                  href={`/blog/${blog.titleSlug}`}
-                  className="group relative rounded-3xl p-4 border border-white/20 hover:border-blue-500/40 transition"
+                  href={`/blog/${filteredBlogs[0].titleSlug}`}
+                  className="group relative block rounded-3xl mb-10 overflow-hidden border border-white/20 hover:border-blue-500/40 transition"
                 >
-                  {/* Card */}
-                  <div
-                    className="h-full rounded-3xl bg-[#0b0b0b] overflow-hidden    shadow-[0_0_40px_rgba(255,255,255,0.05)] 
-    group-hover:shadow-[0_0_60px_rgba(59,130,246,0.35)]  transition-all duration-300"
-                  >
-                    {/* Image */}
-                    <div className="relative h-60 overflow-hidden">
-                      <img
-                        src={blog.coverImageUrl}
-                        alt={blog.titleSlug}
-                        className="h-full w-full object-cover scale-100 group-hover:scale-105 transition duration-500"
-                      />
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-8">
-                      <h2 className="text-2xl font-semibold text-white leading-snug mb-6 capitalize">
-                        {blog.titleSlug.replace(/-/g, " ")}
-                      </h2>
-
-                      {/* Divider */}
-                      <div className="h-px w-full bg-white/20 mb-5" />
-
-                      {/* Read More */}
-                      <div className="flex items-center gap-2 text-gray-300 text-sm group-hover:text-blue-400 transition">
-                        <span>Read More...</span>
-                      </div>
-                    </div>
+                  <div className="h-[420px] overflow-hidden">
+                    <img
+                      src={filteredBlogs[0].coverImageUrl}
+                      className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                    />
                   </div>
                 </Link>
-              ))}
+
+                {/* <div className="flex items-center gap-4 text-sm">
+                  <span className="text-blue-400 uppercase tracking-widest">
+                    {filteredBlogs[0].category}
+                  </span>
+                </div> */}
+
+                {/* BLOG LIST */}
+                <div className="space-y-12">
+                  {filteredBlogs.slice(1).map((blog) => (
+                    <Link
+                      key={blog.id}
+                      href={`/blog/${blog.titleSlug}`}
+                      className="group flex flex-col md:flex-row gap-8 border-t  border-white/20 rounded-2xl p-4  transition"
+                    >
+                      {/* IMAGE */}
+                      <div className="md:w-1/3 h-56 overflow-hidden rounded-xl mt-5">
+                        <img
+                          src={blog.coverImageUrl}
+                          className="w-full h-full object-cover group-hover:scale-105 transition"
+                        />
+                      </div>
+
+                      {/* CONTENT */}
+                      <div className="md:w-2/3 flex flex-col justify-center space-y-2 mt-5">
+                        <div className="flex items-center gap-8 text-xs uppercase tracking-widest text-gray-400">
+                          <span>{formatDate(blog.createdAt)}</span>
+                          {/* <span>{blog.category}</span> */}
+                        </div>
+        {/* FEATURED BLOG TITLE */}
+                <h2 className="text-4xl font-semibold text-white capitalize">
+                  {filteredBlogs[0].titleSlug.replace(/-/g, " ")}
+                </h2>
+               
+                        {/* ✅ SUMMARY */}
+                        
+                        <h3 className="text-lg  text-white">
+                          {blog.summary ||
+                            blog.titleSlug.replace(/-/g, " ")}
+                        </h3>
+
+                        {/* <p className="text-sm text-gray-400">
+                          By{" "}
+                          <span className="text-gray-300">
+                            {blog.authorName}
+                          </span>
+                        </p> */}
+
+                        {/* <div className="h-px w-full bg-white/20 my-3" /> */}
+
+                        <span className="text-sm text-gray-300 group-hover:text-blue-400 transition">
+                          Read Full 
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* ========== RIGHT 1/3 (CATEGORIES) ========== */}
+              <aside className="lg:col-span-4">
+                <div className="sticky top-36 rounded-3xl border border-white/20 bg-[#0b0b0b] p-8">
+                  <h3 className="text-xl font-semibold text-white mb-6 uppercase tracking-widest">
+                    Categories
+                  </h3>
+
+                  <ul className="space-y-4">
+                    <li
+                      onClick={() => setActiveCategory("all")}
+                      className={`cursor-pointer text-sm uppercase tracking-wider ${
+                        activeCategory === "all"
+                          ? "text-blue-400"
+                          : "text-gray-300 hover:text-blue-400"
+                      }`}
+                    >
+                      All
+                    </li>
+
+                    {categories.map((category, idx) => (
+                      <li
+                        key={idx}
+                        onClick={() => setActiveCategory(category)}
+                        className={`cursor-pointer text-sm uppercase tracking-wider ${
+                          activeCategory === category
+                            ? "text-blue-400"
+                            : "text-gray-300 hover:text-blue-400"
+                        }`}
+                      >
+                        {category}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </aside>
             </div>
           )}
         </div>

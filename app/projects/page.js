@@ -57,15 +57,27 @@ const featuredProducts = [
   },
 ];
 
+ const [items, setItems] = useState(featuredProducts);
 
-  // 🔁 Auto scroll
+  /* 🔁 Rotate Right */
+  const next = () => {
+    setItems((prev) => [...prev.slice(1), prev[0]]);
+  };
+
+  /* 🔁 Rotate Left */
+  const prev = () => {
+    setItems((prev) => [
+      prev[prev.length - 1],
+      ...prev.slice(0, prev.length - 1),
+    ]);
+  };
+
+  /* ⏱ Auto Slide */
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActive((prev) => (prev + 1) % featuredProducts.length);
-    }, 3000);
+    const timer = setInterval(next, 3000);
+    return () => clearInterval(timer);
+  }, []);
 
-    return () => clearInterval(interval);
-  }, [featuredProducts.length]);
   return (
     <div className="bg-[#030303] text-white overflow-hidden relative">
       <section className="relative h-[100dvh] overflow-hidden">
@@ -110,74 +122,84 @@ const featuredProducts = [
         </motion.div>
       </section>
 
-<section className="max-w-7xl mx-auto py-32 px-6">
+   <section className="max-w-7xl mx-auto py-32 px-6">
+      {/* Heading */}
+      <div className="text-center max-w-5xl mx-auto mb-20">
+        <h2 className="text-5xl font-extrabold text-white mb-6">
+          Featured Projects
+        </h2>
+        <p className="text-gray-300 text-lg">
+          A selection of our most impactful digital projects.
+        </p>
+      </div>
 
-  {/* Heading */}
-  <div className="text-center max-w-5xl mx-auto mb-20">
-    <h2 className="text-5xl font-extrabold text-white mb-6">
-      Featured Projects
-    </h2>
+      {/* Carousel */}
+      <div className="relative">
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 items-center">
+          {items.map((item, index) => {
+            const isCenter = index === 2;
 
-    <p className="text-gray-300 text-lg leading-relaxed">
-      A selection of our most impactful digital projects — crafted with
-      performance, scalability, and user experience at the core. Each
-      project reflects our ability to turn complex ideas into elegant,
-      real-world solutions.
-    </p>
-  </div>
-
-  {/* Cards */}
-  <div className="relative">
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 items-center">
-      {featuredProducts.map((item, index) => {
-        const isCenter = index === 2;
-
-        return (
-          <div
-            key={index}
-            className={`relative rounded-2xl overflow-hidden group transition-all duration-700
-              ${isCenter
-                ? "h-[290px] scale-[1.05] z-10 shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
-                : "h-[270px] opacity-90 hover:opacity-100"
-              }`}
-          >
-            {/* Image */}
-            <img
-              src={item.image}
-              alt={item.title}
-              className="absolute inset-0 w-full h-full object-cover
-              transition-transform duration-700 group-hover:scale-110"
-            />
-
-         {/* Bottom → Top Gradient */}
-<div
-  className={`absolute inset-0 bg-gradient-to-t
-    ${isCenter
-      ? "from-black/80 via-black/30 to-transparent"
-      : "from-black/70 via-black/20 to-transparent"
-    }`}
- />
-
-
-            {/* Text */}
-            <div className="absolute bottom-6 left-6 right-6">
-              <h4
-                className={`font-semibold leading-snug
-                  ${isCenter ? "text-xl text-white" : "text-lg text-white/90"}`}
+            return (
+              <div
+                key={index}
+                className={`relative rounded-2xl overflow-hidden transition-all duration-700
+                  ${
+                    isCenter
+                      ? "h-[300px] scale-[1.08] z-20 shadow-[0_40px_90px_rgba(0,0,0,0.6)]"
+                      : "h-[270px] opacity-80"
+                  }`}
               >
-                {item.title}
-              </h4>
-            </div>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                />
 
-            {/* Subtle glow for center */}
-            {isCenter && (
-              <div className="absolute inset-0 rounded-2xl ring-1 ring-white/20 pointer-events-none" />
-            )}
-          </div>
-        );
-      })}
-    </div>
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t
+                    ${
+                      isCenter
+                        ? "from-black/80 via-black/40 to-transparent"
+                        : "from-black/70 via-black/20 to-transparent"
+                    }`}
+                />
 
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h4
+                    className={`font-semibold ${
+                      isCenter ? "text-xl" : "text-lg"
+                    }`}
+                  >
+                    {item.title}
+                  </h4>
+                </div>
+
+                {isCenter && (
+                  <div className="absolute inset-0 ring-1 ring-white/20 rounded-2xl" />
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Controls */}
+        {/* <div className="flex justify-center items-center gap-6 mt-12">
+          <button
+            onClick={prev}
+            className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition"
+          >
+            <ChevronLeft />
+          </button>
+
+          <button
+            onClick={next}
+            className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition"
+          >
+            <ChevronRight />
+          </button>
+        </div> */}
+   
     {/* Pagination dots */}
     <div className="flex justify-center gap-2 mt-10">
       {[...Array(5)].map((_, i) => (
@@ -366,3 +388,4 @@ const featuredProducts = [
     </div>
   );
 }
+
