@@ -27,6 +27,7 @@ export default function BlogDetailPage() {
   const { slug } = useParams();
   const [blog, setBlog] = useState(null);
   const [activeId, setActiveId] = useState(null);
+const [relatedBlogs, setRelatedBlogs] = useState([]);
 
   /* ===============================
      🔹 Fetch Blog
@@ -125,6 +126,35 @@ export default function BlogDetailPage() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [blog?.headings]);
+/* ===============================
+   🔹 Fetch Related Blogs
+================================ */
+useEffect(() => {
+  if (!blog?.category || !blog?.id) return;
+
+  async function fetchRelatedBlogs() {
+    const q = query(
+      collection(db, "blogs"),
+      where("category", "==", blog.category),
+      where("status", "==", "published"),
+      limit(4) // fetch extra in case current blog is included
+    );
+
+    const snap = await getDocs(q);
+
+    const related = snap.docs
+      .filter((doc) => doc.id !== blog.id) // exclude current blog
+      .slice(0, 3)
+      .map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+    setRelatedBlogs(related);
+  }
+
+  fetchRelatedBlogs();
+}, [blog?.category, blog?.id]);
 
   /* ===============================
      🔹 Smooth Scroll & Hash
@@ -202,7 +232,7 @@ export default function BlogDetailPage() {
         <section className="max-w-7xl mx-auto px-4 pt-28 pb-16">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {/* ===== TOC ===== */}
-            <aside className="hidden lg:block sticky top-28 h-[420px] overflow-y-auto bg-[#0f0f0f] border border-white/10 rounded-xl p-6">
+            <aside className="hidden lg:block sticky top-28 h-[420px] w-[300px] overflow-y-auto bg-[#0f0f0f] border border-white/10 rounded-xl p-6">
               <h2 className="text-sm font-semibold tracking-widest text-white mb-6 uppercase">
                 Table of Contents
               </h2>
@@ -277,7 +307,57 @@ export default function BlogDetailPage() {
          
           
         </section>
-        
+        {/* ================= RELATED BLOGS ================= */}
+{relatedBlogs.length > 0 && (
+  <section className="max-w-7xl mx-auto px-4 pb-24">
+    <h2 className="text-2xl font-bold text-white mb-8">
+      Related Articles
+    </h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {relatedBlogs.map((item) => (
+        <a
+          key={item.id}
+          href={`/blog/${item.titleSlug}`}
+          className="group bg-[#0f0f0f] border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition"
+        >
+          {item.coverImageUrl && (
+            <img
+              src={item.coverImageUrl}
+              alt={item.titleSlug}
+              className="h-44 w-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          )}
+
+          <div className="p-5">
+         
+
+            {item.createdAt && (
+              <p className="text-xs text-gray-500 ">
+                {formatDate(item.createdAt)}
+              </p>
+            )}
+            <h3 className="text-lg font-semibold text-white  line-clamp-2 capitalize">
+              {item.titleSlug.replace(/-/g, " ")}
+            </h3>
+
+            {item.summary && (
+              <p className="text-sm text-gray-400 mt-2 line-clamp-3 capitalize">
+                {item.summary}
+              </p>
+              
+            )}
+
+   <span className="text-xs text-gray-400  tracking-wider">
+              {item.category}
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+)}
+
       </div>
 
       <Footer />

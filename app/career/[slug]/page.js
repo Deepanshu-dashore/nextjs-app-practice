@@ -1,5 +1,5 @@
-
 "use client";
+
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import {
@@ -9,117 +9,99 @@ import {
   getDocs,
   query,
   where,
-  addDoc,
-  serverTimestamp,
 } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useParams } from "next/navigation";
 import Footer from "@/app/components/shared/Footer";
-import { db, storage } from "@/app/firebase";
-import { toast } from "react-hot-toast";
+import { db } from "@/app/firebase";
+import { FaGlobe, FaCode, FaNetworkWired } from "react-icons/fa";
+
+// Accordion Section with smooth open/close
+const AccordionSection = ({ title, children, defaultOpen = false }) => {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  return (
+    <div className="border-b border-(--color) overflow-hidden pb-4">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center py-4 text-left focus:outline-none"
+      >
+        <span className="text-xl font-semibold">{title}</span>
+        <span className="text-2xl font-bold">{isOpen ? "−" : "+"}</span>
+      </button>
+
+      <motion.div
+        initial={{ height: 0, opacity: 0 }}
+        animate={isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+        className="text-gray-300"
+      >
+        <div className="pb-4">{children}</div>
+      </motion.div>
+    </div>
+  );
+};
 
 export default function JobDetail() {
   const { slug } = useParams();
-
   const heroRef = useRef(null);
-  const formRef = useRef(null);
-  const fileInputRef = useRef(null);
 
-  const [job, setJob] = useState(null);
-  const [sections, setSections] = useState([]);
-  const [simpleDataList, setSimpleDataList] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [job, setJob] = useState(null);
+  const [relatedJobs, setRelatedJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-    contact: "",
-    resume: null,
-  });
-
-  /* ---------------- SAFE MOUNT ---------------- */
+  /* SAFE MOUNT */
   useEffect(() => setMounted(true), []);
 
+  /* SAFE SCROLL */
   const { scrollYProgress } = useScroll(
     mounted && heroRef.current
-      ? {
-          target: heroRef,
-          offset: ["start start", "end start"],
-        }
+      ? { target: heroRef, offset: ["start start", "end start"] }
       : {}
   );
-
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
-  /* ---------------- FETCH DATA ---------------- */
+  /* FETCH DATA */
   useEffect(() => {
-    const fetchAll = async () => {
+    const fetchData = async () => {
       const jobSnap = await getDoc(doc(db, "opportunities", slug));
-      if (jobSnap.exists()) setJob(jobSnap.data());
+      if (!jobSnap.exists()) {
+        setLoading(false);
+        return;
+      }
 
-      const secSnap = await getDocs(
+      const jobData = jobSnap.data();
+      setJob(jobData);
+
+      const relatedSnap = await getDocs(
         query(
-          collection(db, "careerSections"),
-          where("opportunityId", "==", slug)
+          collection(db, "opportunities"),
+          where("department", "==", jobData.department)
         )
       );
-      setSections(secSnap.docs.map((d) => d.data()));
 
-      const simpleSnap = await getDocs(collection(db, "simpleData"));
-      setSimpleDataList(simpleSnap.docs.map((d) => d.data()));
+      setRelatedJobs(
+        relatedSnap.docs
+          .filter((d) => d.id !== slug)
+          .map((d) => ({ id: d.id, ...d.data() }))
+      );
 
       setLoading(false);
     };
-    fetchAll();
+
+    fetchData();
   }, [slug]);
 
-  /* ---------------- FORM ---------------- */
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    setFormData((p) => ({ ...p, [name]: files ? files[0] : value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      let resumeUrl = "";
-      if (formData.resume) {
-        const storageRef = ref(
-          storage,
-          `resumes/${Date.now()}-${formData.resume.name}`
-        );
-        const snap = await uploadBytes(storageRef, formData.resume);
-        resumeUrl = await getDownloadURL(snap.ref);
-      }
-
-      await addDoc(collection(db, "applications"), {
-        ...formData,
-        resume: resumeUrl,
-        opportunity: job?.title,
-        createdAt: serverTimestamp(),
-      });
-
-      toast.success("Application submitted successfully");
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-        contact: "",
-        resume: null,
-      });
-      fileInputRef.current.value = null;
-    } catch {
-      toast.error("Submission failed");
-    } finally {
-      setIsSubmitting(false);
+  const normalizeToArray = (value) => {
+    if (!value) return [];
+    if (Array.isArray(value)) return value;
+    if (typeof value === "string") {
+      return value
+        .split(/[\n,]+/) // split by comma or newline
+        .map((v) => v.trim())
+        .filter(Boolean);
     }
+    return [];
   };
 
   if (loading) {
@@ -138,247 +120,158 @@ export default function JobDetail() {
     );
   }
 
+ 
   return (
-    <div className="relative text-white overflow-hidden">
+    <div className="relative bg-black text-white overflow-hidden">
       {/* BACKGROUND */}
       <motion.div
         className="fixed inset-0 -z-20 bg-cover bg-center"
         style={{
-          y: bgY,
           backgroundImage:
             "url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg')",
         }}
+        animate={{ y: bgY }}
+        transition={{ type: "spring", stiffness: 50, damping: 20 }}
       />
-      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-black/80 via-black/70 to-black" />
+      <div className="fixed inset-0 -z-10 bg-black/80" />
 
-{/* HERO */}
-<section
-  ref={heroRef}
-  className="h-[95vh] max-w-4xl flex items-center justify-start px-6"
->
-  <div className="max-w-6xl mx-auto">
-    
-    {/* Title */}
-    <h1 className="text-5xl md:text-6xl font-extrabold uppercase tracking-wide">
-      {job.title}
-    </h1>
+      {/* HERO */}
+      <motion.section
+        ref={heroRef}
+        className="max-w-7xl mx-auto px-6 pt-28 pb-16"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl font-extrabold mb-4 uppercase">{job.title}</h1>
+        <p className="text-gray-300 mb-6">
+          {job.department} | {job.type} | Experience: {job.experience} Years
+        </p>
+        <button className="bg-(--color) hover:bg-(--color-indigo-700) px-8 py-3 font-semibold rounded">
+          Apply for this job
+        </button>
+      </motion.section>
 
-    {/* Decorative Line */}
-    <div className="mt-4 mb-6 flex items-center gap-3">
-      <span className="h-[1px] w-full bg-white/30 rounded-full" />
-  
-    </div>
-
-    {/* Meta Info */}
-    <div className="flex flex-wrap items-center gap-4 text-gray-300 text-sm mb-12 capitalize">
-      <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20">
-        {job.department || "Engineering"}
-      </span>
-
-      <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20">
-        {job.location || "Remote"}
-      </span>
-
-      <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20">
-        {job.type || "Internship"}
-      </span>
-    </div>
-
-    {/* CTA */}
-    <button
-      onClick={() =>
-        formRef.current?.scrollIntoView({ behavior: "smooth" })
-      }
-      className="
-        px-12 py-4 rounded-full font-semibold
-        bg-white text-black
-        hover:bg-gray-200
-        transition-all duration-300
-        shadow-lg hover:shadow-xl
-      "
-    >
-      Apply Now
-    </button>
-  </div>
-</section>
-
-
-   {/* DETAILS */}
-<section className="py-28 bg-black/70">
-  <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-14">
-
-    {/* LEFT : JOB DESCRIPTION */}
-    <div className="flex-1 space-y-16  ">
-      {(sections.length
-        ? sections
-        : [
-            {
-              title: "About This Role",
-              content:
-                "This role offers hands-on experience working on real-world projects, collaborating with experienced professionals, and gaining industry-level exposure.",
-            },
-          ]
-      ).map((sec, i) => (
+      {/* CONTENT */}
+      <section className="max-w-7xl mx-auto px-6 pb-20 grid grid-cols-1 lg:grid-cols-3 gap-12 ">
+        {/* LEFT - Job Details */}
         <motion.div
-          key={i}
+          className="lg:col-span-2 space-y-6 border-t border-(--color)"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
-          className="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10  min-h-[380px]"
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-2xl font-semibold mb-4">
-            {sec.title}
-          </h2>
-          <p className="text-gray-300 leading-relaxed">
-            {sec.content ||
-              "Detailed responsibilities and expectations will be discussed during the interview process."}
-          </p>
-        </motion.div>
-      ))}
-    </div>
+          <AccordionSection title="Job Description" defaultOpen>
+            <p>{job.description}</p>
+          </AccordionSection>
 
-    {/* RIGHT : JOB DETAILS CARD */}
-    <div className="w-full lg:w-[360px]">
-      <div className="sticky top-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-6 space-y-6">
+          <AccordionSection title="Project Role">
+            <p>{job.role}</p>
+          </AccordionSection>
 
-        {/* TITLE */}
-        <h3 className="text-xl font-semibold text-white border-b border-white/10 pb-3">
-          Job Details
-        </h3>
+          <AccordionSection title="Responsibilities">
+            <ul className="list-disc pl-6 space-y-2">
+              {normalizeToArray(job.responsibilities).map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </AccordionSection>
 
-        {/* DETAILS LIST */}
-        <div className="space-y-4 text-sm text-gray-300">
-          <div className="flex justify-between">
-            <span className="text-gray-400">Department</span>
-            <span>{job.department || "Engineering"}</span>
-          </div>
+          <AccordionSection title="Qualifications">
+            <ul className="list-disc pl-6 space-y-2">
+              {normalizeToArray(job.qualification).map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </AccordionSection>
 
-          <div className="flex justify-between">
-            <span className="text-gray-400">Location</span>
-            <span>{job.location || "Remote"}</span>
-          </div>
+          <AccordionSection title="Department">
+            <p>{job.department}</p>
+          </AccordionSection>
 
-          <div className="flex justify-between">
-            <span className="text-gray-400">Job Type</span>
-            <span>{job.type || "Internship"}</span>
-          </div>
+          {job.additionalInfo && (
+            <AccordionSection title="Additional Information">
+              <p>{job.additionalInfo}</p>
+            </AccordionSection>
+          )}
 
-          <div className="flex justify-between">
-            <span className="text-gray-400">Experience</span>
-            <span>{job.experience || "0–1 Years"}</span>
-          </div>
+          {/* Job Fit Section */}
+      {/* Job Fit Section */}
+<section className="py-20">
+  <h2 className="text-3xl font-bold mb-12">
+    Discover where this job fits at {job.company || "INDIDEVELOPERS"}
+  </h2>
 
-          <div className="flex justify-between">
-            <span className="text-gray-400">Openings</span>
-            <span>{job.openings || "Multiple"}</span>
-          </div>
-        </div>
-{/* APPLY BUTTON */}
-<button
-  onClick={() =>
-    formRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
-  className="
-    w-full mt-6 py-3 rounded-xl
-    bg-gradient-to-r from-indigo-600 to-purple-600
-    text-white font-semibold tracking-wide
-
-    transform transition-all duration-300 ease-out
-    hover:-translate-y-1 hover:scale-[1.02]
-    hover:from-indigo-700 hover:to-purple-700
-
-    shadow-lg shadow-indigo-500/30
-    hover:shadow-xl hover:shadow-indigo-500/40
-
-    active:scale-95
-  "
->
-  Apply Now
-</button>
-
+  {/* Dynamic fit items based on job role/department */}
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+    {[
+      {
+        icon: <FaNetworkWired className="text-white w-8 h-8 mb-4" />,
+        title: `${job.department || "Industry"}: Jobs at the forefront of change`,
+        desc: `Work across different sectors with solution-based thinking to reinvent how industries operate and grow.`,
+        link: "#",
+      },
+      {
+        icon: <FaCode className="text-white w-8 h-8 mb-4" />,
+        title: `${job.ro || "Software"} jobs: Imagine it, build it, scale it`,
+        desc: `Create impactful solutions that drive change and empower people within ${job.company || "the company"}.`,
+        link: "#",
+      },
+      {
+        icon: <FaGlobe className="text-white w-8 h-8 mb-4" />,
+        title: `Technology jobs: Be the catalyst`,
+        desc: `Work with cutting-edge technologies that help clients and teams innovate and make a difference.`,
+        link: "#",
+      },
+    ].map((item, idx) => (
+      <div key={idx} className="flex flex-col">
+        {item.icon}
+        <h3 className="text-xl font-semibold mb-4">{item.title}</h3>
+        <p className="text-gray-300 mb-6">{item.desc}</p>
+        <a
+          href={item.link}
+          className="text-white font-medium hover:underline flex items-center gap-1"
+        >
+          Learn more <span className="text-xl">→</span>
+        </a>
       </div>
-    </div>
+    ))}
   </div>
 </section>
 
+        </motion.div>
 
-      {/* APPLY */}
-      <section ref={formRef} className="py-24 bg-black">
-        <h1 className="text-5xl font-bold text-center mb-16">
-          Apply for {job.title}
-        </h1>
-
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12">
-          {/* LEFT INFO */}
-          <div className="space-y-6">
-            {(simpleDataList.length
-              ? simpleDataList
-              : [
-                  {
-                    title: "Why Join Us?",
-                    description:
-                      "Gain hands-on experience, mentorship, and growth opportunities in a collaborative environment.",
-                  },
-                ]
-            ).map((item, i) => (
+        {/* RIGHT / Similar Jobs */}
+        <motion.aside
+          className="space-y-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <h3 className="text-xl font-bold text-white">Similar jobs</h3>
+          <div className="p-4 bg-[#1C1C1C] rounded-[6px] border border-transparent hover:border-(--color) transition-all duration-200">
+            {relatedJobs.map((item) => (
               <div
-                key={i}
-                className="p-6 rounded-2xl bg-white/5 backdrop-blur border border-indigo-500/20"
+                key={item.id}
+                className="relative p-6 mb-4 rounded  transition-colors"
               >
-                <h3 className="text-xl font-semibold mb-2">
+                <div className="absolute top-2 left-5 w-12 h-1 bg-(--color) rounded-tl-[6px]" />
+                <h4 className="text-[16px] leading-[24px] font-medium text-white mb-2 uppercase ">
                   {item.title}
-                </h3>
-                <p className="text-gray-400">
-                  {item.description}
+                </h4>
+                <p className="text-[14px] leading-[20px] text-[#A3A3A3] mb-3 capitalize">
+                  {item.location} | {item.type} | Experience: {item.experience || "N/A"} Years
                 </p>
+                <a
+                  href={`/career/${item.id}`}
+                  className="text-[16px] leading-[24px] text-white font-medium hover:underline flex items-end h-28"
+                >
+                  See this job <span className="ml-1">→</span>
+                </a>
               </div>
             ))}
           </div>
-
-          {/* FORM */}
-          <form
-            onSubmit={handleSubmit}
-            className="p-8 rounded-3xl bg-white/5 backdrop-blur border border-indigo-500/20 space-y-5"
-          >
-            {["name", "contact", "email", "subject"].map((f) => (
-              <input
-                key={f}
-                name={f}
-                value={formData[f]}
-                onChange={handleChange}
-                placeholder={f.toUpperCase()}
-                required
-                className="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10"
-              />
-            ))}
-
-        <input
-                type="file"
-                ref={fileInputRef}
-                name="resume"
-                onChange={handleChange}
-                className="w-full text-gray-400 w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10"
-              />
-
-
-            <textarea
-              name="message"
-              rows={4}
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Cover Letter"
-              className="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10"
-            />
-
-            <button
-              disabled={isSubmitting}
-              className="w-full py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 transition font-semibold disabled:opacity-50"
-            >
-              {isSubmitting ? "Submitting..." : "Submit Application"}
-            </button>
-          </form>
-        </div>
+        </motion.aside>
       </section>
 
       <Footer />

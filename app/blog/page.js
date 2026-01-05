@@ -195,7 +195,7 @@ export default function BlogPage() {
                         {/* <div className="h-px w-full bg-white/20 my-3" /> */}
 
                         <span className="text-sm text-gray-300 group-hover:text-blue-400 transition">
-                          Read Full 
+                          Read More 
                         </span>
                       </div>
                     </Link>
@@ -226,7 +226,7 @@ export default function BlogPage() {
                       <li
                         key={idx}
                         onClick={() => setActiveCategory(category)}
-                        className={`cursor-pointer text-sm uppercase tracking-wider ${
+                        className={`cursor-pointer text-sm capitalize tracking-wider ${
                           activeCategory === category
                             ? "text-blue-400"
                             : "text-gray-300 hover:text-blue-400"

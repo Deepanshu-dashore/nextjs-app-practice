@@ -24,6 +24,11 @@ function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [activeService, setActiveService] = useState("Web Development");
+const [activeCompany, setActiveCompany] = useState("Who We Are");
+
+const isActiveCompanySubLink = (href) => {
+  return pathname === href || pathname.startsWith(href + "/");
+};
 
   /* -------------------- DATA -------------------- */
 
@@ -47,6 +52,23 @@ const serviceImages = {
   "Game Development":
     "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200",
   "Engineering Practices & Support": "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?q=80&w=1200"
+};
+const companyMeta = {
+  "Who We Are": {
+    desc: "Our story, vision & leadership",
+    image:
+      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200",
+  },
+  "Our Culture": {
+    desc: "Values, people & work culture",
+    image:
+      "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1200",
+  },
+  Blog: {
+    desc: "Insights, news & tech articles",
+    image:
+      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200",
+  },
 };
 
 
@@ -93,7 +115,17 @@ const serviceImages = {
 
   const navLinks = [
     { name: "Home", href: "/" },
+    // { name: "Who We Are", href: "/about" },
+    {
+  name: "Company",
+  href: "/about",
+  submenu: [
     { name: "Who We Are", href: "/about" },
+    { name: "Our Culture", href: "/company/our-culture" },
+    { name: "Blog", href: "/blog" },
+  ],
+},
+
     {
       name: "What We Do",
       href: "/services",
@@ -131,136 +163,143 @@ const serviceImages = {
             <Image src={logo} alt="logo" className="h-7 w-48" />
           </Link>
 
-          {/* DESKTOP MENU */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <div key={link.name} className="relative group">
+      {/* DESKTOP MENU */}
+<div className="hidden lg:flex items-center gap-8">
+  {navLinks.map((link) => (
+    <div key={link.name} className="relative group">
 
-                {/* MAIN LINK */}
-                <div className="flex items-center gap-1">
-                  <Link
-                    href={link.href}
-                    className={`relative px-3 py-2 text-sm transition rounded-lg flex items-center gap-1
-                      ${
-                        isActiveLink(link.href)
-                          ? "text-white bg-white/10 backdrop-blur-md shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)]"
-                          : "text-white/80 hover:text-white hover:bg-white/5"
-                      }
-                    `}
-                  >
-                    {link.name}
-                       {link.submenu && (
-                    <ChevronDown className="h-4 w-4 text-white/70 transition group-hover:rotate-180" />
-                  )}
-                  </Link>
+      {/* MAIN LINK */}
+      <div className="flex items-center gap-1">
+        <Link
+          href={link.href}
+          className={`relative px-3 py-2 text-sm transition rounded-lg flex items-center gap-1
+            ${
+              isActiveLink(link.href)
+                ? "text-white bg-white/10 backdrop-blur-md shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)]"
+                : "text-white/80 hover:text-white hover:bg-white/5"
+            }
+          `}
+        >
+          {link.name}
+          {link.submenu && (
+            <ChevronDown className="h-4 w-4 text-white/70 transition group-hover:rotate-180" />
+          )}
+        </Link>
+      </div>
 
-               
-                </div>
-
-                {/* SUBMENU */}
-                {link.submenu && (
-                  <div
-                    className="
-                      absolute left-1/2 top-full mt-6 -translate-x-1/2
-                      w-[1100px] rounded-2xl bg-[#0A0A0A]
-                      border border-white/10
-                      shadow-[0_40px_120px_rgba(0,0,0,0.9)]
-                      opacity-0 invisible translate-y-3
-                      group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
-                      transition-all duration-300
-                    "
-                  >
-                    <div className="grid grid-cols-[380px_1fr] gap-10 p-10">
-
-                      {/* LEFT PREVIEW */}
-                      <div className="rounded-xl bg-[#111] border border-white/10 overflow-hidden">
-                        <div className="p-6">
-                          <span className="text-xs uppercase tracking-widest text-white/50">
-                            Solution
-                          </span>
-                          <h3 className="text-xl font-semibold text-white mt-3">
-                            {activeService}
-                          </h3>
-                          <p className="text-sm text-white/60 mt-2">
-                            {serviceMeta[activeService].desc}
-                          </p>
-                        </div>
-
-                        <div className="relative h-[220px]">
-                          <img
-                            src={serviceImages[activeService]}
-                            alt={activeService}
-                            className="object-cover"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-transparent" />
-                        </div>
-                      </div>
-
-                      {/* RIGHT GRID */}
-                      <div className="grid grid-cols-3 gap-x-5 gap-y-5">
-                        {link.submenu.map((item) => {
-                          const Icon = serviceMeta[item.name].icon;
-                          const slug = serviceSlugs[item.name];
-
-                          return (
-                        <Link
-  key={item.name}
-  href={item.href}
-  onMouseEnter={() => setActiveService(item.name)}
-  className={`group block rounded-xl p-4 transition 
-    ${
-      isActiveSubLink(slug)
-        ? "bg-white/10 backdrop-blur-md shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)]"
-        : "hover:bg-white/5"
-    }
-  `}
+      {/* SUBMENU */}
+      {link.submenu && (
+      <div
+  className="
+    absolute left-1/2 top-full mt-6 -translate-x-1/2
+    w-[1100px] min-h-[520px]
+    rounded-2xl bg-[#0A0A0A]
+    border border-white/10
+    shadow-[0_40px_120px_rgba(0,0,0,0.9)]
+    opacity-0 invisible translate-y-3
+    group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+    transition-all duration-300
+  "
 >
-  <div className="flex items-center gap-3 mb-3 ">
-    <Icon
-      className={`h-5 w-5 transition 
-        ${
-          isActiveSubLink(slug)
-            ? " "
-            : "text-white"
-        }
-      `}
-    />
-    <h4
-      className={`text-sm font-semibold transition
-        ${
-          isActiveSubLink(slug)
-            ? ""
-            : "text-white"
-        }
-      `}
-    >
-      {item.name}
-    </h4>
+
+          <div className="grid grid-cols-[380px_1fr] gap-10 p-10">
+
+         {/* LEFT PREVIEW */}
+<div className="rounded-xl bg-[#111] border border-white/10 overflow-hidden">
+  <div className="p-6">
+    <span className="text-xs uppercase tracking-widest text-white/50">
+      {link.name === "Company" ? "Company" : "Solution"}
+    </span>
+
+    <h3 className="text-xl font-semibold text-white mt-3">
+      {link.name === "Company" ? activeCompany : activeService}
+    </h3>
+
+    <p className="text-sm text-white/60 mt-2">
+      {link.name === "Company"
+        ? companyMeta[activeCompany].desc
+        : serviceMeta[activeService].desc}
+    </p>
   </div>
 
-  <ul className="space-y-1 text-sm text-white/60">
-    <li>{serviceMeta[item.name].desc}</li>
-    <li>Scalable Architecture</li>
-    <li>Production Ready</li>
-  </ul>
-</Link>
+  {/* FIXED IMAGE SIZE */}
+  <div className="relative h-[250px] w-full">
+    <img
+      src={
+        link.name === "Company"
+          ? companyMeta[activeCompany].image
+          : serviceImages[activeService]
+      }
+      alt="preview"
+      className="h-full w-full object-cover"
+    />
+    <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-transparent" />
+  </div>
+</div>
 
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
 
-            <Link
-              href="/contact"
-              className="ml-4 px-5 py-2.5 rounded-lg bg-(--color) hover:bg-(--color-indigo-800) text-sm text-white font-medium transition"
+            {/* RIGHT GRID */}
+            <div
+              className={`grid ${
+                link.name === "Company"
+                  ? "grid-cols-3"
+                  : "grid-cols-3"
+              } gap-x-5 gap-y-3`}
             >
-              Contact us
-            </Link>
+              {link.submenu.map((item) => {
+                const isService = link.name !== "Company";
+                const Icon = isService ? serviceMeta[item.name].icon : null;
+                const slug = isService ? serviceSlugs[item.name] : null;
+
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onMouseEnter={() =>
+                      isService
+                        ? setActiveService(item.name)
+                        : setActiveCompany(item.name)
+                    }
+                className={`group block rounded-xl p-4 transition h-40
+  ${
+    (isService && isActiveSubLink(slug)) ||
+    (!isService && isActiveCompanySubLink(item.href))
+      ? "bg-white/10 backdrop-blur-md shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)]"
+      : "hover:bg-white/5"
+  }
+`}
+
+                  >
+                    <div className="flex items-center gap-3 mb-2">
+                      {Icon && <Icon className="h-5 w-5 text-white" />}
+                      <h4 className="text-sm font-semibold text-white">
+                        {item.name}
+                      </h4>
+                    </div>
+
+                    <p className="text-sm text-white/60">
+                      {isService
+                        ? serviceMeta[item.name].desc
+                        : companyMeta[item.name].desc}
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
+        </div>
+      )}
+    </div>
+  ))}
+
+  <Link
+    href="/contact"
+    className="ml-4 px-5 py-2.5 rounded-lg bg-(--color) hover:bg-(--color-indigo-800) text-sm text-white font-medium transition"
+  >
+    Contact us
+  </Link>
+</div>
+
 
           {/* MOBILE MENU BUTTON */}
           <button

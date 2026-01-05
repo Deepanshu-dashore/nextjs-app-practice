@@ -478,18 +478,18 @@ useEffect(() => {
             >
               {/* Role */}
               <div className="md:col-span-6">
-                <h3 className="text-lg font-medium text-white">
+                <h3 className="text-lg font-medium text-white capitalize">
                   {opp.title}
                 </h3>
               </div>
 
               {/* Location */}
-              <div className="md:col-span-3 md:text-center mt-2 md:mt-0">
+              <div className="md:col-span-3 md:text-center mt-2 md:mt-0 capitalize">
                 <span className="text-gray-400">{opp.location}</span>
               </div>
 
               {/* Type */}
-              <div className="md:col-span-2 md:text-center mt-2 md:mt-0">
+              <div className="md:col-span-2 md:text-center mt-2 md:mt-0 capitalize">
                 <span className="text-gray-400">{opp.type}</span>
               </div>
 
