@@ -83,10 +83,10 @@ export default function ContactPage() {
             style={{
               backgroundAttachment: "fixed",
               backgroundImage:
-                "url('https://t4.ftcdn.net/jpg/07/54/80/09/360_F_754800974_CXB9YRXM2ItqqUoEYouZnzctO9BTQhSv.jpg')",
+                "url('images/90595.jpg')",
             }}
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/10" />
         </motion.div>
 
         <div className="relative z-10 h-full flex items-center">

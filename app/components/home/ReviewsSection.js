@@ -219,8 +219,14 @@ export default function ReviewsSection() {
                 build, scale, and support their digital products.
               </p>
 
-              {/* Navigation Controls */}
-              <div className="flex items-center gap-6 mt-12">
+             
+            </motion.div>
+          </div>
+
+          {/* Right Side - Review Cards (2 per view) */}
+          <div className="lg:col-span-7">
+             {/* Navigation Controls */}
+              <div className="flex items-center justify-end  gap-6 mt-12">
                 <button
                   onClick={prevReview}
                   className="w-14 h-14 cursor-pointer rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 hover:border-indigo-500/50 transition-all duration-300 group"
@@ -241,11 +247,6 @@ export default function ReviewsSection() {
                   <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
-            </motion.div>
-          </div>
-
-          {/* Right Side - Review Cards (2 per view) */}
-          <div className="lg:col-span-7">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={currentIndex}

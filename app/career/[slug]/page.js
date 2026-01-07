@@ -49,6 +49,16 @@ export default function JobDetail() {
   const [job, setJob] = useState(null);
   const [relatedJobs, setRelatedJobs] = useState([]);
   const [loading, setLoading] = useState(true);
+const [isApplyOpen, setIsApplyOpen] = useState(false);
+const [submitting, setSubmitting] = useState(false);
+
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+  resume: null,
+});
 
   /* SAFE MOUNT */
   useEffect(() => setMounted(true), []);
@@ -91,6 +101,63 @@ export default function JobDetail() {
 
     fetchData();
   }, [slug]);
+
+  const handleChange = (e) => {
+  const { name, value, files } = e.target;
+
+  if (name === "resume") {
+    setFormData({ ...formData, resume: files[0] });
+  } else {
+    setFormData({ ...formData, [name]: value });
+  }
+};
+const handleApplySubmit = async (e) => {
+  e.preventDefault();
+  setSubmitting(true);
+
+  try {
+    let resumeURL = "";
+
+    // Upload resume
+    if (formData.resume) {
+      const resumeRef = ref(
+        storage,
+        `job-resumes/${slug}/${Date.now()}-${formData.resume.name}`
+      );
+
+      await uploadBytes(resumeRef, formData.resume);
+      resumeURL = await getDownloadURL(resumeRef);
+    }
+
+    // Save application data
+    await addDoc(collection(db, "jobApplications"), {
+      jobId: slug,
+      jobTitle: job.title,
+      department: job.department,
+      applicantName: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+      resumeURL,
+      appliedAt: serverTimestamp(),
+    });
+
+    alert("Application submitted successfully 🎉");
+    setIsApplyOpen(false);
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+      resume: null,
+    });
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong. Please try again.");
+  } finally {
+    setSubmitting(false);
+  }
+};
 
   const normalizeToArray = (value) => {
     if (!value) return [];
@@ -157,9 +224,16 @@ export default function JobDetail() {
   <span>{job.location}</span>
 </div>
 
-        <button className="bg-(--color) cursor-pointer hover:bg-(--color-indigo-700) px-8 py-3 mt-4 font-semibold rounded">
+        {/* <button className="bg-(--color) cursor-pointer hover:bg-(--color-indigo-700) px-8 py-3 mt-4 font-semibold rounded">
           Apply for this job
-        </button>
+        </button> */}
+        <button
+  onClick={() => setIsApplyOpen(true)}
+  className="bg-(--color) cursor-pointer hover:bg-(--color-indigo-700) px-8 py-3 mt-4 font-semibold rounded"
+>
+  Apply for this job
+</button>
+
       </motion.section>
 
       {/* CONTENT */}
@@ -288,6 +362,90 @@ export default function JobDetail() {
           </div>
         </motion.aside>
       </section>
+{/* APPLY JOB MODAL */}
+{isApplyOpen && (
+  <motion.div
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+  >
+    <motion.div
+      className="bg-[#121212] w-full max-w-xl rounded-lg p-8 relative"
+      initial={{ scale: 0.9, y: 30 }}
+      animate={{ scale: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+    >
+      {/* Close Button */}
+      <button
+        onClick={() => setIsApplyOpen(false)}
+        className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl"
+      >
+        ×
+      </button>
+
+      <h2 className="text-2xl font-bold mb-2">
+        Apply for <span className="text-(--color)">{job.title}</span>
+      </h2>
+      <p className="text-gray-400 mb-6">
+        Fill in the details below to submit your application.
+      </p>
+
+      {/* FORM */}
+      <form className="space-y-5" onSubmit={handleApplySubmit}>
+        <div>
+          <label className="block text-sm mb-1">Full Name</label>
+          <input
+            type="text"
+            required
+            className="w-full px-4 py-3 bg-black border border-gray-700 rounded focus:outline-none focus:border-(--color)"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm mb-1">Email Address</label>
+          <input
+            type="email"
+            required
+            className="w-full px-4 py-3 bg-black border border-gray-700 rounded focus:outline-none focus:border-(--color)"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm mb-1">Phone Number</label>
+          <input
+            type="tel"
+            className="w-full px-4 py-3 bg-black border border-gray-700 rounded focus:outline-none focus:border-(--color)"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm mb-1">Upload Resume</label>
+          <input
+            type="file"
+            accept=".pdf,.doc,.docx"
+            className="w-full text-gray-400"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm mb-1">Why should we hire you?</label>
+          <textarea
+            rows={4}
+            className="w-full px-4 py-3 bg-black border border-gray-700 rounded focus:outline-none focus:border-(--color)"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-(--color) hover:bg-(--color-indigo-700 py-3 rounded font-semibold"
+        >
+          Submit Application
+        </button>
+      </form>
+    </motion.div>
+  </motion.div>
+)}
 
       <Footer />
     </div>

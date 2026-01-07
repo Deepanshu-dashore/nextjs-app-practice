@@ -153,7 +153,7 @@ export default function TechnologySection() {
                       flex flex-col items-center justify-center gap-3
                       p-4 sm:p-6 lg:p-8
                       bg-white/5 backdrop-blur-md
-                      border border-white/10
+                      
                       rounded-xl
                       w-40 h-28
                       sm:w-48 sm:h-32

@@ -214,71 +214,19 @@ export default function WhyChooseUs() {
   const sectionRef = useRef(null);
   const scrollTimeout = useRef(null);
 
-  const handleWheel = (e) => {
-    if (!sectionRef.current) return;
+  const scrollContainerRef = useRef(null);
 
-    const sectionTop = sectionRef.current.getBoundingClientRect().top;
-    const sectionHeight = sectionRef.current.offsetHeight;
-    const windowCenter = window.innerHeight / 2;
-    const sectionCenter = sectionTop + sectionHeight / 2;
-
-    // Only capture scroll if section is centered
-    if (Math.abs(windowCenter - sectionCenter) < 50) {
-      const atFirstTab = activeTab === 0;
-      const atLastTab = activeTab === tabs.length - 1;
-
-      // Scroll down at last tab or scroll up at first tab => let page scroll normally
-      if ((e.deltaY > 0 && atLastTab) || (e.deltaY < 0 && atFirstTab)) {
-        return; // allow normal page scroll
-      }
-
-      let shouldSwitchTab = false;
-      if (e.deltaY > 0 && !atLastTab) shouldSwitchTab = true;
-      if (e.deltaY < 0 && !atFirstTab) shouldSwitchTab = true;
-
-      if (shouldSwitchTab) {
-        e.preventDefault(); // only lock scroll if switching tabs
-        if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-
-        scrollTimeout.current = setTimeout(() => {
-          if (e.deltaY > 0) setActiveTab((prev) => prev + 1);
-          if (e.deltaY < 0) setActiveTab((prev) => prev - 1);
-        }, 250);
-      }
-    }
-  };
-
-  const scrollToCenter = () => {
-    if (!sectionRef.current) return;
-
-    const sectionRect = sectionRef.current.getBoundingClientRect();
-    const sectionTop = sectionRect.top;
-    const sectionHeight = sectionRect.height;
-    const windowCenter = window.innerHeight / 2;
-    const sectionCenter = sectionTop + sectionHeight / 2;
-
-    const atFirstTab = activeTab === 0;
-    const atLastTab = activeTab === tabs.length - 1;
-
-    // Only auto-center if we are **not at first or last tab** scrolling past the edges
-    if (!atFirstTab && !atLastTab && Math.abs(windowCenter - sectionCenter) > 5) {
-      window.scrollBy({
-        top: sectionCenter - windowCenter,
+  // Function to handle scroll synchronization
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = activeTab * scrollContainerRef.current.offsetHeight;
+      scrollContainerRef.current.scrollTo({
+        top: scrollAmount,
         behavior: "smooth",
       });
     }
-  };
-
-  useEffect(() => {
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("scroll", scrollToCenter);
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("scroll", scrollToCenter);
-      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-    };
   }, [activeTab]);
+
 
   return (
     <section
@@ -296,63 +244,105 @@ export default function WhyChooseUs() {
           </p>
         </div>
 
-        {/* Tabs Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {tabs.map((tab, index) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(index)}
-              className={`relative px-6 py-3 rounded-full cursor-pointer text-sm sm:text-base font-medium transition-all duration-300 ${
-                activeTab === index
-                  ? "text-white"
-                  : "text-gray-400 hover:text-gray-200"
-              }`}
+
+
+      <div className="max-w-9xl mx-auto">
+     
+        <div className="grid md:grid-cols-12 gap-12 items-start">
+          
+          {/* LEFT SECTION: Tab Navigation */}
+          <div className="md:col-span-5 lg:col-span-6 space-y-4">
+            {tabs.map((tab, index) => (
+              <div
+                key={tab.id}
+                onMouseEnter={() => setActiveTab(index)}
+                onClick={() => setActiveTab(index)}
+                className="group cursor-pointer relative"
+              >
+                <div className="flex items-center gap-6 py-6 border-b border-white/10">
+                  {/* Active Indicator Number */}
+                  <span className={`text-sm font-mono transition-colors duration-300 ${
+                    activeTab === index ? "text-indigo-500" : "text-gray-500"
+                  }`}>
+                    0{index + 1}
+                  </span>
+
+                  <div className="flex flex-col">
+                    <h3 className={`text-2xl md:text-3xl font-semibold transition-all duration-300 ${
+                      activeTab === index ? "text-white translate-x-2" : "text-gray-500"
+                    }`}>
+                      {tab.label}
+                    </h3>
+                    
+                    {/* Expandable Description like Antimatter */}
+                    <AnimatePresence>
+                      {activeTab === index && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <p className="text-gray-400 mt-4 text-sm leading-relaxed max-w-xs">
+                            {tab.description}
+                          </p>
+                          <div className="flex gap-2 mt-4">
+                            {tab.tags?.map(tag => (
+                              <span key={tag} className="text-[10px] uppercase tracking-widest text-white/40 border border-white/10 px-2 py-1 rounded">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </div>
+
+                {/* Background Highlight */}
+                {activeTab === index && (
+                  <motion.div
+                    layoutId="activeGlow"
+                    className="absolute inset-0 bg-white/[0.03] -z-10 rounded-xl"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* RIGHT SECTION: Scrolling Image Display */}
+          <div className="md:col-span-7 lg:col-span-6 sticky top-24">
+            <div 
+              ref={scrollContainerRef}
+              className="h-[400px] md:h-[600px] w-full rounded-3xl overflow-hidden no-scrollbar shadow-2xl border border-white/5"
+              style={{ scrollSnapType: 'y mandatory', scrollbarWidth: 'none' }}
             >
-              {activeTab === index && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.8 }}
-                />
-              )}
-              <span className="relative z-10">{tab.label}</span>
-            </button>
-          ))}
+              {tabs.map((tab, index) => (
+                <div 
+                  key={tab.id}
+                  className="h-full w-full flex-shrink-0 relative transition-transform duration-700"
+                  style={{ scrollSnapAlign: 'start' }}
+                >
+                  <Image
+                    src={tab.image}
+                    alt={tab.title}
+                    fill
+                    className={`object-cover transition-transform duration-1000 ease-out ${
+                        activeTab === index ? "scale-100" : "scale-110 blur-sm"
+                    }`}
+                    priority
+                  />
+                  {/* Dark Overlay Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
-
-        {/* Tab Content */}
-        <AnimatePresence mode="wait">
-          {tabs[activeTab] && (
-            <motion.div
-              key={tabs[activeTab].id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.7 }}
-              className="grid md:grid-cols-2 gap-12 items-center bg-zinc-900/50 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/10"
-            >
-              <div className="relative h-[300px] md:h-[350px] rounded-2xl overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/20 to-purple-600/20 z-10 group-hover:opacity-0 transition-opacity duration-300" />
-                <Image
-                  src={tabs[activeTab].image}
-                  alt={tabs[activeTab].title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-
-              <div className="space-y-6">
-                <h3 className="text-3xl lg:text-4xl font-bold text-white">
-                  {tabs[activeTab].title}
-                </h3>
-                <p className="text-lg text-gray-300 leading-relaxed">
-                  {tabs[activeTab].description}
-                </p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+      </div>
+  
       </div>
     </section>
   );

@@ -92,39 +92,42 @@ export default function TechPartnerSection() {
     Features
   </h3>
 
-  {/* FEATURES GRID */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  {/* FEATURES LIST */}
+  <div className="grid grid-cols-1  gap-y-6 gap-x-10">
     {[
       { t: "Expert Team", d: "Industry veterans guiding every step." },
       { t: "Innovation First", d: "Modern, AI-ready tech stack." },
       { t: "Quality Assured", d: "Clean, reliable & tested code." },
       { t: "Scalable Systems", d: "Built to grow with your business." },
     ].map((f, i) => (
-      <div
-        key={i}
-        className="flex gap-4 p-3 rounded-xl
-                   bg-white/5 border border-white/10
-                   hover:border-indigo-500/30 transition"
-      >
-        <FaCheckCircle className="text-indigo-400 text-xl mt-1 shrink-0" />
+      <div key={i} className="flex gap-4">
+        <FaCheckCircle className="text-indigo-400 text-lg mt-1 shrink-0" />
+
         <div>
-          <h4 className="text-white font-semibold">{f.t}</h4>
-          <p className="text-sm text-gray-400 mt-1">{f.d}</p>
+          <h4 className="text-white font-semibold leading-tight">
+            {f.t}
+          </h4>
+          <p className="text-sm text-gray-400 mt-1 leading-relaxed">
+            {f.d}
+          </p>
         </div>
       </div>
     ))}
   </div>
 
   {/* ACTION BUTTONS */}
-  <div className="flex flex-col justify-between sm:flex-row gap-4">
+  <div className="flex flex-col sm:flex-row gap-4 pt-4">
 
     {/* PRIMARY */}
     <Link
       href="/tech-partner"
       className="inline-flex items-center justify-center gap-2
-                 px-18 py-4 rounded-lg
-                 border border-white/25 text-white font-semibold
-                 hover:bg-indigo-500 hover:text-white transition"
+                 px-18 py-4
+                 border border-white/30
+                 text-white font-semibold
+                 rounded-lg
+                 hover:bg-indigo-500 hover:border-indigo-500
+                 transition"
     >
       Explore Program
       <FaArrowRight className="text-sm" />
@@ -134,9 +137,11 @@ export default function TechPartnerSection() {
     <Link
       href="/tech-partner#apply"
       className="inline-flex items-center justify-center gap-2
-                 px-14 py-4 rounded-lg
+                 px-14 py-4
+                  rounded-lg
                  bg-white text-black font-semibold
-                 hover:bg-gray-100 transition "
+                 hover:bg-gray-100
+                 transition"
     >
       Apply for Partnership
       <FaArrowRight className="text-sm" />
@@ -145,6 +150,7 @@ export default function TechPartnerSection() {
   </div>
 
 </div>
+
 
 
           {/* RIGHT SECTION*/}

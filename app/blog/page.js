@@ -534,7 +534,7 @@ export default function BlogPage() {
       </Head>
 
       {/* ================= HERO ================= */}
-      <section ref={heroRef} className="relative h-dvh overflow-hidden">
+      {/* <section ref={heroRef} className="relative h-dvh overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: bgY }}>
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -553,8 +553,48 @@ export default function BlogPage() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
+      
+   <section ref={heroRef} className="relative h-[100dvh] overflow-hidden">
+        <motion.div
+          className="absolute inset-0 will-change-transform"
+          style={{ y: bgY }}
+        >
+          <div
+            className="absolute inset-0 bg-cover bg-center scale-110"
+            style={{
+              backgroundAttachment: "fixed",
+              backgroundImage:
+                "url('/images/bg3.png')",
+            }}
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </motion.div>
+      <div className="relative z-10 h-full flex items-center">
+  <div className="max-w-7xl mx-20">
+    <span className="text-sm tracking-[0.3em] uppercase text-white">
+      Our Journal
+    </span>
+
+    <div className="h-px max-w-sm bg-linear-to-r from-white/60 to-transparent mt-3" />
+
+    <h1 className="text-6xl md:text-7xl font-bold mt-4 text-white">
+      Ideas That{" "}
+      <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">
+        Shape the Web
+      </span>
+    </h1>
+
+    <p className="text-xl text-gray-300 mt-6 max-w-3xl leading-relaxed">
+      A space where creativity meets technology. Discover stories on UX design,
+      visual thinking, digital experiences, and the ideas that turn concepts
+      into memorable products.
+    </p>
+  </div>
+</div>
+
+          </section>
       {/* ================= CONTENT ================= */}
       <section className="bg-black">
         <div className="mx-auto py-20 w-[90dvw]">
@@ -592,7 +632,7 @@ export default function BlogPage() {
                 </div>
 
                 {/* LIST */}
-                <div className="space-y-12 mt-14">
+                <div className="space-y-12 mt-14 overflow-y-scroll h-[60dvh] pr-4 " style={{scrollbarWidth:"none"}}>
                   {filteredBlogs.slice(1).map((blog) => (
                     <Link
                       key={blog.id}
@@ -739,8 +779,8 @@ export default function BlogPage() {
           )}
         </div>
       </section>
-
       <Footer />
+    
     </>
   );
 }

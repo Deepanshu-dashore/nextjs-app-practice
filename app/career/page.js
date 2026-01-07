@@ -501,7 +501,7 @@ useEffect(() => {
                   className="px-5 py-2 rounded-full text-sm font-medium
                     bg-white text-black hover:bg-gray-200 transition cursor-pointer"
                 >
-                  Detail
+                  Apply
                 </button>
               </div>
             </motion.div>

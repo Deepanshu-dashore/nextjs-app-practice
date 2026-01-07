@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import Footer from "../components/shared/Footer";
@@ -10,8 +10,15 @@ import { db } from "../firebase";
 export default function OurProjects() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+    const heroRef = useRef(null);
  const [active, setActive] = useState(2);
+  /* ---------------- SCROLL EFFECT ---------------- */
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
 
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   // 🔥 Fetch projects from Firestore
   const fetchProjects = async () => {
     try {
@@ -80,48 +87,45 @@ const featuredProducts = [
 
   return (
     <div className="bg-[#030303] text-white overflow-hidden relative">
-      <section className="relative h-[100dvh] overflow-hidden">
-        {/* FIXED BACKGROUND */}
-        <motion.div className="absolute inset-0 will-change-transform">
+  
+  <section ref={heroRef} className="relative h-[100dvh] overflow-hidden">
+        <motion.div
+          className="absolute inset-0 will-change-transform"
+          style={{ y: bgY }}
+        >
           <div
             className="absolute inset-0 bg-cover bg-center scale-110"
             style={{
               backgroundAttachment: "fixed",
               backgroundImage:
-                "url('https://t4.ftcdn.net/jpg/07/54/80/09/360_F_754800974_CXB9YRXM2ItqqUoEYouZnzctO9BTQhSv.jpg')",
+                "url('/images/bg2.png')",
             }}
           />
-          <div className="absolute inset-0 bg-black/70" />
+          <div className="absolute inset-0 bg-black/10" />
         </motion.div>
-
-        {/* CONTENT */}
-        <motion.div className="relative z-10 h-full flex items-center">
-          <div className="max-w-3xl mx-20">
-            {/* SUBHEADING */}
+            <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-7xl mx-20">
             <span className="text-sm tracking-[0.3em] uppercase text-white">
-              Our Work
+               Our Work
             </span>
 
             <div className="h-px max-w-sm bg-linear-to-r from-white/60 to-transparent mt-3" />
 
-            {/* MAIN HEADING */}
-            <h1 className="text-6xl md:text-7xl font-bold mt-3 text-white">
-              Turning Ideas Into{" "}
+            <h1 className="text-6xl md:text-7xl font-bold mt-4 text-white">
+                 Turning Ideas Into{" "}
               <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">
-                Powerful Solutions
+           Powerful Solutions
               </span>
             </h1>
 
-            {/* DESCRIPTION */}
-            <p className="text-xl text-gray-300 mt-6 max-w-4xl">
-              Explore our portfolio of innovative digital products, intelligent
+            <p className="text-xl text-gray-300 mt-6 max-w-3xl">
+           Explore our portfolio of innovative digital products, intelligent
               systems, and scalable solutions crafted to solve real-world
-              problems and drive business growth.
+              problems and drive business growth..
             </p>
           </div>
-        </motion.div>
+        </div>
       </section>
-
    <section className="max-w-7xl mx-auto py-32 px-6">
       {/* Heading */}
       <div className="text-center max-w-5xl mx-auto mb-20">
