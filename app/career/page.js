@@ -472,9 +472,10 @@ useEffect(() => {
           {filteredOpportunities.map((opp) => (
             <motion.div
               key={opp.id}
+                onClick={() => router.push(`/career/${opp.id}`)}
               whileHover={{ backgroundColor: "rgba(255,255,255,0.03)" }}
               transition={{ duration: 0.2 }}
-              className="grid grid-cols-1 md:grid-cols-12 items-center py-6 px-4 rounded-xl"
+              className="grid grid-cols-1 md:grid-cols-12 items-center py-6 px-4 rounded-xl cursor-pointer"
             >
               {/* Role */}
               <div className="md:col-span-6">
@@ -500,7 +501,7 @@ useEffect(() => {
                   className="px-5 py-2 rounded-full text-sm font-medium
                     bg-white text-black hover:bg-gray-200 transition cursor-pointer"
                 >
-                  Apply
+                  Detail
                 </button>
               </div>
             </motion.div>

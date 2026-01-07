@@ -155,7 +155,7 @@ export default function ReviewsSection() {
   return (
     <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden isolate">
       {/* Background Marquee */}
-      <div className="absolute inset-0 -z-10 flex flex-col justify-center opacity-[0.08] pointer-events-none select-none overflow-hidden">
+      {/* <div className="absolute inset-0 -z-10 flex flex-col justify-center opacity-[0.08] pointer-events-none select-none overflow-hidden">
         {[...Array(3)].map((_, i) => (
           <div key={i} className="overflow-hidden py-4">
             <motion.div
@@ -177,7 +177,7 @@ export default function ReviewsSection() {
             </motion.div>
           </div>
         ))}
-      </div>
+      </div> */}
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div

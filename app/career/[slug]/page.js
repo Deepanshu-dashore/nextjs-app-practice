@@ -20,13 +20,13 @@ const AccordionSection = ({ title, children, defaultOpen = false }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="border-b border-(--color) overflow-hidden pb-4">
+    <div className="border-b border-(--color-gray-500) overflow-hidden pb-4">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex justify-between items-center py-4 text-left focus:outline-none"
       >
         <span className="text-xl font-semibold">{title}</span>
-        <span className="text-2xl font-bold">{isOpen ? "−" : "+"}</span>
+        <span className="text-2xl font-bold cursor-pointer">{isOpen ? "−" : "+"}</span>
       </button>
 
       <motion.div
@@ -138,16 +138,26 @@ export default function JobDetail() {
       {/* HERO */}
       <motion.section
         ref={heroRef}
-        className="max-w-7xl mx-auto px-6 pt-28 pb-16"
+        className="max-w-7xl mx-auto px-6 pt-32 pb-16"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-5xl font-extrabold mb-4 uppercase">{job.title}</h1>
-        <p className="text-gray-300 mb-6">
-          {job.department} | {job.type} | Experience: {job.experience} Years
-        </p>
-        <button className="bg-(--color) hover:bg-(--color-indigo-700) px-8 py-3 font-semibold rounded">
+        <h1 className="text-5xl font-extrabold mb-6 uppercase">{job.title}</h1>
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-2  text-gray-300 mb-6   capitalize">
+  <span>{job.department}</span>
+  <span className="text-gray-300">|</span>
+
+  <span>{job.type}</span>
+  <span className="text-gray-300">|</span>
+
+  <span>Experience: {job.experience} Years</span>
+  <span className="text-gray-300">|</span>
+
+  <span>{job.location}</span>
+</div>
+
+        <button className="bg-(--color) cursor-pointer hover:bg-(--color-indigo-700) px-8 py-3 mt-4 font-semibold rounded">
           Apply for this job
         </button>
       </motion.section>
@@ -156,7 +166,7 @@ export default function JobDetail() {
       <section className="max-w-7xl mx-auto px-6 pb-20 grid grid-cols-1 lg:grid-cols-3 gap-12 ">
         {/* LEFT - Job Details */}
         <motion.div
-          className="lg:col-span-2 space-y-6 border-t border-(--color)"
+          className="lg:col-span-2  space-y-6 border-t border-(--color-gray-500)"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -243,31 +253,36 @@ export default function JobDetail() {
 
         {/* RIGHT / Similar Jobs */}
         <motion.aside
-          className="space-y-6"
+          className="space-y-6 w-[400px] "
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <h3 className="text-xl font-bold text-white">Similar jobs</h3>
-          <div className="p-4 bg-[#1C1C1C] rounded-[6px] border border-transparent hover:border-(--color) transition-all duration-200">
+          <div className="p-4 bg-[#1C1C1C] rounded-[6px] border border-transparent transition-all duration-200">
             {relatedJobs.map((item) => (
               <div
                 key={item.id}
-                className="relative p-6 mb-4 rounded  transition-colors"
+                className="relative p-3 mb-4 rounded  transition-colors"
               >
-                <div className="absolute top-2 left-5 w-12 h-1 bg-(--color) rounded-tl-[6px]" />
-                <h4 className="text-[16px] leading-[24px] font-medium text-white mb-2 uppercase ">
+                <div className="absolute top-2 left-2 w-12 h-1 bg-(--color) rounded-tl-[6px]" />
+                <h4 className="text-[16px] leading-[24px] font-medium text-white mb-2 mt-3 uppercase ">
                   {item.title}
                 </h4>
-                <p className="text-[14px] leading-[20px] text-[#A3A3A3] mb-3 capitalize">
-                  {item.location} | {item.type} | Experience: {item.experience || "N/A"} Years
+                <p className="text-[14px] leading-[20px] text-gray-300 mb-3 capitalize">
+                  {item.department} | {item.location} | {item.type} | Experience: {item.experience || "N/A"} Years
+                </p>
+                  <p className="text-[14px] leading-[20px] text-gray-300 mb-3 capitalize">
+                  {item.description.slice(0, 300)}...  
                 </p>
                 <a
                   href={`/career/${item.id}`}
-                  className="text-[16px] leading-[24px] text-white font-medium hover:underline flex items-end h-28"
+                  className="text-[16px] leading-[24px] text-white font-medium flex items-end "
                 >
                   See this job <span className="ml-1">→</span>
+
                 </a>
+                <div className="absolute bottom-2 right-2 left-2 w-24 h-[1px] bg-gray-400 rounded-br-[6px]" />
               </div>
             ))}
           </div>

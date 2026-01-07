@@ -51,7 +51,7 @@ export default function TechPartnerSection() {
                 className="flex flex-col items-center text-center mb-10"
               >
                 {/* Badge */}
-                <div className="inline-flex  items-center gap-2 px-4 py-2 mb-6 rounded-full bg-linear-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 border border-indigo-500/20 backdrop-blur-sm">
+                <div className="inline-flex  items-center gap-2 px-4 py-2 mb-3 rounded-full bg-linear-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 border border-indigo-500/20 backdrop-blur-sm">
                   <svg
                     className="w-4 h-4 text-indigo-400"
                     fill="currentColor"
@@ -67,14 +67,14 @@ export default function TechPartnerSection() {
                   </span>
                 </div>
 
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
                   Ready to build{" "}
                   <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-purple-400">
                     together?
                   </span>
                 </h2>
 
-                <p className="text-lg sm:text-xl text-gray-200 mb-10 leading-relaxed">
+                <p className="text-lg sm:text-xl text-gray-200 mb-5 leading-relaxed">
                   Let's discuss your product, roadmap, and how we can become
                   your long-term tech partner.
                 </p>
@@ -84,81 +84,68 @@ export default function TechPartnerSection() {
 
         {/* MAIN GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-    {/* LEFT SECTION */}
+{/* LEFT SECTION */}
+<div className="lg:col-span-6 flex flex-col justify-center gap-10">
 
-<div className="lg:col-span-6 flex flex-col justify-center space-y-10">
-
-  <h3 className="text-gray-300 font-bold uppercase tracking-widest text-sm ml-1">
+  {/* SECTION LABEL */}
+  <h3 className="text-sm font-semibold uppercase tracking-widest text-gray-400">
     Features
   </h3>
 
-  {/* 2x2 FEATURES GRID */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+  {/* FEATURES GRID */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
     {[
-      { t: "Expert Team", d: "Industry veterans at your disposal." },
-      { t: "Innovation First", d: "AI-ready modern tech stack." },
-      { t: "Quality Guaranteed", d: "Zero-compromise development." },
+      { t: "Expert Team", d: "Industry veterans guiding every step." },
+      { t: "Innovation First", d: "Modern, AI-ready tech stack." },
+      { t: "Quality Assured", d: "Clean, reliable & tested code." },
       { t: "Scalable Systems", d: "Built to grow with your business." },
     ].map((f, i) => (
-      <motion.div
+      <div
         key={i}
-        whileHover={{ y: -4 }}
-        className="flex items-start gap-4 p-6 rounded-2xl 
-                   bg-white/5 border border-white/10 
-                   hover:border-purple-500/30 transition"
+        className="flex gap-4 p-3 rounded-xl
+                   bg-white/5 border border-white/10
+                   hover:border-indigo-500/30 transition"
       >
-        <FaCheckCircle className="text-purple-400 text-2xl mt-1 shrink-0" />
+        <FaCheckCircle className="text-indigo-400 text-xl mt-1 shrink-0" />
         <div>
-          <h4 className="text-base font-bold text-white">{f.t}</h4>
-          <p className="text-sm text-gray-300 mt-1">{f.d}</p>
+          <h4 className="text-white font-semibold">{f.t}</h4>
+          <p className="text-sm text-gray-400 mt-1">{f.d}</p>
         </div>
-      </motion.div>
+      </div>
     ))}
   </div>
 
-  {/* BUTTONS */}
-  <div className="grid grid-cols-2 gap-6 mt-4 sm:grid-flow-col sm:auto-cols-fr">
- <Link
-  href="/tech-partner"
-  className="group relative bg-transparent border border-indigo-500/60 text-white px-8 py-4 rounded-full text-base font-semibold
-  transition-all duration-300
-  shadow-[0_0_15px_rgba(99,102,241,0.25)]
-  hover:shadow-[0_0_30px_rgba(99,102,241,0.45)]
-  hover:-translate-y-1
-  flex items-center gap-2 overflow-hidden"
->
-  <span className="relative z-10">Explore Program</span>
+  {/* ACTION BUTTONS */}
+  <div className="flex flex-col justify-between sm:flex-row gap-4">
 
-  <svg
-    className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:rotate-45"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-    />
-  </svg>
+    {/* PRIMARY */}
+    <Link
+      href="/tech-partner"
+      className="inline-flex items-center justify-center gap-2
+                 px-18 py-4 rounded-lg
+                 border border-white/25 text-white font-semibold
+                 hover:bg-indigo-500 hover:text-white transition"
+    >
+      Explore Program
+      <FaArrowRight className="text-sm" />
+    </Link>
 
-  {/* Hover glass fill */}
-  <div className="absolute inset-0 bg-indigo-500/15 backdrop-blur-md translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-</Link>
+    {/* SECONDARY */}
+    <Link
+      href="/tech-partner#apply"
+      className="inline-flex items-center justify-center gap-2
+                 px-14 py-4 rounded-lg
+                 bg-white text-black font-semibold
+                 hover:bg-gray-100 transition "
+    >
+      Apply for Partnership
+      <FaArrowRight className="text-sm" />
+    </Link>
 
-
-
-  <Link
-                    href="/tech-partner#apply"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black hover:bg-gray-100 font-bold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
-                  >
-                    Apply for Partnership
-                    <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-                  </Link>
   </div>
 
 </div>
+
 
           {/* RIGHT SECTION*/}
     <div className="lg:col-span-6 grid grid-cols-2 justify-center gap-4">

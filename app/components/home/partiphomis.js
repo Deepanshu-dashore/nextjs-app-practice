@@ -200,7 +200,7 @@ export default function ParticleIconMorph3D({ title, isMobile = false }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={() => { mouse.current.active = false; }}
     >
-      <div className="absolute w-[500px] h-[500px] rounded-full bg-indigo-500/20 blur-[150px] animate-pulse" />
+      <div className="absolute w-[500px] h-[500px] rounded-full blur-[150px] animate-pulse" />
       <canvas 
         ref={canvasRef} 
         className="relative z-10" 

@@ -202,7 +202,7 @@ const services = [
     
     {/* Left fade overlay */}
     <div
-      className="absolute left-0 top-0 h-full w-20 pointer-events-none z-20"
+      className="absolute left-0 top-0 h-full w-10 pointer-events-none z-20"
       style={{
         background: "linear-gradient(to right, black 0%, transparent 100%)",
         backdropFilter: "blur(60px)"
@@ -218,11 +218,11 @@ const services = [
       }}
     />
 
-    <motion.div style={{ x }} className="flex gap-8 px-10">
+    <motion.div style={{ x }} className="flex gap-8 px-14 ">
       {services.map((service, index) => (
         <div
           key={index}
-          className={`relative group w-[400px] h-[520px] rounded-[2.5rem] p-8 
+          className={`relative group w-[400px] h-[520px] rounded-[2.5rem] p-8  
             bg-gradient-to-br from-white/10 to-transparent backdrop-blur-2xl 
             border transition-all duration-500 ease-out flex flex-col justify-between
             ${
