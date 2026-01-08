@@ -175,7 +175,7 @@ const services = [
 <div className="sticky top-0 h-[600px] flex items-center px-6 lg:px-12 mt-10">
 
   {/* LEFT PARTICLE ICON */}
-  <div className="hidden lg:flex w-1/4 justify-center h-full items-center relative ml-10">
+  <div className="hidden lg:flex w-[400px] justify-center h-full items-center relative ml-10">
     
     {/* Ambient Glow */}
     {/* <div className="absolute w-[600px] h-[600px] rounded-full bg-indigo-500/15 blur-[600px]" /> */}

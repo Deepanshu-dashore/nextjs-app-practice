@@ -88,7 +88,7 @@ const featuredProducts = [
   return (
     <div className="bg-[#030303] text-white overflow-hidden relative">
   
-  <section ref={heroRef} className="relative h-[100dvh] overflow-hidden">
+  <section ref={heroRef} className="relative h-[75dvh] overflow-hidden">
         <motion.div
           className="absolute inset-0 will-change-transform"
           style={{ y: bgY }}

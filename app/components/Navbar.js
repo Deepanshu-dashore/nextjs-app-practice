@@ -121,7 +121,7 @@ const companyMeta = {
   href: "/about",
   submenu: [
     { name: "Who We Are", href: "/about" },
-    { name: "Our Culture", href: "/company/our-culture" },
+    { name: "Our Culture", href: "/culture" },
     { name: "Blog", href: "/blog" },
   ],
 },
@@ -135,7 +135,7 @@ const companyMeta = {
       })),
     },
     { name: "Our Project", href: "/projects" },
-    { name: "Blog", href: "/blog" },
+    // { name: "Blog", href: "/blog" },
     { name: "Careers", href: "/career" },
   ];
 
@@ -242,7 +242,7 @@ const companyMeta = {
             <div
               className={`grid ${
                 link.name === "Company"
-                  ? "grid-cols-3"
+                  ? "grid "
                   : "grid-cols-3"
               } gap-x-5 gap-y-3`}
             >
@@ -296,7 +296,7 @@ const companyMeta = {
     href="/contact"
     className="ml-4 px-5 py-2.5 rounded-lg bg-(--color) hover:bg-(--color-indigo-800) text-sm text-white font-medium transition"
   >
-    Contact us
+Get in Touch
   </Link>
 </div>
 

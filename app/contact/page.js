@@ -73,7 +73,7 @@ export default function ContactPage() {
   return (
     <main>
       {/* HERO */}
-      <section ref={heroRef} className="relative h-[90dvh] overflow-hidden">
+      <section ref={heroRef} className="relative h-[70dvh] overflow-hidden">
         <motion.div
           className="absolute inset-0 will-change-transform"
           style={{ y: bgY }}

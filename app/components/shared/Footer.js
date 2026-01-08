@@ -86,15 +86,15 @@ navigation: [
   return (
     <footer className="relative w-full bg-black text-white overflow-hidden">
       {/* Background Image & Overlay */}
-      <div className="absolute inset-0 z-0 w-full">
-        <img
+      <div className="absolute inset-0 z-0 w-full ">
+        {/* <img
           src="/footer-bg.png"
           alt="Tech Background"
           className="w-full h-full object-cover opacity-40"
-        />
+        /> */}
       </div>
       <div className="absolute inset-0 z-0 w-full">
-        <Particles
+        {/* <Particles
           particleColors={["#ffffff", "#ffffff"]}
           particleCount={200}
           particleSpread={10}
@@ -103,10 +103,10 @@ navigation: [
           moveParticlesOnHover={true}
           alphaParticles={false}
           disableRotation={false}
-        />
+        /> */}
       </div>
 
-      <div className="relative z-10 px-6 pt-20">
+      <div className="relative z-10 px-6 pt-20 bg-indigo-900/10">
         {/* Main Footer Content */}
         <div className="grid grid-cols-2 md:grid-cols-3 max-w-7xl mx-auto lg:grid-cols-5 gap-8 mb-16">
           {/* Social Section - Indideveloper Branding */}

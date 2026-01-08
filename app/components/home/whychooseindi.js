@@ -154,13 +154,13 @@ export default function TechPartnerSection() {
 
 
           {/* RIGHT SECTION*/}
-    <div className="lg:col-span-6 grid grid-cols-2 justify-center gap-4">
+    <div className="lg:col-span-6 grid grid-cols-2 justify-center gap-0">
   {stats.map((stat, i) => (
     <motion.div
       key={i}
       // whileHover={{ y: }}
       className={`
-        relative p-6  flex flex-col justify-center items-start 
+        relative p-6 h-44 w-68 flex flex-col justify-center items-start 
         bg-gradient-to-br from-gray-900/40 to-black/50
         backdrop-blur-xl
 
