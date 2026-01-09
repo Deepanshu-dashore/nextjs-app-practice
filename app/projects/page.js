@@ -101,7 +101,7 @@ const featuredProducts = [
                 "url('https://thumbs.dreamstime.com/b/d-render-abstract-modern-minimal-neon-background-glowing-round-frame-copy-space-laser-ring-middle-empty-desert-199522358.jpg')",
             }}
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/80" />
         </motion.div>
             <div className="relative z-10 h-full flex items-center">
           <div className="max-w-7xl mx-20">

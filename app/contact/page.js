@@ -86,7 +86,7 @@ export default function ContactPage() {
                 "url('https://www.shutterstock.com/image-vector/abstract-pink-neon-light-wave-260nw-2490596587.jpg')",
             }}
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/70" />
         </motion.div>
 
         <div className="relative z-10 h-full flex items-center">

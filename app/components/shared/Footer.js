@@ -106,7 +106,7 @@ navigation: [
         /> */}
       </div>
 
-      <div className="relative z-10 px-6 pt-20 bg-indigo-900/10">
+      <div className="relative z-10 px-6 pt-20 bg-indigo-800/10">
         {/* Main Footer Content */}
         <div className="grid grid-cols-2 md:grid-cols-3 max-w-7xl mx-auto lg:grid-cols-5 gap-8 mb-16">
           {/* Social Section - Indideveloper Branding */}

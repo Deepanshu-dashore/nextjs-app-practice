@@ -3,16 +3,24 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
 import {
-  FaUserShield,
-  FaLightbulb,
-  FaCheckCircle,
-  FaChartLine,
+ 
   FaUsers,
   FaHeart,
   FaRocket,
   FaBrain,
 } from "react-icons/fa";
-import Navbar from "../components/Navbar";
+import {
+  FaUserFriends,
+  FaLightbulb,
+  FaShieldAlt,
+  FaHandshake,
+} from "react-icons/fa";
+import {
+  FaGraduationCap,
+  FaLaptopHouse,
+  FaUsersCog,
+  FaBalanceScale,
+} from "react-icons/fa";
 import Footer from "../components/shared/Footer";
 
 const CultureHero = () => {
@@ -35,14 +43,12 @@ const CultureHero = () => {
     // style={{ y }}
     className="absolute inset-0 z-0 bg-cover bg-center"
     style={{
-      backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSACfp685BXY1IPEBzNF1J8jMLOaaIRfN2r0Q&s')",
+      backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5-s-4DOj95b3fu0AzIVSP5YHt4MdPDJOSEg&s')",
       y,
     }}
   > 
         {/* Dark Overlays */}
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-black/80" />
       </motion.div>
 
       {/* Content */}
@@ -103,36 +109,38 @@ const CultureHero = () => {
 };
 
 const CoreValuesSection = () => {
-  const values = [
-    {
-      title: "People First",
-      description:
-        "We believe that great work starts with happy, empowered people. We prioritize mental health, work-life harmony, and continuous personal growth.",
-      icon: <FaUsers size={32} />,
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      title: "Radical Innovation",
-      description:
-        "No idea is too crazy. We encourage experimentation, failing fast, and learning faster. Your best ideas matter here.",
-      icon: <FaBrain size={32} />,
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      title: "Ownership Mentality",
-      description:
-        "We don't just complete tasks—we own outcomes. Every team member has autonomy and accountability to drive high-impact decisions.",
-      icon: <FaRocket size={32} />,
-      color: "from-amber-500 to-orange-500",
-    },
-    {
-      title: "Inclusive by Design",
-      description:
-        "Diversity fuels better thinking. We actively build a culture where every voice is heard, valued, and empowered.",
-      icon: <FaHeart size={32} />,
-      color: "from-pink-500 to-red-500",
-    },
-  ];
+
+const values = [
+  {
+    title: "People First",
+    description:
+      "We believe that great work starts with happy, empowered people. We prioritize mental health, work-life harmony, and continuous personal growth.",
+    icon: <FaUserFriends size={32} className="text-indigo-500" />,
+
+  },
+  {
+    title: "Radical Innovation",
+    description:
+      "No idea is too crazy. We encourage experimentation, failing fast, and learning faster. Your best ideas matter here.",
+    icon: <FaLightbulb size={32} className="text-indigo-500" />,
+
+  },
+  {
+    title: "Ownership Mentality",
+    description:
+      "We don't just complete tasks—we own outcomes. Every team member has autonomy and accountability to drive high-impact decisions.",
+    icon: <FaShieldAlt size={32} className="text-indigo-500" />,
+
+  },
+  {
+    title: "Inclusive by Design",
+    description:
+      "Diversity fuels better thinking. We actively build a culture where every voice is heard, valued, and empowered.",
+    icon: <FaHandshake size={32} className="text-indigo-500" />,
+   
+  },
+];
+
 
   return (
     <section className="py-32 bg-black text-white relative overflow-hidden">
@@ -299,32 +307,34 @@ const CulturePillarsSection = () => {
 };
 
 const TeamLifeSection = () => {
-  const experiences = [
-    {
-      title: "Learning & Growth",
-      description:
-        "We invest in our people. Regular workshops, conferences, and skill-building sessions keep everyone sharp and engaged.",
-      icon: "📚",
-    },
-    {
-      title: "Flexible Work",
-      description:
-        "Work from home, work from office, or work from a coffee shop. We trust you to do your best work wherever you are.",
-      icon: "🌍",
-    },
-    {
-      title: "Collaborative Spaces",
-      description:
-        "Our studio is designed for collaboration, creativity, and connection. Spaces that inspire great thinking.",
-      icon: "🏢",
-    },
-    {
-      title: "Work-Life Balance",
-      description:
-        "We don't glorify burnout. Real productivity comes from rest, recovery, and time for what matters outside work.",
-      icon: "⚖️",
-    },
-  ];
+
+
+const experiences = [
+  {
+    title: "Learning & Growth",
+    description:
+      "We invest in our people. Regular workshops, conferences, and skill-building sessions keep everyone sharp and engaged.",
+    icon: <FaGraduationCap size={28} className="text-white" />,
+  },
+  {
+    title: "Flexible Work",
+    description:
+      "Work from home, work from office, or work from a coffee shop. We trust you to do your best work wherever you are.",
+    icon: <FaLaptopHouse size={28} className="text-white" />,
+  },
+  {
+    title: "Collaborative Spaces",
+    description:
+      "Our studio is designed for collaboration, creativity, and connection. Spaces that inspire great thinking.",
+    icon: <FaUsersCog size={28} className="text-white" />,
+  },
+  {
+    title: "Work-Life Balance",
+    description:
+      "We don't glorify burnout. Real productivity comes from rest, recovery, and time for what matters outside work.",
+    icon: <FaBalanceScale size={28} className="text-white" />,
+  },
+];
 
   return (
     <section className="py-32 bg-black text-white relative overflow-hidden">
