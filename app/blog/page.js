@@ -562,14 +562,15 @@ export default function BlogPage() {
           style={{ y: bgY }}
         >
           <div
-            className="absolute inset-0 bg-cover bg-center scale-110"
+            className="absolute inset-0 bg-cover bg-center scale-110   "
             style={{
               backgroundAttachment: "fixed",
+           
               backgroundImage:
-                "url('/images/bg3.png')",
+                "url('https://www.shutterstock.com/image-vector/light-motion-effect-slow-shutter-260nw-2535181085.jpg')",
             }}
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/40" />
         </motion.div>
       <div className="relative z-10 h-full flex items-center">
   <div className="max-w-7xl mx-20">
