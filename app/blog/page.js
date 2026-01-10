@@ -605,7 +605,7 @@ export default function BlogPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
               {/* ================= LEFT ================= */}
-              <div className="lg:col-span-8 bg-white/10 p-6 rounded-2xl">
+              <div className="lg:col-span-8 bg-white/10 p-6 rounded-2xl order-1 ">
 
                 {/* FEATURED */}
                 <Link
@@ -668,7 +668,7 @@ export default function BlogPage() {
               </div>
 
               {/* ================= RIGHT ================= */}
-              <aside className="lg:col-span-4  bg-white/10 p-6 rounded-2xl space-y-10">
+              <aside className="lg:col-span-4  bg-white/10 p-6 rounded-2xl space-y-10  lg:order-1">
 
                 {/* SEARCH */}
                 <input

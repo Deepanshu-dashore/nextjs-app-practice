@@ -229,7 +229,7 @@ const handleApplySubmit = async (e) => {
         </button> */}
         <button
   onClick={() => setIsApplyOpen(true)}
-  className="bg-(--color) cursor-pointer hover:bg-(--color-indigo-700) px-8 py-3 mt-4 font-semibold rounded"
+  className="bg-(--color) cursor-pointer hover:bg-(--color-indigo) px-8 py-3 mt-4 font-semibold rounded"
 >
   Apply for this job
 </button>
@@ -237,10 +237,11 @@ const handleApplySubmit = async (e) => {
       </motion.section>
 
       {/* CONTENT */}
-      <section className="max-w-7xl mx-auto px-6 pb-20 grid grid-cols-1 lg:grid-cols-3 gap-12 ">
+      <section className="max-w-7xl mx-auto px-6 pb-20 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
+  
         {/* LEFT - Job Details */}
         <motion.div
-          className="lg:col-span-2  space-y-6 border-t border-(--color-gray-500)"
+   className="md:col-span-2 space-y-6 border-t border-(--color-gray)"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -327,7 +328,7 @@ const handleApplySubmit = async (e) => {
 
         {/* RIGHT / Similar Jobs */}
         <motion.aside
-          className="space-y-6 w-[400px] "
+         className="md:col-span-1 w-full md:w-auto space-y-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -340,18 +341,18 @@ const handleApplySubmit = async (e) => {
                 className="relative p-3 mb-4 rounded  transition-colors"
               >
                 <div className="absolute top-2 left-2 w-12 h-1 bg-(--color) rounded-tl-[6px]" />
-                <h4 className="text-[16px] leading-[24px] font-medium text-white mb-2 mt-3 uppercase ">
+                <h4 className="text-[16px] leading-[25px] font-medium text-white mb-2 mt-3 uppercase ">
                   {item.title}
                 </h4>
-                <p className="text-[14px] leading-[20px] text-gray-300 mb-3 capitalize">
+                <p className="text-[14px] leading-[22px] text-gray-300 mb-3 capitalize">
                   {item.department} | {item.location} | {item.type} | Experience: {item.experience || "N/A"} Years
                 </p>
-                  <p className="text-[14px] leading-[20px] text-gray-300 mb-3 capitalize">
+                  <p className="text-[14px] leading-[22px] text-gray-300 mb-3 capitalize">
                   {item.description.slice(0, 300)}...  
                 </p>
                 <a
                   href={`/career/${item.id}`}
-                  className="text-[16px] leading-[24px] text-white font-medium flex items-end "
+                  className="text-[16px] leading-[25px] text-white font-medium flex items-end "
                 >
                   See this job <span className="ml-1">→</span>
 

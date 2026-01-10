@@ -137,7 +137,8 @@ export default function InsightsSection() {
                     key={post.id}
                     onMouseEnter={() => setHoveredCard(post.id)}
                     onMouseLeave={() => setHoveredCard(null)}
-                    className="relative flex-shrink-0 mx-2 rounded-xl overflow-hidden cursor-pointer"
+                    className="relative flex-none mx-2 rounded-xl overflow-hidden cursor-pointer"
+
                     style={{ width: `${100 / cardsPerView}%` }}
                   >
                     {/* Background */}
@@ -170,7 +171,7 @@ export default function InsightsSection() {
                     {/* Content */}
                     <div
                       className={`relative z-10 
-                        h-[300px] sm:h-[360px] md:h-[400px] lg:h-[420px]
+                        h-[380px] sm:h-[390px] md:h-[600px] lg:h-[420px]
                         p-4 sm:p-5 md:p-6
                         flex flex-col justify-between
                         ${post.textColor === "black" ? "text-black" : "text-white"}
@@ -207,8 +208,8 @@ export default function InsightsSection() {
             </div>
 
             {/* NAVIGATION */}
-            <div className="flex justify-end gap-3 sm:gap-4 mt-6 sm:mt-8">
-           <div className="flex items-center gap-4">
+            <div className="flex justify-end gap-3 sm:gap-4 mt-6 ">
+           <div className="lg:flex items-center gap-4 hidden">
              {/* Arrow Buttons */}
              <button
                onClick={() => {

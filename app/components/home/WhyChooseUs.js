@@ -251,7 +251,7 @@ export default function WhyChooseUs() {
         <div className="grid md:grid-cols-12 gap-12 items-start">
           
           {/* LEFT SECTION: Tab Navigation */}
-          <div className="md:col-span-5 lg:col-span-6 space-y-4">
+          <div className="md:col-span-12 lg:col-span-6 space-y-4 lg:order-1  md:order-2 sm:order-2">
             {tabs.map((tab, index) => (
               <div
                 key={tab.id}
@@ -312,7 +312,7 @@ export default function WhyChooseUs() {
           </div>
 
           {/* RIGHT SECTION: Scrolling Image Display */}
-          <div className="md:col-span-7 lg:col-span-6 sticky top-24">
+          <div className="md:col-span-12 lg:col-span-6 sticky top-24 lg:order-1 md:order-1 sm:order-1">
             <div 
               ref={scrollContainerRef}
               className="h-[400px] md:h-[600px] w-full rounded-3xl overflow-hidden no-scrollbar shadow-2xl border border-white/5"
