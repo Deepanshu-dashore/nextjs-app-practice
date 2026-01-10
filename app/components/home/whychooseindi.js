@@ -153,32 +153,25 @@ export default function TechPartnerSection() {
 
 
 
-          {/* RIGHT SECTION*/}
-    <div className="lg:col-span-6 grid grid-cols-2 justify-center gap-0">
-  {stats.map((stat, i) => (
-    <motion.div
-      key={i}
-      // whileHover={{ y: }}
-      className={`
-        relative p-6 h-44 w-68 flex flex-col justify-center items-start 
-        bg-gradient-to-br from-gray-900/40 to-black/50
-        backdrop-blur-xl
 
-        border border-white/10 rounded-2xl
-      `}
-    >
-      <span className="text-4xl font-black">
-        {stat.value}
-      </span>
-
-      <div className="h-0.5 w-10 bg-gradient-to-r from-purple-500 to-transparent my-3" />
-
-      <p className="text-[11px] uppercase tracking-widest text-gray-400 font-bold">
-        {stat.label}
-      </p>
-    </motion.div>
-  ))}
-</div>
+          {/* RIGHT */}
+          <div className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-2 gap-6 place-items-center">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={i}
+                className="w-full max-w-[260px] min-h-[161px] p-6 flex flex-col justify-center
+                           bg-gradient-to- from-gray-900/40 to-black/50
+                           backdrop-blur-xl border border-white/10 rounded-2xl"
+              >
+                <span className="text-4xl font-black">{stat.value}</span>
+                <div className="h-0.5 w-10 bg-gradient-to- from-purple-500 to-transparent my-3" />
+                <p className="text-[11px] uppercase tracking-widest text-gray-400 font-bold">
+                  {stat.label}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+ 
 
         </div>
       </div>

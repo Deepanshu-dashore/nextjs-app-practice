@@ -139,7 +139,7 @@
 //             >
 //               {/* Image */}
 //               <div className="relative h-[300px] md:h-[350px] rounded-2xl overflow-hidden group">
-//                 <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/20 to-purple-600/20 z-10 group-hover:opacity-0 transition-opacity duration-300" />
+//                 <div className="absolute inset-0   from-indigo-600/20 to-purple-600/20 z-10 group-hover:opacity-0 transition-opacity duration-300" />
 //                 <Image
 //                   src={activeTabData.image}
 //                   alt={activeTabData.title}
@@ -303,7 +303,7 @@ export default function WhyChooseUs() {
                 {activeTab === index && (
                   <motion.div
                     layoutId="activeGlow"
-                    className="absolute inset-0 bg-white/[0.03] -z-10 rounded-xl"
+                    className="absolute inset-0 bg-white/5 -z-10 rounded-xl"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
@@ -321,7 +321,7 @@ export default function WhyChooseUs() {
               {tabs.map((tab, index) => (
                 <div 
                   key={tab.id}
-                  className="h-full w-full flex-shrink-0 relative transition-transform duration-700"
+                  className="h-full w-full flex-shrink- relative transition-transform duration-700"
                   style={{ scrollSnapAlign: 'start' }}
                 >
                   <Image
@@ -334,7 +334,7 @@ export default function WhyChooseUs() {
                     priority
                   />
                   {/* Dark Overlay Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to- from-black/60 via-transparent to-transparent" />
                 </div>
               ))}
             </div>

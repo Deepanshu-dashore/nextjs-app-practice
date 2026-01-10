@@ -21,6 +21,7 @@ import {
 
 function Navbar() {
   const pathname = usePathname();
+const [openMobileSubmenu, setOpenMobileSubmenu] = useState(null);
 
   const [isOpen, setIsOpen] = useState(false);
   const [activeService, setActiveService] = useState("Web Development");
@@ -233,7 +234,7 @@ const companyMeta = {
       alt="preview"
       className="h-full w-full object-cover"
     />
-    <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-transparent" />
+    <div className="absolute inset-0 bg-gradient-to from-black/60 via-black/30 to-transparent" />
   </div>
 </div>
 
@@ -294,7 +295,7 @@ const companyMeta = {
 
   <Link
     href="/contact"
-    className="ml-4 px-5 py-2.5 rounded-lg bg-(--color) hover:bg-(--color-indigo-800) text-sm text-white font-medium transition"
+    className="ml-4 px-5 py-2.5 rounded-lg bg-(--color) hover:bg-(--color-indigo) text-sm text-white font-medium transition"
   >
 Get in Touch
   </Link>
@@ -304,12 +305,77 @@ Get in Touch
           {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-white text-2xl"
+            className="lg:hidden text-white text-2xl cursor-pointer"
           >
             ☰
           </button>
         </div>
       </div>
+      {/* MOBILE MENU */}
+{isOpen && (
+  <div className="lg:hidden bg-black/95 backdrop-blur-xl border-t border-white/10">
+    <div className="px-6 py-6 space-y-4">
+
+      {navLinks.map((link) => (
+        <div key={link.name}>
+          
+          {/* MAIN MOBILE LINK */}
+          <div
+            className="flex items-center justify-between text-white py-3 text-base font-medium"
+            onClick={() => {
+              if (link.submenu) {
+                setOpenMobileSubmenu(
+                  openMobileSubmenu === link.name ? null : link.name
+                );
+              } else {
+                setIsOpen(false);
+              }
+            }}
+          >
+            <Link href={link.href}>{link.name}</Link>
+
+            {link.submenu && (
+              <ChevronDown
+                className={`h-5 w-5 transition cursor-pointer ${
+                  openMobileSubmenu === link.name ? "rotate-180" : ""
+                }`}
+              />
+            )}
+          </div>
+
+          {/* SUBMENU */}
+          {link.submenu && openMobileSubmenu === link.name && (
+            <div className="ml-4 mt-2 space-y-2">
+              {link.submenu.map((sub) => (
+                <Link
+                  key={sub.name}
+                  href={sub.href}
+                  onClick={() => {
+                    setIsOpen(false);
+                    setOpenMobileSubmenu(null);
+                  }}
+                  className="block text-white/70 text-sm py-2 hover:text-white cursor-pointer"
+                >
+                  {sub.name}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+
+      {/* CTA */}
+      <Link
+        href="/contact"
+        onClick={() => setIsOpen(false)}
+        className="block mt-6 text-center px-5 py-3 rounded-lg bg-(--color) text-white font-medium"
+      >
+        Get in Touch
+      </Link>
+    </div>
+  </div>
+)}
+
     </nav>
   );
 }

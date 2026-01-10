@@ -99,7 +99,7 @@ export default function ContactPage() {
 
             <h1 className="text-6xl md:text-7xl font-bold mt-4 text-white">
               Let’s{" "}
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to- from-blue-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">
                 Talk
               </span>
             </h1>
@@ -162,7 +162,7 @@ export default function ContactPage() {
     <div
       key={i}
       className="rounded-2xl p-6
-        bg-gradient-to-br from-[#14151c] to-[#0b0c10]
+        bg-gradient-to- from-[#14151c] to-[#0b0c10]
         border border-indigo-500/30
         hover:shadow-[0_0_35px_-10px_rgba(99,102,241,0.35)]
         transition"
@@ -223,7 +223,7 @@ export default function ContactPage() {
   onSubmit={handleSubmit}
   suppressHydrationWarning
   className="relative overflow-hidden rounded-2xl
-    bg-gradient-to-br from-[#14151c] to-[#0b0c10]
+    bg-gradient-to-from-[#14151c] to-[#0b0c10]
     border border-indigo-500/40
     p-8 space-y-6
     hover:shadow-[0_0_40px_-10px_rgba(99,102,241,0.4)]

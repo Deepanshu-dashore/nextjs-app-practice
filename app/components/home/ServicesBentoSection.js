@@ -21,7 +21,7 @@ const services = [
     title: "App Development",
     description:
       "We develop scalable, high-performance mobile applications tailored to your business needs using cutting-edge technologies like React Native, Flutter, and native SDKs. Our apps ensure seamless user experiences and robust functionality across platforms.",
-    image: "/images/vector-app-dev.png",
+    // image: "/images/vector-app-dev.png",
     icon: <FaMobile className="text-2xl" />,
     particleIcon: "mobile",
     color: "#4ECDC4",
@@ -108,10 +108,14 @@ const services = [
 
   export default function ServicesBentoSection() {
     const sectionRef = useRef(null);
+    const cardRefs = useRef([]);
+    const trackRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(false);
+    const [cardWidth, setCardWidth] = useState(400);
     const [activeIndex, setActiveIndex] = useState(0);
 
-    const CARD_WIDTH = 400; // px
     const GAP = 32; // px gap between cards
+    const CARD_WIDTH = cardWidth; // px (updated on resize)
     const TOTAL_WIDTH = services.length * (CARD_WIDTH + GAP);
 
     // Scroll progress of the pinned section
@@ -120,19 +124,64 @@ const services = [
       offset: ["start start", "end end"],
     });
 
-    // Horizontal movement based on active card
-    const x = useTransform(scrollYProgress, [0, 1], [0, -(TOTAL_WIDTH - 800)]);
+    // Horizontal movement based on active card. On mobile we won't translate horizontally.
+    const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 800;
+    const visibleWidth = isMobile ? viewportWidth : 800;
+    const x = useTransform(scrollYProgress, [0, 1], [0, -(TOTAL_WIDTH - visibleWidth)]);
+
+    // Track viewport size to toggle mobile behaviour and card width
+    useEffect(() => {
+      function onResize() {
+        const mobile = window.innerWidth < 1024;
+        setIsMobile(mobile);
+        setCardWidth(mobile ? Math.min(360, window.innerWidth - 48) : 400);
+      }
+      onResize();
+      window.addEventListener("resize", onResize);
+      return () => window.removeEventListener("resize", onResize);
+    }, []);
 
     // Update active card 1 by 1
     useEffect(() => {
-      return scrollYProgress.on("change", (v) => {
-        const index = Math.min(
-          services.length - 1,
-          Math.floor(v * services.length)
-        );
-        setActiveIndex(index);
-      });
-    }, [scrollYProgress]);
+      // On desktop we derive active index from scroll progress (pinned horizontal)
+      if (!isMobile) {
+        return scrollYProgress.on("change", (v) => {
+          const index = Math.min(
+            services.length - 1,
+            Math.floor(v * services.length)
+          );
+          setActiveIndex(index);
+        });
+      }
+      // When mobile, we don't attach this handler
+      return () => {};
+    }, [scrollYProgress, isMobile]);
+
+    // On mobile/tablet use IntersectionObserver to update activeIndex based on visible card
+    useEffect(() => {
+      if (!isMobile) {
+        cardRefs.current = [];
+        return;
+      }
+      const elList = cardRefs.current || [];
+      const rootEl = trackRef.current || null;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const idx = Number(entry.target.getAttribute("data-index")) || 0;
+              setActiveIndex(idx);
+            }
+          });
+        },
+        { root: rootEl, rootMargin: "0px", threshold: 0.6 }
+      );
+
+      elList.forEach((el) => el && observer.observe(el));
+      return () => {
+        observer.disconnect();
+      };
+    }, [isMobile]);
 
     return (
       <section
@@ -172,10 +221,10 @@ const services = [
         </motion.div>
 
   {/* PINNED CONTAINER */}
-<div className="sticky top-0 h-[600px] flex items-center px-6 lg:px-12 mt-10">
+  <div className={isMobile ? "flex flex-col gap-8 px-4 mt-10" : "sticky top-0 h-[600px] flex items-center px-6 lg:px-12 mt-10"}>
 
   {/* LEFT PARTICLE ICON */}
-  <div className="hidden lg:flex w-[400px] justify-center h-full items-center relative ml-10">
+  <div className={isMobile ? "w-full flex justify-center items-center mb-6" : " lg:flex w-[400px] justify-center h-full items-center relative ml-10"}>
     
     {/* Ambient Glow */}
     {/* <div className="absolute w-[600px] h-[600px] rounded-full bg-indigo-500/15 blur-[600px]" /> */}
@@ -193,43 +242,43 @@ const services = [
     <ParticleIconMorph
       key={activeIndex}
       title={services[activeIndex].title}
-      isMobile={typeof window !== "undefined" && window.innerWidth < 768}
+      isMobile={isMobile}
     />
   </div>
 
   {/* RIGHT HORIZONTAL TRACK */}
-  <div className="w-full lg:w-3/4 relative h-[600px] flex items-center  overflow-hidden">
+  <div ref={trackRef} className={isMobile ? "w-full relative flex flex-col items-center overflow-y-auto max-h-[640px] snap-y snap-mandatory" : "w-full lg:w-3/4 relative h-[600px] flex items-center  overflow-hidden"} style={{scrollbarWidth:"none"}}>
     
-    {/* Left fade overlay */}
-    <div
-      className="absolute left-0 top-0 h-full w-10 pointer-events-none z-20"
-      style={{
-        background: "linear-gradient(to right, black 0%, transparent 100%)",
-        backdropFilter: "blur(60px)"
-      }}
-    />
+   {/* Left fade overlay */}
+{/* Left fade overlay */}
+<div
+  className="absolute left-0 top-0 h-full w-20 pointer-events-none z-20 hidden lg:block"
+  style={{
+    background: "linear-gradient(to right, rgba(0,0,0,0.5), transparent)",
+    backdropFilter: "blur(40px)",
+    WebkitBackdropFilter: "blur(40px)", // Safari support
+  }}
+/>
 
-    {/* Right fade overlay */}
-    <div
-      className="absolute right-0 top-0 h-full w-20 pointer-events-none z-20"
-      style={{
-        background: "linear-gradient(to left, black 0%, transparent 100%)",
-        backdropFilter: "blur(40px)"
-      }}
-    />
+{/* Right fade overlay */}
+<div
+  className="absolute right-0 top-0 h-full w-20 pointer-events-none z-20 hidden lg:block"
+  style={{
+    background: "linear-gradient(to left, rgba(0,0,0,0.5), transparent)",
+    backdropFilter: "blur(40px)",
+    WebkitBackdropFilter: "blur(40px)", // Safari support
+  }}
+/>
 
-    <motion.div style={{ x }} className="flex gap-8 px-14 ">
+
+
+    <motion.div style={{ x: isMobile ? 0 : x  , scrollbarWidth:"none"}} className={isMobile ? "flex flex-col gap-6 px-0 w-[90%] mt-6" : "flex gap-8 px-14"}>
       {services.map((service, index) => (
         <div
           key={index}
-          className={`relative group w-[400px] h-[520px] rounded-[2.5rem] p-8  
-            bg-gradient-to-br from-white/10 to-transparent backdrop-blur-2xl 
-            border transition-all duration-500 ease-out flex flex-col justify-between
-            ${
-              index === activeIndex
-                ? "border-white/20 bg-white/5 shadow-[0_0_40px_rgba(255,255,255,0.1)] scale-105"
-                : "border-white/10 opacity-80"
-            }`}
+          data-index={index}
+          ref={(el) => (cardRefs.current[index] = el)}
+          className={`relative group transition-all duration-500 ease-out flex flex-col justify-between bg-gradient-to- from-white/10 to-transparent backdrop-blur-2xl border ${index === activeIndex ? "border-white/20 bg-white/5 shadow-[0_0_40px_rgba(255,255,255,0.1)] scale-105" : "border-white/10 opacity-80"} ` + (isMobile ? "w-full h-auto rounded-xl p-6 snap-start" : "w-[400px] h-[520px] rounded-[2.5rem] p-8")}
         >
           {/* Animated Glow Overlay */}
           <div 
@@ -265,7 +314,7 @@ const services = [
             <span className="text-xs font-bold tracking-widest text-white/30 uppercase">
               Service 0{index + 1}
             </span>
-            <p className="text-gray-400 text-sm leading-relaxed line-clamp-3 mt-4">
+            <p className="text-gray-400 text-sm leading-relaxed mt-4">
               {service.description}
             </p>
             <ul className="mt-4 space-y-2">
@@ -279,7 +328,7 @@ const services = [
           </div>
 
           {/* Action Button */}
-          <div className="relative mt-auto">
+          <div className="relative mt-6">
             <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-sm text-white group-hover:bg-white/10 transition-all">
               {service.buttonText}
               <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />

@@ -20,24 +20,44 @@ export default function ParticleIconMorph3D({ title }) {
     "Web Development": 400, "App Development": 360, "Software Development": 380,
     "Game Development": 340, "UI/UX Design": 380, default: 360,
   };
+const getResponsiveScale = () => {
+  if (typeof window === "undefined") return 1;
+  if (window.innerWidth < 640) return 0.45;   // mobile
+  if (window.innerWidth < 1024) return 0.65;  // tablet
+  return 1;                                   // desktop
+};
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    const SIZE = 900;
-    canvas.width = SIZE;
-    canvas.height = SIZE;
+useEffect(() => {
+  const canvas = canvasRef.current;
+  const ctx = canvas.getContext("2d");
 
-    function animate() {
-      ctx.clearRect(0, 0, SIZE, SIZE);
-      if (currentImage.current) {
-        const size = IMAGE_SIZE_MAP[title] || IMAGE_SIZE_MAP.default;
-        ctx.drawImage(currentImage.current, (SIZE - size) / 2, (SIZE - size) / 2, size, size);
-      }
-      requestAnimationFrame(animate);
+  const BASE_SIZE = 900;
+  canvas.width = BASE_SIZE;
+  canvas.height = BASE_SIZE;
+
+  function animate() {
+    ctx.clearRect(0, 0, BASE_SIZE, BASE_SIZE);
+
+    if (currentImage.current) {
+      const scale = getResponsiveScale();
+      const baseSize = IMAGE_SIZE_MAP[title] || IMAGE_SIZE_MAP.default;
+      const size = baseSize * scale;
+
+      ctx.drawImage(
+        currentImage.current,
+        (BASE_SIZE - size) / 2,
+        (BASE_SIZE - size) / 2,
+        size,
+        size
+      );
     }
-    animate();
-  }, [title]);
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}, [title]);
+
 
   useEffect(() => {
     const img = new Image();
@@ -52,7 +72,7 @@ export default function ParticleIconMorph3D({ title }) {
       {/* --- BACKGROUND GLOW LAYER --- */}
       <div className="absolute inset-0 z-0">
         {/* Primary Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-900/10 rounded-full blur-[120px] animate-pulse" />
         
         {/* Secondary Shifting Glow */}
         <div 
@@ -101,7 +121,7 @@ export default function ParticleIconMorph3D({ title }) {
       />
 
       {/* Foreground light sweep (Optional subtle overlay) */}
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-30 z-20" />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-from-transparent via-white/5 to-transparent opacity-30 z-20" />
     </div>
   );
 }
