@@ -262,7 +262,7 @@ const services = [
 
 {/* Right fade overlay */}
 <div
-  className="absolute right-0 top-0 h-full w-20 pointer-events-none z-20 hidden lg:block"
+  className="absolute right-0 top-0 h-full w-10 pointer-events-none z-20 hidden lg:block"
   style={{
     background: "linear-gradient(to left, rgba(0,0,0,0.5), transparent)",
     backdropFilter: "blur(40px)",
@@ -272,7 +272,7 @@ const services = [
 
 
 
-    <motion.div style={{ x: isMobile ? 0 : x  , scrollbarWidth:"none"}} className={isMobile ? "flex flex-col gap-6 px-0 w-[90%] mt-6" : "flex gap-8 px-14"}>
+    <motion.div style={{ x: isMobile ? 0 : x  , scrollbarWidth:"none"}} className={isMobile ? "flex flex-col gap-6 px-0 w-[90%] mt-6" : "flex gap-8 px-14 ml-10 "}>
       {services.map((service, index) => (
         <div
           key={index}
