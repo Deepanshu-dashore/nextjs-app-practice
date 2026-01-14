@@ -103,13 +103,13 @@ export default function TechnologySection() {
                     className="
                       flex flex-col items-center justify-center gap-3
                       p-4 sm:p-6 lg:p-8
-                      bg-white/5 backdrop-blur-md
+                      bg-white/5 
                      
                       rounded-xl
                       w-40 h-28
                       sm:w-48 sm:h-32
                       lg:w-56 lg:h-36
-                      hover:bg-purple-500/20
+                      hover:bg-white/10
                       transition-all duration-300
                     "
                   >
@@ -152,13 +152,13 @@ export default function TechnologySection() {
                     className="
                       flex flex-col items-center justify-center gap-3
                       p-4 sm:p-6 lg:p-8
-                      bg-white/5 backdrop-blur-md
+                      bg-white/5 
                       
                       rounded-xl
                       w-40 h-28
                       sm:w-48 sm:h-32
                       lg:w-56 lg:h-36
-                      hover:bg-purple-500/20
+                      hover:bg-white/10
                       transition-all duration-300
                     "
                   >

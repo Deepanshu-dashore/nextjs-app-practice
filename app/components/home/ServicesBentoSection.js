@@ -113,6 +113,7 @@ const services = [
     const [isMobile, setIsMobile] = useState(false);
     const [cardWidth, setCardWidth] = useState(400);
     const [activeIndex, setActiveIndex] = useState(0);
+const [lockScroll, setLockScroll] = useState(false);
 
     const GAP = 32; // px gap between cards
     const CARD_WIDTH = cardWidth; // px (updated on resize)
@@ -129,7 +130,7 @@ const services = [
     const visibleWidth = isMobile ? viewportWidth : 800;
     const x = useTransform(scrollYProgress, [0, 1], [0, -(TOTAL_WIDTH - visibleWidth)]);
 
-    // Track viewport size to toggle mobile behaviour and card width
+    
     useEffect(() => {
       function onResize() {
         const mobile = window.innerWidth < 1024;
@@ -141,9 +142,9 @@ const services = [
       return () => window.removeEventListener("resize", onResize);
     }, []);
 
-    // Update active card 1 by 1
+   
     useEffect(() => {
-      // On desktop we derive active index from scroll progress (pinned horizontal)
+   
       if (!isMobile) {
         return scrollYProgress.on("change", (v) => {
           const index = Math.min(
@@ -153,11 +154,11 @@ const services = [
           setActiveIndex(index);
         });
       }
-      // When mobile, we don't attach this handler
+   
       return () => {};
     }, [scrollYProgress, isMobile]);
 
-    // On mobile/tablet use IntersectionObserver to update activeIndex based on visible card
+  
     useEffect(() => {
       if (!isMobile) {
         cardRefs.current = [];
@@ -183,11 +184,48 @@ const services = [
       };
     }, [isMobile]);
 
+ useEffect(() => {
+  if (isMobile) return;
+
+  const el = sectionRef.current;
+  if (!el) return;
+
+  let isLocked = false;
+
+  const onWheel = (e) => {
+    const progress = scrollYProgress.get();
+
+    // Lock only while cards are animating
+    if (progress > 0 && progress < 1) {
+      e.preventDefault();
+
+      // convert vertical scroll → horizontal motion
+      window.scrollBy({
+        top: e.deltaY,
+        left: 0,
+        behavior: "auto",
+      });
+
+      isLocked = true;
+    } else {
+      isLocked = false;
+    }
+  };
+
+  el.addEventListener("wheel", onWheel, { passive: false });
+  return () => el.removeEventListener("wheel", onWheel);
+}, [scrollYProgress, isMobile]);
+
     return (
-      <section
-        ref={sectionRef}
-        className="relative bg-black px-6 lg:px-5 py-20 overflow-hidden"
-      >
+<section
+  ref={sectionRef}
+  className="relative bg-black px-6 lg:px-5 py-20 overflow-hidden"
+  style={{
+    overscrollBehavior: "contain",
+  }}
+>
+
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
