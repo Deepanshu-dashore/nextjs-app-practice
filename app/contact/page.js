@@ -83,7 +83,7 @@ export default function ContactPage() {
             style={{
               backgroundAttachment: "fixed",
               backgroundImage:
-                "url('https://www.shutterstock.com/image-vector/abstract-pink-neon-light-wave-260nw-2490596587.jpg')",
+                "url('/images/abstract-pink-neon-light-wave-260nw-2490596587.webp')",
             }}
           />
           <div className="absolute inset-0 bg-black/70" />
@@ -163,7 +163,7 @@ export default function ContactPage() {
       key={i}
       className="rounded-2xl p-6
         bg-gradient-to-br from-[#14151c] to-[#0b0c10]
-        border border-indigo-500/30
+        border border-white/10
         hover:shadow-[0_0_35px_-10px_rgba(99,102,241,0.35)]
         transition"
     >
@@ -189,7 +189,7 @@ export default function ContactPage() {
       Connect With Us
     </h3>
 
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-5">
       {[
         { Icon: FaFacebookF, color: "bg-[#1877F2]" },
         { Icon: FaTwitter, color: "bg-[#1877F2]" },
@@ -202,9 +202,9 @@ export default function ContactPage() {
           href="#"
           target="_blank"
           rel="noopener noreferrer"
-          className={`w-12 h-12 rounded-full ${color}
+          className={`w-15 h-15 rounded-full ${color}
             flex items-center justify-center
-            text-white text-lg
+            text-white text-xl
             hover:scale-110
             hover:shadow-[0_0_20px_rgba(255,255,255,0.45)]
             transition`}
@@ -224,9 +224,9 @@ export default function ContactPage() {
   suppressHydrationWarning
   className="relative overflow-hidden rounded-2xl
     bg-gradient-to-br from-[#14151c] to-[#0b0c10]
-    border border-indigo-500/40
+    border border-white/10
     p-8 space-y-6
-    hover:shadow-[0_0_40px_-10px_rgba(99,102,241,0.4)]
+       hover:shadow-[0_0_35px_-10px_rgba(99,102,241,0.35)]
     transition"
 >
   {["name", "email", "contact", "subject"].map((f) => (

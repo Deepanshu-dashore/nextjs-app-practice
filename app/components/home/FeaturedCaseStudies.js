@@ -127,7 +127,7 @@ export default function FeaturedCaseStudies() {
             <div className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-4">
             Featured{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-purple-400">
               Case Studies

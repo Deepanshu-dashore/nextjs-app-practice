@@ -249,7 +249,7 @@ const [lockScroll, setLockScroll] = useState(false);
             <div className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-4">
             Our Services
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">

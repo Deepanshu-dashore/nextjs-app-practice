@@ -104,7 +104,7 @@ export default function InsightsSection() {
                 </span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+              <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-4 leading-tight">
                 Insights &{" "}
                 <span className="bg-linear-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
                   Thought Leadership

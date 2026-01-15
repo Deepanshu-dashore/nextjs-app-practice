@@ -74,7 +74,7 @@ export default function TechnologySection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white
+            className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white
               bg-gradient-to-r from-purple-400 via-pink-500 to-red-500
               text-transparent bg-clip-text"
           >

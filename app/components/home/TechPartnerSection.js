@@ -61,7 +61,7 @@ export default function TechPartnerSection() {
                   </span>
                 </div>
 
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                   Ready to build{" "}
                   <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-purple-400">
                     together?
