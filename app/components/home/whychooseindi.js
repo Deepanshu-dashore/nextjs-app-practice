@@ -161,13 +161,7 @@ export default function TechPartnerSection() {
               <motion.div
                 key={i}
                 // whileHover={{ y: }}
-                className={`
-        relative p-6  flex flex-col justify-center items-start 
-        bg-gradient-to-br from-gray-900/40 to-black/50
-        backdrop-blur-xl
-
-        border border-white/10 rounded-2xl
-      `}
+                className={`relative p-6  flex flex-col justify-center items-start bg-gradient-to-br from-gray-900/40 to-black/50 backdrop-blur-xl border border-white/10 rounded-2xl`}
               >
                 <span className="text-4xl font-black">{stat.value}</span>
 
