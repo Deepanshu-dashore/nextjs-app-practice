@@ -192,14 +192,15 @@ const companyMeta = {
       {link.submenu && (
       <div
   className="
-    absolute left-1/2 top-full mt-6 -translate-x-1/2
-    w-[1100px] min-h-[520px]
-    rounded-2xl bg-[#0A0A0A]
-    border border-white/10
-    shadow-[0_40px_120px_rgba(0,0,0,0.9)]
-    opacity-0 invisible translate-y-3
-    group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
-    transition-all duration-300
+     fixed left-1/2 top-[72px] -translate-x-1/2
+      w-[1100px] min-h-[520px]
+      rounded-2xl bg-[#0A0A0A]
+      border border-white/10
+      shadow-[0_40px_120px_rgba(0,0,0,0.9)]
+      opacity-0 invisible translate-y-3
+      group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+      transition-all duration-300
+      z-50
   "
 >
 
