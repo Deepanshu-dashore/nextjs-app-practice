@@ -203,38 +203,62 @@ const handleApplySubmit = async (e) => {
       <div className="fixed inset-0 -z-10 bg-black/80" />
 
       {/* HERO */}
-      <motion.section
-        ref={heroRef}
-        className="max-w-7xl mx-auto px-6 pt-32 pb-16"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <h1 className="text-5xl font-extrabold mb-6 uppercase">{job.title}</h1>
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-2  text-gray-300 mb-6   capitalize">
-  <span>{job.department}</span>
-  <span className="text-gray-300">|</span>
-
-  <span>{job.type}</span>
-  <span className="text-gray-300">|</span>
-
-  <span>Experience: {job.experience} Years</span>
-  <span className="text-gray-300">|</span>
-
-  <span>{job.location}</span>
-</div>
-
-        {/* <button className="bg-(--color) cursor-pointer hover:bg-(--color-indigo-700) px-8 py-3 mt-4 font-semibold rounded">
-          Apply for this job
-        </button> */}
-        <button
-  onClick={() => setIsApplyOpen(true)}
-  className="bg-(--color) cursor-pointer hover:bg-(--color-indigo) px-8 py-3 mt-4 font-semibold rounded"
+  <motion.section
+  ref={heroRef}
+  className="
+    max-w-7xl mx-auto
+    px-4 sm:px-6 lg:px-8
+    pt-24 sm:pt-28 md:pt-32
+    pb-12 sm:pb-16
+  "
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
 >
-  Apply for this job
-</button>
+  <h1 className="
+    text-3xl sm:text-4xl md:text-5xl
+    font-extrabold mb-4 sm:mb-6
+    uppercase
+  ">
+    {job.title}
+  </h1>
 
-      </motion.section>
+  <div className="
+    flex flex-wrap items-center
+    gap-x-3 sm:gap-x-4 gap-y-2
+    text-sm sm:text-base
+    text-gray-300 mb-6
+    capitalize
+  ">
+    <span>{job.department}</span>
+    <span className="hidden sm:inline text-gray-300">|</span>
+
+    <span>{job.type}</span>
+    <span className="hidden sm:inline text-gray-300">|</span>
+
+    <span>Experience: {job.experience} Years</span>
+    <span className="hidden sm:inline text-gray-300">|</span>
+
+    <span>{job.location}</span>
+  </div>
+
+  <button
+    onClick={() => setIsApplyOpen(true)}
+    className="
+      bg-(--color)
+      hover:bg-(--color-indigo)
+      cursor-pointer
+      px-6 sm:px-8 py-2.5 sm:py-3
+      mt-2 sm:mt-4
+      text-sm sm:text-base
+      font-semibold rounded
+      transition
+    "
+  >
+    Apply for this job
+  </button>
+</motion.section>
+
 
       {/* CONTENT */}
       <section className="max-w-7xl mx-auto px-6 pb-20 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12">

@@ -88,54 +88,66 @@ const featuredProducts = [
   return (
     <div className="bg-[#030303] text-white overflow-hidden relative">
   
-  <section ref={heroRef} className="relative h-[75dvh] overflow-hidden">
-        <motion.div
-          className="absolute inset-0 will-change-transform"
-          style={{ y: bgY }}
-        >
-          <div
-            className="absolute inset-0 bg-cover bg-center scale-110"
-            style={{
-              backgroundAttachment: "fixed",
-              backgroundImage:
-                "url('https://thumbs.dreamstime.com/b/d-render-abstract-modern-minimal-neon-background-glowing-round-frame-copy-space-laser-ring-middle-empty-desert-199522358.jpg')",
-            }}
-          />
-          <div className="absolute inset-0 bg-black/80" />
-        </motion.div>
-            <div className="relative z-10 h-full flex items-center">
-          <div className="max-w-7xl mx-20">
-            <span className="text-sm tracking-[0.3em] uppercase text-white">
-               Our Work
-            </span>
+ <section
+  ref={heroRef}
+  className="relative h-[75dvh] min-h-[520px] sm:min-h-[600px] overflow-hidden"
+>
+  <motion.div
+    className="absolute inset-0 will-change-transform"
+    style={{ y: bgY }}
+  >
+    <div
+      className="absolute inset-0 bg-cover bg-center scale-110
+                 bg-scroll md:bg-fixed"
+      style={{
+        backgroundImage:
+          "url('https://thumbs.dreamstime.com/b/d-render-abstract-modern-minimal-neon-background-glowing-round-frame-copy-space-laser-ring-middle-empty-desert-199522358.jpg')",
+      }}
+    />
+    <div className="absolute inset-0 bg-black/80" />
+  </motion.div>
 
-            <div className="h-px max-w-sm bg-linear-to-r from-white/60 to-transparent mt-3" />
+  <div className="relative z-10 h-full flex items-center">
+    <div className="max-w-7xl px-6 sm:px-10 lg:px-20">
+      <span className="text-xs sm:text-sm tracking-[0.3em] uppercase text-white">
+        Our Work
+      </span>
 
-            <h1 className="text-6xl md:text-7xl font-bold mt-4 text-white">
-                 Turning Ideas Into{" "}
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">
-           Powerful Solutions
-              </span>
-            </h1>
+      <div className="h-px max-w-sm bg-linear-to-r from-white/60 to-transparent mt-3" />
 
-            <p className="text-xl text-gray-300 mt-6 max-w-3xl">
-           Explore our portfolio of innovative digital products, intelligent
-              systems, and scalable solutions crafted to solve real-world
-              problems and drive business growth..
-            </p>
-          </div>
-        </div>
-      </section>
+      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mt-4 text-white leading-tight">
+        Turning Ideas Into{" "}
+        <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">
+          Powerful Solutions
+        </span>
+      </h1>
+
+      <p className="text-base sm:text-lg md:text-xl text-gray-300 mt-6 max-w-3xl">
+        Explore our portfolio of innovative digital products, intelligent
+        systems, and scalable solutions crafted to solve real-world problems
+        and drive business growth.
+      </p>
+    </div>
+  </div>
+</section>
+
    <section className="max-w-7xl mx-auto py-32 px-6">
+
       {/* Heading */}
-      <div className="text-center max-w-5xl mx-auto mb-20">
-        <h2 className="text-5xl font-extrabold text-white mb-6">
-          Featured Projects
-        </h2>
-        <p className="text-gray-300 text-lg">
-          A selection of our most impactful digital projects.
-        </p>
-      </div>
+     <div className="text-center max-w-5xl mx-auto mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full 
+      bg-purple-500/10 border border-purple-500/20 mb-4 backdrop-blur-xl">
+      <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+      <span className="text-sm font-medium text-purple-300">Project</span>
+    </div>
+  <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 sm:mb-6">
+    Featured Projects
+  </h2>
+  <p className="text-base sm:text-lg text-gray-300">
+    A selection of our most impactful digital projects.
+  </p>
+</div>
+
 
       {/* Carousel */}
       <div className="relative">
@@ -218,25 +230,31 @@ const featuredProducts = [
 </section>
 
 <section className="max-w-7xl mx-auto py-28 px-6 ">
-
-  <div className="text-center mb-28">
-    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full 
-      bg-purple-500/10 border border-purple-500/20 mb-4 backdrop-blur-xl">
-      <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
-      <span className="text-sm font-medium text-purple-300">Portfolio</span>
-    </div>
-
-    <h3 className="text-5xl font-extrabold text-white 
-      bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 
-      text-transparent bg-clip-text">
-      What We’ve Built
-    </h3>
-
-    <p className="text-gray-400 max-w-2xl mx-auto mt-4">
-      From intelligent platforms to high-performance web applications,
-      these projects reflect our commitment to quality and innovation.
-    </p>
+<div className="text-center mb-16 sm:mb-20 lg:mb-28 px-4 sm:px-6">
+  <div
+    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full
+               bg-purple-500/10 border border-purple-500/20 mb-4 backdrop-blur-xl"
+  >
+    <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+    <span className="text-xs sm:text-sm font-medium text-purple-300">
+      Portfolio
+    </span>
   </div>
+
+  <h3
+    className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white
+               bg-gradient-to-r from-purple-400 via-pink-500 to-red-500
+               text-transparent bg-clip-text leading-tight"
+  >
+    What We’ve Built
+  </h3>
+
+  <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto mt-3 sm:mt-4">
+    From intelligent platforms to high-performance web applications,
+    these projects reflect our commitment to quality and innovation.
+  </p>
+</div>
+
 
   {/* EXACT FEATURE GRID */}
   <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
@@ -300,93 +318,103 @@ const featuredProducts = [
 </section>
 
       {/* -------------- CTA PARALLAX SECTION -------------- */}
-      <div
-        className="relative bg-fixed bg-cover bg-center py-32 px-6"
-        style={{
-          backgroundImage:
-            "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoDLInyNK7tXN4rlBRbtXQvmiXg-0YWuwXIg&s')",
-        }}
-      >
-        {/* Dark overlay + gradient for contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90 backdrop-blur-sm shadow-inner"></div>
+   <div
+  className="
+    relative
+    bg-cover bg-center
+    py-20 sm:py-24 md:py-28 lg:py-32
+    px-4 sm:px-6
+    bg-scroll md:bg-fixed
+  "
+  style={{
+    backgroundImage:
+      "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoDLInyNK7tXN4rlBRbtXQvmiXg-0YWuwXIg&s')",
+  }}
+>
+  {/* Dark overlay + gradient */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90 backdrop-blur-sm shadow-inner" />
 
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative z-10"
-          >
-            {/* Decorative Line */}
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="h-px w-20 bg-gradient-to-r from-transparent via-blue-500 to-blue-500" />
-              <div className="relative">
-                <span className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 tracking-widest uppercase">
-                  Together beyond borders
-                </span>
-                <div className="absolute -bottom-1 left-0 right-0 h-px bg-gradient-to-r from-blue-500/0 via-blue-500/50 to-blue-500/0" />
-              </div>
-              <div className="h-px w-20 bg-gradient-to-l from-transparent via-blue-500 to-blue-500" />
-            </div>
+  <div className="relative max-w-6xl mx-auto text-center space-y-8">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+      className="relative z-10"
+    >
+      {/* Decorative Line */}
+      <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+        <div className="h-px w-12 sm:w-20 bg-gradient-to-r from-transparent via-blue-500 to-blue-500" />
 
-            {/* Headline */}
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
-              Want to Build Something{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">
-                Amazing?
-              </span>
-            </h2>
-
-            {/* Description */}
-            <p className="text-gray-300 text-lg md:text-xl max-w-5xl mx-auto leading-relaxed mb-10">
-              Let’s turn your ideas into powerful, scalable solutions. Our team
-              is here to guide your project from concept to launch, delivering
-              impactful digital solutions tailored to your needs.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-black transition-all duration-300 bg-white rounded-full hover:bg-blue-50 hover:-translate-y-1 shadow-lg hover:shadow-2xl hover:shadow-blue-500/30 overflow-hidden">
-                <span className="relative z-10 flex items-center">
-                  Talk to the team
-                  <svg
-                    className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </button>
-
-              {/* <button className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white transition-all duration-300 bg-transparent border-2 border-white/20 rounded-full hover:border-indigo-500/50 hover:bg-white/5 hover:-translate-y-1 backdrop-blur-sm">
-          View our work
-          <svg
-            className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            />
-          </svg>
-        </button> */}
-            </div>
-          </motion.div>
+        <div className="relative">
+          <span className="text-xs sm:text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 tracking-widest uppercase">
+            Together beyond borders
+          </span>
+          <div className="absolute -bottom-1 left-0 right-0 h-px bg-gradient-to-r from-blue-500/0 via-blue-500/50 to-blue-500/0" />
         </div>
+
+        <div className="h-px w-12 sm:w-20 bg-gradient-to-l from-transparent via-blue-500 to-blue-500" />
       </div>
+
+      {/* Headline */}
+      <h2 className="
+        text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+        font-extrabold text-white
+        leading-tight mb-5 sm:mb-6
+      ">
+        Want to Build Something{" "}
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">
+          Amazing?
+        </span>
+      </h2>
+
+      {/* Description */}
+      <p className="
+        text-gray-300
+        text-base sm:text-lg md:text-xl
+        max-w-4xl mx-auto
+        leading-relaxed mb-8 sm:mb-10
+      ">
+        Let’s turn your ideas into powerful, scalable solutions. Our team
+        is here to guide your project from concept to launch, delivering
+        impactful digital solutions tailored to your needs.
+      </p>
+
+      {/* CTA Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <button className="
+          group relative inline-flex items-center justify-center
+          px-7 sm:px-8 py-3.5 sm:py-4
+          text-sm sm:text-base font-semibold
+          text-black bg-white rounded-full
+          transition-all duration-300
+          hover:bg-blue-50 hover:-translate-y-1
+          shadow-lg hover:shadow-2xl hover:shadow-blue-500/30
+          overflow-hidden
+        ">
+          <span className="relative z-10 flex items-center">
+            Talk to the team
+            <svg
+              className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </span>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+        </button>
+      </div>
+    </motion.div>
+  </div>
+</div>
+
 
       <Footer />
     </div>

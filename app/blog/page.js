@@ -556,46 +556,67 @@ export default function BlogPage() {
       </section> */}
 
       
-   <section ref={heroRef} className="relative h-[70dvh] overflow-hidden">
-        <motion.div
-          className="absolute inset-0 will-change-transform"
-          style={{ y: bgY }}
-        >
-          <div
-            className="absolute inset-0 bg-cover bg-center scale-110   "
-            style={{
-              backgroundAttachment: "fixed",
-           
-              backgroundImage:
-                "url('https://www.shutterstock.com/image-vector/light-motion-effect-slow-shutter-260nw-2535181085.jpg')",
-            }}
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </motion.div>
-      <div className="relative z-10 h-full flex items-center">
-  <div className="max-w-7xl mx-20">
-    <span className="text-sm tracking-[0.3em] uppercase text-white">
-      Our Journal
-    </span>
+<section
+  ref={heroRef}
+  className="relative h-[70dvh] min-h-[520px] overflow-hidden"
+>
+  <motion.div
+    className="absolute inset-0 will-change-transform"
+    style={{ y: bgY }}
+  >
+    <div
+      className="
+        absolute inset-0 bg-cover bg-center scale-110
+        bg-scroll md:bg-fixed
+      "
+      style={{
+        backgroundImage:
+          "url('https://www.shutterstock.com/image-vector/light-motion-effect-slow-shutter-260nw-2535181085.jpg')",
+      }}
+    />
+    <div className="absolute inset-0 bg-black/40" />
+  </motion.div>
 
-    <div className="h-px max-w-sm bg-linear-to-r from-white/60 to-transparent mt-3" />
-
-    <h1 className="text-6xl md:text-7xl font-bold mt-4 text-white">
-      Ideas That{" "}
-      <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">
-        Shape the Web
+  <div className="relative z-10 h-full flex items-center">
+    <div
+      className="
+        max-w-7xl
+        mx-6 sm:mx-10 md:mx-14 lg:mx-20
+      "
+    >
+      <span className="text-xs sm:text-sm tracking-[0.3em] uppercase text-white">
+        Our Journal
       </span>
-    </h1>
 
-    <p className="text-xl text-gray-300 mt-6 max-w-3xl leading-relaxed">
-      A space where creativity meets technology. Discover stories on UX design,
-      visual thinking, digital experiences, and the ideas that turn concepts
-      into memorable products.
-    </p>
+      <div className="h-px max-w-sm bg-linear-to-r from-white/60 to-transparent mt-3" />
+
+      <h1
+        className="
+          text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+          font-bold mt-4 text-white
+        "
+      >
+        Ideas That{" "}
+        <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">
+          Shape the Web
+        </span>
+      </h1>
+
+      <p
+        className="
+          text-base sm:text-lg md:text-xl
+          text-gray-300 mt-4 sm:mt-6
+          max-w-3xl leading-relaxed
+        "
+      >
+        A space where creativity meets technology. Discover stories on UX design,
+        visual thinking, digital experiences, and the ideas that turn concepts
+        into memorable products.
+      </p>
+    </div>
   </div>
-</div>
+</section>
 
-          </section>
       {/* ================= CONTENT ================= */}
       <section className="bg-black">
         <div className="mx-auto py-20 w-[90dvw]">

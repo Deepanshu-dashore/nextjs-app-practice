@@ -183,50 +183,80 @@ useEffect(() => {
     <>
       <div className="bg-black text-white min-h-screen scroll-smooth">
         {/* ================= HERO ================= */}
-        <section className="flex flex-col items-center mt-28">
-          {blog.category && (
-            <span className="text-xs font-semibold text-gray-200 py-2 px-4 bg-white/10 rounded-lg">
-              {blog.category}
-            </span>
-          )}
-          <h1 className="text-4xl lg:text-5xl font-extrabold mt-4 text-center capitalize">
-            {title}
-          </h1>
-          
-          {blog.summary && (
-            <p className="text-lg text-gray-400 max-w-4xl mt-4 text-center">
-              {blog.summary}
-            </p>
-          )}
-          {/* ================= META (Author + Date) ================= */}
-<div className="mt-8 flex items-center gap-4">
-  {/* Avatar */}
-  <div className="w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center text-white text-sm font-medium">
-    {blog.authorName ? blog.authorName[0] : "A"}
+    <section className="flex flex-col items-center mt-20 sm:mt-24 lg:mt-28 px-4 sm:px-6">
+  {blog.category && (
+    <span className="
+      text-xs font-semibold text-gray-200
+      py-1.5 sm:py-2 px-3 sm:px-4
+      bg-white/10 rounded-lg
+    ">
+      {blog.category}
+    </span>
+  )}
+
+  <h1 className="
+    text-3xl sm:text-4xl lg:text-5xl
+    font-extrabold mt-4
+    text-center capitalize
+    leading-tight
+  ">
+    {title}
+  </h1>
+
+  {blog.summary && (
+    <p className="
+      text-base sm:text-lg
+      text-gray-400
+      max-w-4xl mt-4
+      text-center
+    ">
+      {blog.summary}
+    </p>
+  )}
+
+  {/* ================= META (Author + Date) ================= */}
+  <div className="mt-6 sm:mt-8 flex items-center gap-4">
+    {/* Avatar */}
+    <div className="
+      w-9 h-9 sm:w-10 sm:h-10
+      rounded-full bg-gray-500
+      flex items-center justify-center
+      text-white text-sm font-medium
+    ">
+      {blog.authorName ? blog.authorName[0] : "A"}
+    </div>
+
+    {/* Name + Date */}
+    <div className="flex flex-col text-center sm:text-left">
+      {blog.authorName && (
+        <span className="text-white font-medium text-sm sm:text-base">
+          {blog.authorName}
+        </span>
+      )}
+      {blog.createdAt && (
+        <span className="text-gray-400 text-xs sm:text-sm">
+          Published on {formatDate(blog.createdAt)}
+        </span>
+      )}
+    </div>
   </div>
 
-  {/* Name + Date */}
-  <div className="flex flex-col">
-    {blog.authorName && (
-      <span className="text-white font-medium">{blog.authorName}</span>
-    )}
-    {blog.createdAt && (
-      <span className="text-gray-400 text-sm">
-        Published on {formatDate(blog.createdAt)}
-      </span>
-    )}
-  </div>
-</div>
-
-          {blog.coverImageUrl && (
-            <img
-              src={blog.coverImageUrl}
-              alt={title}
-              className="w-full lg:w-[85%] h-[340px] lg:h-[75vh] object-cover rounded-2xl mt-10"
-            />
-          )}
-          
-        </section>
+  {blog.coverImageUrl && (
+    <img
+      src={blog.coverImageUrl}
+      alt={title}
+      className="
+        w-full
+        max-w-7xl
+        lg:w-[85%]
+        h-[240px] sm:h-[300px] lg:h-[75vh]
+        object-cover
+        rounded-xl sm:rounded-2xl
+        mt-8 sm:mt-10
+      "
+    />
+  )}
+</section>
 
         {/* ================= BODY ================= */}
         <section className="max-w-7xl mx-auto px-4 pt-28 pb-16">

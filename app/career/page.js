@@ -188,44 +188,65 @@ useEffect(() => {
     
     <div className="bg-[#030303] text-white overflow-hidden relative">
       {/* HERO SECTION */}
-      <section className="relative h-[100dvh] overflow-hidden">
-        {/* BACKGROUND */}
-        <motion.div className="absolute inset-0 will-change-transform">
-          <div
-            className="absolute inset-0 bg-cover bg-center scale-110"
-            style={{
-              backgroundAttachment: "fixed",
-              backgroundImage:
-                "url('/images/bcec19ec-57c8-4d59-9c86-a2ed823ad3c3.png')",
-            }}
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </motion.div>
+    <section className="relative h-[100dvh] min-h-[560px] overflow-hidden">
+  {/* BACKGROUND */}
+  <motion.div className="absolute inset-0 will-change-transform">
+    <div
+      className="
+        absolute inset-0 bg-cover bg-center scale-110
+        bg-scroll md:bg-fixed
+      "
+      style={{
+        backgroundImage:
+          "url('/images/bcec19ec-57c8-4d59-9c86-a2ed823ad3c3.png')",
+      }}
+    />
+    <div className="absolute inset-0 bg-black/40" />
+  </motion.div>
 
-    {/* CONTENT */}
-<motion.div className="relative z-10 h-full flex items-center justify-center px-11">
-  <div className="max-w-7xl mx-24 flex flex-col items-center text-center">
-    <span className="text-sm tracking-[0.3em] uppercase text-white">
-      Career Programs
-    </span>
-{/* Line matches text width – same start & end */}
-<div className="h-px w-full max-w-[230px] mt-3 
-  bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+  {/* CONTENT */}
+  <motion.div className="
+    relative z-10 h-full flex items-center justify-center
+    px-4 sm:px-6 md:px-10 lg:px-11
+  ">
+    <div className="
+      max-w-7xl
+      mx-auto lg:mx-24
+      flex flex-col items-center text-center
+    ">
+      <span className="text-xs sm:text-sm tracking-[0.3em] uppercase text-white">
+        Career Programs
+      </span>
 
-    <h1 className="text-5xl md:text-5xl font-bold mt-3 text-white">
-      Empower Your Career 
-    </h1>
-<p className="text-sm text-gray-400 mt-4 max-w-4xl leading-relaxed">
-  Join our structured talent programs designed to enhance skills, foster innovation,
-  and prepare you for leadership and technical excellence. Explore tracks across AI,
-  Web Development, Product Management, and more.
-</p>
+      {/* Decorative Line */}
+      <div
+        className="
+          h-px w-full max-w-[180px] sm:max-w-[230px]
+          mt-3
+          bg-gradient-to-r from-transparent via-white/60 to-transparent
+        "
+      />
 
+      <h1 className="
+        text-3xl sm:text-4xl md:text-5xl
+        font-bold mt-3 text-white
+      ">
+        Empower Your Career
+      </h1>
 
-  </div>
-</motion.div>
-
-      </section>
+      <p className="
+        text-sm sm:text-base
+        text-gray-400 mt-4
+        max-w-4xl leading-relaxed
+      ">
+        Join our structured talent programs designed to enhance skills,
+        foster innovation, and prepare you for leadership and technical
+        excellence. Explore tracks across AI, Web Development, Product
+        Management, and more.
+      </p>
+    </div>
+  </motion.div>
+</section>
 
 
 
@@ -362,160 +383,132 @@ useEffect(() => {
 
 
 
-  
-    <section className="py-32 bg-[#0b0b0f]">
-      <div className="max-w-6xl mx-auto px-6">
+<section className="py-20 sm:py-24 md:py-28 lg:py-32 bg-[#0b0b0f]">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* ================= HEADING ================= */}
-        <div className="text-center mb-16">
-      
-  <div
-    className="inline-flex items-center gap-2 px-4 py-2 mb-4
-    rounded-full
-    bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10
-    border border-indigo-500/20
-    backdrop-blur-sm"
-  >
- <svg
-  className="w-4 h-4 text-indigo-400"
-  fill="currentColor"
-  viewBox="0 0 24 24"
->
-  <path d="M10 2h4a2 2 0 012 2v2h4a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h4V4a2 2 0 012-2zm4 4V4h-4v2h4z" />
-</svg>
+    {/* ================= HEADING ================= */}
+    <div className="text-center mb-12 sm:mb-14 md:mb-16">
 
+      <div
+        className="
+          inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 mb-4
+          rounded-full
+          bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10
+          border border-indigo-500/20
+          backdrop-blur-sm
+        "
+      >
+        <svg
+          className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-indigo-400"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path d="M10 2h4a2 2 0 012 2v2h4a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h4V4a2 2 0 012-2zm4 4V4h-4v2h4z" />
+        </svg>
 
-    <span className="text-sm font-medium bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-    Jobs & Internships
-    </span>
+        <span className="text-xs sm:text-sm font-medium bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          Jobs & Internships
+        </span>
 
-    <div className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
-  </div>
-
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            Career Opportunities
-          </h2>
-
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Discover full-time roles and internship opportunities to grow your career with us
-          </p>
-        </div>
-
-        {/* ================= FILTERS (REFERENCE STYLE – DARK) ================= */}
-        <div className="mb-16">
-          <p className="text-sm text-gray-400 mb-4">Filters:</p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Department */}
-            <select
-              value={department}
-              onChange={(e) => setDepartment(e.target.value)}
-              className="w-full px-5 py-3 rounded-xl
-                bg-[#121218]
-                border border-white/10
-                text-gray-300
-                focus:outline-none focus:border-gray-500
-                transition"
-            >
-              <option value="">Department</option>
-              {departments.map(dep => (
-                <option key={dep} value={dep}>{dep}</option>
-              ))}
-            </select>
-
-            {/* Location */}
-            <select
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              className="w-full px-5 py-3 rounded-xl
-                bg-[#121218]
-                border border-white/10
-                text-gray-300
-                focus:outline-none focus:border-gray-500
-                transition"
-            >
-              <option value="">Location</option>
-              {locations.map(loc => (
-                <option key={loc} value={loc}>{loc}</option>
-              ))}
-            </select>
-
-            {/* Employment Type */}
-            <select
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-              className="w-full px-5 py-3 rounded-xl
-                bg-[#121218]
-                border border-white/10
-                text-gray-300
-                focus:outline-none focus:border-gray-500
-                transition"
-            >
-              <option value="">Employment Type</option>
-              {types.map(t => (
-                <option key={t} value={t}>{t}</option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {/* ================= TABLE HEADER ================= */}
-        <div className="hidden md:grid grid-cols-12 text-sm text-gray-500 pb-4 border-b border-white/10">
-          <div className="col-span-6">Role</div>
-          <div className="col-span-3 text-center">Location</div>
-          <div className="col-span-2 text-center">Type</div>
-          <div className="col-span-1 text-right"></div>
-        </div>
-
-        {/* ================= OPPORTUNITIES LIST ================= */}
-        <div className="divide-y divide-white/10">
-          {filteredOpportunities.map((opp) => (
-            <motion.div
-              key={opp.id}
-                onClick={() => router.push(`/career/${opp.id}`)}
-              whileHover={{ backgroundColor: "rgba(255,255,255,0.03)" }}
-              transition={{ duration: 0.2 }}
-              className="grid grid-cols-1 md:grid-cols-12 items-center py-6 px-4 rounded-xl cursor-pointer"
-            >
-              {/* Role */}
-              <div className="md:col-span-6">
-                <h3 className="text-lg font-medium text-white capitalize">
-                  {opp.title}
-                </h3>
-              </div>
-
-              {/* Location */}
-              <div className="md:col-span-3 md:text-center mt-2 md:mt-0 capitalize">
-                <span className="text-gray-400">{opp.location}</span>
-              </div>
-
-              {/* Type */}
-              <div className="md:col-span-2 md:text-center mt-2 md:mt-0 capitalize">
-                <span className="text-gray-400">{opp.type}</span>
-              </div>
-
-              {/* Apply */}
-              <div className="md:col-span-1 mt-4 md:mt-0 text-right">
-                <button
-                onClick={() => router.push(`/career/${opp.id}`)}
-                  className="px-5 py-2 rounded-full text-sm font-medium
-                    bg-white text-black hover:bg-gray-200 transition cursor-pointer"
-                >
-                  Apply
-                </button>
-              </div>
-            </motion.div>
-          ))}
-
-          {/* No Results */}
-          {filteredOpportunities.length === 0 && (
-            <p className="text-center text-gray-500 py-12">
-              No opportunities match your filters.
-            </p>
-          )}
-        </div>
+        <div className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
       </div>
-    </section>
+
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
+        Career Opportunities
+      </h2>
+
+      <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+        Discover full-time roles and internship opportunities to grow your career with us
+      </p>
+    </div>
+
+    {/* ================= FILTERS ================= */}
+    <div className="mb-12 sm:mb-14 md:mb-16">
+      <p className="text-sm text-gray-400 mb-4">Filters:</p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+        <select className="w-full px-5 py-3 rounded-xl bg-[#121218] border border-white/10 text-gray-300 focus:outline-none focus:border-gray-500 transition">
+          <option value="">Department</option>
+        </select>
+
+        <select className="w-full px-5 py-3 rounded-xl bg-[#121218] border border-white/10 text-gray-300 focus:outline-none focus:border-gray-500 transition">
+          <option value="">Location</option>
+        </select>
+
+        <select className="w-full px-5 py-3 rounded-xl bg-[#121218] border border-white/10 text-gray-300 focus:outline-none focus:border-gray-500 transition">
+          <option value="">Employment Type</option>
+        </select>
+      </div>
+    </div>
+
+    {/* ================= TABLE HEADER ================= */}
+    <div className="hidden md:grid grid-cols-12 text-sm text-gray-500 pb-4 border-b border-white/10">
+      <div className="col-span-6">Role</div>
+      <div className="col-span-3 text-center">Location</div>
+      <div className="col-span-2 text-center">Type</div>
+      <div className="col-span-1 text-right"></div>
+    </div>
+
+    {/* ================= OPPORTUNITIES LIST ================= */}
+    <div className="divide-y divide-white/10">
+      {filteredOpportunities.map((opp) => (
+        <motion.div
+          key={opp.id}
+          onClick={() => router.push(`/career/${opp.id}`)}
+          whileHover={{ backgroundColor: "rgba(255,255,255,0.03)" }}
+          transition={{ duration: 0.2 }}
+          className="
+            grid grid-cols-1 md:grid-cols-12 items-start md:items-center
+            py-5 sm:py-6 px-3 sm:px-4
+            rounded-xl cursor-pointer
+          "
+        >
+          {/* Role */}
+          <div className="md:col-span-6">
+            <h3 className="text-base sm:text-lg font-medium text-white capitalize">
+              {opp.title}
+            </h3>
+          </div>
+
+          {/* Location */}
+          <div className="md:col-span-3 md:text-center mt-2 md:mt-0 capitalize">
+            <span className="text-sm sm:text-base text-gray-400">
+              {opp.location}
+            </span>
+          </div>
+
+          {/* Type */}
+          <div className="md:col-span-2 md:text-center mt-2 md:mt-0 capitalize">
+            <span className="text-sm sm:text-base text-gray-400">
+              {opp.type}
+            </span>
+          </div>
+
+          {/* Apply */}
+          <div className="md:col-span-1 mt-4 md:mt-0 md:text-right">
+            <button
+              onClick={() => router.push(`/career/${opp.id}`)}
+              className="
+                px-4 sm:px-5 py-2 rounded-full
+                text-xs sm:text-sm font-medium
+                bg-white text-black hover:bg-gray-200 transition
+              "
+            >
+              Apply
+            </button>
+          </div>
+        </motion.div>
+      ))}
+
+      {filteredOpportunities.length === 0 && (
+        <p className="text-center text-gray-500 py-10 sm:py-12">
+          No opportunities match your filters.
+        </p>
+      )}
+    </div>
+  </div>
+</section>
+
 
 
 
