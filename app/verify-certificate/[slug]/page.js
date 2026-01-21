@@ -7,6 +7,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/app/firebase";
 import { QRCodeCanvas } from "qrcode.react";
 import Footer from "@/app/components/shared/Footer";
+import DarkVeil from "@/app/components/home/DarkVeil";
 
 export default function VerifyCertificate() {
   const { slug } = useParams();
@@ -49,22 +50,29 @@ export default function VerifyCertificate() {
 
   return (
     <>
-    <div className="min-h-screen w-full bg-black text-white relative overflow-hidden mt-20">
+        <div style={{ width: "100%", height: "100dvh", position: "fixed" }}>
+                <DarkVeil speed={1} warpAmount={0.1} />
+              </div>
+              <div
+                style={{ width: "100%", height: "100dvh", position: "relative" }}
+              >
+            
+    <div className="min-h-screen w-full  text-white relative overflow-hidden mt-20">
       {/* Glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,140,255,0.25),transparent_70%)] blur-3xl opacity-40"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-10">
 
         {/* HEADER */}
-        <div className="bg-white text-black rounded-2xl py-10 text-center shadow-2xl">
-          <div className="flex justify-center mb-4">
-            <div className="w-20 h-20 rounded-full bg-black flex flex-col items-center justify-center shadow-lg">
+        <div className="bg-black/70 text-black rounded-2xl py-10 text-center shadow-2xl">
+          <div className="flex justify-center mb-4 ">
+            <div className="w-20 h-20 rounded-full  bg-gradient-to-br from-black via-purple-600/20 to-indigo-600/70 flex flex-col items-center justify-center shadow-lg">
               <img src="/images/logoindi.png" className="w-12" alt="Logo" />
               <img src ="/images/indi-Logo-white.png " className="w-12" alt="Logo"/>
             </div>
           </div>
-          <h1 className="text-4xl font-bold">Certificate of Completion</h1>
-          <p className="text-gray-600 mt-2">
+          <h1 className="text-4xl font-bold text-white">Certificate of Completion</h1>
+          <p className="text-gray-300 mt-2">
             Certificate ID: {slug}
           </p>
         </div>
@@ -75,7 +83,7 @@ export default function VerifyCertificate() {
           <div className="bg-black/60 border border-white/10 rounded-xl p-6 backdrop-blur-lg">
             <h3 className="text-xl font-semibold mb-4">Recipient Details</h3>
             <p className="text-gray-400">Full Name</p>
-            <p className="text-lg font-semibold">{cert.studentName}</p>
+            <p className="text-lg font-semibold">{cert.name}</p>
 
             <p className="text-gray-400 mt-4">Internship Title</p>
             <p className="text-lg font-semibold">{cert.role}</p>
@@ -136,7 +144,7 @@ export default function VerifyCertificate() {
                 </p>
 
                 <h2 className="mt-1 text-[50px] font-extrabold text-indigo-900 tracking-wide">
-                  {cert.studentName}
+                  {cert.name}
                 </h2>
 
                 <p className="mt-4 text-[20px] leading-7 tracking-wider max-w-[730px]">
@@ -192,6 +200,8 @@ export default function VerifyCertificate() {
       </div>
     </div>
     <Footer/>
+   
+              </div>
     </>
   );
 }
