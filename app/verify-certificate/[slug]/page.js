@@ -107,7 +107,17 @@ export default function VerifyCertificate() {
         <div className="mt-12 bg-black/70 rounded-2xl p-6 border border-white/10 backdrop-blur-xl shadow-xl">
           <h3 className="text-xl font-semibold mb-4">Certificate Preview</h3>
 
-          <div className="overflow-auto flex justify-center">
+<div className="w-full flex justify-center overflow-hidden">
+  <div
+    className="
+      origin-top
+      scale-[0.55]
+      sm:scale-[0.65]
+      md:scale-[0.8]
+      lg:scale-100
+    "
+  >
+
 
             {/* ================= CERTIFICATE DESIGN ================= */}
             <div
@@ -196,7 +206,7 @@ export default function VerifyCertificate() {
             This certificate has been verified and is authentic.
           </p>
         </div>
-
+</div>
       </div>
     </div>
     <Footer/>
