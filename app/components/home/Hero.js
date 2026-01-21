@@ -12,20 +12,23 @@ function Hero() {
     <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 pt-20">
       <div className="max-w-5xl mx-auto space-y-10">
         {/* Headline */}
-        <h1 className=" text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white leading-[1.1]">
+        <h1 className=" text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-center text-white leading-[1.1]">
           <BlurText
             key={"born-to-build"}
             text="Born to Build"
             animateBy="words"
             direction="top"
             className="text-center w-fit mx-auto"
+
           />
           <BlurText
             key={"designed-to-impact"}
             text="Designed to Impact"
             animateBy="words"
             direction="top"
-            className="text-center"
+            className="text-center w-fit  mx-auto "
+          
+          
           />
           {/* <span className="block mb-2">Born to Build</span> */}
           {/* <span className="block text-transparent bg-clip-text bg-linear-to-r from-white via-gray-200 to-gray-500 pb-2"> */}

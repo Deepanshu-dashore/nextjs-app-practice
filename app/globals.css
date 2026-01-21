@@ -159,7 +159,7 @@
 
   /* Firefox Scrollbar */
   * {
-    scrollbar-width: thin;
+    scrollbar-width: none;
     scrollbar-color: var(--color) #000000;
   }
 }

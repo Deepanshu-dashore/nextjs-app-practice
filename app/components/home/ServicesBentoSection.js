@@ -2,7 +2,8 @@
   "use client";
 
   import { useRef, useState, useEffect } from "react";
-  import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
+
   import Image from "next/image";
   import {
     FaMobile,
@@ -128,7 +129,17 @@ const [lockScroll, setLockScroll] = useState(false);
     // Horizontal movement based on active card. On mobile we won't translate horizontally.
     const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 800;
     const visibleWidth = isMobile ? viewportWidth : 800;
-    const x = useTransform(scrollYProgress, [0, 1], [0, -(TOTAL_WIDTH - visibleWidth)]);
+const rawX = useTransform(
+  scrollYProgress,
+  [0, 1],
+  [0, -(TOTAL_WIDTH - visibleWidth)]
+);
+
+const x = useSpring(rawX, {
+  stiffness: 50,
+  damping: 25,
+  mass: 1.1,
+});
 
     
     useEffect(() => {
@@ -184,45 +195,17 @@ const [lockScroll, setLockScroll] = useState(false);
       };
     }, [isMobile]);
 
- useEffect(() => {
-  if (isMobile) return;
-
-  const el = sectionRef.current;
-  if (!el) return;
-
-  let isLocked = false;
-
-  const onWheel = (e) => {
-    const progress = scrollYProgress.get();
-
-    // Lock only while cards are animating
-    if (progress > 0 && progress < 1) {
-      e.preventDefault();
-
-      // convert vertical scroll → horizontal motion
-      window.scrollBy({
-        top: e.deltaY,
-        left: 0,
-        behavior: "auto",
-      });
-
-      isLocked = true;
-    } else {
-      isLocked = false;
-    }
-  };
-
-  el.addEventListener("wheel", onWheel, { passive: false });
-  return () => el.removeEventListener("wheel", onWheel);
-}, [scrollYProgress, isMobile]);
 
     return (
+
 <section
   ref={sectionRef}
-  className="relative bg-black px-6 lg:px-5 py-20 overflow-hidden"
-  style={{
-    overscrollBehavior: "contain",
-  }}
+  className="
+    relative bg-black px-6 lg:px-5
+    py-20
+    overflow-hidden
+    lg:h-[150vh]   
+  "
 >
 
 
@@ -258,117 +241,169 @@ const [lockScroll, setLockScroll] = useState(false);
           </p>
         </motion.div>
 
-  {/* PINNED CONTAINER */}
-  <div className={isMobile ? "flex flex-col gap-8 px-4 mt-10" : "sticky top-0 h-[600px] flex items-center px-6 lg:px-12 mt-10"}>
+{/* PINNED CONTAINER */}
+<div className="mt-10 flex flex-col lg:sticky lg:top-0 lg:h-screen lg:flex-row lg:items-center px-4 lg:px-12 gap-8">
 
-  {/* LEFT PARTICLE ICON */}
-  <div className={isMobile ? "w-full flex justify-center items-center mb-6" : " lg:flex w-[400px] justify-center h-full items-center relative ml-10"}>
-    
-    {/* Ambient Glow */}
-    {/* <div className="absolute w-[600px] h-[600px] rounded-full bg-indigo-500/15 blur-[600px]" /> */}
+  {/* LEFT PARTICLE ICON (DESKTOP ONLY) */}
+ <div className="hidden lg:flex w-[400px] justify-center h-full items-center relative ml-10">
+  <ParticleIconMorph
+    key={activeIndex}
+    title={services[activeIndex].title}
+  />
+</div>
 
 
-    {/* Right fade overlay */}
-    {/* <div
-      className="absolute right-0 top-0 h-full w-16 pointer-events-none z-20"
-      style={{
-        background: "linear-gradient(to left, black 0%, transparent 100%)",
-        backdropFilter: "blur(40px)"
-      }}
-    /> */}
-
-    <ParticleIconMorph
-      key={activeIndex}
-      title={services[activeIndex].title}
-      isMobile={isMobile}
-    />
-  </div>
 
   {/* RIGHT HORIZONTAL TRACK */}
-  <div ref={trackRef} className={isMobile ? "w-full relative flex flex-col items-center overflow-y-auto max-h-[640px] snap-y snap-mandatory" : "w-full lg:w-3/4 relative h-[600px] flex items-center  overflow-hidden"} style={{scrollbarWidth:"none"}}>
+
+<div 
+  ref={trackRef}
+  className="
+    w-full relative flex items-center
+    overflow-x-auto lg:overflow-hidden
+    scroll-smooth
+    scrollbar-hide
+  "
+  style={{
+    WebkitOverflowScrolling: "touch",
+    scrollPaddingLeft: "1rem",
+    scrollPaddingRight: "4rem",
+  }}
+>
+
     
-   {/* Left fade overlay */}
-{/* Left fade overlay */}
-<div
-  className="absolute left-0 top-0 h-full w-20 pointer-events-none z-20 hidden lg:block"
+    {/* Desktop fade overlays */}
+    <div
+      className="absolute left-0 top-0 h-full w-20 pointer-events-none z-20 hidden lg:block"
+      style={{
+        background: "linear-gradient(to right, rgba(0,0,0,0.5), transparent)",
+        backdropFilter: "blur(40px)",
+      }}
+    />
+
+    <div
+      className="absolute right-0 top-0 h-full w-10 pointer-events-none z-20 hidden lg:block"
+      style={{
+        background: "linear-gradient(to left, rgba(0,0,0,0.5), transparent)",
+        backdropFilter: "blur(40px)",
+      }}
+    />
+
+    {/* CARD TRACK */}
+  {/* <motion.div
+  style={{ x }}
+  className="
+    flex
+    gap-8
+    px-4
+    lg:px-14
+    lg:ml-10
+    w-max
+
+    py-10
+  "
+> */}
+<motion.div
   style={{
-    background: "linear-gradient(to right, rgba(0,0,0,0.5), transparent)",
-    backdropFilter: "blur(40px)",
-    WebkitBackdropFilter: "blur(40px)", // Safari support
+    x,
+    willChange: "transform",
+    transform: "translateZ(0)",
+ 
   }}
-/>
 
-{/* Right fade overlay */}
-<div
-  className="absolute right-0 top-0 h-full w-10 pointer-events-none z-20 hidden lg:block"
-  style={{
-    background: "linear-gradient(to left, rgba(0,0,0,0.5), transparent)",
-    backdropFilter: "blur(40px)",
-    WebkitBackdropFilter: "blur(40px)", // Safari support
-  }}
-/>
+  className="flex gap-8 px-4 lg:px-14 lg:ml-10 w-max py-10  "
+>
 
-
-
-    <motion.div style={{ x: isMobile ? 0 : x  , scrollbarWidth:"none"}} className={isMobile ? "flex flex-col gap-6 px-0 w-[90%] mt-6" : "flex gap-8 px-14 ml-10 "}>
       {services.map((service, index) => (
         <div
           key={index}
           data-index={index}
           ref={(el) => (cardRefs.current[index] = el)}
-          className={`relative group transition-all duration-500 ease-out flex flex-col justify-between bg-gradient-to- from-white/10 to-transparent backdrop-blur-2xl border ${index === activeIndex ? "border-white/20 bg-white/5 shadow-[0_0_40px_rgba(255,255,255,0.1)] scale-105" : "border-white/10 opacity-80"} ` + (isMobile ? "w-full h-auto rounded-xl p-6 snap-start" : "w-[400px] h-[520px] rounded-[2.5rem] p-8")}
+
+  className={`
+
+    relative group transition-all duration-500 ease-out
+    flex flex-col justify-between
+    bg-gradient-to- from-white/10 to-transparent
+    backdrop-blur-2xl
+    border
+    ${index === activeIndex
+      ? "border-white/20 bg-white/5 shadow-[0_0_40px_rgba(255,255,255,0.1)] scale-105"
+      : "border-white/10 opacity-80"}
+   
+    w-[320px] sm:w-[360px] lg:w-[400px]
+    h-[550px]
+
+    rounded-[2.5rem]
+    p-6 lg:p-8
+    shrink-0
+  `}
+
+
+        
         >
-          {/* Animated Glow Overlay */}
-          <div 
-            className="absolute inset-0 rounded-[2.5rem] transition-opacity duration-500 opacity-0 group-hover:opacity-100 -z-10"
+          {/* Glow */}
+          <div
+            className="absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity -z-10"
             style={{
               background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), ${service.color}20, transparent 40%)`
             }}
           />
 
           <div>
-            {/* Header Row */}
+            {/* Header */}
             <div className="flex items-center justify-between mb-6">
-              <div className="w-15"> 
-                <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-inner"
-                  style={{
-                    background: `linear-gradient(135deg, ${service.color}40, ${service.color}10)`,
-                    color: service.color,
-                    border: `1px solid ${service.color}30`
-                  }}
-                >
-                  {service.icon}
-                </div>
+              <div
+                className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-inner"
+                style={{
+                  background: `linear-gradient(135deg, ${service.color}40, ${service.color}10)`,
+                  color: service.color,
+                  border: `1px solid ${service.color}30`
+                }}
+              >
+                {service.icon}
               </div>
 
-              <div className="w-[80%]"> 
-                <h3 className="text-white font-extrabold text-2xl tracking-wide transition-colors">
-                  {service.title}
-                </h3>
-              </div>
+     <h3 className="text-white font-extrabold text-xl sm:text-2xl tracking-wide w-[80%]">
+
+                {service.title}
+              </h3>
             </div>
 
             <span className="text-xs font-bold tracking-widest text-white/30 uppercase">
               Service 0{index + 1}
             </span>
-            <p className="text-gray-400 text-sm leading-relaxed mt-4">
+
+  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mt-3 sm:mt-4">
+
               {service.description}
             </p>
-            <ul className="mt-4 space-y-2">
+
+           <ul className="mt-3 sm:mt-4 space-y-1.5 sm:space-y-2">
+
               Features:
               {service.features.map((feature, i) => (
-                <li key={i} className="text-gray-300 text-sm flex items-center gap-2 mt-4">
-                  <span className="text-purple-400">•</span> {feature}  
+                <li key={i}  className="text-gray-300 text-xs sm:text-sm flex items-center gap-2 mt-1.5 sm:mt-2"
+>
+                  <span className="text-purple-400">•</span> {feature}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Action Button */}
-          <div className="relative mt-6">
-            <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-sm text-white group-hover:bg-white/10 transition-all">
-              {service.buttonText}
+          {/* Button */}
+          <div className="mt-6">
+      <button className="
+  flex items-center gap-2
+  px-4 sm:px-5
+  py-2 sm:py-2.5
+  rounded-full
+  bg-white/5 border border-white/10
+  text-xs sm:text-sm
+  text-white
+  hover:bg-white/10 transition
+">
+    {service.buttonText}
               <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
             </button>
           </div>
@@ -377,6 +412,7 @@ const [lockScroll, setLockScroll] = useState(false);
     </motion.div>
   </div>
 </div>
+
 
       </section>
     );

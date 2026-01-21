@@ -83,28 +83,36 @@ export default function TechPartnerSection() {
               </motion.div>
 
         {/* MAIN GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-{/* LEFT SECTION */}
-<div className="lg:col-span-6 flex flex-col justify-center gap-10">
+       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10">
 
-  {/* SECTION LABEL */}
-  <h3 className="text-sm font-semibold uppercase tracking-widest text-gray-400">
-    Features
-  </h3>
+{/* LEFT SECTION */}
+<div className="md:col-span-6 flex flex-col gap-6 lg:gap-10 relative pl-6 lg:pl-10">
+
+  {/* LEFT VERTICAL LINE */}
+  <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-indigo-500/70 via-indigo-500/70 to-indigo-500/70" />
+
+  {/* HEADING */}
+  <div>
+  
+  </div>
 
   {/* FEATURES LIST */}
-  <div className="grid grid-cols-1  gap-y-6 gap-x-10">
+  <div className="grid grid-cols-1 gap-y-8">
     {[
-      { t: "Expert Team", d: "Industry veterans guiding every step." },
-      { t: "Innovation First", d: "Modern, AI-ready tech stack." },
-      { t: "Quality Assured", d: "Clean, reliable & tested code." },
-      { t: "Scalable Systems", d: "Built to grow with your business." },
+  { t: "Expert Team", d: "Experienced professionals delivering guidance at every project stage" },
+  { t: "Innovation First", d: "Future ready solutions using modern AI powered technology" },
+  { t: "Quality Assured", d: "Reliable well tested code meeting high industry standards" },
+  { t: "Scalable Systems", d: "Flexible systems designed to scale with business growth" },
+
+
     ].map((f, i) => (
-      <div key={i} className="flex gap-4">
-        <FaCheckCircle className="text-indigo-400 text-lg mt-1 shrink-0" />
+      <div key={i} className="flex gap-5 items-start">
+        
+        {/* BIG CHECK ICON */}
+        <FaCheckCircle className="text-indigo-400 text-2xl mt-1 shrink-0" />
 
         <div>
-          <h4 className="text-white font-semibold leading-tight">
+          <h4 className="text-white text-lg font-semibold leading-tight">
             {f.t}
           </h4>
           <p className="text-sm text-gray-400 mt-1 leading-relaxed">
@@ -115,62 +123,67 @@ export default function TechPartnerSection() {
     ))}
   </div>
 
-  {/* ACTION BUTTONS */}
-  <div className="flex flex-col sm:flex-row gap-4 pt-4">
+</div>
 
-    {/* PRIMARY */}
-    <Link
-      href="/tech-partner"
-      className="inline-flex items-center justify-center gap-2
-                 px-18 py-4
-                 border border-white/30
-                 text-white font-semibold
-                 rounded-lg
-                 hover:bg-indigo-500 hover:border-indigo-500
-                 transition"
-    >
-      Explore Program
-      <FaArrowRight className="text-sm" />
-    </Link>
+       {/* RIGHT */}
+<div className="md:col-span-6 flex ">
 
-    {/* SECONDARY */}
-    <Link
-      href="/tech-partner#apply"
-      className="inline-flex items-center justify-center gap-2
-                 px-14 py-4
-                  rounded-lg
-                 bg-white text-black font-semibold
-                 hover:bg-gray-100
-                 transition"
-    >
-      Apply for Partnership
-      <FaArrowRight className="text-sm" />
-    </Link>
+  <motion.div
+    className="
+     w-full max-w-[460px] lg:max-w-[560px] p-6 lg:p-8
 
-  </div>
+      bg-gradient-to-br from-black via-purple-900/10 to-gray-900
+      backdrop-blur-xl
+      border border-white/10
+      rounded-3xl
+      shadow-xl shadow-gray-900/50
+    "
+  >
+    {/* STATS GRID INSIDE ONE CARD */}
+    <div className="grid grid-cols-2 gap-8">
+      {stats.map((stat, i) => (
+        <div
+          key={i}
+          className="flex flex-col justify-center items-center text-center"
+        >
+          <span className="text-4xl font-black text-white">
+            {stat.value}
+          </span>
 
+          <div className="h-0.5 w-10 bg-gradient-to-r from-purple-500 to-transparent my-3" />
+
+          <p className="text-[11px] uppercase tracking-widest text-gray-400 font-bold">
+            {stat.label}
+          </p>
+        </div>
+      ))}
+    </div>
+
+ {/* CTA BUTTON */}
+<div className="flex justify-center mt-6">
+  <motion.button
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="
+      px-6 sm:px-8 py-2.5 sm:py-3
+      text-[10px] sm:text-sm md:text-base
+      font-bold uppercase tracking-widest
+      rounded-lg
+      bg-gradient-to-r from-purple-600 to-indigo-600
+      text-white
+      shadow-lg shadow-purple-900/40
+      border border-white/10
+    "
+  >
+    Start Your Project
+  </motion.button>
+</div>
+
+  </motion.div>
 </div>
 
 
 
-
-          {/* RIGHT */}
-          <div className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-2 gap-6 place-items-center">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={i}
-                className="w-full max-w-[260px] min-h-[161px] p-6 flex flex-col justify-center
-                           bg-gradient-to- from-gray-900/40 to-black/50
-                           backdrop-blur-xl border border-white/10 rounded-2xl"
-              >
-                <span className="text-4xl font-black">{stat.value}</span>
-                <div className="h-0.5 w-10 bg-gradient-to- from-purple-500 to-transparent my-3" />
-                <p className="text-[11px] uppercase tracking-widest text-gray-400 font-bold">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
-          </div>
  
 
         </div>
