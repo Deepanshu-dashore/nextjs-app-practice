@@ -57,25 +57,31 @@ export default function VerifyCertificate() {
                 style={{ width: "100%", height: "100dvh", position: "relative" }}
               >
             
-    <div className="min-h-screen w-full  text-white relative overflow-hidden mt-20">
+<div className="min-h-screen w-full text-white relative overflow-hidden mt-10 sm:mt-16 lg:mt-20">
+
       {/* Glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,140,255,0.25),transparent_70%)] blur-3xl opacity-40"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-10">
+<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+
 
         {/* HEADER */}
-        <div className="bg-black/70 text-black rounded-2xl py-10 text-center shadow-2xl">
-          <div className="flex justify-center mb-4 ">
-            <div className="w-20 h-20 rounded-full  bg-gradient-to-br from-black via-purple-600/20 to-indigo-600/70 flex flex-col items-center justify-center shadow-lg">
-              <img src="/images/logoindi.png" className="w-12" alt="Logo" />
-              <img src ="/images/indi-Logo-white.png " className="w-12" alt="Logo"/>
-            </div>
-          </div>
-          <h1 className="text-4xl font-bold text-white">Certificate of Completion</h1>
-          <p className="text-gray-300 mt-2">
-            Certificate ID: {slug}
-          </p>
-        </div>
+      <div className="bg-black/70 rounded-2xl py-6 sm:py-8 lg:py-10 text-center shadow-2xl">
+  <div className="flex justify-center mb-3 sm:mb-4  ">
+    <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full bg-gradient-to-br from-black via-purple-600/20 to-indigo-600/70 flex items-center justify-center shadow-lg border border-4 border-black/80 shadow-lg p-4 rounded-full">
+      <img src="/images/logoindi.png" className="w-8 sm:w-10 lg:w-12" />
+    </div>
+  </div>
+
+  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+    Certificate of Completion
+  </h1>
+
+  <p className="text-gray-300 mt-2 text-sm sm:text-base">
+    Certificate ID: {slug}
+  </p>
+</div>
+
 
         {/* INFO CARDS */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
